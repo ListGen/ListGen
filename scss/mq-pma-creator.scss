@@ -1,0 +1,255 @@
+/* PMA Creator
+ * Author: bhuelga
+ * -----------------
+ */
+
+@import "./util.scss";
+
+#main-content {
+	height: 100%;
+	width: 100%;
+
+	& #edit-block {
+		width: 100%;
+	}
+}
+
+/*   TOP BAR   */
+
+#top-bar {
+	height: 55px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+
+	color: $white;
+	background-color: $black;
+	font-size: 1.2rem;
+
+	& #top-areas {
+		position: relative;
+		padding: 1px 0;
+
+		& .top-dropdown {
+			display: flex;
+			align-items: center;
+
+			cursor: pointer;
+			@include transition($transition-speed);
+
+			&:hover span { color: $one-cyan; };
+			&:hover i { color: $one-cyan;};
+		}
+
+		& .top-dropdown-content {
+			min-width: 250px;
+			position: absolute;
+			top: 150%;
+			left: 25%;
+			z-index: 1;
+
+			background-color: $black;
+			@include box-shadow(0px, 2px, 4px, $black);
+
+			& a {
+				display: block;
+				padding: 10px 10px;
+
+			    color: $white;
+			    background: $black;
+			    text-decoration: none;
+			    border-top: solid 1px $white;
+
+			    &:hover { color: $one-cyan; }
+
+			    &:not(:last-child) { border-bottom: solid 1px $white; }
+			}
+		}
+	}
+
+	& #top-steps {
+		display: flex;
+		align-items: center;
+
+		& * { @include transition($transition-speed); }
+
+		& span {
+			cursor: pointer;
+
+			&.disabled {
+				cursor: default !important;
+				pointer-events: none;
+				color: gray !important;
+			}
+
+			&:hover { color: $one-cyan; }
+		}
+
+		& .selected { color: $one-cyan; }
+	}
+}
+
+@media screen and (max-width:700px) {
+	#top-bar {
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width:400px) {
+	#top-bar {
+		font-size: 1rem;
+	}
+}
+
+
+/*   MAIN WINDOW   */
+
+#main-window {
+	height: 2100px;
+	width: 100%;
+
+	overflow: hidden;
+	background: $offwhite;
+	@include box-shadow(0, 0, 15px, $black, true);
+
+	& .sub-window {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0;
+
+		& .spread {
+			background: $white;
+			@include box-shadow(0, 0, 15px, $black, false);
+		}
+	}
+}
+
+#edit-window {													// EDIT WINDOW								
+
+	& .edit-spread {
+		position: relative;
+
+		& .page-title {
+			position: absolute;
+			top: 50%;
+
+			font-size: 1.5rem;
+			font-weight: bold;
+			white-space: nowrap;
+			transform: rotate(-90deg);
+
+			&#front-page-title { left: -6%; }
+			&#back-page-title { left: 98%; }
+			&#inside-left-title { left: -8%; }
+			&#inside-right-title { left: 95%; }
+		}
+
+		& .overlay {										// EDIT SECTION
+			height: 100%;
+			width: 100%;
+			position: absolute;
+
+			@include transition($transition-speed);
+
+			// transparent overlay
+			&::after{
+			    content:'';
+			    background: $incomplete;
+			    width:100%;
+			    height:100%;
+			    position:absolute;
+			    top:0;
+			    left:0;
+			    opacity:0.1;
+			    @include transition($transition-speed);
+			}
+
+			& .switch {
+				height: 20px;
+				width: 300px;
+				display: none;
+				position: absolute;
+
+				font-family: 'Ubuntu';
+				background: $black;
+
+				& .incomplete {
+					background: $incomplete;
+				}
+				& .complete {
+					background: $complete;
+				}
+			}
+
+			// edit tools		
+			& .edit-overlay {
+				height: 500px;
+				width: 300px;
+				position: absolute;
+				top: 0;
+				left: 100%;
+				z-index: 1;
+				padding: 10px;
+				overflow-y: scroll;
+
+				opacity: 1;
+				display: none;
+				color: white;
+				background: $black;
+				text-align: center;
+				@include box-shadow(0, 0, 6px, $black);
+
+				// arrow
+				&:after {
+					content: ' ';
+					position: absolute;
+					border-width: 5px;
+				    border-style: solid;
+				    border-color: black transparent transparent transparent; 
+				}
+
+				& h2 {
+					margin: 0;
+				}
+
+				& .overlay-content {
+					margin: 10px 5px;
+					& img {
+						height: 200px;
+						width: 300px;
+					}
+				}
+			}
+
+			&:hover::after { opacity: .5; }
+
+			&:hover .edit-overlay {
+				display: initial;
+			}
+
+			&:hover .switch { display: initial; }
+		}
+	}
+}
+
+@media screen and (max-width: 1800px) {
+	.edit-spread {
+		@include scale(.8);
+	}
+}
+
+#mailing-window {													// MAILING WINDOW
+
+	& #mailing-list {												// MAILING LIST
+		height: 90%;
+		width: 90%;
+	}
+}

@@ -1,0 +1,242 @@
+/* Responsive Navs
+ * Author: bhuelga
+ * -----------------
+ * Dictates responsiveness and style of top and bottom nav bars and the navigation menu.
+ */
+
+@import "./util.scss";
+
+/*   Top Nav Bar   */
+#top-nav-bar {
+	height: 80px;
+	width: calc(100% - 80px);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 10px 10px;
+
+	background: $white;
+	border-bottom: solid 2px $offwhite;
+}
+
+.nav-column {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+
+	margin: 10px 0;
+}
+
+.nav-column * {
+	display: inline-block;
+}
+
+.nav-logo {
+	display: flex;
+	align-items: center;
+	margin-left: 5px;
+}
+
+.nav-logo a img {
+	border-radius: 50%;
+	@include transition(.2s);
+}
+
+.nav-logo span {
+	margin-left: 10px;
+
+	font-size: 0;
+	letter-spacing: 4px;
+	white-space: nowrap;
+	@include transition(.3s);
+}
+
+.account-container {
+	display: flex;
+	align-items: center;
+}
+
+.account-pic {
+	height: 20px;
+	width: 20px;
+}
+
+#top-nav-links-container {
+	display: none;
+}
+
+#top-nav-links {
+	display: flex;
+	align-items: center;
+}
+
+#top-nav-links a {
+	padding: 0 10px;
+	color: $black;
+	font-size: 1.3rem;
+	vertical-align: center;
+	text-decoration: none;
+	@include transition(.2s);
+
+	&:hover {
+		color: $two-blue;
+	};
+}
+
+/*   Bottom Nav Bar   */
+#bottom-nav-bar {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+
+	color: $white;
+	background: $black;
+}
+
+#copyright {
+	text-align: center;
+	font-size: 1rem;
+}
+
+#bottom-nav-links {
+	text-align: center;
+}
+
+#bottom-nav-links a {
+	margin-bottom: 20px;
+	padding: 0 10px;
+
+	color: $white;
+	font-size: 1rem;
+	align-items: middle;
+	text-decoration: none;
+	@include transition(.2s);
+
+	&:hover {
+		color: $one-cyan;
+	};
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+	#bottom-nav-bar {
+		flex-flow: row nowrap;
+		padding: 0 20px;
+	}
+
+	.nav-column {
+		flex-flow: row nowrap;
+	}
+
+	#bottom-nav-links a {
+		margin: 0;
+	}
+}
+
+@media screen and (min-width: 233px) {
+	#bottom-nav-links *:first-child {
+		border-right: solid 1px $one-cyan;
+	}
+}
+
+@media screen and (min-width: 304px) {
+	.nav-logo span {
+		font-size: 2rem;
+	}
+}
+
+@media screen and (min-width: 356px) {
+	#bottom-nav-links *:nth-child(2) {
+		border-right: solid 1px $one-cyan;
+	}
+}
+
+@media screen and (min-width: 440px) {
+	.nav-logo span {
+		font-size: 3rem;
+	}
+}
+
+/*   Navigation Menu   */
+
+#nav-menu {
+	height: calc(100% - 80px);
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 80px;
+	right: 0;
+	overflow: hidden;
+
+	color: $black;
+	background-color: $offwhite;
+	font-size: 1.5rem;
+	@include transition(.5s, ease-out);
+}
+
+#nav-menu-header {
+	height: 80px;
+	width: 0;
+	display: flex;
+	align-items: center;
+
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	overflow: hidden;
+
+	color: $black;
+	background-color: $white;
+	@include transition(.5s, ease-out);
+}
+
+#nav-menu-header img{
+	margin: 0 10px;
+}
+
+#nav-menu-hamburger {
+	position: fixed;
+	z-index: 2;
+	top: 0px;
+	right: 5px;
+	margin: 10px;
+
+	background-color: $white;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-menu-links {
+	margin: 10px 20px;
+	overflow: hidden;
+}
+
+.nav-link-container {
+	display: none;
+	margin: 15px 30px;
+}
+
+.nav-link-container a {
+	color: $black;
+	text-decoration: none;
+	@include transition(.2s);
+
+	&:hover {
+		color: $two-blue;
+	};
+}
+
+.nav-link-container img {
+	height: 16px;
+	width: 16px;
+}
+
+.nav-menu-section {
+	padding-bottom: 5px;
+
+	font-weight: bold;
+	border-bottom: solid 1px $black;
+}
