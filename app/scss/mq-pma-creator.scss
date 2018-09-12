@@ -1,0 +1,437 @@
+/* PMA Creator
+ * Author: bhuelga
+ * -----------------
+ */
+
+@import "./util.scss";
+
+#main-content {
+	height: 100%;
+	width: 100%;
+
+	& #edit-block {
+		width: 100%;
+	}
+}
+
+/*   TOP BAR   */
+
+#top-bar {
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
+
+	color: $white;
+	background-color: $black;
+	font-size: 1.6rem;
+
+	& div { margin: 5px 0; }
+
+	& #pma-mq {
+		color: $white;
+
+		& span { color: $one-cyan; }
+	}
+
+	& #top-areas {
+		position: relative;
+		padding: 1px 0;
+
+		& .top-dropdown {
+			display: flex;
+			align-items: center;
+
+			cursor: pointer;
+			@include transition($transition-speed);
+
+			&:hover span { color: $one-cyan; };
+			&:hover i { color: $one-cyan;};
+		}
+
+		& .top-dropdown-content {
+			min-width: 250px;
+			position: absolute;
+			top: 150%;
+			left: 25%;
+			z-index: 1;
+
+			background-color: $black;
+			@include box-shadow(0px, 2px, 4px, $black);
+
+			& a {
+				display: block;
+				padding: 10px 10px;
+
+			    color: $white;
+			    background: $black;
+			    text-decoration: none;
+			    border-top: solid 1px $white;
+
+			    &:hover { color: $one-cyan; }
+
+			    &:not(:last-child) { border-bottom: solid 1px $white; }
+			}
+		}
+	}
+
+	& #top-steps {
+		display: flex;
+		align-items: center;
+
+		& * { @include transition($transition-speed); }
+
+		& span {
+			cursor: pointer;
+
+			&.disabled {
+				cursor: default !important;
+				pointer-events: none;
+				color: gray !important;
+			}
+
+			&:hover { color: $one-cyan; }
+		}
+
+		& .selected { color: $one-cyan; }
+	}
+}
+
+@media screen and (max-width : 1400px) {
+	#top-bar {
+		font-size: 1.5rem;
+	}
+}
+
+@media screen and (max-width : 1200px) {
+	#top-bar {
+		padding: 10px 20px;
+		font-size: 1.3rem;
+	}
+}
+
+@media screen and (max-width : 1020px) {
+	#top-bar {
+		padding: 5px 20px;
+		font-size: 1.1rem;
+	}
+}
+
+@media screen and (max-width : 875px) {
+	#top-bar {
+		flex-flow: column nowrap;
+		& div { margin: 0; }
+	}
+}
+
+
+/*   MAIN WINDOW   */
+
+#main-window {
+	height: 2100px;
+	width: 100%;
+
+	overflow: hidden;
+	background: $offwhite;
+	@include box-shadow(0, 0, 15px, $black, true);
+
+	& .sub-window {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0;
+
+		& .spread {
+			background: $white;
+			@include box-shadow(0, 0, 15px, $black, false);
+		}
+	}
+}
+
+#edit-window {													// EDIT WINDOW								
+
+	& .edit-spread {
+		position: relative;
+
+		& .page-title {
+			position: absolute;
+			top: 50%;
+
+			font-size: 1.5rem;
+			font-weight: bold;
+			white-space: nowrap;
+			transform: rotate(-90deg);
+
+			&#front-page-title { left: -6%; }
+			&#back-page-title { left: 98%; }
+			&#inside-left-title { left: -8%; }
+			&#inside-right-title { left: 95%; }
+		}
+
+		& .overlay {										// EDIT SECTION
+			height: 100%;
+			width: 100%;
+			position: absolute;
+
+			@include transition($transition-speed);
+
+			// transparent overlay
+			&:after{
+			    content:'';
+			    background: $incomplete;
+			    width:100%;
+			    height:100%;
+			    position:absolute;
+			    top:0;
+			    left:0;
+			    opacity:0.05;
+			    @include transition($transition-speed);
+			}
+
+			// edit tools		
+			& .edit-overlay {
+				height: 500px;
+				width: 300px;
+				position: absolute;
+				top: 0;
+				left: 100%;
+				z-index: 1;
+				padding: 10px;
+				display: none;
+
+				overflow-x: hidden;
+				overflow-y: scroll;
+				color: white;
+				background: $black;
+				text-align: center;
+				@include box-shadow(0, 0, 6px, $black);
+
+				// arrow
+				&:after {
+					content: ' ';
+					position: absolute;
+					border-width: 5px;
+				    border-style: solid;
+				    border-color: black transparent transparent transparent; 
+				}
+
+				& .complete {
+					height: 35px;
+					width: 300px;
+					position: absolute;
+
+					background: $complete;
+				}
+
+				& h2 {
+					margin: 0;
+				}
+
+				& .overlay-content {
+					margin: 10px 5px;
+					& img {
+						height: 200px;
+						width: 300px;
+					}
+				}
+			}
+
+			&:hover::after { opacity: .5; }
+
+			&:hover .edit-overlay {
+				display: initial;
+			}
+
+			&:hover .switch { display: initial; }
+		}
+	}
+}
+
+@media screen and (max-width: 1800px) {
+	.edit-spread {
+		@include scale(.8);
+	}
+}
+
+#mailing-window {													// MAILING WINDOW
+
+	& #mailing-list {												// MAILING LIST
+		height: 90%;
+		width: 90%;
+		display: flex;
+		justify-content: space-between;
+		padding: 0px;
+		overflow-x: scroll;
+
+		& div {
+			display: inline-block;
+			margin: 0px;
+
+			color: $black;
+
+			& h2 {
+				height: 50px;
+				margin: 0 -1px;
+				padding: 10px;
+				text-align: center;
+
+				color: white !important;
+				background: $two-blue;
+				border-bottom: 1px solid white;
+			}
+		}
+
+		& #edit-bar {
+			width: 15%;
+			border: 1px solid $two-blue;
+
+			& h3 {
+				height: 34px;
+				margin: 0;
+				padding: 5px;
+				color: white;
+				background: $two-blue;
+			}
+
+			& ul {
+				margin-left: 5px;
+				padding: 0 5px;
+				list-style: none;
+
+				& li {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		& #homeowners {
+			width: 70%;
+			max-height: 80%;
+
+			& #search-bar {
+				height: 50px;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				margin: 0;
+				padding: 5px;
+
+				color: white;
+				background: $two-blue;
+				border-bottom: 1px solid white;
+				font-size: 1.2rem;
+
+				& .search {
+					width: 25%;
+					margin-left: 10px;
+					padding: 10px;
+				}
+			}
+
+			& table {
+				width: 100%;
+				font-size: 1.1rem;
+				border-collapse: collapse;
+				overflow: scroll;
+				table-layout: fixed;
+
+				& thead {
+					background: $two-blue-dark;
+
+					& button {
+						display: inline-flex;
+						align-items: center;
+						padding: 5px 20px;
+
+					  	color: white;
+					  	background: inherit;
+					  	border: none;
+					  	font-family: 'Ubuntu';
+					  	font-size: 1.1rem;
+					  	white-space: nowrap;
+					  	@include transition($transition-speed);
+
+					  	&:hover { color: $one-cyan; }
+					}
+				}
+
+				& tr {
+
+					& .blocked-container { 
+						height: 60px; 
+						width: 60px;
+					}
+
+					&:nth-child(even) { background-color: $offwhite; };
+
+				  	& td {
+				  		position: relative;
+				  		padding: 0 10px;
+
+				  		border: 1px solid $two-blue;
+
+						& .check-container { 
+
+							& input {
+								position: absolute;
+
+								opacity: 0;
+								cursor: pointer;
+								&:checked ~ .checkmark { 
+									background: $one-cyan; 
+									&:after {
+										display: block;
+									}
+								}
+							}
+
+							& .checkmark {
+								height: 30px;
+								width: 30px;
+								position: absolute;
+								top: 15px;
+								left: calc(50% - 15px);
+
+								cursor: pointer;
+								background: white;
+								border: 1px solid $light-gray;
+								@include transition($transition-speed);
+
+								&:after {
+									content: "";
+									display: none;
+									position: absolute;
+									left: 10px;
+									top: 6px;
+									width: 5px;
+									height: 10px;
+									border: solid white;
+									border-width: 0 3px 3px 0;
+									-webkit-transform: rotate(45deg);
+									-ms-transform: rotate(45deg);
+									transform: rotate(45deg);
+								}
+							}
+
+							&:hover input:not(:checked) ~ .checkmark { background: $offwhite; }
+						}			  		
+				  	}
+				}
+			}
+		}
+		
+
+		& #price-bar {
+			width: 15%;
+			color: white;
+			border: 1px solid $two-blue;
+
+		}
+	}
+}

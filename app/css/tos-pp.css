@@ -1,0 +1,188 @@
+/* Terms of Service and Privacy Policy
+ * Author: bhuelga
+ * -----------------
+ */
+/* Util
+ * Author: bhuelga
+ * -----------------
+ * Wrapper functions and global Sass variables for all pages
+ */
+/*   Constants   */
+/*   Utility Mixins   */
+/*   Colors   */
+/*   General   */
+* {
+  box-sizing: border-box; }
+
+html {
+  font-family: 'Ubuntu';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
+main {
+  width: 100%;
+  max-width: 2560px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  background: white; }
+
+canvas {
+  max-width: 100%;
+  max-height: 100%; }
+
+::-webkit-scrollbar {
+  width: 10px; }
+  ::-webkit-scrollbar-track {
+    background: #F9F9F9; }
+  ::-webkit-scrollbar-thumb {
+    background: #666666; }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #163856; }
+
+.flexbox {
+  display: flex; }
+
+.hidden {
+  display: none !important; }
+
+.accordion .accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+  border-bottom: solid 1px #122D46;
+  vertical-align: middle;
+  font-size: 1.1rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  transition: 0.3s ; }
+  .accordion .accordion-header span {
+    margin-left: 5px; }
+  .accordion .accordion-header.active {
+    background: #122D46; }
+  .accordion .accordion-header:hover {
+    background: #122D46; }
+  .accordion .accordion-header .accordion-icon {
+    margin-left: auto;
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    transform: scale(2); }
+
+.accordion .accordion-content {
+  display: none;
+  padding: 10px 20px 0 20px;
+  color: white;
+  background: #2D2D2D;
+  border-bottom: solid 1px #122D46; }
+  .accordion .accordion-content .accordion-subheader {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px 0 15px 10px;
+    cursor: pointer; }
+    .accordion .accordion-content .accordion-subheader i {
+      margin-right: 5px; }
+    .accordion .accordion-content .accordion-subheader .edit-icon {
+      margin-left: auto;
+      opacity: 0;
+      -webkit-transition: 0.1s ;
+      -moz-transition: 0.1s ;
+      transition: 0.1s ; }
+    .accordion .accordion-content .accordion-subheader:hover span {
+      color: #4B9FCB; }
+    .accordion .accordion-content .accordion-subheader:hover .edit-icon {
+      opacity: 1; }
+  .accordion .accordion-content .accordion-subcontent {
+    display: none;
+    margin: 0 -20px !important;
+    padding: 10px 20px;
+    background: #666666; }
+    .accordion .accordion-content .accordion-subcontent div {
+      display: flex;
+      align-items: center;
+      margin: 10px 10px;
+      cursor: pointer;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+      .accordion .accordion-content .accordion-subcontent div i {
+        margin-right: 5px;
+        -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
+        transform: scale(0.6); }
+      .accordion .accordion-content .accordion-subcontent div.active {
+        background: #8A8A8A; }
+      .accordion .accordion-content .accordion-subcontent div:hover {
+        color: #4B9FCB; }
+
+/* Tooltip container */
+.tooltip {
+  position: relative; }
+  .tooltip .tooltiptext {
+    width: 150px;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 1;
+    padding: 5px;
+    visibility: hidden;
+    font-size: 1rem;
+    color: white;
+    background: black;
+    text-align: center;
+    border-radius: 6px; }
+    .tooltip .tooltiptext:after {
+      content: " ";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -10px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent transparent black transparent; }
+  .tooltip:hover .tooltiptext {
+    visibility: visible; }
+
+.tos-pp-header {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+  background-color: #4B9FCB;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  transition: 0.3s ; }
+
+.tos-pp-content {
+  margin: 50px 15%;
+  color: #2D2D2D;
+  line-height: 2rem;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  transition: 0.3s ; }
+
+@media screen and (min-width: 380px) {
+  .tos-pp-header {
+    font-size: 3rem; } }
+
+@media screen and (min-width: 645px) {
+  .tos-pp-header {
+    height: 400px;
+    font-size: 5rem; }
+  .tos-pp-content {
+    font-size: 1.2rem; } }
+
+@media screen and (min-width: 1400px) {
+  .tos-pp-content {
+    margin: 50px 20%;
+    line-height: 2.5rem; } }

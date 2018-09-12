@@ -1,0 +1,277 @@
+<!-- PMA Creator
+  -- Author: bhuelga
+  -->
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+	  <title>Mid-Quarter PMA Creator | ListGen</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	  <!-- build:css css/main.min.css -->
+	  <link rel="stylesheet" type="text/css" href="css/util.css">
+	  <link rel="stylesheet" type="text/css" href="css/navs.css">
+	  <link rel="stylesheet" type="text/css" href="css/plugins/hamburgers.css">
+	  <link rel="stylesheet" type="text/css" href="css/mq-pma-creator.css">
+	  <!-- endbuild -->
+	  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+
+	<body>
+
+		<aside>
+			<aside id="nav-menu-header">
+				<i class="material-icons">language</i>
+			</aside>
+
+			<aside id="nav-menu-hamburger" class="hamburger hamburger--elastic" type="button">
+			  <span class="hamburger-box">
+			    <span class="hamburger-inner"></span>
+			  </span>
+			</aside>
+
+			<aside id="nav-menu">
+				<div class="nav-menu-links signed-in">
+
+					<div class="nav-menu-section">Account</div>
+					<div class="nav-link-container">
+						<i class="material-icons">language</i>
+						<a class="my-account" href="./my-account.html">My Account</a>
+					</div>
+					<div class="nav-link-container">
+						<i class="material-icons">language</i>
+						<a class="my-office" href="./my-office.html">My Office</a>
+					</div>
+					<div class="nav-link-container">
+						<i class="material-icons">language</i>
+						<a class="my-pmas" href="./my-pmas.html">My PMAs</a>
+					</div>
+					<div class="nav-link-container">
+						<i class="material-icons">language</i>
+						<a class="my-homeowner-page" href="./my-homeowner-page.html">My Homeowner Page</a>
+					</div>
+
+					<div class="nav-menu-section">Help</div>
+					<div class="nav-link-container">
+						<i class="material-icons">language</i>
+						<a class="help-center" href="./help-center.html">Help Center</a>
+					</div>
+					<div class="nav-link-container">
+						<i class="material-icons">language</i>
+						<a class="contact-us" href="./contact-us">Contact Us</a>
+					</div>
+
+				</div>
+
+				<div class="nav-menu-links signed-out hidden">
+					<div class="nav-link-container">
+						<i class="material-icons">account_circle</i>
+						<a class="sign-in" href="./sign-in.html">Sign In</a>
+					</div>
+
+					<div class="nav-menu-section">Help</div>
+					<div class="nav-link-container">
+						<i class="material-icons">sentimental_satisfied_alt</i>
+						<a class="about-us" href="./about-us.html">About Us</a>
+					</div>
+					<div class="nav-link-container">
+						<i class="material-icons">mail_outline</i>
+						<a class="contact-us" href="./contact-us.html">Contact Us</a>
+					</div>
+				</div>
+
+			</aside> 
+		</aside>
+
+		<main>
+
+			<nav id="top-nav-bar">
+				<div class="nav-column">
+					<div id="top-nav-logo" class="nav-logo">
+						<i class="material-icons">language</i>
+						<span>List<strong>Gen</strong></span>
+					</div>
+				</div>
+				<div class="nav-column">
+					<div id="top-nav-links-container">
+						<div id="top-nav-links">	
+							<div class="signed">
+								<div class="account-container">
+									<i class="material-icons">account_circle</i>
+									<a class="sign-in" href="./sign-in.html">Brandon Huelga</a>
+								</div>
+							</div>
+							<a class="about-us hidden" href="./about-us.html">About Us</a>
+							<a class="contact-us hidden" href="./contact-us.html">Contact Us</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+
+
+			<div id="main-content">
+
+				<nav id="top-bar">
+
+					<div id="pma-mq">A Precision Market Analysis: <span>Mid-Quarter</span></div>
+
+					<div id="top-areas">
+						<div class="top-dropdown">
+							<span><!-- POPULATE --></span>	
+							<i class="material-icons">arrow_drop_down</i>
+						</div>
+						<div class="top-dropdown-content hidden">
+		                	<!-- POPULATE -->
+		            	</div>
+					</div>
+					
+					<div id="top-steps">
+						<span id="top-step-editor" class="selected">Editor</span>
+						<i class="material-icons">chevron_right</i> 
+						<span id="top-step-mailing">Mailing List</span>	
+						<i class="material-icons">chevron_right</i> 
+						<span id="top-step-preview" class="tooltip">
+							<span class="disabled">Final Preview</span>
+							<span class="tooltiptext">Complete Your PMA and Mailing List First!</span>
+						</span>
+					</div>
+				</nav>
+
+				<div id="main-window">
+					
+					<div id="edit-window" class="sub-window">
+
+						<div id="outside-page" class="spread edit-spread">
+							<span id="front-page-title" class="page-title">Front Page</span>
+							<span id="back-page-title" class="page-title">Back Page</span>
+							<canvas id="outside-canvas" class="edit-canvas" width="1575" height="1019">
+
+							</canvas>
+							<!-- EDIT SECTIONS -->
+						</div>
+						
+
+						<div id="inside-page" class="spread edit-spread">
+							<span id="inside-left-title" class="page-title">Inside Page - Left</span>
+							<span id="inside-right-title" class="page-title">Inside Page - Right</span>
+							<canvas id="inside-canvas" class="edit-canvas" width="1575" height="1019">
+								
+							</canvas>
+							<!-- EDIT SECTIONS -->
+						</div>
+
+					</div>
+
+					<div id="mailing-window" class="sub-window">
+						<div id="mailing-list" class="spread">
+							<div id="edit-bar">
+								<h2>Edit Options</h2>
+								<h3>Blocked Mailings</h3>
+								<ul id="blocked-list">
+									<li>(<span id="self-blocked">1</span>) Blocked by Agent</li>
+									<li>(<span id="ho-blocked">1</span>) Blocked by Homeowner</li>
+									<li>(<span id="active-blocked">1</span>) Active Listing</li>
+									<li>(<span id="pending-blocked">1</span>) Pending Listing</li>
+									<li>(<span id="agent-blocked">1</span>) Real Estate Agent</li>
+									<li>(<span id="returned-blocked">1</span>) Returned Mail</li>
+									<li>(<span id="total-blocked">1</span>) TOTAL</li>
+								</ul>
+								<h3>Quick Block</h3>
+								<ul id="quick-block">
+									<li><input type="checkbox"> Sale Date < 1 Year</li>
+									<li><input type="checkbox"> Sale Date < 2 Years</li>
+									<li><input type="checkbox"> Active Listing</li>
+								</ul>
+
+							</div>
+							<div id="homeowners">
+								<div id="search-bar">
+									<input class="search" placeholder="Search"/>
+								</div>
+							  	<table>
+							  		<thead>
+							  			<th><button class="sort" data-sort="blocked">
+						  					<span>Blocked</span>
+					  						<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+						  				<th><button class="sort" data-sort="name">
+						  					<span>Name</span>
+						  					<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+						  				<th><button class="sort" data-sort="address">
+						  					<span>Address</span>
+						  					<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+						  				<th><button class="sort" data-sort="last-sale-price">
+						  					<span>Last Sale ( mil )</span>
+						  					<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+						  				<th><button class="sort" data-sort="last-sale-date">
+						  					<span>Last Sale Date</span>
+						  					<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+						  				<th><button class="sort" data-sort="selling-agent">
+						  					<span>Selling Agent</span>
+						  					<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+							  		</thead>
+							  		<tbody class="list">
+							  			
+							  		</tbody>
+							  	</table>
+							</div>
+							<div id="price-bar">
+								<h2>Pricing</h2>
+								<button>Approve Mailing List</button>
+							</div>
+						</div>
+					</div>
+
+					<div id="preview-window" class="sub-window flexbox">
+						
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<nav id="bottom-nav-bar">
+				<div class="nav-column">
+					<div id="copyright">
+						2018-19 © ListGen. All Rights Reserved
+					</div>
+				</div>
+				<div class="nav-column">
+					<div id="bottom-nav-links">
+						<a class="about-us" href="./about-us.html">About Us</a>
+						<a id="terms-of-service" href="./terms-of-service.html">Terms of Service</a>
+						<a id="privacy-policy" href="./privacy-policy.html">Privacy Policy</a>
+					</div>
+					<div id="bottom-nav-logo" class="nav-logo">
+						<i class="material-icons">language</i>
+					</div>
+				</div>
+			</nav>
+
+		</main>
+
+	<!-- JQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- List.js CDN -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+	<!-- build:js js/main.min.js -->
+	<script src="js/util.js" defer="defer"></script>
+	<script src="js/nav-controller.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/templates/mq-templates.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/util.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/top-bar.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/side-bar.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/main-window.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/mq-pma-creator.js" defer="defer"></script>
+	<!-- endbuild -->
+	</body>
+</html>

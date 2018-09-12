@@ -1,0 +1,479 @@
+/* PMA Creator
+ * Author: bhuelga
+ * -----------------
+ */
+/* Util
+ * Author: bhuelga
+ * -----------------
+ * Wrapper functions and global Sass variables for all pages
+ */
+/*   Constants   */
+/*   Utility Mixins   */
+/*   Colors   */
+/*   General   */
+* {
+  box-sizing: border-box; }
+
+html {
+  font-family: 'Ubuntu';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
+main {
+  width: 100%;
+  max-width: 2560px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  background: white; }
+
+canvas {
+  max-width: 100%;
+  max-height: 100%; }
+
+::-webkit-scrollbar {
+  width: 10px; }
+  ::-webkit-scrollbar-track {
+    background: #F9F9F9; }
+  ::-webkit-scrollbar-thumb {
+    background: #666666; }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #163856; }
+
+.flexbox {
+  display: flex; }
+
+.hidden {
+  display: none !important; }
+
+.accordion .accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+  border-bottom: solid 1px #122D46;
+  vertical-align: middle;
+  font-size: 1.1rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  transition: 0.3s ; }
+  .accordion .accordion-header span {
+    margin-left: 5px; }
+  .accordion .accordion-header.active {
+    background: #122D46; }
+  .accordion .accordion-header:hover {
+    background: #122D46; }
+  .accordion .accordion-header .accordion-icon {
+    margin-left: auto;
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    transform: scale(2); }
+
+.accordion .accordion-content {
+  display: none;
+  padding: 10px 20px 0 20px;
+  color: white;
+  background: #2D2D2D;
+  border-bottom: solid 1px #122D46; }
+  .accordion .accordion-content .accordion-subheader {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px 0 15px 10px;
+    cursor: pointer; }
+    .accordion .accordion-content .accordion-subheader i {
+      margin-right: 5px; }
+    .accordion .accordion-content .accordion-subheader .edit-icon {
+      margin-left: auto;
+      opacity: 0;
+      -webkit-transition: 0.1s ;
+      -moz-transition: 0.1s ;
+      transition: 0.1s ; }
+    .accordion .accordion-content .accordion-subheader:hover span {
+      color: #4B9FCB; }
+    .accordion .accordion-content .accordion-subheader:hover .edit-icon {
+      opacity: 1; }
+  .accordion .accordion-content .accordion-subcontent {
+    display: none;
+    margin: 0 -20px !important;
+    padding: 10px 20px;
+    background: #666666; }
+    .accordion .accordion-content .accordion-subcontent div {
+      display: flex;
+      align-items: center;
+      margin: 10px 10px;
+      cursor: pointer;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+      .accordion .accordion-content .accordion-subcontent div i {
+        margin-right: 5px;
+        -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
+        transform: scale(0.6); }
+      .accordion .accordion-content .accordion-subcontent div.active {
+        background: #8A8A8A; }
+      .accordion .accordion-content .accordion-subcontent div:hover {
+        color: #4B9FCB; }
+
+/* Tooltip container */
+.tooltip {
+  position: relative; }
+  .tooltip .tooltiptext {
+    width: 150px;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 1;
+    padding: 5px;
+    visibility: hidden;
+    font-size: 1rem;
+    color: white;
+    background: black;
+    text-align: center;
+    border-radius: 6px; }
+    .tooltip .tooltiptext:after {
+      content: " ";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -10px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent transparent black transparent; }
+  .tooltip:hover .tooltiptext {
+    visibility: visible; }
+
+#main-content {
+  height: 100%;
+  width: 100%; }
+  #main-content #edit-block {
+    width: 100%; }
+
+/*   TOP BAR   */
+#top-bar {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  color: white;
+  background-color: #2D2D2D;
+  font-size: 1.6rem; }
+  #top-bar div {
+    margin: 5px 0; }
+  #top-bar #pma-mq {
+    color: white; }
+    #top-bar #pma-mq span {
+      color: #4B9FCB; }
+  #top-bar #top-areas {
+    position: relative;
+    padding: 1px 0; }
+    #top-bar #top-areas .top-dropdown {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+      #top-bar #top-areas .top-dropdown:hover span {
+        color: #4B9FCB; }
+      #top-bar #top-areas .top-dropdown:hover i {
+        color: #4B9FCB; }
+    #top-bar #top-areas .top-dropdown-content {
+      min-width: 250px;
+      position: absolute;
+      top: 150%;
+      left: 25%;
+      z-index: 1;
+      background-color: #2D2D2D;
+      -webkit-box-shadow: 0px 2px 4px #2D2D2D;
+      -moz-box-shadow: 0px 2px 4px #2D2D2D;
+      box-shadow: 0px 2px 4px #2D2D2D; }
+      #top-bar #top-areas .top-dropdown-content a {
+        display: block;
+        padding: 10px 10px;
+        color: white;
+        background: #2D2D2D;
+        text-decoration: none;
+        border-top: solid 1px white; }
+        #top-bar #top-areas .top-dropdown-content a:hover {
+          color: #4B9FCB; }
+        #top-bar #top-areas .top-dropdown-content a:not(:last-child) {
+          border-bottom: solid 1px white; }
+  #top-bar #top-steps {
+    display: flex;
+    align-items: center; }
+    #top-bar #top-steps * {
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+    #top-bar #top-steps span {
+      cursor: pointer; }
+      #top-bar #top-steps span.disabled {
+        cursor: default !important;
+        pointer-events: none;
+        color: gray !important; }
+      #top-bar #top-steps span:hover {
+        color: #4B9FCB; }
+    #top-bar #top-steps .selected {
+      color: #4B9FCB; }
+
+@media screen and (max-width: 1400px) {
+  #top-bar {
+    font-size: 1.5rem; } }
+
+@media screen and (max-width: 1200px) {
+  #top-bar {
+    padding: 10px 20px;
+    font-size: 1.3rem; } }
+
+@media screen and (max-width: 1020px) {
+  #top-bar {
+    padding: 5px 20px;
+    font-size: 1.1rem; } }
+
+@media screen and (max-width: 875px) {
+  #top-bar {
+    flex-flow: column nowrap; }
+    #top-bar div {
+      margin: 0; } }
+
+/*   MAIN WINDOW   */
+#main-window {
+  height: 2100px;
+  width: 100%;
+  overflow: hidden;
+  background: #F9F9F9;
+  -webkit-box-shadow: inset 0 0 15px #2D2D2D;
+  -moz-box-shadow: inset 0 0 15px #2D2D2D;
+  box-shadow: inset 0 0 15px #2D2D2D; }
+  #main-window .sub-window {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0; }
+    #main-window .sub-window .spread {
+      background: white;
+      -webkit-box-shadow: 0 0 15px #2D2D2D;
+      -moz-box-shadow: 0 0 15px #2D2D2D;
+      box-shadow: 0 0 15px #2D2D2D; }
+
+#edit-window .edit-spread {
+  position: relative; }
+  #edit-window .edit-spread .page-title {
+    position: absolute;
+    top: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    transform: rotate(-90deg); }
+    #edit-window .edit-spread .page-title#front-page-title {
+      left: -6%; }
+    #edit-window .edit-spread .page-title#back-page-title {
+      left: 98%; }
+    #edit-window .edit-spread .page-title#inside-left-title {
+      left: -8%; }
+    #edit-window .edit-spread .page-title#inside-right-title {
+      left: 95%; }
+  #edit-window .edit-spread .overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -webkit-transition: 0.3s ;
+    -moz-transition: 0.3s ;
+    transition: 0.3s ; }
+    #edit-window .edit-spread .overlay:after {
+      content: '';
+      background: #8A8A8A;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.05;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+    #edit-window .edit-spread .overlay .edit-overlay {
+      height: 500px;
+      width: 300px;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      z-index: 1;
+      padding: 10px;
+      display: none;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      color: white;
+      background: #2D2D2D;
+      text-align: center;
+      -webkit-box-shadow: 0 0 6px #2D2D2D;
+      -moz-box-shadow: 0 0 6px #2D2D2D;
+      box-shadow: 0 0 6px #2D2D2D; }
+      #edit-window .edit-spread .overlay .edit-overlay:after {
+        content: ' ';
+        position: absolute;
+        border-width: 5px;
+        border-style: solid;
+        border-color: black transparent transparent transparent; }
+      #edit-window .edit-spread .overlay .edit-overlay .complete {
+        height: 35px;
+        width: 300px;
+        position: absolute;
+        background: #33C451; }
+      #edit-window .edit-spread .overlay .edit-overlay h2 {
+        margin: 0; }
+      #edit-window .edit-spread .overlay .edit-overlay .overlay-content {
+        margin: 10px 5px; }
+        #edit-window .edit-spread .overlay .edit-overlay .overlay-content img {
+          height: 200px;
+          width: 300px; }
+    #edit-window .edit-spread .overlay:hover::after {
+      opacity: .5; }
+    #edit-window .edit-spread .overlay:hover .edit-overlay {
+      display: initial; }
+    #edit-window .edit-spread .overlay:hover .switch {
+      display: initial; }
+
+@media screen and (max-width: 1800px) {
+  .edit-spread {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8); } }
+
+#mailing-window #mailing-list {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  overflow-x: scroll; }
+  #mailing-window #mailing-list div {
+    display: inline-block;
+    margin: 0px;
+    color: #2D2D2D; }
+    #mailing-window #mailing-list div h2 {
+      height: 50px;
+      margin: 0 -1px;
+      padding: 10px;
+      text-align: center;
+      color: white !important;
+      background: #163856;
+      border-bottom: 1px solid white; }
+  #mailing-window #mailing-list #edit-bar {
+    width: 15%;
+    border: 1px solid #163856; }
+    #mailing-window #mailing-list #edit-bar h3 {
+      height: 34px;
+      margin: 0;
+      padding: 5px;
+      color: white;
+      background: #163856; }
+    #mailing-window #mailing-list #edit-bar ul {
+      margin-left: 5px;
+      padding: 0 5px;
+      list-style: none; }
+      #mailing-window #mailing-list #edit-bar ul li {
+        font-size: 1rem; }
+  #mailing-window #mailing-list #homeowners {
+    width: 70%;
+    max-height: 80%; }
+    #mailing-window #mailing-list #homeowners #search-bar {
+      height: 50px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0;
+      padding: 5px;
+      color: white;
+      background: #163856;
+      border-bottom: 1px solid white;
+      font-size: 1.2rem; }
+      #mailing-window #mailing-list #homeowners #search-bar .search {
+        width: 25%;
+        margin-left: 10px;
+        padding: 10px; }
+    #mailing-window #mailing-list #homeowners table {
+      width: 100%;
+      font-size: 1.1rem;
+      border-collapse: collapse;
+      overflow: scroll;
+      table-layout: fixed; }
+      #mailing-window #mailing-list #homeowners table thead {
+        background: #122D46; }
+        #mailing-window #mailing-list #homeowners table thead button {
+          display: inline-flex;
+          align-items: center;
+          padding: 5px 20px;
+          color: white;
+          background: inherit;
+          border: none;
+          font-family: 'Ubuntu';
+          font-size: 1.1rem;
+          white-space: nowrap;
+          -webkit-transition: 0.3s ;
+          -moz-transition: 0.3s ;
+          transition: 0.3s ; }
+          #mailing-window #mailing-list #homeowners table thead button:hover {
+            color: #4B9FCB; }
+      #mailing-window #mailing-list #homeowners table tr .blocked-container {
+        height: 60px;
+        width: 60px; }
+      #mailing-window #mailing-list #homeowners table tr:nth-child(even) {
+        background-color: #F9F9F9; }
+      #mailing-window #mailing-list #homeowners table tr td {
+        position: relative;
+        padding: 0 10px;
+        border: 1px solid #163856; }
+        #mailing-window #mailing-list #homeowners table tr td .check-container input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer; }
+          #mailing-window #mailing-list #homeowners table tr td .check-container input:checked ~ .checkmark {
+            background: #4B9FCB; }
+            #mailing-window #mailing-list #homeowners table tr td .check-container input:checked ~ .checkmark:after {
+              display: block; }
+        #mailing-window #mailing-list #homeowners table tr td .check-container .checkmark {
+          height: 30px;
+          width: 30px;
+          position: absolute;
+          top: 15px;
+          left: calc(50% - 15px);
+          cursor: pointer;
+          background: white;
+          border: 1px solid #CCCCCC;
+          -webkit-transition: 0.3s ;
+          -moz-transition: 0.3s ;
+          transition: 0.3s ; }
+          #mailing-window #mailing-list #homeowners table tr td .check-container .checkmark:after {
+            content: "";
+            display: none;
+            position: absolute;
+            left: 10px;
+            top: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg); }
+        #mailing-window #mailing-list #homeowners table tr td .check-container:hover input:not(:checked) ~ .checkmark {
+          background: #F9F9F9; }
+  #mailing-window #mailing-list #price-bar {
+    width: 15%;
+    color: white;
+    border: 1px solid #163856; }
