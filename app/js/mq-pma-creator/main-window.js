@@ -9,9 +9,9 @@ class MainWindow {
 	 * The main window that controls editing, mailing list, and preview.
 	 */
 	constructor() {
-		this.mailingList = new List('homeowners', mailingListOptions, localData['homeowners']);
 		this._querySelectors();
 		this._addEventListeners();
+		this._initializeMailingList();
 	}
 
 	/* Query Selectors - private
@@ -31,7 +31,8 @@ class MainWindow {
 		// Mailing Window
 		this.mailingWindow = $('#mailing-window');
 		this.tableHeaderIcons = $('th');
-
+		this.blockLinks = $('.block-link');
+		this.clearSearch = $('#clear-search');
 
 		this.previewWindow = $('#preview-window');
 	}
@@ -41,7 +42,8 @@ class MainWindow {
 	 * Sets event listeners.
 	 */
 	_addEventListeners() {
-		this.tableHeaderIcons.on('click', function(e) {
+		// changes the arrow on the headers when desc / asc 
+		this.tableHeaderIcons.click(function(e) {
 			const arrow = $($($(this).children()[0]).children()[1]);
 			arrow.toggleClass('asc');
 			$('th').each(function() {
@@ -52,6 +54,84 @@ class MainWindow {
 				arrow.html('arrow_drop_up');
 			else
 				arrow.html('arrow_drop_down');
+		});
+
+		// quick search for blocked mailings
+		this.blockLinks.click((e) => { 
+			this.blockLinks.each(function() { $(this).removeClass('active') });
+			const type = $($(e.currentTarget).children()[1]).html();
+			if (type === 'Total') {
+				this.mailingList.search(); 
+				this.mailingList.filter(function(item) {
+					return item.values().blocked !== '';
+				});
+			} else {
+				this.mailingList.search(type, ['blocked']); 
+			}
+
+			$(e.currentTarget).addClass('active');
+		});
+
+		// displays full mailing list
+		this.clearSearch.click(() => { 
+			this.mailingList.search(); 
+			this.mailingList.filter();
+			this.blockLinks.each(function() { $(this).removeClass('active') });
+		});
+	}
+
+	/* Initialize Mailing List - private
+	 * ---------------
+	 * Sets event listeners.
+	 */
+	_initializeMailingList() {
+		this.mailingList = new List('homeowners', mailingListOptions, localData['homeowners']);
+		this.totalMail = 0;
+		this.numBlocked = {
+			'Blocked by Agent' : 0,
+			'Blocked by Homeowner' : 0,
+			'Active Listing' : 0,
+			'Pending Listing' : 0,
+			'Real Estate Agent' : 0,
+			'Returned Mail' : 0,
+			'Total' : 0
+		}
+
+		$('.blocked').each((index) => {
+			this.totalMail++;
+			let currentCheckbox = $($('.blocked')[index]);
+			if (currentCheckbox.html() !== '') {
+				currentCheckbox.prev().prev().attr('checked', 'checked');
+				this.numBlocked[currentCheckbox.html()]++;
+				this.numBlocked['Total']++;
+			}
+			if (currentCheckbox.html() === 'Active Listing' || currentCheckbox.html() === 'Pending Listing') {
+				const row = currentCheckbox.parent().parent().parent();
+				row.addClass('disabled');
+				// addTooltip(row, 'Cannot Unblock an Active or Pending Listing.');
+			}
+		});
+
+		this._updateBlockedCounts();
+
+		this.blockChecks = $('input:checkbox');
+		this.blockChecks.change((e) => {
+			const checkbox = $(e.target);
+			if (checkbox.is(':checked')) {
+				console.log("Select Reason");
+			} else {
+				const type = checkbox.next().next().html();
+				this.numBlocked[type]--;
+				this._updateBlockedCounts();
+			}
+		});
+	}
+
+	_updateBlockedCounts() {
+		this.blockLinks.each((index) => {
+			let currCount = $($(this.blockLinks[index]).children()[0]);
+			let currType = $($(this.blockLinks[index]).children()[1]).html();
+			currCount.html(this.numBlocked[currType]);
 		});
 	}
 

@@ -88,52 +88,58 @@ var localData = {
 	},
 	'homeowners' : [
 		{	
+			'address-id' : '0000',
 			'name' : 'Brandon Huelga',
 			'address' : '531 Lasuen Mall',
 			'last-sale-price' : 1.8,
-			'last-sale-date' : '10-10-18',
+			'last-sale-date' : '10/10/2018',
 			'selling-agent' : 'Kyle Morrison',
-			'blocked' : true
+			'blocked' : 'Blocked by Agent'
 		},
 		{	
+			'address-id' : '0001',
 			'name' : 'Kyle Morrison',
 			'address' : '18B E Carmel Valley Rd',
 			'last-sale-price' : 2.2,
-			'last-sale-date' : '2-07-17',
+			'last-sale-date' : '2/07/2017',
 			'selling-agent' : 'Kyle Morrison',
-			'blocked' : false
+			'blocked' : ''
 		},
 		{	
+			'address-id' : '0002',
 			'name' : 'Bill Jones',
 			'address' : '1215 Santa Barbara Lane',
 			'last-sale-price' : 6.2,
-			'last-sale-date' : '5-25-13',
+			'last-sale-date' : '5/21/2012',
 			'selling-agent' : 'Seamus Riley',
-			'blocked' : true
+			'blocked' : 'Active Listing'
 		},
 		{	
+			'address-id' : '0003',
 			'name' : 'Tom Hanks',
 			'address' : '1992 Wilson Place',
 			'last-sale-price' : 10.875,
-			'last-sale-date' : '6-23-01',
+			'last-sale-date' : '6/23/1991',
 			'selling-agent' : 'Meryl Streep',
-			'blocked' : false
+			'blocked' : 'Returned Mail'
 		},
 		{	
+			'address-id' : '0004',
 			'name' : 'Mario Luigi',
 			'address' : '1984 Rainbow Rd',
 			'last-sale-price' : .35,
-			'last-sale-date' : '5-21-13',
+			'last-sale-date' : '5/21/2013',
 			'selling-agent' : 'Seamus Riley',
-			'blocked' : false
+			'blocked' : ''
 		},
 		{	
+			'address-id' : '0005',
 			'name' : 'Ellen Ripley',
 			'address' : '7 Nostrodamus',
 			'last-sale-price' : 22000,
-			'last-sale-date' : '5-25-1979',
+			'last-sale-date' : '5/25/1979',
 			'selling-agent' : 'Ridley Scott',
-			'blocked' : false
+			'blocked' : 'Blocked by Homeowner'
 		}
 	],
 };
@@ -178,8 +184,8 @@ const switchHTML = '<div class="complete">Complete</div>';
 
 // mailing list options
 const mailingListOptions = {
-	valueNames : ['blocked', 'name', 'address', 'last-sale-price', 'last-sale-date', 'selling-agent'],
-	item: '<tr><td class="blocked-container"><label class="check-container"><input type="checkbox"/><span class="checkmark"></span></label></td><td class="name"></td><td class="address"></td><td class="last-sale-price"></td><td class="last-sale-date"></td><td class="selling-agent"></td></tr>'
+	valueNames : ['address-id', 'blocked', 'name', 'address', 'last-sale-price', 'last-sale-date', 'selling-agent'],
+	item: '<tr><td class="address-id"></td><td class="blocked-container"><label class="check-container"><input class="block-check" type="checkbox"/><span class="checkmark"></span><span class="blocked"></span></label></td><td class="name"></td><td class="address"></td><td class="last-sale-price"></td><td class="last-sale-date"></td><td class="selling-agent"></td></tr>'
 };
 
 /* Crop
@@ -200,4 +206,9 @@ function crop(can, a, b) {
     newCtx.putImageData(imageData, 0, 0);
   
     return newCan;    
+ }
+
+ function addTooltip(container, message) {
+ 	container.addClass('tooltip');
+ 	container.append($('<div class="tooltiptext">' + message + '</div>'));
  }

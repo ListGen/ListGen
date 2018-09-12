@@ -89,8 +89,11 @@
 
 			&.disabled {
 				cursor: default !important;
-				pointer-events: none;
 				color: gray !important;
+
+				&:active {
+					pointer-events: none;
+				}
 			}
 
 			&:hover { color: $one-cyan; }
@@ -276,23 +279,22 @@
 			color: $black;
 
 			& h2 {
-				height: 50px;
+				min-height: 50px;
 				margin: 0 -1px;
 				padding: 10px;
 				text-align: center;
 
 				color: white !important;
 				background: $two-blue;
-				border-bottom: 1px solid white;
 			}
 		}
 
 		& #edit-bar {
 			width: 15%;
 			border: 1px solid $two-blue;
-
+			white-space: normal;
 			& h3 {
-				height: 34px;
+				min-height: 34px;
 				margin: 0;
 				padding: 5px;
 				color: white;
@@ -300,12 +302,40 @@
 			}
 
 			& ul {
-				margin-left: 5px;
+				margin: 0 5px;
 				padding: 0 5px;
 				list-style: none;
 
 				& li {
-					font-size: 1rem;
+					margin: 0 -10px;
+					padding: 7px 10px;
+
+					font-size: 1.1rem;
+					cursor: pointer;
+					@include transition($transition-speed);
+					&.active { background: $one-cyan; }
+
+					&:not(:last-child) { border-bottom: 2px solid $one-cyan; }
+					&:hover { color: $two-blue; }
+				}
+			}
+
+			& #past-clients {
+				width: 90%;
+				margin: 5%;
+				background: lighten($five-green, 10%);
+				text-align: center;
+				@include border-radius(10px);
+
+				& h3 {
+					color: $black;
+					background: lighten($five-green, 10%);
+					@include border-radius(10px);
+				}
+
+				& ul {
+					margin: 0 0 5px 0;
+					border-top: 2px solid $two-blue;
 				}
 			}
 		}
@@ -317,21 +347,46 @@
 			& #search-bar {
 				height: 50px;
 				display: flex;
-				justify-content: flex-end;
+				justify-content: center;
 				align-items: center;
 				margin: 0;
-				padding: 5px;
+				padding: 10px;
 
 				color: white;
 				background: $two-blue;
-				border-bottom: 1px solid white;
 				font-size: 1.2rem;
 
 				& .search {
-					width: 25%;
+					width: 30%;
 					margin-left: 10px;
-					padding: 10px;
+					padding: 5px;
+					border: 1px solid $one-cyan;
+					font-family: 'Ubuntu';
+					font-size: 1.1rem;
+					text-align: center;
+					@include border-radius(10px);
+					@include box-shadow(0, 0, 3px, $one-cyan, true);
 				}
+
+				& button {
+					display: inline-flex;
+					align-items: center;
+					padding: 5px 20px;
+
+				  	color: $offwhite;
+				  	background: inherit;
+				  	border: none;
+				  	font-family: 'Ubuntu';
+				  	font-size: 1.2rem;
+				  	overflow: hidden;
+				  	cursor: pointer;
+				  	@include transition($transition-speed);
+
+				  	& span { margin-left: 5px; }
+				  	&:hover { color: $one-cyan; }
+				  	&:focus { outline: 0; }
+				}
+
 			}
 
 			& table {
@@ -349,15 +404,17 @@
 						align-items: center;
 						padding: 5px 20px;
 
-					  	color: white;
+					  	color: $offwhite;
 					  	background: inherit;
 					  	border: none;
 					  	font-family: 'Ubuntu';
-					  	font-size: 1.1rem;
-					  	white-space: nowrap;
+					  	font-size: 1rem;
+					  	overflow: hidden;
+					  	cursor: pointer;
 					  	@include transition($transition-speed);
 
 					  	&:hover { color: $one-cyan; }
+					  	&:focus { outline: 0; }
 					}
 				}
 
@@ -370,9 +427,19 @@
 
 					&:nth-child(even) { background-color: $offwhite; };
 
+					&.disabled {
+						background: $light-gray;
+						filter: brightness(.7);
+						&:active { 
+							pointer-events: none; 
+							& .checkmark { pointer-events: none; }
+						}
+					}
+
 				  	& td {
 				  		position: relative;
 				  		padding: 0 10px;
+				  		overflow: hidden;
 
 				  		border: 1px solid $two-blue;
 
@@ -382,12 +449,9 @@
 								position: absolute;
 
 								opacity: 0;
-								cursor: pointer;
 								&:checked ~ .checkmark { 
 									background: $one-cyan; 
-									&:after {
-										display: block;
-									}
+									&:after { display: block; }
 								}
 							}
 
@@ -396,7 +460,7 @@
 								width: 30px;
 								position: absolute;
 								top: 15px;
-								left: calc(50% - 15px);
+								left: 5px;
 
 								cursor: pointer;
 								background: white;
@@ -419,6 +483,12 @@
 								}
 							}
 
+							& .blocked {
+								position: absolute;
+								top: 20px;
+								left: 45px;
+							}
+
 							&:hover input:not(:checked) ~ .checkmark { background: $offwhite; }
 						}			  		
 				  	}
@@ -429,9 +499,33 @@
 
 		& #price-bar {
 			width: 15%;
-			color: white;
+			color: $black;
+
+			text-align: center;
 			border: 1px solid $two-blue;
 
+			& button {
+				display: inline-flex;
+				align-items: center;
+				padding: 5px 20px;
+
+			  	color: $two-blue;
+			  	background: $five-green;
+			  	border: none;
+			  	font-family: 'Ubuntu';
+			  	font-size: 1.1rem;
+			  	overflow: hidden;
+			  	cursor: pointer;
+			  	@include box-shadow(0, 0, 16px, $black);
+			  	@include transition($transition-speed-fast);
+			  	@include border-radius(15px);
+			  	&:focus { outline: 0; }
+
+			  	&:hover { 
+			  		font-size: 1.2rem;
+			  		color: lighten($two-blue, 10%); 
+			  	}
+			}
 		}
 	}
 }

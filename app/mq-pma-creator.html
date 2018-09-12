@@ -168,31 +168,63 @@
 					<div id="mailing-window" class="sub-window">
 						<div id="mailing-list" class="spread">
 							<div id="edit-bar">
-								<h2>Edit Options</h2>
+
+								<h2>Functions</h2>
 								<h3>Blocked Mailings</h3>
-								<ul id="blocked-list">
-									<li>(<span id="self-blocked">1</span>) Blocked by Agent</li>
-									<li>(<span id="ho-blocked">1</span>) Blocked by Homeowner</li>
-									<li>(<span id="active-blocked">1</span>) Active Listing</li>
-									<li>(<span id="pending-blocked">1</span>) Pending Listing</li>
-									<li>(<span id="agent-blocked">1</span>) Real Estate Agent</li>
-									<li>(<span id="returned-blocked">1</span>) Returned Mail</li>
-									<li>(<span id="total-blocked">1</span>) TOTAL</li>
+								<ul>
+									<li class="block-link">
+										(&nbsp;<span>1</span>&nbsp;) 
+										<span>Blocked by Agent</span>
+									</li>
+									<li class="block-link">
+										(&nbsp;<span></span>&nbsp;) 
+										<span>Blocked by Homeowner</span>
+									</li>
+									<li class="block-link">
+										(&nbsp;<span></span>&nbsp;) 
+										<span>Active Listing</span>
+									</li>
+									<li class="block-link">
+										(&nbsp;<span></span>&nbsp;) 
+										<span>Pending Listing</span>
+									</li>
+									<li class="block-link">
+										(&nbsp;<span></span>&nbsp;)
+										<span>Real Estate Agent</span>
+									</li>
+									<li class="block-link">
+										(&nbsp;<span></span>&nbsp;) 
+										<span>Returned Mail</span>
+									</li>
+									<li class="block-link">
+										(&nbsp;<span></span>&nbsp;) 
+										<strong>Total</strong>
+									</li>
 								</ul>
 								<h3>Quick Block</h3>
 								<ul id="quick-block">
-									<li><input type="checkbox"> Sale Date < 1 Year</li>
-									<li><input type="checkbox"> Sale Date < 2 Years</li>
-									<li><input type="checkbox"> Active Listing</li>
+									<li class="quick-block-link">Sale Date < 1 Year</li>
+									<li class="quick-block-link">Sale Date < 2 Years</li>
 								</ul>
+								<div id="past-clients">
+									<h3>Past Clients</h3>
+								</div>
 
 							</div>
 							<div id="homeowners">
 								<div id="search-bar">
 									<input class="search" placeholder="Search"/>
+									<button id="clear-search">
+										<i class="material-icons">format_align_center</i> 
+										<span>Show All</span>
+									</button>
 								</div>
 							  	<table>
 							  		<thead>
+							  			<th><button class="sort" data-sort="address-id">
+						  					<span>Address ID</span>
+					  						<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
 							  			<th><button class="sort" data-sort="blocked">
 						  					<span>Blocked</span>
 					  						<i class="material-icons">arrow_drop_down</i>
@@ -202,11 +234,11 @@
 						  					<i class="material-icons">arrow_drop_down</i>
 						  				</button></th>
 						  				<th><button class="sort" data-sort="address">
-						  					<span>Address</span>
+						  					<span>Site Address</span>
 						  					<i class="material-icons">arrow_drop_down</i>
 						  				</button></th>
 						  				<th><button class="sort" data-sort="last-sale-price">
-						  					<span>Last Sale ( mil )</span>
+						  					<span>Last Sale (&nbsp;mil&nbsp;)</span>
 						  					<i class="material-icons">arrow_drop_down</i>
 						  				</button></th>
 						  				<th><button class="sort" data-sort="last-sale-date">
@@ -225,7 +257,14 @@
 							</div>
 							<div id="price-bar">
 								<h2>Pricing</h2>
-								<button>Approve Mailing List</button>
+								<div id="price-list">
+									<!-- Populate with price for areas -->
+								</div>
+								<h3>Total for this mailing: <span>$2000.00</span></h3>
+								<button>
+									<i class="material-icons">check</i>
+									<strong>Approve Mailing List</strong>
+								</button>
 							</div>
 						</div>
 					</div>

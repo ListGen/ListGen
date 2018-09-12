@@ -130,11 +130,11 @@ canvas {
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
-    z-index: 1;
+    z-index: 20;
     padding: 5px;
     visibility: hidden;
     font-size: 1rem;
-    color: white;
+    color: white !important;
     background: black;
     text-align: center;
     border-radius: 6px; }
