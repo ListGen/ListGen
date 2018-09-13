@@ -122,7 +122,6 @@ canvas {
       .accordion .accordion-content .accordion-subcontent div:hover {
         color: #4B9FCB; }
 
-/* Tooltip container */
 .tooltip {
   position: relative; }
   .tooltip .tooltiptext {
@@ -149,6 +148,24 @@ canvas {
       border-color: transparent transparent black transparent; }
   .tooltip:hover .tooltiptext {
     visibility: visible; }
+
+.modal {
+  height: 50%;
+  width: 50%;
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #163856;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 18px black;
+  -moz-box-shadow: 0 0 18px black;
+  box-shadow: 0 0 18px black; }
 
 #main-content {
   height: 100%;
@@ -376,7 +393,6 @@ canvas {
       border-bottom: 1px solid #122D46; }
   #mailing-window #mailing-list #edit-bar {
     width: 15%;
-    border: 1px solid #122D46;
     white-space: normal; }
     #mailing-window #mailing-list #edit-bar h3 {
       min-height: 48px;
@@ -401,24 +417,28 @@ canvas {
         #mailing-window #mailing-list #edit-bar ul li:not(:last-child) {
           border-bottom: 2px solid #4B9FCB; }
         #mailing-window #mailing-list #edit-bar ul li:hover {
-          color: #163856; }
+          background: #4B9FCB; }
     #mailing-window #mailing-list #edit-bar #past-clients {
       width: 90%;
       margin: 5%;
       background: #57d371;
       text-align: center;
+      cursor: pointer;
+      color: #163856 !important;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
-      border-radius: 10px; }
+      border-radius: 10px;
+      -webkit-box-shadow: 0 0 8px #2D2D2D;
+      -moz-box-shadow: 0 0 8px #2D2D2D;
+      box-shadow: 0 0 8px #2D2D2D; }
       #mailing-window #mailing-list #edit-bar #past-clients h3 {
         color: #2D2D2D;
         background: #57d371;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px; }
-      #mailing-window #mailing-list #edit-bar #past-clients ul {
-        margin: 0 0 5px 0;
-        border-top: 2px solid #163856; }
+      #mailing-window #mailing-list #edit-bar #past-clients:hover {
+        color: white !important; }
   #mailing-window #mailing-list #homeowners {
     width: 70%;
     max-height: 80%; }
@@ -552,17 +572,42 @@ canvas {
   #mailing-window #mailing-list #price-bar {
     width: 15%;
     color: #2D2D2D;
-    text-align: center;
-    border: 1px solid #122D46; }
-    #mailing-window #mailing-list #price-bar button {
+    text-align: center; }
+    #mailing-window #mailing-list #price-bar h3 {
+      min-height: 48px;
+      margin: 0;
+      padding: 12px;
+      color: white;
+      background: #163856; }
+    #mailing-window #mailing-list #price-bar ul {
+      margin: 0 5px;
+      padding: 0 5px;
+      list-style: none; }
+      #mailing-window #mailing-list #price-bar ul li {
+        margin: 0 -10px;
+        padding: 7px 10px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        -webkit-transition: 0.3s ;
+        -moz-transition: 0.3s ;
+        transition: 0.3s ; }
+        #mailing-window #mailing-list #price-bar ul li.active {
+          background: #4B9FCB; }
+        #mailing-window #mailing-list #price-bar ul li:not(:last-child) {
+          border-bottom: 2px solid #4B9FCB; }
+        #mailing-window #mailing-list #price-bar ul li:hover {
+          background: #4B9FCB; }
+    #mailing-window #mailing-list #price-bar #approve-list {
+      width: 90%;
       display: inline-flex;
       align-items: center;
-      padding: 5px 20px;
+      padding: 5px 0;
       color: #163856;
       background: #33C451;
       border: none;
       font-family: 'Ubuntu';
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      text-align: center;
       overflow: hidden;
       cursor: pointer;
       -webkit-box-shadow: 0 0 16px #2D2D2D;
@@ -574,8 +619,35 @@ canvas {
       -webkit-border-radius: 15px;
       -moz-border-radius: 15px;
       border-radius: 15px; }
-      #mailing-window #mailing-list #price-bar button:focus {
+      #mailing-window #mailing-list #price-bar #approve-list strong {
+        margin: auto; }
+      #mailing-window #mailing-list #price-bar #approve-list:focus {
         outline: 0; }
-      #mailing-window #mailing-list #price-bar button:hover {
-        font-size: 1.2rem;
+      #mailing-window #mailing-list #price-bar #approve-list:hover {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        transform: scale(1.05);
         color: #20527f; }
+
+#choose-reason {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 5px;
+  color: #2D2D2D;
+  background: white;
+  -webkit-box-shadow: inset 0 0 4px #2D2D2D;
+  -moz-box-shadow: inset 0 0 4px #2D2D2D;
+  box-shadow: inset 0 0 4px #2D2D2D; }
+  #choose-reason * {
+    margin: 0 -5px;
+    padding: 5px; }
+    #choose-reason *:not(:last-child) {
+      border-bottom: 1px solid #4B9FCB; }
+  #choose-reason h4 {
+    color: #CF1816; }
+  #choose-reason h5 {
+    cursor: pointer; }
+    #choose-reason h5:hover {
+      background: #4B9FCB; }

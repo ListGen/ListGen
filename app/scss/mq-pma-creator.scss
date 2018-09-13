@@ -292,7 +292,6 @@
 
 		& #edit-bar {
 			width: 15%;
-			border: 1px solid $two-blue-dark;
 			white-space: normal;
 			& h3 {
 				min-height: 48px;
@@ -317,16 +316,20 @@
 					&.active { background: $one-cyan; }
 
 					&:not(:last-child) { border-bottom: 2px solid $one-cyan; }
-					&:hover { color: $two-blue; }
+					&:hover { background: $one-cyan; }
 				}
 			}
 
 			& #past-clients {
 				width: 90%;
 				margin: 5%;
+
 				background: lighten($five-green, 10%);
 				text-align: center;
+				cursor: pointer;
+				color: $two-blue !important; 
 				@include border-radius(10px);
+				@include box-shadow(0, 0, 8px, $black);
 
 				& h3 {
 					color: $black;
@@ -334,10 +337,8 @@
 					@include border-radius(10px);
 				}
 
-				& ul {
-					margin: 0 0 5px 0;
-					border-top: 2px solid $two-blue;
-				}
+				&:hover { color: lighten($two-blue, 100%) !important; } 
+
 			}
 		}
 
@@ -504,30 +505,84 @@
 			color: $black;
 
 			text-align: center;
-			border: 1px solid $two-blue-dark;
 
-			& button {
+			& h3 {
+				min-height: 48px;
+				margin: 0;
+				padding: 12px;
+				color: white;
+				background: $two-blue;
+			}
+
+			& ul {
+				margin: 0 5px;
+				padding: 0 5px;
+				list-style: none;
+
+				& li {
+					margin: 0 -10px;
+					padding: 7px 10px;
+
+					font-size: 1.1rem;
+					cursor: pointer;
+					@include transition($transition-speed);
+					&.active { background: $one-cyan; }
+
+					&:not(:last-child) { border-bottom: 2px solid $one-cyan; }
+					&:hover { background: $one-cyan; }
+				}
+			}
+
+			& #approve-list {
+				width: 90%;
 				display: inline-flex;
 				align-items: center;
-				padding: 5px 20px;
+				padding: 5px 0;
 
 			  	color: $two-blue;
 			  	background: $five-green;
 			  	border: none;
 			  	font-family: 'Ubuntu';
-			  	font-size: 1.1rem;
+			  	font-size: 1.05rem;
+			  	text-align: center;
 			  	overflow: hidden;
 			  	cursor: pointer;
 			  	@include box-shadow(0, 0, 16px, $black);
 			  	@include transition($transition-speed-fast);
 			  	@include border-radius(15px);
+
+			  	& strong { margin: auto; }
 			  	&:focus { outline: 0; }
 
 			  	&:hover { 
-			  		font-size: 1.2rem;
+			  		@include scale(1.05);
 			  		color: lighten($two-blue, 10%); 
 			  	}
 			}
 		}
+	}
+}
+
+#choose-reason {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0 5px;
+
+	color: $black;
+	background: white;
+	@include box-shadow(0, 0, 4px, $black, true);
+
+	& * { 
+		margin: 0 -5px; 
+		padding: 5px;
+		&:not(:last-child) { border-bottom: 1px solid $one-cyan; }
+	}
+
+	& h4 { color: $three-red; }
+	& h5 {
+		cursor: pointer;
+		&:hover { background: $one-cyan; }
 	}
 }

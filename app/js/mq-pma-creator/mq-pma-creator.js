@@ -42,7 +42,7 @@ class MQPmaCreator {
 		this.localData = localData['mlsAreas'];
 		this.template = templates[creatorType];
 
-		this.currentArea = 'Carmel Highlands';
+		this.currentArea = 'CARMEL HIGHLANDS';
 		this._switchArea(this.currentArea);
 
 		// populates edit window
@@ -54,7 +54,6 @@ class MQPmaCreator {
 										 insideStaticSections, insideEditSections,
 										 this.localData[this.currentArea]['sections']);
 	}
-
 
 
 	/*   CALLBACK FUNCTIONS   */

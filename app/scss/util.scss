@@ -188,7 +188,6 @@ canvas {
 	}
 }
 
-/* Tooltip container */
 .tooltip {
     position: relative;
 
@@ -221,4 +220,21 @@ canvas {
     }
 
     &:hover .tooltiptext { visibility: visible; }
+}
+
+.modal {
+	height: 50%;
+	width: 50%;
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	background: $two-blue;
+	@include border-radius(20px);
+	@include box-shadow(0, 0, 18px, black);
+
 }

@@ -123,7 +123,6 @@ canvas {
       .accordion .accordion-content .accordion-subcontent div:hover {
         color: #4B9FCB; }
 
-/* Tooltip container */
 .tooltip {
   position: relative; }
   .tooltip .tooltiptext {
@@ -150,6 +149,24 @@ canvas {
       border-color: transparent transparent black transparent; }
   .tooltip:hover .tooltiptext {
     visibility: visible; }
+
+.modal {
+  height: 50%;
+  width: 50%;
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #163856;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 18px black;
+  -moz-box-shadow: 0 0 18px black;
+  box-shadow: 0 0 18px black; }
 
 /*   Top Nav Bar   */
 #top-nav-bar {

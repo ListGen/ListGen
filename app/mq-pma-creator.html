@@ -173,38 +173,38 @@
 								<h3>Blocked Mailings</h3>
 								<ul>
 									<li class="block-link">
-										(&nbsp;<span>1</span>&nbsp;) 
+										(&nbsp;<strong></strong>&nbsp;) 
 										<span>Blocked by Agent</span>
 									</li>
 									<li class="block-link">
-										(&nbsp;<span></span>&nbsp;) 
+										(&nbsp;<strong></strong>&nbsp;) 
 										<span>Blocked by Homeowner</span>
 									</li>
 									<li class="block-link">
-										(&nbsp;<span></span>&nbsp;) 
+										(&nbsp;<strong></strong>&nbsp;) 
 										<span>Active Listing</span>
 									</li>
 									<li class="block-link">
-										(&nbsp;<span></span>&nbsp;) 
+										(&nbsp;<strong></strong>&nbsp;) 
 										<span>Pending Listing</span>
 									</li>
 									<li class="block-link">
-										(&nbsp;<span></span>&nbsp;)
+										(&nbsp;<strong></strong>&nbsp;) 
 										<span>Real Estate Agent</span>
 									</li>
 									<li class="block-link">
-										(&nbsp;<span></span>&nbsp;) 
+										(&nbsp;<strong></strong>&nbsp;) 
 										<span>Returned Mail</span>
 									</li>
 									<li class="block-link">
-										(&nbsp;<span></span>&nbsp;) 
+										(&nbsp;<strong></strong>&nbsp;) 
 										<strong>Total</strong>
 									</li>
 								</ul>
 								<h3>Quick Block</h3>
 								<ul id="quick-block">
-									<li class="quick-block-link">Sale Date < 1 Year</li>
-									<li class="quick-block-link">Sale Date < 2 Years</li>
+									<li class="quick-block-link">Sale Date < <span>1</span> Year</li>
+									<li class="quick-block-link">Sale Date < <span>2</span> Years</li>
 								</ul>
 								<div id="past-clients">
 									<h3>Past Clients</h3>
@@ -257,13 +257,22 @@
 							</div>
 							<div id="price-bar">
 								<h2>Pricing</h2>
-								<div id="price-list">
-									<!-- Populate with price for areas -->
-								</div>
-								<h3>Total for this mailing: <span>$2000.00</span></h3>
-								<button>
-									<i class="material-icons">check</i>
-									<strong>Approve Mailing List</strong>
+								<h3>This Area</h3>
+								<ul id="this-area-prices">
+									<li></li>
+									<li><span id="num-mailings">500</span> &times; $1.60 = <strong>$1000.00</strong></li>
+								</ul>
+								<h3>Other Owned Areas</h3>
+								<ul id="other-area-prices">
+									
+								</ul>
+								<h3>Total</h3>
+								<ul id="other-area-prices">
+									<h4>Total for all mailings: <span>$7000.00</span></h4>
+									<h4>Total for this mailing: <span>$2000.00</span></h4>
+								</ul>
+								<button id="approve-list">
+									<strong>Approve<br><span></span><br>Mailing List</strong>
 								</button>
 							</div>
 						</div>
@@ -296,6 +305,17 @@
 				</div>
 			</nav>
 
+			<div id="choose-reason">
+				<h4>Choose a Reason</h4>
+				<h5 class="reason">Blocked by Agent</h5>
+				<h5 class="reason">Blocked by Homeowner</h5>
+				<h5 class="reason">Returned Mail</h5>
+			</div>
+
+			<div id="past-clients-modal" class="modal">
+				
+			</div>
+
 		</main>
 
 	<!-- JQuery CDN -->
@@ -309,6 +329,7 @@
 	<script src="js/mq-pma-creator/util.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/top-bar.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/side-bar.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/mailing-window.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/main-window.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/mq-pma-creator.js" defer="defer"></script>
 	<!-- endbuild -->

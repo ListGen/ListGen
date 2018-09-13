@@ -5,7 +5,7 @@
 // local data of session
 var localData = {
 	'mlsAreas' : {
-		'Carmel Highlands' : {
+		'CARMEL HIGHLANDS' : {
 			'sections' : {
 				'Attention Grabber' : {
 					'status' : 'Incomplete',
@@ -94,7 +94,8 @@ var localData = {
 			'last-sale-price' : 1.8,
 			'last-sale-date' : '10/10/2018',
 			'selling-agent' : 'Kyle Morrison',
-			'blocked' : 'Blocked by Agent'
+			'blocked' : 'Blocked by Agent',
+			'past-client' : true
 		},
 		{	
 			'address-id' : '0001',
@@ -103,7 +104,9 @@ var localData = {
 			'last-sale-price' : 2.2,
 			'last-sale-date' : '2/07/2017',
 			'selling-agent' : 'Kyle Morrison',
-			'blocked' : ''
+			'blocked' : '',
+			'past-client' : true
+
 		},
 		{	
 			'address-id' : '0002',
@@ -112,7 +115,9 @@ var localData = {
 			'last-sale-price' : 6.2,
 			'last-sale-date' : '5/21/2012',
 			'selling-agent' : 'Seamus Riley',
-			'blocked' : 'Active Listing'
+			'blocked' : 'Active Listing',
+			'past-client' : false
+
 		},
 		{	
 			'address-id' : '0003',
@@ -121,7 +126,9 @@ var localData = {
 			'last-sale-price' : 10.875,
 			'last-sale-date' : '6/23/1991',
 			'selling-agent' : 'Meryl Streep',
-			'blocked' : 'Returned Mail'
+			'blocked' : 'Returned Mail',
+			'past-client' : false
+
 		},
 		{	
 			'address-id' : '0004',
@@ -130,7 +137,8 @@ var localData = {
 			'last-sale-price' : .35,
 			'last-sale-date' : '5/21/2013',
 			'selling-agent' : 'Seamus Riley',
-			'blocked' : ''
+			'blocked' : '',
+			'past-client' : false
 		},
 		{	
 			'address-id' : '0005',
@@ -139,7 +147,8 @@ var localData = {
 			'last-sale-price' : 22000,
 			'last-sale-date' : '5/25/1979',
 			'selling-agent' : 'Ridley Scott',
-			'blocked' : 'Blocked by Homeowner'
+			'blocked' : 'Blocked by Homeowner',
+			'past-client' : false
 		}
 	],
 };
@@ -211,4 +220,11 @@ function crop(can, a, b) {
  function addTooltip(container, message) {
  	container.addClass('tooltip');
  	container.append($('<div class="tooltiptext">' + message + '</div>'));
+ }
+
+ function darkenBackground(darken) {
+ 	if (darken) 
+ 		$('main :not(.modal)').css('filter', 'brightness(.7)');
+ 	else
+ 		$('main').css('filter', 'brightness(1)');
  }
