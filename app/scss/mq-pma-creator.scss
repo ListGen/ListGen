@@ -280,23 +280,24 @@
 
 			& h2 {
 				min-height: 50px;
-				margin: 0 -1px;
+				margin: 0;
 				padding: 10px;
-				text-align: center;
+				text-align: left;
 
 				color: white !important;
-				background: $two-blue;
+				background: $two-blue-dark;
+				border-bottom: 1px solid $two-blue-dark;
 			}
 		}
 
 		& #edit-bar {
 			width: 15%;
-			border: 1px solid $two-blue;
+			border: 1px solid $two-blue-dark;
 			white-space: normal;
 			& h3 {
-				min-height: 34px;
+				min-height: 48px;
 				margin: 0;
-				padding: 5px;
+				padding: 12px;
 				color: white;
 				background: $two-blue;
 			}
@@ -353,7 +354,7 @@
 				padding: 10px;
 
 				color: white;
-				background: $two-blue;
+				background: $two-blue-dark;
 				font-size: 1.2rem;
 
 				& .search {
@@ -425,8 +426,6 @@
 						width: 60px;
 					}
 
-					&:nth-child(even) { background-color: $offwhite; };
-
 					&.disabled {
 						background: $light-gray;
 						filter: brightness(.7);
@@ -435,6 +434,9 @@
 							& .checkmark { pointer-events: none; }
 						}
 					}
+
+					&.blocked { background: $white; }
+					&.client { background: $five-green; }
 
 				  	& td {
 				  		position: relative;
@@ -450,7 +452,7 @@
 
 								opacity: 0;
 								&:checked ~ .checkmark { 
-									background: $one-cyan; 
+									background: $three-red; 
 									&:after { display: block; }
 								}
 							}
@@ -468,7 +470,7 @@
 								@include transition($transition-speed);
 
 								&:after {
-									content: "";
+									content: ' ';
 									display: none;
 									position: absolute;
 									left: 10px;
@@ -502,7 +504,7 @@
 			color: $black;
 
 			text-align: center;
-			border: 1px solid $two-blue;
+			border: 1px solid $two-blue-dark;
 
 			& button {
 				display: inline-flex;

@@ -368,19 +368,20 @@ canvas {
     color: #2D2D2D; }
     #mailing-window #mailing-list div h2 {
       min-height: 50px;
-      margin: 0 -1px;
+      margin: 0;
       padding: 10px;
-      text-align: center;
+      text-align: left;
       color: white !important;
-      background: #163856; }
+      background: #122D46;
+      border-bottom: 1px solid #122D46; }
   #mailing-window #mailing-list #edit-bar {
     width: 15%;
-    border: 1px solid #163856;
+    border: 1px solid #122D46;
     white-space: normal; }
     #mailing-window #mailing-list #edit-bar h3 {
-      min-height: 34px;
+      min-height: 48px;
       margin: 0;
-      padding: 5px;
+      padding: 12px;
       color: white;
       background: #163856; }
     #mailing-window #mailing-list #edit-bar ul {
@@ -429,7 +430,7 @@ canvas {
       margin: 0;
       padding: 10px;
       color: white;
-      background: #163856;
+      background: #122D46;
       font-size: 1.2rem; }
       #mailing-window #mailing-list #homeowners #search-bar .search {
         width: 30%;
@@ -494,8 +495,6 @@ canvas {
       #mailing-window #mailing-list #homeowners table tr .blocked-container {
         height: 60px;
         width: 60px; }
-      #mailing-window #mailing-list #homeowners table tr:nth-child(even) {
-        background-color: #F9F9F9; }
       #mailing-window #mailing-list #homeowners table tr.disabled {
         background: #CCCCCC;
         filter: brightness(0.7); }
@@ -503,6 +502,10 @@ canvas {
           pointer-events: none; }
           #mailing-window #mailing-list #homeowners table tr.disabled:active .checkmark {
             pointer-events: none; }
+      #mailing-window #mailing-list #homeowners table tr.blocked {
+        background: white; }
+      #mailing-window #mailing-list #homeowners table tr.client {
+        background: #33C451; }
       #mailing-window #mailing-list #homeowners table tr td {
         position: relative;
         padding: 0 10px;
@@ -512,7 +515,7 @@ canvas {
           position: absolute;
           opacity: 0; }
           #mailing-window #mailing-list #homeowners table tr td .check-container input:checked ~ .checkmark {
-            background: #4B9FCB; }
+            background: #CF1816; }
             #mailing-window #mailing-list #homeowners table tr td .check-container input:checked ~ .checkmark:after {
               display: block; }
         #mailing-window #mailing-list #homeowners table tr td .check-container .checkmark {
@@ -528,7 +531,7 @@ canvas {
           -moz-transition: 0.3s ;
           transition: 0.3s ; }
           #mailing-window #mailing-list #homeowners table tr td .check-container .checkmark:after {
-            content: "";
+            content: ' ';
             display: none;
             position: absolute;
             left: 10px;
@@ -550,7 +553,7 @@ canvas {
     width: 15%;
     color: #2D2D2D;
     text-align: center;
-    border: 1px solid #163856; }
+    border: 1px solid #122D46; }
     #mailing-window #mailing-list #price-bar button {
       display: inline-flex;
       align-items: center;

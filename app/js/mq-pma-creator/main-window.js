@@ -82,11 +82,13 @@ class MainWindow {
 
 	/* Initialize Mailing List - private
 	 * ---------------
-	 * Sets event listeners.
+	 * Initializes the mailing list with all counts of blocked addresses, pricing for the
+	 * number of mailings being sent out.
 	 */
 	_initializeMailingList() {
 		this.mailingList = new List('homeowners', mailingListOptions, localData['homeowners']);
 		this.totalMail = 0;
+		this.sendingMail = 0;
 		this.numBlocked = {
 			'Blocked by Agent' : 0,
 			'Blocked by Homeowner' : 0,
@@ -95,7 +97,7 @@ class MainWindow {
 			'Real Estate Agent' : 0,
 			'Returned Mail' : 0,
 			'Total' : 0
-		}
+		};
 
 		$('.blocked').each((index) => {
 			this.totalMail++;
@@ -104,6 +106,8 @@ class MainWindow {
 				currentCheckbox.prev().prev().attr('checked', 'checked');
 				this.numBlocked[currentCheckbox.html()]++;
 				this.numBlocked['Total']++;
+			} else {
+				this.sendingMail++;
 			}
 			if (currentCheckbox.html() === 'Active Listing' || currentCheckbox.html() === 'Pending Listing') {
 				const row = currentCheckbox.parent().parent().parent();
@@ -123,10 +127,15 @@ class MainWindow {
 				const type = checkbox.next().next().html();
 				this.numBlocked[type]--;
 				this._updateBlockedCounts();
+				checkbox.next().next().html('');
 			}
 		});
 	}
 
+	/* Update Blocked Counts - private
+	 * --------------------------------
+	 * Updates the counts in the sidebar to reflect the number of checked rows of that block type.
+	 */
 	_updateBlockedCounts() {
 		this.blockLinks.each((index) => {
 			let currCount = $($(this.blockLinks[index]).children()[0]);
@@ -135,6 +144,10 @@ class MainWindow {
 		});
 	}
 
+	/* Make Complete Button - private
+	 * --------------------------------
+	 * Adds the "Complete" button to the section overlay with the according top and left coordinates.
+	 */
 	_makeCompleteButton(top, left) {
 		let toggleOverlay = $(switchHTML);
 		toggleOverlay.css('top', top);
@@ -142,6 +155,11 @@ class MainWindow {
 		return toggleOverlay;
 	}
 
+	/* Make Edit Overlay - private
+	 * --------------------------------
+	 * Makes the overlay consisting of choosing the content for the section
+	 * and the complete button for each section.
+	 */
 	_makeEditOverlay(name, top, left, height, width, content, status, 
 					 editTop, editLeft, canvas, complete) {
 		let editOverlay = $('<div class="edit-overlay"></div>');
