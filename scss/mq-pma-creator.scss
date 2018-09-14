@@ -282,7 +282,6 @@
 				min-height: 50px;
 				margin: 0;
 				padding: 10px;
-				text-align: left;
 
 				color: white !important;
 				background: $two-blue-dark;
@@ -293,12 +292,14 @@
 		& #edit-bar {
 			width: 15%;
 			white-space: normal;
+			text-align: center;
+
 			& h3 {
 				min-height: 48px;
 				margin: 0;
 				padding: 12px;
 				color: white;
-				background: $two-blue;
+				background: $two-blue-dark;
 			}
 
 			& ul {
@@ -322,23 +323,20 @@
 
 			& #past-clients {
 				width: 90%;
-				margin: 5%;
+				margin: 10px 0;
 
-				background: lighten($five-green, 10%);
 				text-align: center;
 				cursor: pointer;
-				color: $two-blue !important; 
 				@include border-radius(10px);
 				@include box-shadow(0, 0, 8px, $black);
+				@include transition($transition-speed);
 
 				& h3 {
-					color: $black;
+					color: $two-blue; 
 					background: lighten($five-green, 10%);
 					@include border-radius(10px);
+					&:hover { color: lighten($two-blue, 10%); } 
 				}
-
-				&:hover { color: lighten($two-blue, 100%) !important; } 
-
 			}
 		}
 
@@ -511,7 +509,7 @@
 				margin: 0;
 				padding: 12px;
 				color: white;
-				background: $two-blue;
+				background: $two-blue-dark;
 			}
 
 			& ul {

@@ -387,19 +387,19 @@ canvas {
       min-height: 50px;
       margin: 0;
       padding: 10px;
-      text-align: left;
       color: white !important;
       background: #122D46;
       border-bottom: 1px solid #122D46; }
   #mailing-window #mailing-list #edit-bar {
     width: 15%;
-    white-space: normal; }
+    white-space: normal;
+    text-align: center; }
     #mailing-window #mailing-list #edit-bar h3 {
       min-height: 48px;
       margin: 0;
       padding: 12px;
       color: white;
-      background: #163856; }
+      background: #122D46; }
     #mailing-window #mailing-list #edit-bar ul {
       margin: 0 5px;
       padding: 0 5px;
@@ -420,25 +420,26 @@ canvas {
           background: #4B9FCB; }
     #mailing-window #mailing-list #edit-bar #past-clients {
       width: 90%;
-      margin: 5%;
-      background: #57d371;
+      margin: 10px 0;
       text-align: center;
       cursor: pointer;
-      color: #163856 !important;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
       border-radius: 10px;
       -webkit-box-shadow: 0 0 8px #2D2D2D;
       -moz-box-shadow: 0 0 8px #2D2D2D;
-      box-shadow: 0 0 8px #2D2D2D; }
+      box-shadow: 0 0 8px #2D2D2D;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
       #mailing-window #mailing-list #edit-bar #past-clients h3 {
-        color: #2D2D2D;
+        color: #163856;
         background: #57d371;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px; }
-      #mailing-window #mailing-list #edit-bar #past-clients:hover {
-        color: white !important; }
+        #mailing-window #mailing-list #edit-bar #past-clients h3:hover {
+          color: #20527f; }
   #mailing-window #mailing-list #homeowners {
     width: 70%;
     max-height: 80%; }
@@ -578,7 +579,7 @@ canvas {
       margin: 0;
       padding: 12px;
       color: white;
-      background: #163856; }
+      background: #122D46; }
     #mailing-window #mailing-list #price-bar ul {
       margin: 0 5px;
       padding: 0 5px;
