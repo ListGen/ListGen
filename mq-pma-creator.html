@@ -7,10 +7,9 @@
 
 	<head>
 	  <title>Mid-Quarter PMA Creator | ListGen</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes">
 
 	  <!-- build:css css/main.min.css -->
-	  <link rel="stylesheet" type="text/css" href="css/util.css">
 	  <link rel="stylesheet" type="text/css" href="css/navs.css">
 	  <link rel="stylesheet" type="text/css" href="css/plugins/hamburgers.css">
 	  <link rel="stylesheet" type="text/css" href="css/mq-pma-creator.css">
@@ -111,29 +110,32 @@
 			</nav>
 
 
-
 			<div id="main-content">
 
 				<nav id="top-bar">
 
-					<div id="pma-mq">A Precision Market Analysis: <span>Mid-Quarter</span></div>
+					<div id="pma-mq">
+						<div id="mq">Mid-Quarter</div>
+						<div id="pma">A PRECISION MARKET ANALYSIS</div>
+					</div>
 
 					<div id="top-areas">
+						<div class="insert-current-step"></div>
 						<div class="top-dropdown">
-							<span><!-- POPULATE --></span>	
+							<div class="insert-current-area"></div>	
 							<i class="material-icons">arrow_drop_down</i>
 						</div>
-						<div class="top-dropdown-content hidden">
+						<div class="top-dropdown-content">
 		                	<!-- POPULATE -->
 		            	</div>
 					</div>
 					
 					<div id="top-steps">
-						<span id="top-step-editor" class="selected">Editor</span>
+						<span id="top-step-editor" class="top-step selected">Editor</span>
 						<i class="material-icons">chevron_right</i> 
-						<span id="top-step-mailing">Mailing List</span>	
+						<span id="top-step-mailing" class="top-step">Mailing List</span>	
 						<i class="material-icons">chevron_right</i> 
-						<span id="top-step-preview" class="tooltip">
+						<span id="top-step-preview" class="top-step tooltip">
 							<span class="disabled">Final Preview</span>
 							<span class="tooltiptext">Complete Your PMA and Mailing List First!</span>
 						</span>
@@ -201,11 +203,6 @@
 										<strong>Total</strong>
 									</li>
 								</ul>
-								<h3>Quick Block</h3>
-								<ul id="quick-block">
-									<li class="quick-block-link">Sale Date < <span>1</span> Year</li>
-									<li class="quick-block-link">Sale Date < <span>2</span> Years</li>
-								</ul>
 								<div id="past-clients">
 									<h3>Past Clients</h3>
 								</div>
@@ -257,29 +254,128 @@
 							</div>
 							<div id="price-bar">
 								<h2></h2>
-								<h3>This Area</h3>
-								<ul id="this-area-prices">
-									<li></li>
-									<li><span id="num-mailings">500</span> &times; $1.60 = <strong>$1000.00</strong></li>
+								<h3 class="insert-current-area"></h3>
+								<ul id="current-area-price">
+
 								</ul>
 								<h3>Other Owned Areas</h3>
 								<ul id="other-area-prices">
 									
 								</ul>
 								<h3>Total</h3>
-								<ul id="other-area-prices">
-									<h4>Total for all mailings: <span>$7000.00</span></h4>
-									<h4>Total for this mailing: <span>$2000.00</span></h4>
+								<ul>
+									<h4>Total for this mailing: <span id="final-area-price"></span></h4>
+									<h4>Estimated total for all mailings: <span id="final-total-price"></span></h4>
 								</ul>
 								<button id="approve-list">
-									<strong>Approve<br><span></span><br>Mailing List</strong>
+									<strong>Approve<br><span class="insert-current-area"></span><br>Mailing List</strong>
 								</button>
 							</div>
 						</div>
 					</div>
 
+					<!--    PREVIEW WINDOW    -->
+
 					<div id="preview-window" class="sub-window flexbox">
-						
+						<div id="incomplete-preview-message" class="spread hidden">
+							<p>Please mark all sections as complete in the <strong>Editor</strong> and 
+							confirm your <strong>Mailing List</strong> first.</p>
+						</div>
+						<div id="complete-final-preview" class="spread">
+							<div id="attention-grabber-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Attention Grabber</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back To Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="front-graph-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Front Graph</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="front-bar-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Front Bar</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="top-image-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Top Image</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="city-highlights-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>City Highlights</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="area-highlights-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Area Highlights</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="call-to-action-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Call to Action</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="inside-bar-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Inside Bar</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="listings-and-sales-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Listings and Sales</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<button id="open-final-modal" class="disabled">
+								Continue to Confirm
+							</button>
+						</div>
 					</div>
 
 				</div>
@@ -305,6 +401,7 @@
 				</div>
 			</nav>
 
+
 			<div id="choose-reason">
 				<h4>Choose a Reason</h4>
 				<h5 class="reason">Blocked by Agent</h5>
@@ -316,20 +413,97 @@
 				
 			</div>
 
+			<div id="modal-overlay"></div>
+
 		</main>
+
+
+		<!-- MODALS -->
+
+		<div id="final-preview-modal" class="modal">
+			<div class="modal-header">
+				<h1>Final Confirmation for <span class="insert-current-area"></span> Mailing</h1>
+			</div>
+			<div class="modal-body">
+				<div id="charge-per-area">
+					
+				</div>
+				<div id="total-charge">
+					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="final-accept-btn">Accept & Confirm Mailing</button>
+				<div class="button-message">This area's PMA cannot be edited after clicking <strong>Accept & Confirm Mailing</strong>.</div>
+				<div class="button-message">By clicking <strong>Accept & Confirm Mailing</strong>, you
+				are consenting to being charged the above total amount.</div>
+				<div class="button-message">If you still have another area's mailing to complete, the
+				total amount may differ. If this is your last area to Accept and Confirm, this total amount is correct.</div>
+			</div>
+		</div>
+
+		<div id="thank-you-modal" class="modal">
+			<div class="modal-header">
+				<h1>Thank You!</h1>
+			</div>
+			<div class="modal-body">
+				<p>
+					Thank you for completing your Precision Market Analysis for 
+					<span class="insert-current-area"></span>. We at ListGen appreciate your loyalty
+					and business.
+				</p>
+				<p>
+					If you have not completed and approved your Precision Market Analysis for one or more
+					areas, please rememeber to do so before this mailing period's deadline.
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button class="close-modal-btn">Close</button>
+			</div>
+		</div>
+
+		<div id="past-clients-modal" class="modal">
+			<div class="modal-header">
+				<h1>Final Confirmation for <span class="insert-current-area"></span> Mailing</h1>
+			</div>
+			<div class="modal-body">
+				<div id="charge-per-area">
+					<!-- Insert each area charge -->
+				</div>
+				<div id="total-charge">
+					<!-- Insert total charge of all mailings -->
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="final-accept-btn">Accept & Confirm Mailing</button>
+				<div class="button-message">This area's PMA cannot be edited after clicking <strong>Accept & Confirm Mailing</strong>.</div>
+				<div class="button-message">By clicking <strong>Accept & Confirm Mailing</strong>, you
+				are consenting to being charged the above total amount.</div>
+				<div class="button-message">If you still have another area's mailing to complete, the
+				total amount may differ. If this is your last area to Accept and Confirm, this total amount is correct.</div>
+			</div>
+		</div>
+
+		<div id="preview-image">
+			<img class="pi" src="">
+			<img class="close-modal-btn" src="/images/exit-button.png">
+		</div>
 
 	<!-- JQuery CDN -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<!-- List.js CDN -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+	<!-- Chart.js CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 	<!-- build:js js/main.min.js -->
 	<script src="js/util.js" defer="defer"></script>
 	<script src="js/nav-controller.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/templates/mq-templates.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/util.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/top-bar.js" defer="defer"></script>
-	<script src="js/mq-pma-creator/side-bar.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/edit-window.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/mailing-window.js" defer="defer"></script>
+	<script src="js/mq-pma-creator/preview-window.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/main-window.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/mq-pma-creator.js" defer="defer"></script>
 	<!-- endbuild -->

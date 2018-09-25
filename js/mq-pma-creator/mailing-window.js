@@ -8,10 +8,13 @@ class MailingWindow {
 	 * ---------------
 	 * Controls the mailing list.
 	 */
-	constructor() {
+	constructor(completedCallback) {
+		this.completedCallback = completedCallback;
+
+		this.mailingList = new List('homeowners', mailingListOptions);
 		this._querySelectors();
 		this._addEventListeners();
-		this._initializeMailingList();
+		this._initialize();
 	}
 
 	/* Query Selectors - private
@@ -27,6 +30,11 @@ class MailingWindow {
 		this.pastClients = $('#past-clients');
 		this.clearSearch = $('#clear-search');
 		this.approveList = $('#approve-list');
+
+		this.areaPriceEq = $('#current-area-price');
+		this.otherAreaPricesEq = $('#other-area-prices');
+		this.areaPrice = $('#final-area-price');
+		this.totalPrice = $('#final-total-price');
 	}
 
 	/* Add Event Listeners - private
@@ -65,20 +73,10 @@ class MailingWindow {
 			$(e.currentTarget).addClass('active');
 		});
 
-		// quick blocks
-		this.quickBlockLinks.click((e) => {
-			const cutoff = $(e.target).find('span');
-			this.tableRows.each((e) => {
-				const date = e.target;
-				const year = date.substr(date.length - 4);
-				const currentYear = (new Date()).getFullYear();
-
-			});
-		});
-
 		// opens up the past clients modal
 		this.pastClients.click(() => {
-			$('#past-clients-modal').addClass('active');
+			$('#modal-overlay').fadeIn(500);
+			$('#past-clients-modal').fadeIn(500);
 		});
 
 		// displays full mailing list
@@ -90,7 +88,30 @@ class MailingWindow {
 
 		// approves the mailing list
 		this.approveList.click(() => {
-			console.log("Approve Mailing List");
+			this.completedCallback();
+		});
+
+		// chooses the reason for blocking an address
+		$('.reason').click((e) => {
+			const reason = $(e.target).html();
+			this.numBlocked[reason]++;
+			this._updateBlockedCounts();
+			let item = this.mailingList.get('address-id', this.currentCheckbox.parent()
+												  					  .parent()
+												  					  .siblings('.address-id-container')
+												  					  .children('.address-id')
+												  					  .html());
+			item.values({'blocked' : reason});
+			this.currentCheckbox.prop('checked', true);
+			$('#choose-reason').slideUp(200);
+			$('#modal-overlay').fadeOut(200);
+		});
+
+		// close and uncheck the checkbox
+		$('#modal-overlay').click(() => {
+			this.currentCheckbox.prop('checked', false);
+			$('#choose-reason').slideUp(200);
+			$('#modal-overlay').fadeOut(200);
 		});
 	}
 
@@ -99,10 +120,11 @@ class MailingWindow {
 	 * Initializes the mailing list with all counts of blocked addresses, pricing for the
 	 * number of mailings being sent out.
 	 */
-	_initializeMailingList() {
-		this.mailingList = new List('homeowners', mailingListOptions, localData['homeowners']);
-		this.totalMail = 0;
-		this.sendingMail = 0;
+	_initialize() {
+		this.mailingList.clear();
+		this.mailingList.add(homeowners);
+		this.otherAreaPricesEq.html('');
+
 		this.numBlocked = {
 			'Blocked by Agent' : 0,
 			'Blocked by Homeowner' : 0,
@@ -113,70 +135,59 @@ class MailingWindow {
 			'Total' : 0
 		};
 
-		$('.blocked').each((index) => {
-			this.totalMail++;
-			let currentCheckbox = $($('.blocked')[index]);
-			if (currentCheckbox.html() !== '') {
-				currentCheckbox.prev().prev().prop('checked', true);
-				this.numBlocked[currentCheckbox.html()]++;
-				this.numBlocked['Total']++;
-			} else {
-				this.sendingMail++;
-			}
-			if (currentCheckbox.html() === 'Active Listing' || currentCheckbox.html() === 'Pending Listing') {
-				const row = currentCheckbox.parent().parent().parent();
-				row.addClass('disabled');
-				// addTooltip(row, 'Cannot Unblock an Active or Pending Listing.');
-			}
-		});
-
+		// counts all blocked addresses 
+		this._countBlockedAddresses();
+		// updates the counts on the left side bar
 		this._updateBlockedCounts();
+		// adds event listener to all checkboxes
+		this._setOnChange();
+		// updates the pricing list
+		this._updatePricingBar();
+	}
 
+	/* Set On Change - private
+	 * --------------------------------
+	 * Sets the on change event listener to all checkboxes.
+	 * Sets the row as blocked and prompts the user to pick a reason, or unblocks the address.
+	 */
+	_setOnChange() {
 		this.blockChecks = $('input:checkbox');
 		this.blockChecks.change((e) => {
 			const checkbox = $(e.target);
 			if (checkbox.is(':checked')) {
-				this._chooseBlockedReason(checkbox);
+				this.currentCheckbox = checkbox;
+				const position = checkbox.offset();
+				$('#choose-reason').css('top', position.top - 50);
+				$('#choose-reason').css('left', position.left + 40);
+				$('#choose-reason').slideDown(200);
+				$('#modal-overlay').fadeIn(200);
 			} else {
 				const type = checkbox.next().next().html();
 				this.numBlocked[type]--;
 				this._updateBlockedCounts();
 				checkbox.next().next().html('');
 			}
-
 		});
-
-		// populate name of MLS area
-		$('#approve-list strong span').html('CARMEL&nbsp;HIGHLANDS');
-
-
 	}
 
-	/* Choose Blocked Reason - private
+	/* Count Blocked Addresses - private
 	 * --------------------------------
-	 * Prompts the agent to choose a reason for blocking the mailing.
+	 * Counts the blocked addresses of the list to initialize the member variable.
 	 */
-	_chooseBlockedReason(checkbox) {
-		const position = checkbox.offset();
-		$('#choose-reason').css('top', position.top - 50);
-		$('#choose-reason').css('left', position.left + 40);
-		$('#choose-reason').slideDown(200);
-		$('.reason').click((e) => {
-			const reason = $(e.target).html();
-			$('#choose-reason').slideUp(200);
-			this.numBlocked[reason]++;
-			console.log(this.numBlocked);
-			this._updateBlockedCounts();
-			checkbox.next().next().html(reason);
-			checkbox.prop('checked', true);
-			$('.reason').off('click');
-			$('body :not(.reason)').off('click');
-		});
-		$('body :not(.reason)').click(() => {
-			$('#choose-reason').slideUp(200);
-			checkbox.prop('checked', false);
-			$('.reason').off('click');
-			$('body :not(.reason)').off('click');
+	_countBlockedAddresses() {
+		$('.blocked').each((index) => {
+			let currentCheckbox = $($('.blocked')[index]);
+			if (currentCheckbox.html() !== '') {
+				currentCheckbox.prev().prev().prop('checked', true);
+				this.numBlocked[currentCheckbox.html()]++;
+				this.numBlocked['Total']++;
+			} else {
+				// this.sendingMail++;
+			}
+			if (currentCheckbox.html() === 'Active Listing' || currentCheckbox.html() === 'Pending Listing') {
+				const row = currentCheckbox.parent().parent().parent();
+				row.addClass('disabled');
+			}
 		});
 	}
 
@@ -190,6 +201,33 @@ class MailingWindow {
 			let currType = $($(this.blockLinks[index]).children()[1]).html();
 			currCount.html(this.numBlocked[currType]);
 		});
+	}
+
+	/* Update Pricing Bar - private
+	 * --------------------------------
+	 * Updates all area prices to reflect the local data.
+	 */
+	_updatePricingBar() {
+		const numMailings = mlsAreas[currentArea]['numMailings'];
+		const areaPrice = mlsAreas[currentArea]['areaPrice'].toFixed(2);
+		this.areaPriceEq.html('<li>' + numMailings + ' mailings &times; $1.60/mailing = <strong>$' + areaPrice + '</strong></li>');
+
+		for (let area in mlsAreas) {
+			if (area !== currentArea) {
+				const mailings = mlsAreas[area]['numMailings'];
+				const price = mlsAreas[area]['areaPrice'].toFixed(2);
+				this.otherAreaPricesEq.append($('<h4>' + area + '</h4>'));
+				this.otherAreaPricesEq.append($('<li>' + mailings + ' mailings &times; $1.60/mailing = <strong>$' + price + '</strong></li>'));
+			}
+		}
+
+		this.areaPrice.html('$' + areaPrice);
+		this.totalPrice.html('$' + localData['totalPrice'].toFixed(2));
+	}
+
+
+	update() {
+		this._initialize();
 	}
 
 

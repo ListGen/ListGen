@@ -9,11 +9,11 @@ class TopBar {
 	 * Controls the top bar of the creator.
 	 */
 	constructor(areaCallback, windowCallback) {
-		// Save callbacks
 		this.areaCallback = areaCallback;
 		this.windowCallback = windowCallback;
 		
 		this._querySelectors();
+		this._initialize();
 		this._addEventListeners();
 	}
 
@@ -23,9 +23,8 @@ class TopBar {
 	 */
 	_querySelectors() {
 		// Area Dropdown
-		this.topAreaDropdown = $('#top-areas .top-dropdown span');
+		this.topAreaDropdown = $('#top-areas .top-dropdown');
 		this.topAreaContent = $('#top-areas .top-dropdown-content');
-		this.topAreaName = $('#top-areas .top-dropdown span');
 
 		// Steps
 		this.topSteps = $('#top-steps');
@@ -38,69 +37,74 @@ class TopBar {
 	 * ---------------
 	 * Sets event listeners.
 	 */
-	_addEventListeners() {
-		this._addAreaEventListeners();
-		this._addStepEventListeners();
-	}
-
-	/* Add Area Event Listeners - private
-	 * ---------------
-	 * Sets event listeners to area dropdown.
-	 */
-	_addAreaEventListeners() {
-		// Closes dropdown on outside click
-		$(document).click(() => {
-		    $('.top-dropdown-content').addClass('hidden');
-		});
-
+	_addEventListeners() {		
 		// Opens Area Dropdown
 		this.topAreaDropdown.click((e) => {
+			this.topAreaContent.slideToggle(300);
 			e.stopPropagation();
-			$('.top-dropdown-content').toggleClass('hidden');
+		});
+
+		// Closes dropdown on outside click
+		$('html').click(() => {
+			this.topAreaContent.slideUp(300);
 		});
 
 		// Switches Area Name and calls callback
-		this.topAreaContent.click((e) => {
-			const newArea = $(e.target).html();
-			this.topAreaDropdown.html(newArea);
+		this.topAreaChoices.click((e) => {
+			const newArea = $(e.currentTarget).children('.area-container').html();
 			this.areaCallback(newArea);
+		});
+
+		// changes to editor, mailing list, or final preview
+		this.topStepEditor.click((e) => {
+			$('.top-step').removeClass('selected');
+			$(e.currentTarget).addClass('selected');
+			this.windowCallback(0);
+		});
+		this.topStepMailing.click((e) => {
+			$('.top-step').removeClass('selected');
+			$(e.currentTarget).addClass('selected');
+			this.windowCallback(1);
+		});
+		this.topStepPreview.click((e) => {
+			$('.top-step').removeClass('selected');
+			$(e.currentTarget).addClass('selected');
+			this.windowCallback(2);
 		});
 	}
 
-	/* Add Step Event Listeners - private
+	/* Initialize Dropdown - private
 	 * ---------------
-	 * Sets event listeners to step breadcrumb.
+	 * Initializes dropdown with all agent-owned areas and the status of their steps.
 	 */
-	_addStepEventListeners() {
-		changeStep = changeStep.bind(this);
-
-		// changes to editor, mailing list, or final preview
-		this.topStepEditor.click(() => changeStep(0));
-		this.topStepMailing.click(() => changeStep(2));
-		this.topStepPreview.click(() => changeStep(4));
-
-		function changeStep(stepNum) {
-			const numChildren = this.topSteps.children().length;
-			for (let i = 0; i < numChildren; i++) {
-				if (i <= stepNum)
-					$(this.topSteps.children().get(i)).addClass('selected');
-				else
-					$(this.topSteps.children().get(i)).removeClass('selected');
+	_initialize() {
+		for (let area in mlsAreas) {
+			const completeList = [mlsAreas[area]['editComplete'], mlsAreas[area]['mailingComplete'], mlsAreas[area]['previewComplete']];
+			let div = $('<div><span class="area-container">' + area + '</span></div>');
+			let statusContainer = $('<span class="status-container"></span>');
+			if (!mlsAreas[currentArea]['totalComplete']) {
+				statusContainer.html('INCOMPLETE');
+				div.css('background', STATUS_COLORS['Incomplete']);
+			} else {
+				statusContainer.html('COMPLETE');
+				div.css('background', STATUS_COLORS['Complete']);
 			}
-			this.windowCallback(stepNum / 2);
+			div.append(statusContainer);
+			this.topAreaContent.append(div);
 		}
+
+		this.topAreaChoices = $('#top-areas .top-dropdown-content div');
 	}
 
+	/*   PUBLIC   */
 
-
-	/*   PUBLIC    */
-
-	/* Set Area Title - public
+	/* Complete Area - private
 	 * ---------------
-	 * Displays the name of the area being worked on.
+	 * Marks the current area as complete.
 	 */
-	setAreaTitle(newArea) {
-		this.topAreaDropdown.html(newArea);
-	} 
+	completeArea() {
+		console.log('Mark Area as Completed.');
+	}
+
 
 }

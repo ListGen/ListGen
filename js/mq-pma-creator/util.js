@@ -4,153 +4,224 @@
 
 // local data of session
 var localData = {
+	'defaultMLSArea' : 'CARMEL HIGHLANDS',
+	'mlsAreaNames' : ['CARMEL HIGHLANDS', 'PEBBLE BEACH'],
 	'mlsAreas' : {
 		'CARMEL HIGHLANDS' : {
 			'sections' : {
 				'Attention Grabber' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Front Graph' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Front Bar' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Top Image' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'City Highlights' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Area Highlights' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Call To Action' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Inside Bar' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
 				'Listings And Sales' : {
-					'status' : 'Incomplete',
-					'default-choice' : '',
-					'system-choices' : ['../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										'../images/home-screen/house1.jpg',
-										]
+					'selection' : '',
+					'status' : 'Incomplete'
 				},
+			},
+			'homeowners' : [
+				{	
+					'address-id' : '0000',
+					'name' : 'Brandon Huelga',
+					'address' : '531 Lasuen Mall',
+					'last-sale-price' : 1.8,
+					'last-sale-date' : '10/10/2018',
+					'selling-agent' : 'Kyle Morrison',
+					'blocked' : 'Blocked by Agent',
+					'past-client' : true
+				},
+				{	
+					'address-id' : '0001',
+					'name' : 'Kyle Morrison',
+					'address' : '18B E Carmel Valley Rd',
+					'last-sale-price' : 2.2,
+					'last-sale-date' : '2/07/2017',
+					'selling-agent' : 'Kyle Morrison',
+					'blocked' : '',
+					'past-client' : true
+				},
+				{	
+					'address-id' : '0002',
+					'name' : 'Bill Jones',
+					'address' : '1215 Santa Barbara Lane',
+					'last-sale-price' : 6.2,
+					'last-sale-date' : '5/21/2012',
+					'selling-agent' : 'Seamus Riley',
+					'blocked' : 'Active Listing',
+					'past-client' : false
 
-			}
+				},
+				{	
+					'address-id' : '0003',
+					'name' : 'Tom Hanks',
+					'address' : '1992 Wilson Place',
+					'last-sale-price' : 10.875,
+					'last-sale-date' : '6/23/1991',
+					'selling-agent' : 'Meryl Streep',
+					'blocked' : 'Returned Mail',
+					'past-client' : false
+
+				},
+				{	
+					'address-id' : '0004',
+					'name' : 'Mario Luigi',
+					'address' : '1984 Rainbow Rd',
+					'last-sale-price' : .35,
+					'last-sale-date' : '5/21/2013',
+					'selling-agent' : 'Seamus Riley',
+					'blocked' : '',
+					'past-client' : false
+				},
+				{	
+					'address-id' : '0005',
+					'name' : 'Ellen Ripley',
+					'address' : '7 Nostrodamus',
+					'last-sale-price' : 22000,
+					'last-sale-date' : '5/25/1979',
+					'selling-agent' : 'Ridley Scott',
+					'blocked' : 'Blocked by Homeowner',
+					'past-client' : false
+				}
+			],
+			'sectionsComplete' : 0,
+			'editComplete' : false,
+			'mailingComplete' : false,
+			'previewComplete' : false,
+			'totalComplete' : false,
+			'numMailings' : 2,
+			'areaPrice' : 3.2
 		},
-		'Pebble Beach' : {
+		'PEBBLE BEACH' : {
+			'sections' : {
+				'Attention Grabber' : {
+					'selection' : '../images/home-screen/house6.jpg',
+					'status' : 'Incomplete'
+				},
+				'Front Graph' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'Front Bar' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'Top Image' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'City Highlights' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'Area Highlights' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'Call To Action' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'Inside Bar' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+				'Listings And Sales' : {
+					'selection' : '',
+					'status' : 'Incomplete'
+				},
+			},
+			'homeowners' : [
+				{	
+					'address-id' : '0000',
+					'name' : 'Steven Wilson',
+					'address' : '422 Oxford Way',
+					'last-sale-price' : 7.0,
+					'last-sale-date' : '12/10/2013',
+					'selling-agent' : 'Michael Jones',
+					'blocked' : '',
+					'past-client' : false
+				},
+				{	
+					'address-id' : '0001',
+					'name' : 'Kyle Morrison',
+					'address' : '18B E Carmel Valley Rd',
+					'last-sale-price' : 2.2,
+					'last-sale-date' : '2/07/2017',
+					'selling-agent' : 'Kyle Morrison',
+					'blocked' : '',
+					'past-client' : true
+				},
+				{	
+					'address-id' : '0002',
+					'name' : 'Bill Jones',
+					'address' : '1215 Santa Barbara Lane',
+					'last-sale-price' : 6.2,
+					'last-sale-date' : '5/21/2012',
+					'selling-agent' : 'Seamus Riley',
+					'blocked' : '',
+					'past-client' : false
 
+				},
+				{	
+					'address-id' : '0003',
+					'name' : 'Tom Hanks',
+					'address' : '1992 Wilson Place',
+					'last-sale-price' : 10.875,
+					'last-sale-date' : '6/23/1991',
+					'selling-agent' : 'Meryl Streep',
+					'blocked' : '',
+					'past-client' : false
+
+				},
+				{	
+					'address-id' : '0004',
+					'name' : 'Steve Rodgers',
+					'address' : '12 Marvel Dr',
+					'last-sale-price' : 300,
+					'last-sale-date' : '5/28/2015',
+					'selling-agent' : 'Tony Stark',
+					'blocked' : 'Blocked by Homeowner',
+					'past-client' : false
+				}
+			],
+			'sectionsComplete' : 0,
+			'editComplete' : false,
+			'mailingComplete' : false,
+			'previewComplete' : false,
+			'numMailings' : 4,
+			'areaPrice' : 6.4
 		}
 	},
-	'homeowners' : [
-		{	
-			'address-id' : '0000',
-			'name' : 'Brandon Huelga',
-			'address' : '531 Lasuen Mall',
-			'last-sale-price' : 1.8,
-			'last-sale-date' : '10/10/2018',
-			'selling-agent' : 'Kyle Morrison',
-			'blocked' : 'Blocked by Agent',
-			'past-client' : true
-		},
-		{	
-			'address-id' : '0001',
-			'name' : 'Kyle Morrison',
-			'address' : '18B E Carmel Valley Rd',
-			'last-sale-price' : 2.2,
-			'last-sale-date' : '2/07/2017',
-			'selling-agent' : 'Kyle Morrison',
-			'blocked' : '',
-			'past-client' : true
-
-		},
-		{	
-			'address-id' : '0002',
-			'name' : 'Bill Jones',
-			'address' : '1215 Santa Barbara Lane',
-			'last-sale-price' : 6.2,
-			'last-sale-date' : '5/21/2012',
-			'selling-agent' : 'Seamus Riley',
-			'blocked' : 'Active Listing',
-			'past-client' : false
-
-		},
-		{	
-			'address-id' : '0003',
-			'name' : 'Tom Hanks',
-			'address' : '1992 Wilson Place',
-			'last-sale-price' : 10.875,
-			'last-sale-date' : '6/23/1991',
-			'selling-agent' : 'Meryl Streep',
-			'blocked' : 'Returned Mail',
-			'past-client' : false
-
-		},
-		{	
-			'address-id' : '0004',
-			'name' : 'Mario Luigi',
-			'address' : '1984 Rainbow Rd',
-			'last-sale-price' : .35,
-			'last-sale-date' : '5/21/2013',
-			'selling-agent' : 'Seamus Riley',
-			'blocked' : '',
-			'past-client' : false
-		},
-		{	
-			'address-id' : '0005',
-			'name' : 'Ellen Ripley',
-			'address' : '7 Nostrodamus',
-			'last-sale-price' : 22000,
-			'last-sale-date' : '5/25/1979',
-			'selling-agent' : 'Ridley Scott',
-			'blocked' : 'Blocked by Homeowner',
-			'past-client' : false
-		}
-	],
+	'totalAddresses' : 8,
+	'totalMailings' : 6,
+	'totalPrice' : 9.60
 };
 
 // section names to ids
@@ -179,52 +250,59 @@ const ID_TO_NAME = {
 	'listings-and-sales' : 'Listings And Sales'
 }
 
+// step name to step number
+const STEP_NAME_TO_NUMBER = {
+	'Editor' : 0,
+	'Mailing List' : 1,
+	'Final Preview' : 2
+}
+
+// step name to step number
+const NUMBER_TO_STEP_NAME = {
+	0 : 'Editor',
+	1 : 'Mailing List',
+	2 : 'Final Preview'
+}
+
+// price per mailing standard PMA
+const mailingPrice = 1.6;
+
 // W x H in inches of PMA
 const PMA_SIZE = [17, 11];
 
 // colors 
 const STATUS_COLORS = {
-	'Incomplete' : '#8A8A8A',
-	'complete' : '#33C451',
+	'Incomplete' : '#FF3A38',
+	'Complete' : '#33C451',
 };
-
-// toggle switch html
-const switchHTML = '<div class="complete">Complete</div>';
 
 // mailing list options
 const mailingListOptions = {
 	valueNames : ['address-id', 'blocked', 'name', 'address', 'last-sale-price', 'last-sale-date', 'selling-agent'],
-	item: '<tr><td class="address-id"></td><td class="blocked-container"><label class="check-container"><input class="block-check" type="checkbox"/><span class="checkmark"></span><span class="blocked"></span></label></td><td class="name"></td><td class="address"></td><td class="last-sale-price"></td><td class="last-sale-date"></td><td class="selling-agent"></td></tr>'
+	item: `<tr>
+			   <td class="address-id-container">
+			       <div class="address-id"></div>
+			       <strong class="lookup-number"></strong>
+			   </td>
+			   <td class="blocked-container">
+			       <label class="check-container">
+			           <input class="block-check" type="checkbox"/>
+			           <span class="checkmark"><i class="material-icons">close</i></span>
+			           <span class="blocked"></span>
+		           </label>
+	           </td>
+	           <td class="name"></td>
+	           <td class="address"></td>
+	           <td class="last-sale-price"></td>
+	           <td class="last-sale-date"></td>
+	           <td class="selling-agent"></td>
+           </tr>`
 };
 
-/* Crop
- * Returns a cropped canvas given a canvas and crop region.
- *
- * @param a object : {x: number, y: number} - left top corner
- * @param b object : {x: number, y: number} - bottom right corner
- */
-function crop(can, a, b) {
-    const ctx = can.getContext('2d');
-    const imageData = ctx.getImageData(a.x, a.y, b.x, b.y);
-  
-    let newCan = document.createElement('canvas');
-    newCan.width = b.x - a.x;
-    newCan.height = b.y - a.y;
-    const newCtx = newCan.getContext('2d');
-  
-    newCtx.putImageData(imageData, 0, 0);
-  
-    return newCan;    
- }
+function addTooltip(container, message) {
+	container.addClass('tooltip');
+	container.append($('<div class="tooltiptext">' + message + '</div>'));
+}
 
- function addTooltip(container, message) {
- 	container.addClass('tooltip');
- 	container.append($('<div class="tooltiptext">' + message + '</div>'));
- }
-
- function darkenBackground(darken) {
- 	if (darken) 
- 		$('main :not(.modal)').css('filter', 'brightness(.7)');
- 	else
- 		$('main').css('filter', 'brightness(1)');
- }
+function updateCurrentAreaText() { $('.insert-current-area').html(currentArea); }
+function updateCurrentStepText() { $('.insert-current-step').html(currentStep); }

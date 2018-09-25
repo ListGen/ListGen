@@ -119,7 +119,7 @@ canvas {
         -moz-transform: scale(0.6);
         transform: scale(0.6); }
       .accordion .accordion-content .accordion-subcontent div.active {
-        background: #8A8A8A; }
+        background: #CF1816; }
       .accordion .accordion-content .accordion-subcontent div:hover {
         color: #4B9FCB; }
 
@@ -137,6 +137,8 @@ canvas {
     color: white !important;
     background: black;
     text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
     border-radius: 6px; }
     .tooltip .tooltiptext:after {
       content: " ";
@@ -150,23 +152,81 @@ canvas {
   .tooltip:hover .tooltiptext {
     visibility: visible; }
 
-.modal {
-  height: 50%;
-  width: 50%;
+#modal-overlay {
+  width: 100%;
+  height: 100%;
   display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  position: fixed;
   left: 0;
-  right: 0;
-  margin: auto;
+  top: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.modal {
+  height: 80%;
+  width: 70%;
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 5;
+  margin-left: -35%;
   background: #163856;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  -webkit-box-shadow: 0 0 18px black;
-  -moz-box-shadow: 0 0 18px black;
-  box-shadow: 0 0 18px black; }
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+  -webkit-box-shadow: 0 0 100px black;
+  -moz-box-shadow: 0 0 100px black;
+  box-shadow: 0 0 100px black; }
+  .modal .modal-header {
+    height: 10%;
+    text-align: center;
+    color: white;
+    background: #163856;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px; }
+    .modal .modal-header h1 {
+      margin: 0;
+      padding: 15px; }
+  .modal .modal-body {
+    height: 65%;
+    padding: 10px;
+    background: white;
+    border-top: 5px solid #122D46;
+    border-bottom: 5px solid #122D46;
+    border-left: 25px solid #163856;
+    border-right: 25px solid #163856; }
+  .modal .modal-footer {
+    height: 25%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #163856;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px; }
+    .modal .modal-footer button {
+      margin-bottom: 20px;
+      padding: 20px 60px;
+      font-family: 'Ubuntu';
+      font-size: 1.5rem;
+      background: #33C451;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+      .modal .modal-footer button:hover {
+        background: #6bd882; }
+    .modal .modal-footer .button-message {
+      padding: 5px 0;
+      color: white; }
+      .modal .modal-footer .button-message:not(:last-child) {
+        border-bottom: 1px solid #4B9FCB; }
 
 #header-content {
   height: 800px;
