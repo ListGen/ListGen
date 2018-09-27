@@ -20,9 +20,9 @@
 
 	<body>
 
-		<aside>
+		<aside id="nav-menu-container">
 			<aside id="nav-menu-header">
-				<i class="material-icons">language</i>
+				<i class="material-icons">home</i>
 			</aside>
 
 			<aside id="nav-menu-hamburger" class="hamburger hamburger--elastic" type="button">
@@ -36,29 +36,29 @@
 
 					<div class="nav-menu-section">Account</div>
 					<div class="nav-link-container">
-						<i class="material-icons">language</i>
+						<i class="material-icons">account_box</i>
 						<a class="my-account" href="./my-account.html">My Account</a>
 					</div>
 					<div class="nav-link-container">
-						<i class="material-icons">language</i>
+						<i class="material-icons">folder</i>
 						<a class="my-office" href="./my-office.html">My Office</a>
 					</div>
 					<div class="nav-link-container">
-						<i class="material-icons">language</i>
+						<i class="material-icons">panorama_wide_angle</i>
 						<a class="my-pmas" href="./my-pmas.html">My PMAs</a>
 					</div>
 					<div class="nav-link-container">
-						<i class="material-icons">language</i>
+						<i class="material-icons">phone_in_talk</i>
 						<a class="my-homeowner-page" href="./my-homeowner-page.html">My Homeowner Page</a>
 					</div>
 
 					<div class="nav-menu-section">Help</div>
 					<div class="nav-link-container">
-						<i class="material-icons">language</i>
+						<i class="material-icons">help</i>
 						<a class="help-center" href="./help-center.html">Help Center</a>
 					</div>
 					<div class="nav-link-container">
-						<i class="material-icons">language</i>
+						<i class="material-icons">email</i>
 						<a class="contact-us" href="./contact-us">Contact Us</a>
 					</div>
 
@@ -72,11 +72,11 @@
 
 					<div class="nav-menu-section">Help</div>
 					<div class="nav-link-container">
-						<i class="material-icons">sentimental_satisfied_alt</i>
+						<i class="material-icons">sentimental_very_satisfied</i>
 						<a class="about-us" href="./about-us.html">About Us</a>
 					</div>
 					<div class="nav-link-container">
-						<i class="material-icons">mail_outline</i>
+						<i class="material-icons">email</i>
 						<a class="contact-us" href="./contact-us.html">Contact Us</a>
 					</div>
 				</div>
@@ -88,22 +88,18 @@
 
 			<nav id="top-nav-bar">
 				<div class="nav-column">
-					<div id="top-nav-logo" class="nav-logo">
-						<i class="material-icons">language</i>
+					<div class="nav-logo">
+						<i class="material-icons">home</i>
 						<span>List<strong>Gen</strong></span>
 					</div>
 				</div>
 				<div class="nav-column">
-					<div id="top-nav-links-container">
+					<div id="tnl-container">
 						<div id="top-nav-links">	
-							<div class="signed">
-								<div class="account-container">
-									<i class="material-icons">account_circle</i>
-									<a class="sign-in" href="./sign-in.html">Brandon Huelga</a>
-								</div>
+							<div class="account-container">
+								<i class="material-icons">account_circle</i>
+								<a class="sign-in" href="./sign-in.html">Brandon Huelga</a>
 							</div>
-							<a class="about-us hidden" href="./about-us.html">About Us</a>
-							<a class="contact-us hidden" href="./contact-us.html">Contact Us</a>
 						</div>
 					</div>
 				</div>
@@ -114,13 +110,13 @@
 
 				<nav id="top-bar">
 
-					<div id="pma-mq">
-						<div id="mq">Mid-Quarter</div>
+					<div id="pma-mq" class="top-column">
+						<div class="top-title">Mid-Quarter</div>
 						<div id="pma">A PRECISION MARKET ANALYSIS</div>
 					</div>
 
-					<div id="top-areas">
-						<div class="insert-current-step"></div>
+					<div id="top-areas" class="top-column">
+						<div class="insert-current-step top-title"></div>
 						<div class="top-dropdown">
 							<div class="insert-current-area"></div>	
 							<i class="material-icons">arrow_drop_down</i>
@@ -130,15 +126,18 @@
 		            	</div>
 					</div>
 					
-					<div id="top-steps">
-						<span id="top-step-editor" class="top-step selected">Editor</span>
-						<i class="material-icons">chevron_right</i> 
-						<span id="top-step-mailing" class="top-step">Mailing List</span>	
-						<i class="material-icons">chevron_right</i> 
-						<span id="top-step-preview" class="top-step tooltip">
-							<span class="disabled">Final Preview</span>
-							<span class="tooltiptext">Complete Your PMA and Mailing List First!</span>
-						</span>
+					<div id="top-steps" class="top-column">
+						<div class="top-title">Steps</div>
+						<div id="steps">
+							<span><span id="top-step-editor" class="top-step selected">Editor</span></span>	<!-- Hacky to make consistent -->
+							<i class="material-icons">chevron_right</i> 
+							<span><span id="top-step-mailing" class="top-step">Mailing List</span>	</span>
+							<i class="material-icons">chevron_right</i> 
+							<span class="tooltip bottom">
+								<span id="top-step-preview" class="top-step disabled">Final Preview</span>
+								<span class="tooltiptext bottom">Complete Your PMA and Mailing List First!</span>
+							</span>
+						</div>
 					</div>
 				</nav>
 
@@ -166,6 +165,8 @@
 						</div>
 
 					</div>
+
+					<!--    MAILING WINDOW    -->
 
 					<div id="mailing-window" class="sub-window">
 						<div id="mailing-list" class="spread">
@@ -200,7 +201,7 @@
 									</li>
 									<li class="block-link">
 										(&nbsp;<strong></strong>&nbsp;) 
-										<strong>Total</strong>
+										<strong>Total Blocked</strong>
 									</li>
 								</ul>
 								<div id="past-clients">
@@ -391,12 +392,9 @@
 				</div>
 				<div class="nav-column">
 					<div id="bottom-nav-links">
-						<a class="about-us" href="./about-us.html">About Us</a>
-						<a id="terms-of-service" href="./terms-of-service.html">Terms of Service</a>
-						<a id="privacy-policy" href="./privacy-policy.html">Privacy Policy</a>
-					</div>
-					<div id="bottom-nav-logo" class="nav-logo">
-						<i class="material-icons">language</i>
+						<a class="about-us" href="./about-us.html">About&nbsp;Us</a>
+						<a id="terms-of-service" href="./terms-of-service.html">Terms&nbsp;of&nbsp;Service</a>
+						<a id="privacy-policy" href="./privacy-policy.html">Privacy&nbsp;Policy</a>
 					</div>
 				</div>
 			</nav>
@@ -409,16 +407,19 @@
 				<h5 class="reason">Returned Mail</h5>
 			</div>
 
-			<div id="past-clients-modal" class="modal">
-				
-			</div>
-
-			<div id="modal-overlay"></div>
-
 		</main>
 
 
 		<!-- MODALS -->
+
+		<div id="nav-overlay" class="overlay"></div>
+		<div id="edit-overlay" class="overlay"></div>
+		<div id="mailing-overlay" class="overlay"></div>
+		<div id="modal-overlay" class="overlay"></div>
+
+		<div id="past-clients-modal" class="modal">
+			
+		</div>
 
 		<div id="final-preview-modal" class="modal">
 			<div class="modal-header">

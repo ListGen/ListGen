@@ -4,10 +4,7 @@
 
 class TopBar {
 
-	/* Top Bar
-	 * ---------------
-	 * Controls the top bar of the creator.
-	 */
+	/* Top Bar */
 	constructor(areaCallback, windowCallback) {
 		this.areaCallback = areaCallback;
 		this.windowCallback = windowCallback;
@@ -17,93 +14,74 @@ class TopBar {
 		this._addEventListeners();
 	}
 
-	/* Query Selectors - private
-	 * ---------------
-	 * Selects all sections of PMA screen.
-	 */
+	/* Query Selectors */
 	_querySelectors() {
-		// Area Dropdown
-		this.topAreaDropdown = $('#top-areas .top-dropdown');
-		this.topAreaContent = $('#top-areas .top-dropdown-content');
-
-		// Steps
-		this.topSteps = $('#top-steps');
-		this.topStepEditor = $('#top-step-editor');
-		this.topStepMailing = $('#top-step-mailing');
-		this.topStepPreview = $('#top-step-preview');
+		this.areaDropdown = $('#top-areas .top-dropdown');
+		this.areaDropdownContent = $('#top-areas .top-dropdown-content');
+		this.stepsContainer = $('#top-steps');
+		this.steps = $('.top-step');
 	}
 
-	/* Add Event Listeners - private
-	 * ---------------
-	 * Sets event listeners.
-	 */
+	/* Add Event Listeners */
 	_addEventListeners() {		
-		// Opens Area Dropdown
-		this.topAreaDropdown.click((e) => {
-			this.topAreaContent.slideToggle(300);
+		// Opens area dropdown
+		this.areaDropdown.click((e) => {
+			this.areaDropdownContent.slideToggle(300);
 			e.stopPropagation();
 		});
 
 		// Closes dropdown on outside click
 		$('html').click(() => {
-			this.topAreaContent.slideUp(300);
+			this.areaDropdownContent.slideUp(300);
 		});
 
-		// Switches Area Name and calls callback
-		this.topAreaChoices.click((e) => {
+		// Switches area
+		this.areaChoices.click((e) => {
 			const newArea = $(e.currentTarget).children('.area-container').html();
 			this.areaCallback(newArea);
 		});
 
-		// changes to editor, mailing list, or final preview
-		this.topStepEditor.click((e) => {
-			$('.top-step').removeClass('selected');
+		// Switches step
+		this.steps.click((e) => {
+			this.steps.removeClass('selected');
 			$(e.currentTarget).addClass('selected');
-			this.windowCallback(0);
-		});
-		this.topStepMailing.click((e) => {
-			$('.top-step').removeClass('selected');
-			$(e.currentTarget).addClass('selected');
-			this.windowCallback(1);
-		});
-		this.topStepPreview.click((e) => {
-			$('.top-step').removeClass('selected');
-			$(e.currentTarget).addClass('selected');
-			this.windowCallback(2);
+			this.windowCallback($(e.currentTarget).html());
 		});
 	}
 
-	/* Initialize Dropdown - private
-	 * ---------------
-	 * Initializes dropdown with all agent-owned areas and the status of their steps.
-	 */
+	/* Initialize */
 	_initialize() {
-		for (let area in mlsAreas) {
-			const completeList = [mlsAreas[area]['editComplete'], mlsAreas[area]['mailingComplete'], mlsAreas[area]['previewComplete']];
+		for (let area in mlsAreas) {			
 			let div = $('<div><span class="area-container">' + area + '</span></div>');
 			let statusContainer = $('<span class="status-container"></span>');
-			if (!mlsAreas[currentArea]['totalComplete']) {
-				statusContainer.html('INCOMPLETE');
-				div.css('background', STATUS_COLORS['Incomplete']);
-			} else {
+			if (mlsAreas[area]['totalComplete']) {
 				statusContainer.html('COMPLETE');
-				div.css('background', STATUS_COLORS['Complete']);
+				div.addClass('complete');
+			} else {
+				statusContainer.html('INCOMPLETE');
 			}
 			div.append(statusContainer);
-			this.topAreaContent.append(div);
+			this.areaDropdownContent.append(div);
 		}
 
-		this.topAreaChoices = $('#top-areas .top-dropdown-content div');
+		this.areaChoices = $('#top-areas .top-dropdown-content div');
 	}
+
 
 	/*   PUBLIC   */
 
-	/* Complete Area - private
+	/* Complete Area
 	 * ---------------
-	 * Marks the current area as complete.
+	 * Marks the current area as complete. 
 	 */
 	completeArea() {
-		console.log('Mark Area as Completed.');
+		this.areaChoices.each((e) => {
+			const choice = $(this.areaChoices[e]);
+			if (choice.children('.area-container').html() === currentArea) {
+				choice.children('.status-container').html('COMPLETE');
+				choice.addClass('complete');
+			}
+		});
 	}
 
 

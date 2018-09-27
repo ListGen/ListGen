@@ -4,104 +4,96 @@
 
 var signedIn = true;
 
-const navBreakpoint = 800;
+const navBreakpoint = 876;
 const delayMedium = 300;
 const delayFast = 200;
 
-/* Nav Controller
- * ----
- * Controls the top, bottom, and side navs.
- */
-
 class NavController {
+
+	/* Nav Controller */
 	constructor() {
 		this._querySelectors();
 		this._addEventListeners();
-		this._initializeNavs();
+		this._initialize();
 	}
 
-	/* Query Selectors - private
-	 * ---------------
-	 * Selects all elements on nav menus that persist through all screens
-	 */
+	/* Query Selectors */
 	_querySelectors() {
 		this.main = $('main');
-		this.accountPic = $('.account-pic');
-		this.signIn = $('.sign-in');
-
-		this.topNavLinks = $('#top-nav-links-container');
 
 		this.navMenuHeader = $('#nav-menu-header');
-		this.navMenuHeaderIcon = $('#nav-menu-header a');
 		this.navMenuHam = $('#nav-menu-hamburger');
 		this.navMenu = $('#nav-menu');
+
+		this.topNavLinks = $('#tnl-container');
 		this.navMenuLinksSignedIn = $('.nav-menu-links.signed-in div');
 		this.navMenuLinksSignedOut = $('.nav-menu-links.signed-out div');
 	}
 
-	/* Add Event Listeners - private
-	 * ---------------
-	 * Sets event listeners on all nav buttons and menus.
-	 */
+	/* Add Event Listeners */
 	_addEventListeners() {
+		// hide some top bar links when resizing
 		$(window).resize(() => {
 			if (this.main.width() >= navBreakpoint && this.prevWidth < navBreakpoint)
 				this.topNavLinks.show(delayMedium);
 			else if (this.main.width() < navBreakpoint && this.prevWidth > navBreakpoint)
 				this.topNavLinks.hide(delayMedium);
+
+			if (this.navMenu.width()) {
+				const navSize = (this.main.width() >= navBreakpoint) ? '30%' : '80%';
+				this.navMenu.width(navSize);
+				this.navMenuHeader.width(navSize);
+			}
+			
 			this.prevWidth = this.main.width();
 		});
 
-		this.main.click(() => this._toggleNav(false));
-
+		// clicking hamburger toggles nav
 		this.navMenuHam.click(() => {
-			this.navMenuHam.toggleClass('is-active');
+			this.navMenuHam.toggleClass('is-active');					// .is-active specific to hamburger.scss
 			this._toggleNav(this.navMenuHam.hasClass('is-active'));
+		});
+
+		// closes nav menu
+		$('#nav-overlay').click(() => {
+			this._toggleNav(false);
 		});
 	}
 
-	/* Toggle Nav - private
-	 * ---------------
-	 * Opens and closes the nav menu.
-	 *
-	 * @param open bool : true if opening nav, false if closing nav
-	 */
+	/* Toggle Nav */
 	_toggleNav(open) {
 		if (open) {
 			const navSize = (this.main.width() >= navBreakpoint) ? '30%' : '80%';
-			this.main.css('filter', 'brightness(.2)');
+			$('#nav-overlay').fadeIn(500);
 			$('body').css('overflow', 'hidden');
 			this.navMenu.width(navSize);
 			this.navMenuHeader.width(navSize);
-			setTimeout(() => {
-				this.navMenuHeaderIcon.show(delayFast);
-				if (signedIn)
-					staggerShowOrHide(this.navMenuLinksSignedIn);
-				else
-					staggerShowOrHide(this.navMenuLinksSignedOut);
-			}, delayFast);
 			this.topNavLinks.hide(delayFast);
+
+			if (signedIn) 
+				this.navMenuLinksSignedIn.slideDown();
+			else 
+				this.navMenuLinksSignedOut.slideDown();
+
 		} else {
-			this.main.css('filter', 'brightness(1)');
+			$('#nav-overlay').fadeOut(500);
 			$('body').css('overflow', 'initial');
 			this.navMenu.width(0);
 			this.navMenuHeader.width(0);
-			this.navMenuHeaderIcon.hide(delayFast);
-			if (signedIn)
-				staggerShowOrHide(this.navMenuLinksSignedIn, false, true, 15, 75);
-			else
-				staggerShowOrHide(this.navMenuLinksSignedOut, false, true, 15, 75);
+
+			if (signedIn) 
+				this.navMenuLinksSignedIn.slideUp();
+			else 
+				this.navMenuLinksSignedOut.slideUp(500);
+
 			this.navMenuHam.removeClass('is-active');
 			if (this.main.width() >= navBreakpoint)
 				this.topNavLinks.show(delayFast);
 		}
 	}
 
-	/* Initialize App - private
-	 * ---------------
-	 * Initializes all local data for the website.
-	 */
-	_initializeNavs() {
+	/* Initialize */
+	_initialize() {
 		this.prevWidth = this.main.width();
 		if (this.main.width() > navBreakpoint) this.topNavLinks.show();
 	}

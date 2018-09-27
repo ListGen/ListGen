@@ -3,7 +3,7 @@
  */
 
 // local data of session
-var localData = {
+var agentData = {
 	'defaultMLSArea' : 'CARMEL HIGHLANDS',
 	'mlsAreaNames' : ['CARMEL HIGHLANDS', 'PEBBLE BEACH'],
 	'mlsAreas' : {
@@ -11,38 +11,47 @@ var localData = {
 			'sections' : {
 				'Attention Grabber' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Front Graph' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Front Bar' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Top Image' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'City Highlights' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Area Highlights' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Call To Action' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Listings And Sales' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 			},
@@ -111,9 +120,6 @@ var localData = {
 				}
 			],
 			'sectionsComplete' : 0,
-			'editComplete' : false,
-			'mailingComplete' : false,
-			'previewComplete' : false,
 			'totalComplete' : false,
 			'numMailings' : 2,
 			'areaPrice' : 3.2
@@ -126,34 +132,42 @@ var localData = {
 				},
 				'Front Graph' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Front Bar' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Top Image' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'City Highlights' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Area Highlights' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Call To Action' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Listings And Sales' : {
 					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 			},
@@ -219,6 +233,12 @@ var localData = {
 			'areaPrice' : 6.4
 		}
 	},
+	'logo' : '',
+	'brokerage-logo' : '',
+	'return-address' : '',
+	'website' : '',
+	'phone-number' : '',
+	'email-addresses' : '',
 	'totalAddresses' : 8,
 	'totalMailings' : 6,
 	'totalPrice' : 9.60
@@ -250,20 +270,6 @@ const ID_TO_NAME = {
 	'listings-and-sales' : 'Listings And Sales'
 }
 
-// step name to step number
-const STEP_NAME_TO_NUMBER = {
-	'Editor' : 0,
-	'Mailing List' : 1,
-	'Final Preview' : 2
-}
-
-// step name to step number
-const NUMBER_TO_STEP_NAME = {
-	0 : 'Editor',
-	1 : 'Mailing List',
-	2 : 'Final Preview'
-}
-
 // price per mailing standard PMA
 const mailingPrice = 1.6;
 
@@ -274,6 +280,13 @@ const PMA_SIZE = [17, 11];
 const STATUS_COLORS = {
 	'Incomplete' : '#FF3A38',
 	'Complete' : '#33C451',
+};
+
+const WINDOW_HEIGHTS = {
+	'Editor' : 'auto',
+	'Mailing List' : 1000,
+	'Final Preview' : 5000,
+	'Incomplete' : 1000
 };
 
 // mailing list options
@@ -298,6 +311,19 @@ const mailingListOptions = {
 	           <td class="selling-agent"></td>
            </tr>`
 };
+
+function drawImageOnCanvas(img) {
+	let imgData = new Image();
+	let context = img.data('canvas').getContext('2d');
+
+	imgData.onload = () => {
+		context.drawImage(imgData, img.data('left'), img.data('top'), 
+						  img.data('width'), img.data('height'));
+	};
+
+	imgData.src = img.attr('src');
+	return imgData;
+}
 
 function addTooltip(container, message) {
 	container.addClass('tooltip');

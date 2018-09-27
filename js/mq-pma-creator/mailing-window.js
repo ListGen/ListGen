@@ -61,7 +61,7 @@ class MailingWindow {
 		this.blockLinks.click((e) => { 
 			this.blockLinks.each(function() { $(this).removeClass('active') });
 			const type = $($(e.currentTarget).children()[1]).html();
-			if (type === 'Total') {
+			if (type === 'Total Blocked') {
 				this.mailingList.search(); 
 				this.mailingList.filter(function(item) {
 					return item.values().blocked !== '';
@@ -75,7 +75,7 @@ class MailingWindow {
 
 		// opens up the past clients modal
 		this.pastClients.click(() => {
-			$('#modal-overlay').fadeIn(500);
+			$('#mailing-overlay').fadeIn(500);
 			$('#past-clients-modal').fadeIn(500);
 		});
 
@@ -104,14 +104,14 @@ class MailingWindow {
 			item.values({'blocked' : reason});
 			this.currentCheckbox.prop('checked', true);
 			$('#choose-reason').slideUp(200);
-			$('#modal-overlay').fadeOut(200);
+			$('#mailing-overlay').fadeOut(200);
 		});
 
 		// close and uncheck the checkbox
-		$('#modal-overlay').click(() => {
+		$('#mailing-overlay').click(() => {
 			this.currentCheckbox.prop('checked', false);
 			$('#choose-reason').slideUp(200);
-			$('#modal-overlay').fadeOut(200);
+			$('#mailing-overlay').fadeOut(200);
 		});
 	}
 
@@ -132,7 +132,7 @@ class MailingWindow {
 			'Pending Listing' : 0,
 			'Real Estate Agent' : 0,
 			'Returned Mail' : 0,
-			'Total' : 0
+			'Total Blocked' : 0
 		};
 
 		// counts all blocked addresses 
@@ -160,7 +160,7 @@ class MailingWindow {
 				$('#choose-reason').css('top', position.top - 50);
 				$('#choose-reason').css('left', position.left + 40);
 				$('#choose-reason').slideDown(200);
-				$('#modal-overlay').fadeIn(200);
+				$('#mailing-overlay').fadeIn(200);
 			} else {
 				const type = checkbox.next().next().html();
 				this.numBlocked[type]--;
@@ -180,7 +180,7 @@ class MailingWindow {
 			if (currentCheckbox.html() !== '') {
 				currentCheckbox.prev().prev().prop('checked', true);
 				this.numBlocked[currentCheckbox.html()]++;
-				this.numBlocked['Total']++;
+				this.numBlocked['Total Blocked']++;
 			} else {
 				// this.sendingMail++;
 			}
@@ -222,7 +222,7 @@ class MailingWindow {
 		}
 
 		this.areaPrice.html('$' + areaPrice);
-		this.totalPrice.html('$' + localData['totalPrice'].toFixed(2));
+		this.totalPrice.html('$' + agentData['totalPrice'].toFixed(2));
 	}
 
 

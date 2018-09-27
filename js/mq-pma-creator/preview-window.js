@@ -122,7 +122,7 @@ class PreviewWindow {
 		}
 
 		this.totalCharge.append($('<h2>Total for all Mailings</h2>'));
-		this.totalCharge.append($('<div><strong>' + localData['totalMailings'] + '</strong> total mailings &times; $1.60/mailing = <strong>$' + localData['totalPrice'].toFixed(2) + '</strong></div>'));
+		this.totalCharge.append($('<div><strong>' + agentData['totalMailings'] + '</strong> total mailings &times; $1.60/mailing = <strong>$' + agentData['totalPrice'].toFixed(2) + '</strong></div>'));
 
 		this.update();
 	}
