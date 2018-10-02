@@ -4,55 +4,55 @@
 
 // local data of session
 var agentData = {
-	'defaultMLSArea' : 'CARMEL HIGHLANDS',
-	'mlsAreaNames' : ['CARMEL HIGHLANDS', 'PEBBLE BEACH'],
-	'mlsAreas' : {
+	'default-mls-area' : 'CARMEL HIGHLANDS',
+	'mls-area-names' : ['CARMEL HIGHLANDS', 'PEBBLE BEACH'],
+	'mls-areas' : {
 		'CARMEL HIGHLANDS' : {
-			'sections' : {
+			'edit-sections' : {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'City Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Area Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Listings And Sales' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 			},
 			'homeowners' : [
@@ -119,15 +119,46 @@ var agentData = {
 					'past-client' : false
 				}
 			],
-			'sectionsComplete' : 0,
-			'totalComplete' : false,
-			'numMailings' : 2,
-			'areaPrice' : 3.2
+			'final-preview' : {
+				'Attention Grabber' : {
+					'time-confirmed' : ''
+				},
+				'Front Graph' : {
+					'time-confirmed' : ''
+				},
+				'Front Bar' : {
+					'time-confirmed' : ''
+				},
+				'Top Image' : {
+					'time-confirmed' : ''
+				},
+				'City Highlights' : {
+					'time-confirmed' : ''
+				},
+				'Area Highlights' : {
+					'time-confirmed' : ''
+				},
+				'Call To Action' : {
+					'time-confirmed' : ''
+				},
+				'Inside Bar' : {
+					'time-confirmed' : ''
+				},
+				'Listings And Sales' : {
+					'time-confirmed' : ''
+				}
+			},
+			'editor-complete' : false,
+			'mailing-complete' : false,
+			'total-complete' : false,
+			'num-mailings' : 2,
+			'area-price' : 3.2
 		},
 		'PEBBLE BEACH' : {
-			'sections' : {
+			'edit-sections' : {
 				'Attention Grabber' : {
-					'selection' : '../images/home-screen/house6.jpg',
+					'selection' : '',
+					'confirmed-selection' : '',
 					'status' : 'Incomplete'
 				},
 				'Front Graph' : {
@@ -225,23 +256,56 @@ var agentData = {
 					'past-client' : false
 				}
 			],
-			'sectionsComplete' : 0,
-			'editComplete' : false,
-			'mailingComplete' : false,
-			'previewComplete' : false,
-			'numMailings' : 4,
-			'areaPrice' : 6.4
+			'final-preview' : {
+				'Attention Grabber' : {
+					'time-confirmed' : ''
+				},
+				'Front Graph' : {
+					'time-confirmed' : ''
+				},
+				'Front Bar' : {
+					'time-confirmed' : ''
+				},
+				'Top Image' : {
+					'time-confirmed' : ''
+				},
+				'City Highlights' : {
+					'time-confirmed' : ''
+				},
+				'Area Highlights' : {
+					'time-confirmed' : ''
+				},
+				'Call To Action' : {
+					'time-confirmed' : ''
+				},
+				'Inside Bar' : {
+					'time-confirmed' : ''
+				},
+				'Listings And Sales' : {
+					'time-confirmed' : ''
+				}
+			},
+			'editor-complete' : false,
+			'mailing-complete' : false,
+			'total-complete' : false,
+			'num-mailings' : 4,
+			'area-price' : 6.4
 		}
 	},
-	'logo' : '',
-	'brokerage-logo' : '',
-	'return-address' : '',
-	'website' : '',
-	'phone-number' : '',
-	'email-addresses' : '',
-	'totalAddresses' : 8,
-	'totalMailings' : 6,
-	'totalPrice' : 9.60
+	'personal-info' : {
+		'Agent Logo' : '../../images/templates/logo.PNG',
+		'Brokerage Logo' : '../../images/templates/sothebys.png',
+		'Return Address 1' : '16B E Carmel Valley Rd',
+		'Return Address 2' : 'Carmel Valley, CA 93924',
+		'Mailing Address 1' : '',
+		'Mailing Address 2' : '',
+		'Front Website' : 'kylemorrisonhomes.com',
+		'Phone Number' : '831-555-5555',
+		'Email Address' : 'kyle@kylemorrison.com',
+	},
+	'total-addresses' : 8,
+	'total-mailings' : 6,
+	'total-price' : 9.60
 };
 
 // section names to ids
@@ -276,6 +340,9 @@ const mailingPrice = 1.6;
 // W x H in inches of PMA
 const PMA_SIZE = [17, 11];
 
+// Number of sections
+const NUM_SECTIONS = 9;
+
 // colors 
 const STATUS_COLORS = {
 	'Incomplete' : '#FF3A38',
@@ -284,10 +351,25 @@ const STATUS_COLORS = {
 
 const WINDOW_HEIGHTS = {
 	'Editor' : 'auto',
-	'Mailing List' : 1000,
+	'Mailing List' : 1060,
 	'Final Preview' : 5000,
-	'Incomplete' : 1000
+	'Incomplete' : 1060
 };
+
+const MONTHS = {
+	0 : 'Jan',
+	1 : 'Feb',
+	2 : 'Mar',
+	3 : 'Apr',
+	4 : 'May',
+	5 : 'Jun',
+	6 : 'Jul',
+	7 : 'Aug',
+	8 : 'Sep',
+	9 : 'Oct',
+	10 : 'Nov',
+	11 : 'Dec'
+}
 
 // mailing list options
 const mailingListOptions = {
@@ -312,17 +394,30 @@ const mailingListOptions = {
            </tr>`
 };
 
-function drawImageOnCanvas(img) {
-	let imgData = new Image();
-	let context = img.data('canvas').getContext('2d');
+/* Draw Image On Canvas
+ * ---------------------
+ * Draws the source image on the canvas at the specific size and coordinates.
+ */
+function drawImageOnCanvas(src, canvas, left, top, width, height) {
+	let img = new Image();
+	let context = canvas.getContext('2d');
 
-	imgData.onload = () => {
-		context.drawImage(imgData, img.data('left'), img.data('top'), 
-						  img.data('width'), img.data('height'));
+	img.onload = () => {
+		context.drawImage(img, left, top, width, height);
 	};
 
-	imgData.src = img.attr('src');
-	return imgData;
+	img.src = src;
+	return img;
+}
+
+function getDateAndTime() {
+	const date = new Date();
+	const day = date.getDate();
+	const month = MONTHS[date.getMonth()];
+	const year = date.getFullYear();
+	const hour = date.getHours();
+	const minute = date.getMinutes();
+	return month + ' ' + day + ', ' + year + ' at ' + hour + ':' + minute;
 }
 
 function addTooltip(container, message) {

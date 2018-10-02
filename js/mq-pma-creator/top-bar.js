@@ -43,8 +43,6 @@ class TopBar {
 
 		// Switches step
 		this.steps.click((e) => {
-			this.steps.removeClass('selected');
-			$(e.currentTarget).addClass('selected');
 			this.windowCallback($(e.currentTarget).html());
 		});
 	}
@@ -83,6 +81,5 @@ class TopBar {
 			}
 		});
 	}
-
 
 }

@@ -4,10 +4,7 @@
 
 class MailingWindow {
 
-	/* Mailing Window
-	 * ---------------
-	 * Controls the mailing list.
-	 */
+	/* Mailing Window */
 	constructor(completedCallback) {
 		this.completedCallback = completedCallback;
 
@@ -17,16 +14,10 @@ class MailingWindow {
 		this._initialize();
 	}
 
-	/* Query Selectors - private
-	 * ---------------
-	 * Selects all sections of PMA screen.
-	 */
+	/* Query Selectors */
 	_querySelectors() {
-		this.mailingWindow = $('#mailing-window');
 		this.tableHeaderIcons = $('th');
-		this.tableRows = $('tr');
 		this.blockLinks = $('.block-link');
-		this.quickBlockLinks = $('.quick-block-link');
 		this.pastClients = $('#past-clients');
 		this.clearSearch = $('#clear-search');
 		this.approveList = $('#approve-list');
@@ -37,12 +28,8 @@ class MailingWindow {
 		this.totalPrice = $('#final-total-price');
 	}
 
-	/* Add Event Listeners - private
-	 * ---------------
-	 * Sets event listeners.
-	 */
+	/* Add Event Listeners */
 	_addEventListeners() {
-
 		// changes the arrow on the headers when desc / asc 
 		this.tableHeaderIcons.click(function(e) {
 			const arrow = $($($(this).children()[0]).children()[1]);
@@ -88,7 +75,7 @@ class MailingWindow {
 
 		// approves the mailing list
 		this.approveList.click(() => {
-			this.completedCallback();
+			this.completedCallback("Mailing List", true);
 		});
 
 		// chooses the reason for blocking an address
@@ -115,11 +102,7 @@ class MailingWindow {
 		});
 	}
 
-	/* Initialize Mailing List - private
-	 * ---------------
-	 * Initializes the mailing list with all counts of blocked addresses, pricing for the
-	 * number of mailings being sent out.
-	 */
+	/* Initialize */
 	_initialize() {
 		this.mailingList.clear();
 		this.mailingList.add(homeowners);
@@ -208,24 +191,25 @@ class MailingWindow {
 	 * Updates all area prices to reflect the local data.
 	 */
 	_updatePricingBar() {
-		const numMailings = mlsAreas[currentArea]['numMailings'];
-		const areaPrice = mlsAreas[currentArea]['areaPrice'].toFixed(2);
+		const numMailings = mlsAreas[currentArea]['num-mailings'];
+		const areaPrice = mlsAreas[currentArea]['area-price'].toFixed(2);
 		this.areaPriceEq.html('<li>' + numMailings + ' mailings &times; $1.60/mailing = <strong>$' + areaPrice + '</strong></li>');
 
 		for (let area in mlsAreas) {
 			if (area !== currentArea) {
-				const mailings = mlsAreas[area]['numMailings'];
-				const price = mlsAreas[area]['areaPrice'].toFixed(2);
+				const mailings = mlsAreas[area]['num-mailings'];
+				const price = mlsAreas[area]['area-price'].toFixed(2);
 				this.otherAreaPricesEq.append($('<h4>' + area + '</h4>'));
 				this.otherAreaPricesEq.append($('<li>' + mailings + ' mailings &times; $1.60/mailing = <strong>$' + price + '</strong></li>'));
 			}
 		}
 
 		this.areaPrice.html('$' + areaPrice);
-		this.totalPrice.html('$' + agentData['totalPrice'].toFixed(2));
+		this.totalPrice.html('$' + agentData['total-price'].toFixed(2));
 	}
 
 
+	/* Update */
 	update() {
 		this._initialize();
 	}

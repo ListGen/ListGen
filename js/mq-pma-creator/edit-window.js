@@ -5,9 +5,8 @@
 class EditWindow {
 
 	/* Edit Window */
-	constructor(updateCallback, completeCallback) {
+	constructor(updateCallback) {
 		this.updateCallback = updateCallback;
-		this.completeCallback = completeCallback;
 		this._querySelectors();
 		this._initialize();
 	}
@@ -51,45 +50,52 @@ class EditWindow {
 		// draw image onto canvas when clicked
 		$('.edit-content img').click((e) => {
 			const img = $(e.target);
-			const parent = img.closest('.section-tools');
-			const button = parent.children('.complete-btn');
-			const name = ID_TO_NAME[parent.attr('id')];
+			const tools = img.closest('.section-tools');
+			const button = tools.children('.complete-btn');
+			const name = ID_TO_NAME[tools.attr('id')];
 
-			const imgData = drawImageOnCanvas(img);
+			const imgData = drawImageOnCanvas(img.attr('src'), img.data('canvas'), 
+											  img.data('left'), img.data('top'), 
+											  img.data('width'), img.data('height'));
 
-			if (sections[name]['status'] === 'Complete')
-				mlsAreas[currentArea]['sectionsComplete']--;
-			sections[name]['status'] = 'Incomplete';
-			sections[name]['selection'] = imgData.src;
-			parent.removeClass('complete');
+			if (editSections[name]['status'] === 'Complete')
+				this.sectionsComplete--;
+			editSections[name]['status'] = 'Incomplete';
+			editSections[name]['selection'] = imgData.src;
+			tools.css('background-image', 'url(' + imgData.src + ')');
+			tools.removeClass('complete');
 			button.show();
-			console.log(mlsAreas[currentArea]['sectionsComplete']);
+
+			// update everything if section was complete
+			if (this.sectionsComplete + 1 === NUM_SECTIONS) this.updateCallback('Editor', false);
 		});
 
 		// clicking complete updates local data
 		$('.complete-btn').click((e) => {
 			const button = $(e.currentTarget);
-			const parent = button.parent();
-			const editTools = parent.children('.edit-tools');
-			const name = ID_TO_NAME[parent.attr('id')];
+			const tools = button.parent();
+			const editTools = tools.children('.edit-tools');
+			const name = ID_TO_NAME[tools.attr('id')];
 
-			mlsAreas[currentArea]['sectionsComplete']++;
-			sections[name]['status'] = 'Complete';
-			sections[name]['confirmed-selection'] = sections[name]['selection'];
-			parent.addClass('complete');
+			this.sectionsComplete++;
+			editSections[name]['status'] = 'Complete';
+			editSections[name]['confirmed-selection'] = editSections[name]['selection'];
+			tools.addClass('complete');
+			tools.removeClass('active');
 			editTools.slideUp(300);
 			button.hide();
 			$('#edit-overlay').fadeOut(500);
 
-			if (mlsAreas[currentArea]['sectionsComplete'] === 9) this.completeCallback();
+			// update everything if section is now complete
+			if (this.sectionsComplete === NUM_SECTIONS) 
+				this.updateCallback('Editor', true);
 		});
 	}
 
-	/* Initialize Edit Window - private
-	 * ---------------
-	 * Initializes the Edit Window with the Mid-Quarter PMA Template.
-	 */
+	/* Initialize */
 	_initialize() {
+		this.sectionsComplete = 0;
+
 		// Separates template sections
 		const outsideStaticSections = template['Outside']['static-sections'];
 		const outsideEditSections = template['Outside']['edit-sections'];
@@ -98,6 +104,19 @@ class EditWindow {
 		this._populateCanvas(outsideStaticSections, outsideEditSections, this.outsidePage, this.outsideCanvas[0]);
 		this._populateCanvas(insideStaticSections, insideEditSections, this.insidePage, this.insideCanvas[0]);
 		this._addEventListeners();
+
+		// set as complete
+		if (this.sectionsComplete === NUM_SECTIONS) {
+			mlsAreas[currentArea]['editor-complete'] = true;
+			$('#edit-banner').slideDown({
+			  start: function () {
+			    $(this).css({ display: "flex" });
+			    }
+		    });
+		}
+
+		// start with no active sections
+		$('.section-tools').removeClass('active');
 	}
 
 	/* Populate Canvas
@@ -110,25 +129,27 @@ class EditWindow {
 	 * @param canvas HTMLCanvas : canvas to draw on
 	 */
 	_populateCanvas(statics, edits, spread, canvas) {
-		// get context and clear canvas
+		// get context and clear canvas and spread
 		const context = canvas.getContext('2d');
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		context.fillStyle = "white";
 		context.fillRect(0, 0, canvas.width, canvas.height);
+		spread.children().slice(3).remove();
 
 		// Fill all static sections
 		for (let section of statics) {
-			if (section['type'] === 'image') {
-				let img = new Image();
-				img.onload = () => {
-					context.drawImage(img, section['coordinates'][1], section['coordinates'][0],
-									  section['size'][1], section['size'][0]);
-				};
-				img.src = section['src'];
-			} else if (section['type'] === 'text') {
-				context.font = 'bold ' + section['font-size'] + 'px Ubuntu';
-				context.fillStyle = section['font-color'];
-				context.fillText(section['text'], section['coordinates'][1], section['coordinates'][0]);
+			const type = section['type'];
+			let src = (section['agent-specific']) ? personalInfo[section['name']] : section['src'];			
+			for (const coordinate of section['coordinates']) {
+				if (type === 'image') {
+					drawImageOnCanvas(src, canvas, 
+									  coordinate[1], coordinate[0],
+								      section['size'][1], section['size'][0]);
+				} else  if (type === 'text') {
+					context.font = 'bold ' + section['font-size'] + 'px Ubuntu';
+					context.fillStyle = section['font-color'];
+					context.fillText(src, coordinate[1], coordinate[0]);
+				}
 			}
 		}
 
@@ -140,25 +161,35 @@ class EditWindow {
 			div.css('top', (section['top'] / canvas.height * 100) + '%');
 			div.css('left', (section['left'] / canvas.width * 100) + '%');
 
-			div.append(this._makeCompleteButton(section['complete-btn-top'], section['complete-btn-left']));
-			div.append(this._makeeditTools(section['name'],
-											 section['top'], section['left'],
-											 section['height'], section['width'],
-											 section['edit-top'], section['edit-left'],
-											 section['default-choice'], section['system-choices'],
-											 canvas, context));
+			const completeButton = this._makeCompleteButton(section);
+			const editToolsImg = this._makeEditTools(section, canvas);
+			div.append(completeButton);
+			div.append(editToolsImg['editTools']);
+
+			div.css('background-image', 'url(' + editToolsImg['selection'] + ')');
+			editSections[section['name']]['selection'] = editToolsImg['selection'];
+
+			const status = editSections[section['name']]['status'];
+			if (status === 'Complete') { 
+				this.sectionsComplete++;
+				div.addClass('complete');
+			}
 			spread.append(div);
 		}
+
+		spread.append($('<div class="divider"></div>'));
 	}
 
 	/* Make Complete Button
 	 * --------------------------------
 	 * Adds the "Complete" button to the section tools with the according top and left coordinates.
+	 *
+	 * @param section object : section object from template
 	 */
-	_makeCompleteButton(top, left) {
+	_makeCompleteButton(section) {
 		let button = $('<button class="complete-btn">Mark As Complete</button>');
-		button.css('top', top);
-		button.css('left', left);
+		button.css('top', section['complete-btn-top']);
+		button.css('left', section['complete-btn-left']);
 		return button;
 	}
 
@@ -166,39 +197,35 @@ class EditWindow {
 	 * --------------------------------
 	 * Makes the tools consisting of choosing the content for the section
 	 * and the complete button for each section.
+	 *
+	 * @param section object : section object from template
+	 * @param canvas canvas : canvas where which page the current section is located
 	 */
-	_makeeditTools(name, top, left, height, width, editTop, editLeft, 
-		 			 defaultChoice, systemChoices, canvas, context) {
+	_makeEditTools(section, canvas) {
 		let editTools = $('<div class="edit-tools"></div>');
-		editTools.css('top', editTop);
-		editTools.css('left', editLeft);
+		editTools.css('top', section['edit-top']);
+		editTools.css('left', section['edit-left']);
 
-		editTools.append($('<h2>' + name + '</h2>'));
+		// populate selections content
+		editTools.append($('<h2>' + section['name'] + '</h2>'));
 		let editToolsContent = $('<div class="edit-content"></div>');
-		for (let choice of systemChoices) {
+		for (let choice of section['system-choices']) {
 			let newImage = $('<img src="' + choice + '">');
-			newImage.data('top', top);
-			newImage.data('left', left);
-			newImage.data('height', height);
-			newImage.data('width', width);
+			newImage.data('top', section['top']);
+			newImage.data('left', section['left']);
+			newImage.data('height', section['height']);
+			newImage.data('width', section['width']);
 			newImage.data('canvas', canvas);
 			editToolsContent.append(newImage);
 		}
 		editTools.append(editToolsContent);
 
-		let img = new Image();
-		img.onload = () => {
-			context.drawImage(img, left, top, width, height);
-		};
-
-		if (sections[name]['selection'] === '') {
-			img.src = defaultChoice;
-			sections[name]['selection'] = img.src;
-		} else {
-			img.src = sections[name]['selection'];
-		}
+		const src = (editSections[section['name']]['selection'] === '') ? section['default-choice'] : editSections[section['name']]['selection'];
+		const img = drawImageOnCanvas(src, canvas, section['left'], section['top'], section['width'], section['height']);
+		if (editSections[section['name']]['selection'] === '')
+			editSections[section['name']]['selection'] = img.src;
 		
-		return editTools;
+		return {'editTools' : editTools, 'selection' : img.src};
 	}
 
 	
@@ -213,4 +240,13 @@ class EditWindow {
 		this._initialize();
 	}
 
+	/* Click Tools - public
+	 * ---------------
+	 * Triggers a click on the tools for the given step.
+	 *
+	 * @param step string : name of step to trigger click
+	 */
+	clickTools(step) {
+		$('#' + NAME_TO_ID[step]).trigger('click');
+	}
 }
