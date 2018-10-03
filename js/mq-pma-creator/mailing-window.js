@@ -18,7 +18,6 @@ class MailingWindow {
 	_querySelectors() {
 		this.tableHeaderIcons = $('th');
 		this.blockLinks = $('.block-link');
-		this.pastClients = $('#past-clients');
 		this.clearSearch = $('#clear-search');
 		this.approveList = $('#approve-list');
 
@@ -60,12 +59,6 @@ class MailingWindow {
 			$(e.currentTarget).addClass('active');
 		});
 
-		// opens up the past clients modal
-		this.pastClients.click(() => {
-			$('#mailing-overlay').fadeIn(500);
-			$('#past-clients-modal').fadeIn(500);
-		});
-
 		// displays full mailing list
 		this.clearSearch.click(() => { 
 			this.mailingList.search(); 
@@ -82,14 +75,17 @@ class MailingWindow {
 		$('.reason').click((e) => {
 			const reason = $(e.target).html();
 			this.numBlocked[reason]++;
+			this.numBlocked['Total Blocked']++;
 			this._updateBlockedCounts();
 			let item = this.mailingList.get('address-id', this.currentCheckbox.parent()
 												  					  .parent()
 												  					  .siblings('.address-id-container')
 												  					  .children('.address-id')
-												  					  .html());
-			item.values({'blocked' : reason});
+												  					  .html())[0];
+			item.values({blocked : reason});
 			this.currentCheckbox.prop('checked', true);
+			let record = homeowners.findIndex((elem) => elem['address-id'] === item.values()['address-id']);
+			homeowners[record]['blocked'] = reason;
 			$('#choose-reason').slideUp(200);
 			$('#mailing-overlay').fadeOut(200);
 		});
@@ -134,11 +130,11 @@ class MailingWindow {
 	 * Sets the row as blocked and prompts the user to pick a reason, or unblocks the address.
 	 */
 	_setOnChange() {
-		this.blockChecks = $('input:checkbox');
+		this.blockChecks = $('.block-check');
 		this.blockChecks.change((e) => {
 			const checkbox = $(e.target);
+			this.currentCheckbox = checkbox;
 			if (checkbox.is(':checked')) {
-				this.currentCheckbox = checkbox;
 				const position = checkbox.offset();
 				$('#choose-reason').css('top', position.top - 50);
 				$('#choose-reason').css('left', position.left + 40);
@@ -147,8 +143,17 @@ class MailingWindow {
 			} else {
 				const type = checkbox.next().next().html();
 				this.numBlocked[type]--;
+				this.numBlocked['Total Blocked']--;
 				this._updateBlockedCounts();
-				checkbox.next().next().html('');
+				let item = this.mailingList.get('address-id', this.currentCheckbox.parent()
+													  					  .parent()
+													  					  .siblings('.address-id-container')
+													  					  .children('.address-id')
+													  					  .html())[0];
+				item.values({blocked : ''});
+				this.currentCheckbox.prop('checked', false);
+				let record = homeowners.findIndex((elem) => elem['address-id'] === item.values()['address-id']);
+				homeowners[record]['blocked'] = '';
 			}
 		});
 	}

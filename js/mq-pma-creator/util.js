@@ -12,47 +12,47 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'City Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Area Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Listings And Sales' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 			},
 			'homeowners' : [

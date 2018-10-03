@@ -77,7 +77,7 @@ class MainWindow {
 			}
 			
 			if (mlsAreas[currentArea][other]) {
-				previewWindow.enable();
+				if (complete) previewWindow.enable();
 				banner.children('.incomplete-message').hide();
 				banner.children('.complete-message').show();
 			} else {

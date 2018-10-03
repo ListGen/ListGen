@@ -48,7 +48,7 @@ var TEMPLATES =
 					"agent-specific" : true,
 					"font-size" : 12,
 					"font-color" : 'black',
-					"coordinates" : [[.875 * inch, page + 3.25 * inch]]
+					"coordinates" : [[.875 * inch, 3.25 * inch]]
 				},
 				{
 					"name" : "Return Address 2",
@@ -56,14 +56,14 @@ var TEMPLATES =
 					"agent-specific" : true,
 					"font-size" : 12,
 					"font-color" : 'black',
-					"coordinates" : [[1.125 * inch, page + 3.25 * inch]]
+					"coordinates" : [[1.125 * inch, 3.25 * inch]]
 				}, 
 				{
 					"name" : "Postage",
 					"type" : "image",
 					"agent-specific" : false,
 					"src" : "../../../images/templates/postage.PNG",
-					"coordinates" : [[.5 * inch, 7.125 * inch + page]],
+					"coordinates" : [[.5 * inch, 7.125 * inch]],
 					"size" : [inch, inch],
 				},
 				{
@@ -72,14 +72,14 @@ var TEMPLATES =
 					"agent-specific" : true,
 					"font-size" : 12,
 					"font-color" : 'black',
-					"coordinates" : [[5 * inch, page + .5 * inch]]
+					"coordinates" : [[4.125 * inch, .5 * inch]]
 				}
 			],
 			"edit-sections" : [
 				{
 					"name" : "Attention Grabber",
 					"top" : 2 * inch, 
-					"left" : page + .75 * inch,
+					"left" : .75 * inch,
 					"height" : 1.625 * inch,
 					"width" : 3.25 * inch,
 					"edit-top" : -45,
@@ -94,8 +94,8 @@ var TEMPLATES =
 				},
 				{
 					"name" : "Front Graph",
-					"top" : 5.5 * inch, 
-					"left" : page,
+					"top" : 4.625 * inch, 
+					"left" : 0,
 					"height" : 4.25 * inch,
 					"width" : page,
 					"edit-top" : -45,
@@ -110,9 +110,9 @@ var TEMPLATES =
 				},
 				{
 					"name" : "Front Bar",
-					"top" : 10 * inch, 
-					"left" : page + .25 * inch,
-					"height" : .875 * inch,
+					"top" : 9.125 * inch, 
+					"left" : .25 * inch,
+					"height" : 1.75 * inch,
 					"width" : 8 * inch,
 					"edit-top" : -420,
 					"edit-left" : 8 * inch + 5,
@@ -127,7 +127,7 @@ var TEMPLATES =
 				{
 					"name" : "Top Image",
 					"top" : .5 * inch, 
-					"left" : 6.625 * inch,
+					"left" : page + 6.625 * inch,
 					"height" : 1.325 * inch,
 					"width" : 1.125 * inch,
 					"edit-top" : 0,
@@ -143,7 +143,7 @@ var TEMPLATES =
 				{
 					"name" : "City Highlights",
 					"top" : 2 * inch, 
-					"left" : 1.25 * inch,
+					"left" : page + 1.25 * inch,
 					"height" : 3.25 * inch,
 					"width" : 6.5 * inch,
 					"edit-top" : -45,
@@ -159,7 +159,7 @@ var TEMPLATES =
 				{
 					"name" : "Area Highlights",
 					"top" : 5.5 * inch, 
-					"left" : 1.25 * inch,
+					"left" : page + 1.25 * inch,
 					"height" : 3.25 * inch,
 					"width" : 6.5 * inch,
 					"edit-top" : -45,
@@ -175,7 +175,7 @@ var TEMPLATES =
 				{
 					"name" : "Call To Action",
 					"top" : 8.875 * inch, 
-					"left" : .25 * inch,
+					"left" : page + .25 * inch,
 					"height" : 1.625 * inch,
 					"width" : 8 * inch,
 					"edit-top" : -350,
