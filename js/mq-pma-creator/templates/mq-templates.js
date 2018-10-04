@@ -25,7 +25,7 @@ const editSectionSizes = {
 
 var TEMPLATES = 
 { 
-	"mq" : {	
+	"mq-4" : {	
 		"Outside" : {
 			"static-sections" : [
 				{

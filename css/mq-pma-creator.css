@@ -200,20 +200,16 @@ canvas {
       margin: 0;
       padding: 15px; }
   .modal .modal-body {
-    height: 65%;
+    height: 75%;
     padding: 10px;
     background: white;
-    border-top: 5px solid #122D46;
-    border-bottom: 5px solid #122D46;
     border-left: 25px solid #163856;
     border-right: 25px solid #163856; }
   .modal .modal-footer {
-    height: 25%;
+    height: 15%;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
     background: #163856;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
@@ -509,14 +505,13 @@ canvas {
 
 #mailing-window #mailing-list {
   height: 100%;
-  width: 90%;
+  width: 98%;
   display: flex;
   justify-content: space-between;
   padding: 0px; }
   #mailing-window #mailing-list div {
     display: inline-block;
-    margin: 0px;
-    color: #2D2D2D; }
+    margin: 0px; }
     #mailing-window #mailing-list div h2 {
       min-height: 50px;
       margin: 0;
@@ -526,9 +521,10 @@ canvas {
   #mailing-window #mailing-list #edit-bar {
     width: 15%;
     white-space: normal;
-    border-right: 1px solid #163856; }
+    border-right: 1px solid #163856;
+    outline: 1px solid #163856; }
     #mailing-window #mailing-list #edit-bar h3 {
-      min-height: 48px;
+      height: 50px;
       margin: 0;
       padding: 12px;
       font-size: 1.5rem;
@@ -541,7 +537,7 @@ canvas {
       #mailing-window #mailing-list #edit-bar ul li {
         margin: 0 -10px;
         padding: 15px 10px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         cursor: pointer;
         -webkit-transition: 0.3s ;
         -moz-transition: 0.3s ;
@@ -575,8 +571,10 @@ canvas {
         #mailing-window #mailing-list #edit-bar #past-clients h3:hover {
           color: #20527f; }
   #mailing-window #mailing-list #homeowners {
+    height: 100%;
     width: 70%;
-    max-height: 80%; }
+    overflow: hidden;
+    outline: 1px solid #163856; }
     #mailing-window #mailing-list #homeowners #search-bar {
       height: 50px;
       display: flex;
@@ -610,7 +608,7 @@ canvas {
         #mailing-window #mailing-list #homeowners #search-bar .search:focus {
           outline: none;
           background: #d5e9f3; }
-      #mailing-window #mailing-list #homeowners #search-bar button {
+      #mailing-window #mailing-list #homeowners #search-bar #clear-search {
         display: inline-flex;
         align-items: center;
         padding: 5px 20px;
@@ -624,24 +622,24 @@ canvas {
         -webkit-transition: 0.3s ;
         -moz-transition: 0.3s ;
         transition: 0.3s ; }
-        #mailing-window #mailing-list #homeowners #search-bar button span {
+        #mailing-window #mailing-list #homeowners #search-bar #clear-search span {
           margin-left: 5px; }
-        #mailing-window #mailing-list #homeowners #search-bar button:hover {
+        #mailing-window #mailing-list #homeowners #search-bar #clear-search:hover {
           color: #4B9FCB; }
-        #mailing-window #mailing-list #homeowners #search-bar button:focus {
+        #mailing-window #mailing-list #homeowners #search-bar #clear-search:focus {
           outline: 0; }
     #mailing-window #mailing-list #homeowners table {
       width: 100%;
       font-size: 1.1rem;
       border-collapse: collapse;
-      overflow: scroll;
       table-layout: fixed; }
       #mailing-window #mailing-list #homeowners table thead {
+        width: 100%;
         background: #122D46; }
         #mailing-window #mailing-list #homeowners table thead button {
           display: inline-flex;
           align-items: center;
-          padding: 5px 20px;
+          padding: 8px;
           color: #F9F9F9;
           background: inherit;
           border: none;
@@ -656,89 +654,103 @@ canvas {
             color: #4B9FCB; }
           #mailing-window #mailing-list #homeowners table thead button:focus {
             outline: 0; }
-      #mailing-window #mailing-list #homeowners table tr .blocked-container {
-        height: 60px;
-        width: 60px; }
-      #mailing-window #mailing-list #homeowners table tr.disabled {
-        background: #CCCCCC;
-        filter: brightness(0.7); }
-        #mailing-window #mailing-list #homeowners table tr.disabled:active {
-          pointer-events: none; }
-          #mailing-window #mailing-list #homeowners table tr.disabled:active .checkmark {
+      #mailing-window #mailing-list #homeowners table tbody {
+        height: 80%;
+        width: 100%;
+        overflow: auto; }
+        #mailing-window #mailing-list #homeowners table tbody tr .address-id-container .parcel-number {
+          display: block;
+          margin-top: 5px;
+          font-size: .8rem; }
+        #mailing-window #mailing-list #homeowners table tbody tr .blocked-container {
+          height: 60px;
+          width: 60px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+        #mailing-window #mailing-list #homeowners table tbody tr .mailing-address-container div {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+        #mailing-window #mailing-list #homeowners table tbody tr.disabled {
+          background: #CCCCCC;
+          filter: brightness(0.7); }
+          #mailing-window #mailing-list #homeowners table tbody tr.disabled:active {
             pointer-events: none; }
-      #mailing-window #mailing-list #homeowners table tr.blocked {
-        background: white; }
-      #mailing-window #mailing-list #homeowners table tr.client {
-        background: #33C451; }
-      #mailing-window #mailing-list #homeowners table tr td {
-        position: relative;
-        padding: 0 10px;
-        overflow: hidden;
-        border: 1px solid #163856; }
-        #mailing-window #mailing-list #homeowners table tr td .check-container input {
-          position: absolute;
-          opacity: 0; }
-          #mailing-window #mailing-list #homeowners table tr td .check-container input:checked ~ .checkmark {
-            background: #FF3A38; }
-            #mailing-window #mailing-list #homeowners table tr td .check-container input:checked ~ .checkmark:after {
-              display: block; }
-        #mailing-window #mailing-list #homeowners table tr td .check-container .checkmark {
-          height: 30px;
-          width: 30px;
-          position: absolute;
-          top: 15px;
-          left: 5px;
-          cursor: pointer;
-          background: white;
-          border: 1px solid #CCCCCC;
-          -webkit-transition: 0.3s ;
-          -moz-transition: 0.3s ;
-          transition: 0.3s ; }
-          #mailing-window #mailing-list #homeowners table tr td .check-container .checkmark i {
+            #mailing-window #mailing-list #homeowners table tbody tr.disabled:active .checkmark {
+              pointer-events: none; }
+        #mailing-window #mailing-list #homeowners table tbody tr.blocked {
+          background: white; }
+        #mailing-window #mailing-list #homeowners table tbody tr.client {
+          background: #33C451; }
+        #mailing-window #mailing-list #homeowners table tbody tr td {
+          position: relative;
+          padding: 5px;
+          text-align: left;
+          border: 1px solid #163856;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+          #mailing-window #mailing-list #homeowners table tbody tr td button {
+            height: 50px;
+            width: 100%;
+            font-family: 'Ubuntu';
+            font-size: 1.2rem;
+            color: #2D2D2D;
+            background: white;
+            border: none;
+            cursor: pointer;
+            -webkit-transition: 0.3s ;
+            -moz-transition: 0.3s ;
+            transition: 0.3s ; }
+            #mailing-window #mailing-list #homeowners table tbody tr td button:hover {
+              background: #4B9FCB; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container input {
             position: absolute;
-            top: 10%;
-            left: 5%;
-            color: white; }
-        #mailing-window #mailing-list #homeowners table tr td .check-container .blocked {
-          position: absolute;
-          top: 20px;
-          left: 45px; }
-        #mailing-window #mailing-list #homeowners table tr td .check-container:hover input:not(:checked) ~ .checkmark {
-          background: #F9F9F9; }
+            opacity: 0; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark {
+              background: #FF3A38; }
+              #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark:after {
+                display: block; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container .checkmark {
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            top: 15px;
+            left: 5px;
+            cursor: pointer;
+            background: white;
+            border: 1px solid #CCCCCC;
+            -webkit-transition: 0.3s ;
+            -moz-transition: 0.3s ;
+            transition: 0.3s ; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container .checkmark i {
+              position: absolute;
+              top: 10%;
+              left: 5%;
+              color: white; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container .blocked {
+            margin-left: 40px; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container:hover input:not(:checked) ~ .checkmark {
+            background: #F9F9F9; }
   #mailing-window #mailing-list #price-bar {
     width: 15%;
-    color: #2D2D2D;
     text-align: center;
-    border-left: 1px solid #163856; }
+    outline: 1px solid #163856; }
     #mailing-window #mailing-list #price-bar h3 {
-      min-height: 48px;
+      min-height: 50px;
       margin: 0;
       padding: 12px;
       color: white;
       background: #122D46; }
-    #mailing-window #mailing-list #price-bar ul {
-      margin: 0 5px;
-      padding: 0 5px;
-      list-style: none; }
-      #mailing-window #mailing-list #price-bar ul h4 {
-        margin: 10px 0 5px 0;
-        color: #163856; }
-      #mailing-window #mailing-list #price-bar ul li {
-        margin: 0 -10px;
-        padding: 7px 5px;
-        font-size: 1.1rem;
-        -webkit-transition: 0.3s ;
-        -moz-transition: 0.3s ;
-        transition: 0.3s ; }
-        #mailing-window #mailing-list #price-bar ul li.active {
-          background: #4B9FCB; }
-        #mailing-window #mailing-list #price-bar ul li:not(:last-child) {
-          border-bottom: 2px solid #4B9FCB; }
+    #mailing-window #mailing-list #price-bar #area-prices {
+      margin: 10px 20px; }
     #mailing-window #mailing-list #price-bar #approve-list {
-      width: 90%;
+      width: 80%;
       display: inline-flex;
       align-items: center;
-      padding: 5px 0;
+      padding: 10px 0;
       color: #163856;
       background: #33C451;
       border: none;
@@ -971,6 +983,44 @@ canvas {
       padding: 10px;
       font-size: 1.5rem;
       border-bottom: 2px solid #163856; }
+
+.pricing-box {
+  width: 100%;
+  padding: 10px 5px;
+  margin-bottom: 10px !important;
+  font-size: 1.2rem;
+  color: #E50015;
+  background: #F9F9F9;
+  border: 3px solid #E50015; }
+  .pricing-box.current {
+    -webkit-box-shadow: 0 0 20px 0 #E50015;
+    -moz-box-shadow: 0 0 20px 0 #E50015;
+    box-shadow: 0 0 20px 0 #E50015; }
+  .pricing-box.complete {
+    color: #33C451;
+    border-color: #33C451; }
+    .pricing-box.complete.current {
+      -webkit-box-shadow: 0 0 20px 0 #33C451;
+      -moz-box-shadow: 0 0 20px 0 #33C451;
+      box-shadow: 0 0 20px 0 #33C451; }
+    .pricing-box.complete .total {
+      border-color: #33C451; }
+  .pricing-box.total {
+    color: #1e7330;
+    background: #e4f8e8;
+    outline: 2px solid #289c40;
+    -webkit-box-shadow: 0 0 12px 0 #33C451;
+    -moz-box-shadow: 0 0 12px 0 #33C451;
+    box-shadow: 0 0 12px 0 #33C451; }
+    .pricing-box.total .num-mailings {
+      padding-bottom: 10px; }
+  .pricing-box .num-mailings {
+    padding-top: 10px; }
+  .pricing-box .price {
+    padding-bottom: 10px; }
+  .pricing-box .total {
+    padding: 10px 0;
+    border-top: 2px solid #E50015; }
 
 @media screen and (max-width: 1200px) {
   #top-bar {

@@ -105,15 +105,15 @@ class PreviewWindow {
 	 * Initializes the Preview Window with the defaults of the mid-quarter PMA.
 	 */
 	_initializeFinalPreview() {
-		for (let area in mlsAreas) {
-			const numMailings = mlsAreas[area]['num-mailings'];
-			const price = mlsAreas[area]['area-price'].toFixed(2);
-			this.chargePerAreaContainer.append($('<h2>' + area + '</h2>'));
-			this.chargePerAreaContainer.append($('<div><strong>' + numMailings + '</strong> mailings &times; $1.60/mailing = <strong>$' + price + '</strong></div>'));
-		}
+		// for (let area in mlsAreas) {
+		// 	const numMailings = mlsAreas[area]['num-mailings'];
+		// 	const price = mlsAreas[area]['area-price'].toFixed(2);
+		// 	this.chargePerAreaContainer.append($('<h2>' + area + '</h2>'));
+		// 	this.chargePerAreaContainer.append($('<div><strong>' + numMailings + '</strong> mailings &times; $1.60/mailing = <strong>$' + price + '</strong></div>'));
+		// }
 
-		this.totalCharge.append($('<h2>Total for all Mailings</h2>'));
-		this.totalCharge.append($('<div><strong>' + agentData['total-mailings'] + '</strong> total mailings &times; $1.60/mailing = <strong>$' + agentData['total-price'].toFixed(2) + '</strong></div>'));
+		// this.totalCharge.append($('<h2>Total for all Mailings</h2>'));
+		// this.totalCharge.append($('<div><strong>' + agentData['total-mailings'] + '</strong> total mailings &times; $1.60/mailing = <strong>$' + agentData['total-price'].toFixed(2) + '</strong></div>'));
 
 		this.update();
 	}

@@ -2,15 +2,20 @@
  * Author: bhuelga
  */
 
-const creatorType = 'mq';
-const personalInfo = agentData['personal-info'];
-const template = TEMPLATES[creatorType];
-
 var mlsAreas = agentData['mls-areas'];
 var currentArea = agentData['default-mls-area'];
 var editSections = mlsAreas[currentArea]['edit-sections'];
 var homeowners = mlsAreas[currentArea]['homeowners'];
 var currentStep = 'Editor';
+var version = mlsAreas[currentArea]['page-version'];
+
+const creatorType = 'mq-' + version;
+const numSections = NUM_SECTIONS[creatorType];
+
+const personalInfo = agentData['personal-info'];
+const template = TEMPLATES[creatorType];
+
+
 
 class MQPmaCreator {
 
@@ -31,7 +36,9 @@ class MQPmaCreator {
 		this.topBar = new TopBar(this._switchArea, this._setWindow);
 		this.mainWindow = new MainWindow(this._setWindow);
 
-		this._switchArea(currentArea);
+		updateCurrentAreaText();
+		updateCurrentVersionText();
+		this._setWindow(currentStep);
 	}
 
 	/*   CALLBACK FUNCTIONS   */
@@ -49,6 +56,7 @@ class MQPmaCreator {
 		homeowners = mlsAreas[currentArea]['homeowners'];
 
 		updateCurrentAreaText();
+		updateCurrentVersionText();
 		this.mainWindow.update();
 		this._setWindow(currentStep);
 	}

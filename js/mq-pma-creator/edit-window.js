@@ -67,7 +67,7 @@ class EditWindow {
 			button.show();
 
 			// update everything if section was complete
-			if (this.sectionsComplete + 1 === NUM_SECTIONS) this.updateCallback('Editor', false);
+			if (this.sectionsComplete + 1 === numSections) this.updateCallback('Editor', false);
 		});
 
 		// clicking complete updates local data
@@ -87,7 +87,7 @@ class EditWindow {
 			$('#edit-overlay').fadeOut(500);
 
 			// update everything if section is now complete
-			if (this.sectionsComplete === NUM_SECTIONS) 
+			if (this.sectionsComplete === numSections) 
 				this.updateCallback('Editor', true);
 		});
 	}
@@ -106,7 +106,7 @@ class EditWindow {
 		this._addEventListeners();
 
 		// set as complete
-		if (this.sectionsComplete === NUM_SECTIONS) {
+		if (this.sectionsComplete === numSections) {
 			mlsAreas[currentArea]['editor-complete'] = true;
 			$('#edit-banner').slideDown({
 			  start: function () {

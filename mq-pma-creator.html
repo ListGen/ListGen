@@ -111,7 +111,7 @@
 				<nav id="top-bar">
 
 					<div id="pma-mq" class="top-column">
-						<div class="top-title">Mid-Quarter&nbsp;&nbsp;|&nbsp;&nbsp;4 - Page Version</div>
+						<div class="top-title">Mid-Quarter&nbsp;&nbsp;|&nbsp;&nbsp;<span class="insert-current-version"></span> - Page Version</div>
 						<div id="pma">A PRECISION MARKET ANALYSIS</div>
 					</div>
 
@@ -189,11 +189,11 @@
 								<ul>
 									<li class="block-link">
 										(&nbsp;<strong></strong>&nbsp;) 
-										<span>Blocked by Agent</span>
+										<span>Agent-Blocked</span>
 									</li>
 									<li class="block-link">
 										(&nbsp;<strong></strong>&nbsp;) 
-										<span>Blocked by Homeowner</span>
+										<span>Homeowner-Blocked</span>
 									</li>
 									<li class="block-link">
 										(&nbsp;<strong></strong>&nbsp;) 
@@ -228,6 +228,7 @@
 								</div>
 							  	<table>
 							  		<thead>
+		  					  			<th></th>
 							  			<th><button class="sort" data-sort="address-id">
 						  					<span>Address ID</span>
 					  						<i class="material-icons">arrow_drop_down</i>
@@ -240,7 +241,11 @@
 						  					<span>Name</span>
 						  					<i class="material-icons">arrow_drop_down</i>
 						  				</button></th>
-						  				<th><button class="sort" data-sort="address">
+						  				<th><button class="sort" data-sort="mail-address-line-2">
+						  					<span>Mailing Address</span>
+						  					<i class="material-icons">arrow_drop_down</i>
+						  				</button></th>
+						  				<th><button class="sort" data-sort="site-address">
 						  					<span>Site Address</span>
 						  					<i class="material-icons">arrow_drop_down</i>
 						  				</button></th>
@@ -264,19 +269,10 @@
 							</div>
 							<div id="price-bar">
 								<h2></h2>
-								<h3 class="insert-current-area"></h3>
-								<ul id="current-area-price">
+								<h3>Pricing</h3>
+								<div id="area-prices">
 
-								</ul>
-								<h3>Other Owned Areas</h3>
-								<ul id="other-area-prices">
-									
-								</ul>
-								<h3>Total</h3>
-								<ul>
-									<h4>Total for this mailing: <span id="final-area-price"></span></h4>
-									<h4>Estimated total for all mailings: <span id="final-total-price"></span></h4>
-								</ul>
+								</div>
 								<button id="approve-list">
 									<strong>Approve<br><span class="insert-current-area"></span><br>Mailing List</strong>
 								</button>
@@ -411,8 +407,8 @@
 
 			<div id="choose-reason">
 				<h4>Choose a Reason</h4>
-				<h5 class="reason">Blocked by Agent</h5>
-				<h5 class="reason">Blocked by Homeowner</h5>
+				<h5 class="reason">Agent-Blocked</h5>
+				<h5 class="reason">Homeowner-Blocked</h5>
 				<h5 class="reason">Returned Mail</h5>
 			</div>
 
@@ -428,6 +424,19 @@
 
 		<div id="past-clients-modal" class="modal">
 			
+		</div>
+
+		<div id="edit-modal" class="modal">
+			<div class="modal-header">
+				<h1>Edit Address</h1>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button class="close-btn">Cancel</button>
+				<button class="confirm-edit-btn">Confirm</button>
+			</div>
 		</div>
 
 		<div id="final-preview-modal" class="modal">

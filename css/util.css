@@ -196,20 +196,16 @@ canvas {
       margin: 0;
       padding: 15px; }
   .modal .modal-body {
-    height: 65%;
+    height: 75%;
     padding: 10px;
     background: white;
-    border-top: 5px solid #122D46;
-    border-bottom: 5px solid #122D46;
     border-left: 25px solid #163856;
     border-right: 25px solid #163856; }
   .modal .modal-footer {
-    height: 25%;
+    height: 15%;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
     background: #163856;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
