@@ -72,12 +72,16 @@ class TopBar {
 	 * ---------------
 	 * Marks the current area as complete. 
 	 */
-	completeArea() {
+	completeArea(complete) {
+		const status = (complete) ? 'COMPLETE' : 'INCOMPLETE';
 		this.areaChoices.each((e) => {
 			const choice = $(this.areaChoices[e]);
 			if (choice.children('.area-container').html() === currentArea) {
-				choice.children('.status-container').html('COMPLETE');
-				choice.addClass('complete');
+				choice.children('.status-container').html(status);
+				if (complete)
+					choice.addClass('complete');
+				else
+					choice.removeClass('complete');
 			}
 		});
 	}

@@ -5,7 +5,6 @@
 // local data of session
 var agentData = {
 	'default-mls-area' : 'CARMEL HIGHLANDS',
-	'mls-area-names' : ['CARMEL HIGHLANDS', 'PEBBLE BEACH'],
 	'mls-areas' : {
 		'CARMEL HIGHLANDS' : {
 			'page-version' : '4',
@@ -13,47 +12,47 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'City Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Area Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Listings And Sales' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 			},
 			'homeowners' : [
@@ -62,7 +61,7 @@ var agentData = {
 					'name' : 'Brandon Huelga',
 					'mail-address-line-1' : '522 Hannon Ave',
 					'mail-address-line-2' : 'Monterey, CA 93940',
-					'site-address' : '531 Lasuen Mall',
+					'site-address' : '522 Hannon Ave',
 					'last-sale-price' : 1.8,
 					'last-sale-date' : '10/10/2018',
 					'selling-agent' : 'Kyle Morrison',
@@ -73,69 +72,67 @@ var agentData = {
 				{	
 					'address-id' : '0001',
 					'name' : 'Kyle Morrison',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '12 Pine Lane',
+					'mail-address-line-2' : 'Carmel Valley, CA 92924',
 					'site-address' : '18B E Carmel Valley Rd',
 					'last-sale-price' : 2.2,
 					'last-sale-date' : '2/07/2017',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : '',
 					'past-client' : true,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '434-461-888'
 				},
 				{	
 					'address-id' : '0002',
 					'name' : 'Bill Jones',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '1215 Santa Barbara Lane',
+					'mail-address-line-2' : 'Santa Barbara, CA 13441',
 					'site-address' : '1215 Santa Barbara Lane',
 					'last-sale-price' : 6.2,
 					'last-sale-date' : '5/21/2012',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : 'Active Listing',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
-
+					'parcel-number' : '756-122-1252'
 				},
 				{	
 					'address-id' : '0003',
 					'name' : 'Tom Hanks',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '322 Hardy Rd',
+					'mail-address-line-2' : 'Houston, TX 10220',
 					'site-address' : '1992 Wilson Place',
 					'last-sale-price' : 10.875,
 					'last-sale-date' : '6/23/1991',
 					'selling-agent' : 'Meryl Streep',
 					'blocked' : 'Returned Mail',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
-
+					'parcel-number' : '827-357-111'
 				},
 				{	
 					'address-id' : '0004',
 					'name' : 'Mario Luigi',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '12 1st Street',
+					'mail-address-line-2' : 'New York, NY 33044',
 					'site-address' : '1984 Rainbow Rd',
 					'last-sale-price' : .35,
 					'last-sale-date' : '5/21/2013',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : '',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '788-968-944'
 				},
 				{	
 					'address-id' : '0005',
 					'name' : 'Ellen Ripley',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '38 Cedar Ave',
+					'mail-address-line-2' : 'Augusta, ME 33020',
 					'site-address' : '7 Nostrodamus',
 					'last-sale-price' : 22000,
 					'last-sale-date' : '5/25/1979',
 					'selling-agent' : 'Ridley Scott',
 					'blocked' : 'Homeowner-Blocked',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '333-333-554'
 				}
 			],
 			'final-preview' : {
@@ -178,115 +175,114 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'City Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Area Highlights' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Listings And Sales' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 			},
 			'homeowners' : [
 				{	
 					'address-id' : '0000',
 					'name' : 'Steven Wilson',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '422 Oxford Way',
+					'mail-address-line-2' : 'England, UK 23033',
 					'site-address' : '422 Oxford Way',
 					'last-sale-price' : 7.0,
 					'last-sale-date' : '12/10/2013',
 					'selling-agent' : 'Michael Jones',
 					'blocked' : '',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '732-334-412'
 				},
 				{	
 					'address-id' : '0001',
 					'name' : 'Kyle Morrison',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '12 Pine Lane',
+					'mail-address-line-2' : 'Carmel Valley, CA 92924',
 					'site-address' : '18B E Carmel Valley Rd',
 					'last-sale-price' : 2.2,
 					'last-sale-date' : '2/07/2017',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : '',
 					'past-client' : true,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '304-009-800'
 				},
 				{	
 					'address-id' : '0002',
 					'name' : 'Bill Jones',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '1215 Santa Barbara Lane',
+					'mail-address-line-2' : 'Santa Barbara, CA 13441',
 					'site-address' : '1215 Santa Barbara Lane',
 					'last-sale-price' : 6.2,
 					'last-sale-date' : '5/21/2012',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : '',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
-
+					'parcel-number' : '198-039-444'
 				},
 				{	
 					'address-id' : '0003',
 					'name' : 'Tom Hanks',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '38 Cedar Ave',
+					'mail-address-line-2' : 'Augusta, ME 33020',
 					'site-address' : '1992 Wilson Place',
 					'last-sale-price' : 10.875,
 					'last-sale-date' : '6/23/1991',
 					'selling-agent' : 'Meryl Streep',
 					'blocked' : '',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '123-124-142'
 				},
 				{	
 					'address-id' : '0004',
 					'name' : 'Steve Rodgers',
-					'mail-address-line-1' : '522 Hannon Ave',
-					'mail-address-line-2' : 'Monterey, CA 93940',
+					'mail-address-line-1' : '12 Marvel Dr',
+					'mail-address-line-2' : 'Los Angeles, CA 90212',
 					'site-address' : '12 Marvel Dr',
 					'last-sale-price' : 300,
 					'last-sale-date' : '5/28/2015',
 					'selling-agent' : 'Tony Stark',
 					'blocked' : 'Homeowner-Blocked',
 					'past-client' : false,
-					'parcel-number' : '111-332-494'
+					'parcel-number' : '566-665-452'
 				}
 			],
 			'final-preview' : {
@@ -336,7 +332,8 @@ var agentData = {
 		'Email Address' : 'kyle@kylemorrison.com',
 	},
 	'total-mailings' : 0,
-	'total-price' : 0
+	'total-price' : 0,
+	'total-complete' : false
 };
 
 // section names to ids
@@ -476,11 +473,11 @@ function createPricingBox(area, numMailings, price, complete, current) {
 	const approved = (complete) ? 'Mailing List Approved' : 'Mailing List Not Approved';
 	const totalPrice = (total) ? price : numMailings * price;
 	let div = $('<div class="pricing-box"></div>');
-	div.append($('<strong>' + area + '</strong><br>'));
-	div.append($('<div class="num-mailings"><strong>' + numMailings + '</strong> mailings</div><br>'));
-	if (!total) div.append($('<div>&times;</div><br>'));
-	if (!total) div.append($('<div class="price"><strong>$' + price.toFixed(2) + '</strong> / mailing</div><br>'));
-	div.append($('<div class="total">Total: <strong>$' + totalPrice.toFixed(2) + '</strong></div><br>'));
+	div.append($('<strong class="title">' + area + '</strong>'));
+	div.append($('<div class="num-mailings"><strong>' + numMailings + '</strong> mailings</div>'));
+	if (!total) div.append($('<div>&times;</div>'));
+	if (!total) div.append($('<div class="price"><strong>$' + price.toFixed(2) + '</strong> / mailing</div>'));
+	div.append($('<div class="total">Total: <strong>$' + totalPrice.toFixed(2) + '</strong></div>'));
 	if (!total) div.append($('<div class="approved"><strong>' + approved + '</strong></div>'));
 	if (complete) div.addClass('complete');
 	if (current) div.addClass('current');
@@ -497,7 +494,7 @@ function updatePricingBox(box, numMailings, price, complete) {
 		box.addClass('complete');
 	else
 		box.removeClass('complete');
-	box.children('.num-mailings').html('<strong>' + numMailings + ' mailings</strong>');
+	box.children('.num-mailings').html('<strong>' + numMailings + '</strong> mailings');
 	box.children('.total').html('Total: <strong>$' + totalPrice.toFixed(2) + '</strong>');
 	if (!total) box.children('.approved').html('<strong>' + approved + '</strong>');
 }

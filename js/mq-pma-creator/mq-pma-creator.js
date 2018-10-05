@@ -28,13 +28,14 @@ class MQPmaCreator {
 	/* Bind To Callbacks - private */
 	_bindToCallbacks() {
 		this._switchArea = this._switchArea.bind(this);
-		this._setWindow = this._setWindow.bind(this);		
+		this._setWindow = this._setWindow.bind(this);	
+		this._completeArea = this._completeArea.bind(this);			
 	}
 
 	/* Intialize App - private */
 	_initializeApp() {	
 		this.topBar = new TopBar(this._switchArea, this._setWindow);
-		this.mainWindow = new MainWindow(this._setWindow);
+		this.mainWindow = new MainWindow(this._switchArea, this._setWindow, this._completeArea);
 
 		updateCurrentAreaText();
 		updateCurrentVersionText();
@@ -68,6 +69,7 @@ class MQPmaCreator {
 	 * @param step string : 'Editor', 'Mailing List' or 'Final Preview'
 	 */
 	_setWindow(step) {
+		// if (step === currentStep) return;
 		currentStep = step;
 
 		// updates top bar visuals
@@ -80,6 +82,17 @@ class MQPmaCreator {
 
 		this.mainWindow.setWindow(step);
 		window.scrollTo(0, 0);
+	}
+
+	/* Complete Area
+	 * ---------------
+	 * Marks the current area as complete or incomplete and updates Top Bar.
+	 *
+	 * @param complete bool : true if complete, false if incomplete
+	 */
+	_completeArea(complete) {
+		mlsAreas[currentArea]['total-complete'] = complete;
+		this.topBar.completeArea(complete);
 	}
 
 }

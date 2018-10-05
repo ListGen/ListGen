@@ -178,9 +178,8 @@ canvas {
   z-index: 3;
   margin-left: -35%;
   background: #163856;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  border-radius: 60px;
+  border: 6px solid #122D46;
+  outline: 2px solid #163856;
   -webkit-box-shadow: 0 0 100px 0 black;
   -moz-box-shadow: 0 0 100px 0 black;
   box-shadow: 0 0 100px 0 black; }
@@ -188,42 +187,35 @@ canvas {
     height: 10%;
     text-align: center;
     color: white;
-    background: #163856;
-    -webkit-border-radius: 60px;
-    -moz-border-radius: 60px;
-    border-radius: 60px; }
+    background: #163856; }
     .modal .modal-header h1 {
       margin: 0;
       padding: 15px; }
   .modal .modal-body {
     height: 75%;
-    padding: 10px;
     background: white;
     border-left: 25px solid #163856;
     border-right: 25px solid #163856; }
   .modal .modal-footer {
     height: 15%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background: #163856;
-    -webkit-border-radius: 16px;
-    -moz-border-radius: 16px;
-    border-radius: 16px; }
+    background: #163856; }
     .modal .modal-footer button {
       margin-bottom: 20px;
       padding: 20px 60px;
       font-family: 'Ubuntu';
       font-size: 1.5rem;
       background: #33C451;
-      border: none;
-      outline: none;
+      border: 2px solid #289c40;
+      outline: 3px solid #1e7330;
       cursor: pointer;
       -webkit-transition: 0.3s ;
       -moz-transition: 0.3s ;
       transition: 0.3s ; }
       .modal .modal-footer button:hover {
-        background: #6bd882; }
+        background: #57d371; }
     .modal .modal-footer .button-message {
       padding: 5px 0;
       color: white; }

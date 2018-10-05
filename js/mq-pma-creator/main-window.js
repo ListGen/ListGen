@@ -5,8 +5,10 @@
 class MainWindow {
 
 	/* Main Window */
-	constructor(setWindowCallback) {
+	constructor(setAreaCallback, setWindowCallback, completeAreaCallback) {
+		this.setAreaCallback = setAreaCallback;
 		this.setWindowCallback = setWindowCallback;
+		this.completeAreaCallback = completeAreaCallback;
 		this._bindToCallbacks();
 		this._querySelectors();
 		this._addEventListeners();
@@ -33,8 +35,11 @@ class MainWindow {
 	/* Add Event Listeners */
 	_addEventListeners() {
 		// clicking in the complete banner will switch the window
-		$('.step-link').click((e) => {
-			this.setWindowCallback($(e.target).html());
+		$('.complete-banner').click((e) => {
+			const complete = ($(e.currentTarget).attr('id') === 'edit-banner') ? mlsAreas[currentArea]['mailing-complete'] : mlsAreas[currentArea]['editor-complete'];
+			const message = (complete) ? '.complete-message' : '.incomplete-message';
+			const step = $(e.currentTarget).children(message).children('.step-link').html();
+			this.setWindowCallback(step);
 		});
 	}
 
@@ -42,9 +47,9 @@ class MainWindow {
 	_initialize() {
 		this.editWindow = new EditWindow(this._updateStep);
 		this.mailingWindow = new MailingWindow(this._updateStep);
-		this.previewWindow = new PreviewWindow(this._backToEdit);
+		this.previewWindow = new PreviewWindow(this._backToEdit, this.setAreaCallback, this.completeAreaCallback);
 	}
-
+	
 
 	/*   CALLBACKS   */
 

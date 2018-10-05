@@ -5,8 +5,10 @@
 class PreviewWindow {
 
 	/* Preview Window */
-	constructor(backToEditCallback) {
+	constructor(backToEditCallback, setAreaCallback, completeAreaCallback) {
 		this.backToEditCallback = backToEditCallback;
+		this.completeAreaCallback = completeAreaCallback;
+		this.setAreaCallback = setAreaCallback;
 
 		this._querySelectors();
 		this._addEventListeners();
@@ -22,12 +24,9 @@ class PreviewWindow {
 		this.confirmButtons = $('.confirm');
 		this.backToEditButtons = $('.back-to-edit');
 
-		this.openFinalModal = $('#open-final-modal');
-
-		this.chargePerAreaContainer = $('#charge-per-area');
-		this.totalCharge = $('#total-charge');
-		this.finalAcceptBtn = $('#final-accept-btn');
-		this.openThankYouModal = $('#thank-you-modal');
+		this.pricingSummaryBtn = $('#pricing-summary-btn');
+		this.nextAreaBtn = $('#next-area-btn');
+		this.toFinalAcceptBtn = $('#to-final-accept-btn');
 	}
 
 	/* Add Event Listeners */
@@ -54,8 +53,11 @@ class PreviewWindow {
 
 			this.numConfirmed++;
 			// enables confirm modal button
-			if (this.numConfirmed === 9) 
-				this.openFinalModal.removeClass('disabled');
+			if (this.numConfirmed === 9)  {
+				this.pricingSummaryBtn.removeClass('disabled');
+				this.completeAreaCallback(true);
+				this.update();
+			}
 
 			// scroll to next section
 			$('html, body').animate({ scrollTop: $(e.currentTarget).next().offset().top }, 500);
@@ -71,32 +73,34 @@ class PreviewWindow {
 			button.siblings('.confirm').html('Confirm');
 			$(e.currentTarget).siblings('.time-confirmed').html('');
 			mlsAreas[currentArea]['final-preview'][button.siblings('h1').html()]['time-confirmed'] = '';
+			this.pricingSummaryBtn.addClass('disabled');
 
+			this.completeAreaCallback(false);
 			this.backToEditCallback(step);
 		});
 
-		// opens final preview modal
-		this.openFinalModal.click(() => {
+		// opens pricing summary modal
+		this.pricingSummaryBtn.click(() => {
 			$('#modal-overlay').fadeIn(500);
 			$('#final-preview-modal').fadeIn(500);
 		});
 
-		// shows thank you modal
-		this.finalAcceptBtn.click(() => {
-			$('#final-preview-modal').fadeOut(500);
-			$('#thank-you-modal').delay(500).fadeIn(500);
+		// marks the current area as complete and 
+		this.nextAreaBtn.click((e) => {
+			const area = $(e.currentTarget).children('span').html();
+			$('#modal-overlay').fadeOut(500);
+			$('.modal, #preview-image').fadeOut(500);
+			this.setAreaCallback(area);
+		});
+
+		this.toFinalAcceptBtn.click(() => {
+			console.log('All areas complete - go to final accept.');
 		});
 
 		// clicking any close buttons on modals / preview images closes target and overlay
-		$('.close-modal-btn').click(function() {
+		$('.close-modal-btn, #modal-overlay, #preview-image').click(function() {
 			$('#modal-overlay').fadeOut(500);
 			$('.modal, #preview-image').fadeOut(500);
-		});
-
-		// clicking overlay closes open modal/image and overlay
-		$('#modal-overlay, #preview-image').click(function() {
-			$('.modal, #preview-image').fadeOut(500);
-			$('#modal-overlay').fadeOut(500);
 		});
 	}
 
@@ -105,16 +109,6 @@ class PreviewWindow {
 	 * Initializes the Preview Window with the defaults of the mid-quarter PMA.
 	 */
 	_initializeFinalPreview() {
-		// for (let area in mlsAreas) {
-		// 	const numMailings = mlsAreas[area]['num-mailings'];
-		// 	const price = mlsAreas[area]['area-price'].toFixed(2);
-		// 	this.chargePerAreaContainer.append($('<h2>' + area + '</h2>'));
-		// 	this.chargePerAreaContainer.append($('<div><strong>' + numMailings + '</strong> mailings &times; $1.60/mailing = <strong>$' + price + '</strong></div>'));
-		// }
-
-		// this.totalCharge.append($('<h2>Total for all Mailings</h2>'));
-		// this.totalCharge.append($('<div><strong>' + agentData['total-mailings'] + '</strong> total mailings &times; $1.60/mailing = <strong>$' + agentData['total-price'].toFixed(2) + '</strong></div>'));
-
 		this.update();
 	}
 
@@ -123,6 +117,18 @@ class PreviewWindow {
 	/* Update */
 	update() {
 		this.numConfirmed = 0;
+		$('#pricing-summary').empty();
+		$('#pricing-summary-total').empty();
+
+		for (const area in mlsAreas) {
+			const numMailings = mlsAreas[area]['unblocked-mailings'];
+			const price = PRICE_PER_MAILING[mlsAreas[area]['page-version']];
+			const complete = mlsAreas[area]['total-complete'];
+			const current = (area === currentArea);
+			$('#pricing-summary').append(createPricingBox(area, numMailings, price, complete, current));
+		}
+
+		$('#pricing-summary-total').append(createPricingBox(TOTAL_TITLE, agentData['total-mailings'], agentData['total-price'], true, false));
 
 		// previews the image from each step 
 		this.sectionImages.each((e) => {
@@ -156,6 +162,23 @@ class PreviewWindow {
 			this.enable();
 		else
 			this.disable();
+
+		const nextArea = $('#pricing-summary .pricing-box').not('.complete').first().children('.title').html();
+		if (typeof nextArea === 'undefined') {
+			$('#next-area-btn').hide();
+			$('#to-final-accept-btn').show();
+		} else {
+			$('#next-area-btn span').html(nextArea);
+			$('#next-area-btn').show();
+			$('#to-final-accept-btn').hide();
+		}
+
+		$('#pricing-summary .pricing-box').not('.complete').click((e) => {
+			const area = $(e.currentTarget).children('.title').html();
+			$('#modal-overlay').fadeOut(500);
+			$('.modal, #preview-image').fadeOut(500);
+			this.setAreaCallback(area);
+		});
 	}
 
 	/* Enables Final Preview */
