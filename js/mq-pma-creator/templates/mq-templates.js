@@ -7,7 +7,7 @@
  */
 
 // number of pixels per inch
-const inch = 92.65;
+const inch = 100;
 // number of pixels per half-page of PMA
 const page = inch * 8.5;
 
@@ -33,30 +33,27 @@ var TEMPLATES =
 					"type" : "image",
 					"agent-specific" : true,
 					"coordinates" : [[.5 * inch, .5 * inch], [.5 * inch, page + .5 * inch]],
-					"size" : [.5625 * inch, 2.75 * inch]
-				},
-				{
-					"name" : "Brokerage Logo",
-					"type" : "image",
-					"agent-specific" : true,
-					"coordinates" : [[1.0625 * inch, 1.875 * inch], [1.0625 * inch, page + 1.875 * inch]],
-					"size" : [.5625 * inch, 1.375 * inch]
+					"size" : [1 * inch, 2.5 * inch]
 				},
 				{
 					"name" : "Return Address 1",
 					"type" : "text",
 					"agent-specific" : true,
-					"font-size" : 12,
-					"font-color" : 'black',
+					"font-size" : 14,
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : false,
 					"coordinates" : [[.875 * inch, 3.25 * inch]]
 				},
 				{
 					"name" : "Return Address 2",
 					"type" : "text",
 					"agent-specific" : true,
-					"font-size" : 12,
-					"font-color" : 'black',
-					"coordinates" : [[1.125 * inch, 3.25 * inch]]
+					"font-size" : 14,
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : false,
+					"coordinates" : [[1.0625 * inch, 3.25 * inch]]
 				}, 
 				{
 					"name" : "Postage",
@@ -71,8 +68,10 @@ var TEMPLATES =
 					"type" : "text",
 					"agent-specific" : true,
 					"font-size" : 12,
-					"font-color" : 'black',
-					"coordinates" : [[4.125 * inch, .5 * inch]]
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : true,
+					"coordinates" : [[4 * inch, .5 * inch]]
 				}
 			],
 			"edit-sections" : [
@@ -81,20 +80,20 @@ var TEMPLATES =
 					"top" : 2 * inch, 
 					"left" : .75 * inch,
 					"height" : 1.625 * inch,
-					"width" : 3.25 * inch,
+					"width" : 3 * inch,
 					"edit-top" : -45,
 					"edit-left" : 3.25 * inch + 5,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 0,
-					'default-choice' : '../images/home-screen/house2.jpg',
-					'system-choices' : ['../images/home-screen/house1.jpg',
+					'default-choice' : '../images/temp/attention-grabber-1.png',
+					'system-choices' : ['../images/temp/attention-grabber-1.png',
 										'../images/home-screen/house2.jpg',
 										'../images/home-screen/house3.jpg',
 										]
 				},
 				{
 					"name" : "Front Graph",
-					"top" : 4.625 * inch, 
+					"top" : 4.25 * inch, 
 					"left" : 0,
 					"height" : 4.25 * inch,
 					"width" : page,
@@ -102,15 +101,15 @@ var TEMPLATES =
 					"edit-left" : page + 5,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : page - 300,
-					'default-choice' : '../images/home-screen/house3.jpg',
-					'system-choices' : ['../images/home-screen/house2.jpg',
+					'default-choice' : '../images/temp/front-graph-1.png',
+					'system-choices' : ['../images/temp/front-graph-1.png',
 										'../images/home-screen/house3.jpg',
 										'../images/home-screen/house4.jpg',
 										]
 				},
 				{
 					"name" : "Front Bar",
-					"top" : 9.125 * inch, 
+					"top" : 8.75 * inch, 
 					"left" : .25 * inch,
 					"height" : 1.75 * inch,
 					"width" : 8 * inch,
@@ -118,8 +117,8 @@ var TEMPLATES =
 					"edit-left" : 8 * inch + 5,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 8 * inch - 300,
-					'default-choice' : '../images/home-screen/house1.jpg',
-					'system-choices' : ['../images/home-screen/house1.jpg',
+					'default-choice' : '../images/temp/front-bar-1.png',
+					'system-choices' : ['../images/temp/front-bar-1.png',
 										'../images/home-screen/house5.jpg',
 										'../images/home-screen/house6.jpg',
 										]
@@ -127,7 +126,7 @@ var TEMPLATES =
 				{
 					"name" : "Top Image",
 					"top" : .5 * inch, 
-					"left" : page + 6.625 * inch,
+					"left" : page + 6.75 * inch,
 					"height" : 1.325 * inch,
 					"width" : 1.125 * inch,
 					"edit-top" : 0,
@@ -150,8 +149,8 @@ var TEMPLATES =
 					"edit-left" : -305,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 0,
-					'default-choice' : '../images/home-screen/house4.jpg',
-					'system-choices' : ['../images/home-screen/house5.jpg',
+					'default-choice' : '../images/temp/city-highlights-1.png',
+					'system-choices' : ['../images/temp/city-highlights-1.png',
 										'../images/home-screen/house6.jpg',
 										'../images/home-screen/house4.jpg',
 										]
@@ -166,8 +165,8 @@ var TEMPLATES =
 					"edit-left" : -305,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 0,
-					'default-choice' : '../images/home-screen/house4.jpg',
-					'system-choices' : ['../images/home-screen/house4.jpg',
+					'default-choice' : '../images/temp/area-highlights-1.png',
+					'system-choices' : ['../images/temp/area-highlights-1.png',
 										'../images/home-screen/house3.jpg',
 										'../images/home-screen/house1.jpg',
 										]
@@ -182,8 +181,8 @@ var TEMPLATES =
 					"edit-left" : -305,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 0,
-					'default-choice' : '../images/home-screen/house1.jpg',
-					'system-choices' : ['../images/home-screen/house3.jpg',
+					'default-choice' : '../images/temp/call-to-action-1.png',
+					'system-choices' : ['../images/temp/call-to-action-1.png',
 										'../images/home-screen/house6.jpg',
 										'../images/home-screen/house1.jpg',
 										]
@@ -213,8 +212,8 @@ var TEMPLATES =
 					"edit-left" : 7.875 * inch + 5,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 7.875 * inch - 300,
-					'default-choice' : '../images/home-screen/house1.jpg',
-					'system-choices' : ['../images/home-screen/house3.jpg',
+					'default-choice' : '../images/temp/inside-bar-1.png',
+					'system-choices' : ['../images/temp/inside-bar-1.png',
 										'../images/home-screen/house6.jpg',
 										'../images/home-screen/house1.jpg',
 										]
@@ -230,8 +229,8 @@ var TEMPLATES =
 					"edit-left" : -305,
 					"complete-btn-top" : -45,
 					"complete-btn-left" : 0,
-					'default-choice' : '../images/home-screen/house4.jpg',
-					'system-choices' : ['../images/home-screen/house5.jpg',
+					'default-choice' : '../images/temp/listings-and-sales-1.png',
+					'system-choices' : ['../images/temp/listings-and-sales-1.png',
 										'../images/home-screen/house6.jpg',
 										'../images/home-screen/house4.jpg',
 										]

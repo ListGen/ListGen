@@ -12,7 +12,7 @@ class PreviewWindow {
 
 		this._querySelectors();
 		this._addEventListeners();
-		this._initializeFinalPreview();
+		this.update();
 	}
 
 	/* Query Selectors */
@@ -53,10 +53,10 @@ class PreviewWindow {
 
 			this.numConfirmed++;
 			// enables confirm modal button
-			if (this.numConfirmed === 9)  {
+			if (this.numConfirmed === NUM_SECTIONS[creatorType] + 2)  {
 				this.pricingSummaryBtn.removeClass('disabled');
 				this.completeAreaCallback(true);
-				this.update();
+				this._updatePricingSummary();
 			}
 
 			// scroll to next section
@@ -76,7 +76,7 @@ class PreviewWindow {
 			this.pricingSummaryBtn.addClass('disabled');
 
 			this.completeAreaCallback(false);
-			this.backToEditCallback(step);
+			this.backToEditCallback(step, step === 'Outside Page' || step === 'Inside Page');
 		});
 
 		// opens pricing summary modal
@@ -104,19 +104,11 @@ class PreviewWindow {
 		});
 	}
 
-	/* Initialize Preview Window
-	 * ---------------
-	 * Initializes the Preview Window with the defaults of the mid-quarter PMA.
+	/* Update Pricing Summary 
+	 * -----------------------
+	 * Updates the price boxes in the pricing summary modal.
 	 */
-	_initializeFinalPreview() {
-		this.update();
-	}
-
-	/*   PUBLIC   */
-
-	/* Update */
-	update() {
-		this.numConfirmed = 0;
+	_updatePricingSummary() {
 		$('#pricing-summary').empty();
 		$('#pricing-summary-total').empty();
 
@@ -130,13 +122,43 @@ class PreviewWindow {
 
 		$('#pricing-summary-total').append(createPricingBox(TOTAL_TITLE, agentData['total-mailings'], agentData['total-price'], true, false));
 
+		const nextArea = $('#pricing-summary .pricing-box').not('.complete').first().children('.title').html();
+		if (typeof nextArea === 'undefined') {
+			$('#next-area-btn').hide();
+			$('#to-final-accept-btn').show();
+		} else {
+			$('#next-area-btn span').html(nextArea);
+			$('#next-area-btn').show();
+			$('#to-final-accept-btn').hide();
+		}
+
+		$('#pricing-summary .pricing-box').not('.complete').click((e) => {
+			const area = $(e.currentTarget).children('.title').html();
+			$('#modal-overlay').fadeOut(500);
+			$('.modal, #preview-image').fadeOut(500);
+			this.setAreaCallback(area);
+		});
+	}
+
+	/*   PUBLIC   */
+
+	/* Update */
+	update() {
+		this.numConfirmed = 0;
+
 		// previews the image from each step 
 		this.sectionImages.each((e) => {
 			let img = $(this.sectionImages[e])
 			let nameID = $(img).parent().attr('id');
 			const name = ID_TO_NAME[nameID.substr(0, nameID.length - 8)];
+			if (name === 'Outside Page') {
+				makePageImage(img, name, '#outside-page');
+			} else if (name === 'Inside Page') {
+				makePageImage(img, name, '#inside-page');
+			} else {
+				img.css('background-image', 'url(' + editSections[name]['confirmed-selection'] + ')');
+			}
 
-			img.css('background-image', 'url(' + editSections[name]['confirmed-selection'] + ')');
 		});
 
 		// update each of the preview spreads with the status
@@ -163,22 +185,23 @@ class PreviewWindow {
 		else
 			this.disable();
 
-		const nextArea = $('#pricing-summary .pricing-box').not('.complete').first().children('.title').html();
-		if (typeof nextArea === 'undefined') {
-			$('#next-area-btn').hide();
-			$('#to-final-accept-btn').show();
-		} else {
-			$('#next-area-btn span').html(nextArea);
-			$('#next-area-btn').show();
-			$('#to-final-accept-btn').hide();
+		this._updatePricingSummary();
+
+		function makePageImage(img, name, pageID) {
+			// let clone = $('.edit-window').first().clone();
+			// clone.append($(page))
+			// clone.css('position', 'absolute');
+			// clone.css('top', $('body').height());
+			// $('body').append(clone);
+			html2canvas($(pageID)[0], {
+				onrendered: (canvas) => {
+					// clone.css('display', 'initial');
+					img.css('background-image', 'url(' + canvas.toDataURL('image/png') + ')');
+					// clone.css('display', 'none');
+				}
+			});
 		}
 
-		$('#pricing-summary .pricing-box').not('.complete').click((e) => {
-			const area = $(e.currentTarget).children('.title').html();
-			$('#modal-overlay').fadeOut(500);
-			$('.modal, #preview-image').fadeOut(500);
-			this.setAreaCallback(area);
-		});
 	}
 
 	/* Enables Final Preview */

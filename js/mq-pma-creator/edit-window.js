@@ -5,8 +5,9 @@
 class EditWindow {
 
 	/* Edit Window */
-	constructor(updateCallback) {
+	constructor(updateCallback, completeCallback) {
 		this.updateCallback = updateCallback;
+		this.completeCallback = completeCallback;
 		this._querySelectors();
 		this._initialize();
 	}
@@ -14,9 +15,7 @@ class EditWindow {
 	/* Query Selectors */
 	_querySelectors() {
 		this.outsidePage = $('#outside-page');
-		this.outsideCanvas = $('#outside-canvas');
 		this.insidePage = $('#inside-page');
-		this.insideCanvas = $('#inside-canvas');
 	}
 
 	/* Add Event Listeners */
@@ -54,15 +53,11 @@ class EditWindow {
 			const button = tools.children('.complete-btn');
 			const name = ID_TO_NAME[tools.attr('id')];
 
-			const imgData = drawImageOnCanvas(img.attr('src'), img.data('canvas'), 
-											  img.data('left'), img.data('top'), 
-											  img.data('width'), img.data('height'));
-
 			if (editSections[name]['status'] === 'Complete')
 				this.sectionsComplete--;
 			editSections[name]['status'] = 'Incomplete';
-			editSections[name]['selection'] = imgData.src;
-			tools.css('background-image', 'url(' + imgData.src + ')');
+			editSections[name]['selection'] = img.attr('src');
+			tools.css('background-image', 'url(' + img.attr('src') + ')');
 			tools.removeClass('complete');
 			button.show();
 
@@ -101,8 +96,8 @@ class EditWindow {
 		const outsideEditSections = template['Outside']['edit-sections'];
 		const insideStaticSections = template['Inside']['static-sections'];
 		const insideEditSections = template['Inside']['edit-sections'];
-		this._populateCanvas(outsideStaticSections, outsideEditSections, this.outsidePage, this.outsideCanvas[0]);
-		this._populateCanvas(insideStaticSections, insideEditSections, this.insidePage, this.insideCanvas[0]);
+		this._populateSpread(outsideStaticSections, outsideEditSections, this.outsidePage);
+		this._populateSpread(insideStaticSections, insideEditSections, this.insidePage);
 		this._addEventListeners();
 
 		// set as complete
@@ -126,15 +121,10 @@ class EditWindow {
 	 * @param statics object-list : objects from mq-templates.js
 	 * @param edits object-list : objects from mq-templates.js
 	 * @param spread HTMLDiv : container of canvas
-	 * @param canvas HTMLCanvas : canvas to draw on
 	 */
-	_populateCanvas(statics, edits, spread, canvas) {
+	_populateSpread(statics, edits, spread) {
 		// get context and clear canvas and spread
-		const context = canvas.getContext('2d');
-		context.clearRect(0, 0, canvas.width, canvas.height);
-		context.fillStyle = "white";
-		context.fillRect(0, 0, canvas.width, canvas.height);
-		spread.children().slice(3).remove();
+		spread.children().slice(2).remove();
 
 		// Fill all static sections
 		for (let section of statics) {
@@ -142,13 +132,25 @@ class EditWindow {
 			let src = (section['agent-specific']) ? personalInfo[section['name']] : section['src'];			
 			for (const coordinate of section['coordinates']) {
 				if (type === 'image') {
-					drawImageOnCanvas(src, canvas, 
-									  coordinate[1], coordinate[0],
-								      section['size'][1], section['size'][0]);
+					let img = $(new Image());
+					img.attr('src', src);
+					img.css('position', 'absolute');
+					img.css('top', coordinate[0]);
+					img.css('left', coordinate[1]);
+					img.css('height', section['size'][0]);
+					img.css('width', section['size'][1]);
+					spread.append(img);
 				} else  if (type === 'text') {
-					context.font = 'bold ' + section['font-size'] + 'px Ubuntu';
-					context.fillStyle = section['font-color'];
-					context.fillText(src, coordinate[1], coordinate[0]);
+					let div = $('<div>' + src + '</div>');
+					div.css('position', 'absolute');
+					div.css('top', coordinate[0]);
+					div.css('left', coordinate[1]);
+					div.css('font-family', section['font-family']);
+					div.css('font-size', section['font-size']);
+					div.css('font-weight', 'bold');
+					div.css('color', section['font-color']);
+					if (section['capitalize']) div.css('text-transform', 'uppercase');
+					spread.append(div);
 				}
 			}
 		}
@@ -158,11 +160,11 @@ class EditWindow {
 			let div = $('<div id="' + NAME_TO_ID[section['name']] + '" class="section-tools"></div>');
 			div.height(section['height']);
 			div.width(section['width']);
-			div.css('top', (section['top'] / canvas.height * 100) + '%');
-			div.css('left', (section['left'] / canvas.width * 100) + '%');
+			div.css('top', section['top']);
+			div.css('left', section['left']);
 
 			const completeButton = this._makeCompleteButton(section);
-			const editToolsImg = this._makeEditTools(section, canvas);
+			const editToolsImg = this._makeEditTools(section, spread);
 			div.append(completeButton);
 			div.append(editToolsImg['editTools']);
 
@@ -177,7 +179,7 @@ class EditWindow {
 			spread.append(div);
 		}
 
-		spread.append($('<div class="divider"></div>'));
+		spread.append($('<div class="page-divider"></div>'));
 	}
 
 	/* Make Complete Button
@@ -201,7 +203,7 @@ class EditWindow {
 	 * @param section object : section object from template
 	 * @param canvas canvas : canvas where which page the current section is located
 	 */
-	_makeEditTools(section, canvas) {
+	_makeEditTools(section, spread) {
 		let editTools = $('<div class="edit-tools"></div>');
 		editTools.css('top', section['edit-top']);
 		editTools.css('left', section['edit-left']);
@@ -215,17 +217,16 @@ class EditWindow {
 			newImage.data('left', section['left']);
 			newImage.data('height', section['height']);
 			newImage.data('width', section['width']);
-			newImage.data('canvas', canvas);
+			newImage.data('spread', spread);
 			editToolsContent.append(newImage);
 		}
 		editTools.append(editToolsContent);
 
 		const src = (editSections[section['name']]['selection'] === '') ? section['default-choice'] : editSections[section['name']]['selection'];
-		const img = drawImageOnCanvas(src, canvas, section['left'], section['top'], section['width'], section['height']);
 		if (editSections[section['name']]['selection'] === '')
-			editSections[section['name']]['selection'] = img.src;
+			editSections[section['name']]['selection'] = src;
 		
-		return {'editTools' : editTools, 'selection' : img.src};
+		return {'editTools' : editTools, 'selection' : src};
 	}
 
 	

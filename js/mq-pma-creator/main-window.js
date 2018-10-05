@@ -25,7 +25,7 @@ class MainWindow {
 	/* Query Selectors */
 	_querySelectors() {
 		this.mainWindow = $('#main-window');
-		this.editSubWindow = $('#edit-window');
+		this.editSubWindow = $('.edit-window');
 		this.mailingSubWindow = $('#mailing-window');
 		this.previewSubWindow = $('#preview-window');
 		this.editBanner = $('#edit-banner');
@@ -45,11 +45,11 @@ class MainWindow {
 
 	/* Intialize Sections */
 	_initialize() {
-		this.editWindow = new EditWindow(this._updateStep);
+		this.editWindow = new EditWindow(this._updateStep, this.completeAreaCallback);
 		this.mailingWindow = new MailingWindow(this._updateStep);
 		this.previewWindow = new PreviewWindow(this._backToEdit, this.setAreaCallback, this.completeAreaCallback);
 	}
-	
+
 
 	/*   CALLBACKS   */
 
@@ -96,11 +96,12 @@ class MainWindow {
 	 * ---------------
 	 * Sends the window back to the Editor and triggers a click on the corresponding step.
 	 *
-	 * @param step string : name of the step agent is going back to
+	 * @param step string : name of the step agent is going back to edit
+	 * @param full bool : true if a specific step should be opened
 	 */
-	_backToEdit(step) {
+	_backToEdit(step, full) {
 		this.setWindowCallback('Editor');
-		this.editWindow.clickTools(step);
+		if (!full) this.editWindow.clickTools(step);
 	}
 
 	/*   PUBLIC   */

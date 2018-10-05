@@ -12,12 +12,12 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete'
+					'status' : 'Incomplete'
 				},
 				'Front Bar' : {
 					'selection' : '',
@@ -161,6 +161,12 @@ var agentData = {
 					'time-confirmed' : ''
 				},
 				'Listings And Sales' : {
+					'time-confirmed' : ''
+				},
+				'Outside Page' : {
+					'time-confirmed' : ''
+				},
+				'Inside Page' : {
 					'time-confirmed' : ''
 				}
 			},
@@ -312,12 +318,18 @@ var agentData = {
 				},
 				'Listings And Sales' : {
 					'time-confirmed' : ''
+				},
+				'Outside Page' : {
+					'time-confirmed' : ''
+				},
+				'Inside Page' : {
+					'time-confirmed' : ''
 				}
 			},
 			'editor-complete' : false,
 			'mailing-complete' : false,
 			'total-complete' : false,
-			'unblocked-mailings' : 4
+			'unblocked-mailings' : 0
 		}
 	},
 	'personal-info' : {
@@ -346,7 +358,9 @@ const NAME_TO_ID = {
 	'Area Highlights' : 'area-highlights',
 	'Call To Action' : 'call-to-action',
 	'Inside Bar' : 'inside-bar',
-	'Listings And Sales' : 'listings-and-sales'
+	'Listings And Sales' : 'listings-and-sales',
+	'Outside Page' : 'outside-page',
+	'Inside Page' : 'inside-page'
 }
 
 // section ids to names
@@ -359,11 +373,10 @@ const ID_TO_NAME = {
 	'area-highlights' : 'Area Highlights',
 	'call-to-action' : 'Call To Action',
 	'inside-bar' : 'Inside Bar',
-	'listings-and-sales' : 'Listings And Sales'
+	'listings-and-sales' : 'Listings And Sales',
+	'outside-page' : 'Outside Page',
+	'inside-page' : 'Inside Page'
 }
-
-// price per mailing standard PMA
-const mailingPrice = 1.6;
 
 // W x H in inches of PMA
 const PMA_SIZE = [17, 11];

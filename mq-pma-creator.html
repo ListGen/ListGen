@@ -155,14 +155,11 @@
 						<div class="incomplete-message">Click to finish <div class="step-link">Editor</div></div>
 					</div>
 					
-					<div id="edit-window" class="sub-window">
+					<div class="edit-window sub-window">
 
 						<div id="outside-page" class="spread edit-spread">
 							<span id="front-page-title" class="page-title">Front Page</span>
 							<span id="back-page-title" class="page-title">Back Page</span>
-							<canvas id="outside-canvas" class="edit-canvas" width="1575" height="1019">
-
-							</canvas>
 							<!-- EDIT SECTIONS -->
 						</div>
 						
@@ -170,9 +167,6 @@
 						<div id="inside-page" class="spread edit-spread">
 							<span id="inside-left-title" class="page-title">Inside Page - Left</span>
 							<span id="inside-right-title" class="page-title">Inside Page - Right</span>
-							<canvas id="inside-canvas" class="edit-canvas" width="1575" height="1019">
-								
-							</canvas>
 							<!-- EDIT SECTIONS -->
 						</div>
 
@@ -378,6 +372,26 @@
 									<span class="click-to-enlarge">Click section to enlarge.</span>
 								</div>
 							</div>
+							<div id="outside-page-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Outside Page</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
+							<div id="inside-page-preview" class="preview-spread">
+								<div class="preview-image"></div>
+								<div class="preview-section-options">
+									<span class="time-confirmed"></span>
+									<h1>Inside Page</h1>
+									<button class="confirm">Confirm</button>
+									<button class="back-to-edit">Back to Edit</button>
+									<span class="click-to-enlarge">Click section to enlarge.</span>
+								</div>
+							</div>
 							<button id="pricing-summary-btn" class="disabled">
 								Continue
 							</button>
@@ -507,6 +521,7 @@
 	<!-- build:js js/main.min.js -->
 	<script src="js/util.js" defer="defer"></script>
 	<script src="js/nav-controller.js" defer="defer"></script>
+	<script src="js/plugins/html2canvas.min.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/templates/mq-templates.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/util.js" defer="defer"></script>
 	<script src="js/mq-pma-creator/top-bar.js" defer="defer"></script>
