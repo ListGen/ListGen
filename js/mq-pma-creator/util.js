@@ -395,6 +395,18 @@ const WINDOW_HEIGHTS = {
 	'Incomplete' : 1060
 };
 
+const EDIT_BREAKPOINTS = [2500, 1900, 1450, 1200, 800, 700, 550];
+
+const POS_RATIOS = {
+	2500 : 1,
+	1900 : .82,
+	1450 : .64,
+	1200 : .45,
+	800 : .36,
+	700 : .27,
+	550 : .18
+}
+
 // number of sections depending on type
 const NUM_SECTIONS = {
 	'mq-4' : 9
@@ -450,34 +462,20 @@ const mailingListOptions = {
            </tr>`
 };
 
-/* Draw Image On Canvas
- * ---------------------
- * Draws the source image on the canvas at the specific size and coordinates.
- */
-function drawImageOnCanvas(src, canvas, left, top, width, height) {
-	let img = new Image();
-	let context = canvas.getContext('2d');
-
-	img.onload = () => {
-		context.drawImage(img, left, top, width, height);
-	};
-
-	img.src = src;
-	return img;
-}
-
 /* Returns the current date and time in a readable fashion - rounded to the minute */
 function getDateAndTime() {
 	const date = new Date();
 	const day = date.getDate();
 	const month = MONTHS[date.getMonth()];
 	const year = date.getFullYear();
-	const hour = date.getHours();
-	const minute = date.getMinutes();
+	let hour = date.getHours();
+	let minute = date.getMinutes();
+	if (hour < 10) hour = '0' + hour;
+	if (minute < 10) minute = '0' + minute;
 	return month + ' ' + day + ', ' + year + ' at ' + hour + ':' + minute;
 }
 
-
+// Title of the total pricing box
 const TOTAL_TITLE = 'All Approved Mailings';
 
 /* Creates a box holding all pricing information of the current area */
@@ -498,7 +496,7 @@ function createPricingBox(area, numMailings, price, complete, current) {
 	return div;
 }
 
-/* Updates the pricing box with a new number of mailings and therefore total cost */
+/* Updates the pricing box with a new number of mailings and total cost */
 function updatePricingBox(box, numMailings, price, complete) {
 	const approved = (complete) ? 'Mailing List Approved' : 'Mailing List Not Approved';
 	const total = box.hasClass('total');
@@ -516,6 +514,7 @@ function addTooltip(container, message) {
 	container.addClass('tooltip');
 	container.append($('<div class="tooltiptext">' + message + '</div>'));
 }
+
 
 // Updates all text on the creator with the current information
 function updateCurrentAreaText() { $('.insert-current-area').html(currentArea); }

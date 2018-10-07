@@ -5,9 +5,9 @@
 class MailingWindow {
 
 	/* Mailing Window */
-	constructor(completedCallback) {
+	constructor(completedCallback, completeAreaCallback) {
 		this.completedCallback = completedCallback;
-
+		this.completeAreaCallback = completeAreaCallback;
 		this.mailingList = new List('homeowners', mailingListOptions);
 		this._querySelectors();
 		this._addEventListeners();
@@ -230,6 +230,7 @@ class MailingWindow {
 		}
 		this.approveList.show();
 		this.completedCallback("Mailing List", false);
+		this.completeAreaCallback(false);
 	}
 
 	/* Update */

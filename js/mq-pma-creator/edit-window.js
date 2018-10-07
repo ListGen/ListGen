@@ -5,11 +5,13 @@
 class EditWindow {
 
 	/* Edit Window */
-	constructor(updateCallback, completeCallback) {
+	constructor(updateCallback, completeAreaCallback) {
 		this.updateCallback = updateCallback;
-		this.completeCallback = completeCallback;
+		this.completeAreaCallback = completeAreaCallback;
+		this.breakpoints = {'current' : 2500, 'previous' : 2500};
 		this._querySelectors();
-		this._initialize();
+		this._updateBreakpoints();
+		this.update();
 	}
 
 	/* Query Selectors */
@@ -63,6 +65,7 @@ class EditWindow {
 
 			// update everything if section was complete
 			if (this.sectionsComplete + 1 === numSections) this.updateCallback('Editor', false);
+			this.completeAreaCallback(false);
 		});
 
 		// clicking complete updates local data
@@ -82,36 +85,22 @@ class EditWindow {
 			$('#edit-overlay').fadeOut(500);
 
 			// update everything if section is now complete
-			if (this.sectionsComplete === numSections) 
+			if (this.sectionsComplete === numSections) {
+				setTimeout(() => {
+					html2canvas($('#outside-page')[0]).then(canvas => {
+						spreadCopies[0] = canvas.toDataURL('image/png');
+					});
+					html2canvas($('#inside-page')[0]).then(canvas => {
+						spreadCopies[1] = canvas.toDataURL('image/png');
+					});
+				}, 350);
 				this.updateCallback('Editor', true);
+			}
 		});
-	}
 
-	/* Initialize */
-	_initialize() {
-		this.sectionsComplete = 0;
-
-		// Separates template sections
-		const outsideStaticSections = template['Outside']['static-sections'];
-		const outsideEditSections = template['Outside']['edit-sections'];
-		const insideStaticSections = template['Inside']['static-sections'];
-		const insideEditSections = template['Inside']['edit-sections'];
-		this._populateSpread(outsideStaticSections, outsideEditSections, this.outsidePage);
-		this._populateSpread(insideStaticSections, insideEditSections, this.insidePage);
-		this._addEventListeners();
-
-		// set as complete
-		if (this.sectionsComplete === numSections) {
-			mlsAreas[currentArea]['editor-complete'] = true;
-			$('#edit-banner').slideDown({
-			  start: function () {
-			    $(this).css({ display: "flex" });
-			    }
-		    });
-		}
-
-		// start with no active sections
-		$('.section-tools').removeClass('active');
+		$(window).resize(() => {
+			this._updateBreakpoints();
+		});
 	}
 
 	/* Populate Canvas
@@ -122,9 +111,9 @@ class EditWindow {
 	 * @param edits object-list : objects from mq-templates.js
 	 * @param spread HTMLDiv : container of canvas
 	 */
-	_populateSpread(statics, edits, spread) {
+	_populateSpread(statics, edits, spread, scale) {
 		// get context and clear canvas and spread
-		spread.children().slice(2).remove();
+		spread.empty();
 
 		// Fill all static sections
 		for (let section of statics) {
@@ -135,18 +124,18 @@ class EditWindow {
 					let img = $(new Image());
 					img.attr('src', src);
 					img.css('position', 'absolute');
-					img.css('top', coordinate[0]);
-					img.css('left', coordinate[1]);
-					img.css('height', section['size'][0]);
-					img.css('width', section['size'][1]);
+					img.css('top', coordinate[0] * scale);
+					img.css('left', coordinate[1] * scale);
+					img.css('height', section['size'][0] * scale);
+					img.css('width', section['size'][1] * scale);
 					spread.append(img);
 				} else  if (type === 'text') {
 					let div = $('<div>' + src + '</div>');
 					div.css('position', 'absolute');
-					div.css('top', coordinate[0]);
-					div.css('left', coordinate[1]);
+					div.css('top', coordinate[0] * scale);
+					div.css('left', coordinate[1] * scale);
 					div.css('font-family', section['font-family']);
-					div.css('font-size', section['font-size']);
+					div.css('font-size', section['font-size'] * scale);
 					div.css('font-weight', 'bold');
 					div.css('color', section['font-color']);
 					if (section['capitalize']) div.css('text-transform', 'uppercase');
@@ -158,13 +147,13 @@ class EditWindow {
 		// Fill all editable sections
 		for (let section of edits) {
 			let div = $('<div id="' + NAME_TO_ID[section['name']] + '" class="section-tools"></div>');
-			div.height(section['height']);
-			div.width(section['width']);
-			div.css('top', section['top']);
-			div.css('left', section['left']);
+			div.height(section['height'] * scale);
+			div.width(section['width'] * scale);
+			div.css('top', section['top'] * scale);
+			div.css('left', section['left'] * scale);
 
-			const completeButton = this._makeCompleteButton(section);
-			const editToolsImg = this._makeEditTools(section, spread);
+			const completeButton = this._makeCompleteButton(section, scale);
+			const editToolsImg = this._makeEditTools(section, spread, scale);
 			div.append(completeButton);
 			div.append(editToolsImg['editTools']);
 
@@ -188,10 +177,10 @@ class EditWindow {
 	 *
 	 * @param section object : section object from template
 	 */
-	_makeCompleteButton(section) {
+	_makeCompleteButton(section, scale) {
 		let button = $('<button class="complete-btn">Mark As Complete</button>');
-		button.css('top', section['complete-btn-top']);
-		button.css('left', section['complete-btn-left']);
+		button.css('top', -40);
+		button.css('left', 0);
 		return button;
 	}
 
@@ -203,10 +192,10 @@ class EditWindow {
 	 * @param section object : section object from template
 	 * @param canvas canvas : canvas where which page the current section is located
 	 */
-	_makeEditTools(section, spread) {
+	_makeEditTools(section, spread, scale) {
 		let editTools = $('<div class="edit-tools"></div>');
-		editTools.css('top', section['edit-top']);
-		editTools.css('left', section['edit-left']);
+		editTools.css('top', section['edit-top'] * scale);
+		editTools.css('left', section['edit-left'] * scale);
 
 		// populate selections content
 		editTools.append($('<h2>' + section['name'] + '</h2>'));
@@ -229,6 +218,20 @@ class EditWindow {
 		return {'editTools' : editTools, 'selection' : src};
 	}
 
+	/* Sets the correct scaling */
+	_updateBreakpoints() {
+		const width = $(window).width();
+		this.breakpoints['previous'] = this.breakpoints['current'];
+		for (const bp of EDIT_BREAKPOINTS) {
+			if (width <= bp) {
+				this.breakpoints['current'] = bp;
+			}
+		}
+		if (this.breakpoints['previous'] != this.breakpoints['current']) {
+			console.log(this.breakpoints['current']);
+			this.update();
+		}
+	}
 	
 
 	/*   PUBLIC   */
@@ -238,7 +241,30 @@ class EditWindow {
 	 * Changes all sections to reflect a different area.
 	 */
 	update() {
-		this._initialize();
+		this.sectionsComplete = 0;
+
+		// Separates template sections
+		const outsideStaticSections = template['Outside']['static-sections'];
+		const outsideEditSections = template['Outside']['edit-sections'];
+		const insideStaticSections = template['Inside']['static-sections'];
+		const insideEditSections = template['Inside']['edit-sections'];
+		const scale = POS_RATIOS[this.breakpoints['current']];
+		this._populateSpread(outsideStaticSections, outsideEditSections, this.outsidePage, scale);
+		this._populateSpread(insideStaticSections, insideEditSections, this.insidePage, scale);
+		this._addEventListeners();
+
+		// set as complete
+		if (this.sectionsComplete === numSections) {
+			mlsAreas[currentArea]['editor-complete'] = true;
+			$('#edit-banner').slideDown({
+			  start: function () {
+			    $(this).css({ display: "flex" });
+			    }
+		    });
+		}
+
+		// start with no active sections
+		$('.section-tools').removeClass('active');
 	}
 
 	/* Click Tools - public

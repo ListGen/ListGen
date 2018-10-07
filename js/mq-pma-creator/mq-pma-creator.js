@@ -8,6 +8,7 @@ var editSections = mlsAreas[currentArea]['edit-sections'];
 var homeowners = mlsAreas[currentArea]['homeowners'];
 var currentStep = 'Editor';
 var version = mlsAreas[currentArea]['page-version'];
+var spreadCopies = ['',''];
 
 const creatorType = 'mq-' + version;
 const numSections = NUM_SECTIONS[creatorType];
@@ -91,6 +92,7 @@ class MQPmaCreator {
 	 * @param complete bool : true if complete, false if incomplete
 	 */
 	_completeArea(complete) {
+		if (!complete) this.mainWindow.resetFinalPreview();
 		mlsAreas[currentArea]['total-complete'] = complete;
 		this.topBar.completeArea(complete);
 	}

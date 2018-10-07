@@ -25,7 +25,7 @@ class MainWindow {
 	/* Query Selectors */
 	_querySelectors() {
 		this.mainWindow = $('#main-window');
-		this.editSubWindow = $('.edit-window');
+		this.editSubWindow = $('#edit-window');
 		this.mailingSubWindow = $('#mailing-window');
 		this.previewSubWindow = $('#preview-window');
 		this.editBanner = $('#edit-banner');
@@ -46,7 +46,7 @@ class MainWindow {
 	/* Intialize Sections */
 	_initialize() {
 		this.editWindow = new EditWindow(this._updateStep, this.completeAreaCallback);
-		this.mailingWindow = new MailingWindow(this._updateStep);
+		this.mailingWindow = new MailingWindow(this._updateStep, this.completeAreaCallback);
 		this.previewWindow = new PreviewWindow(this._backToEdit, this.setAreaCallback, this.completeAreaCallback);
 	}
 
@@ -163,6 +163,10 @@ class MainWindow {
 		this.editWindow.update();
 		this.mailingWindow.update();
 		this.previewWindow.update();
+	}
+
+	resetFinalPreview() {
+		this.previewWindow.resetPages();
 	}
 
 }

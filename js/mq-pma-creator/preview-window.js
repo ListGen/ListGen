@@ -152,16 +152,15 @@ class PreviewWindow {
 			let nameID = $(img).parent().attr('id');
 			const name = ID_TO_NAME[nameID.substr(0, nameID.length - 8)];
 			if (name === 'Outside Page') {
-				makePageImage(img, name, '#outside-page');
+				img.css('background-image', 'url(' + spreadCopies[0] + ')');
 			} else if (name === 'Inside Page') {
-				makePageImage(img, name, '#inside-page');
+				img.css('background-image', 'url(' + spreadCopies[1] + ')');
 			} else {
 				img.css('background-image', 'url(' + editSections[name]['confirmed-selection'] + ')');
 			}
-
 		});
 
-		// update each of the preview spreads with the status
+		// update each of statuses
 		this.previewSpreads.each((e) => {
 			let spread = $(this.previewSpreads[e]);
 			const id = spread.attr('id');
@@ -179,29 +178,14 @@ class PreviewWindow {
 			}
 		});
 
-		// enables or disables
+		// enables or disables top link
 		if (mlsAreas[currentArea]['editor-complete'] && mlsAreas[currentArea]['mailing-complete'])
 			this.enable();
 		else
 			this.disable();
 
 		this._updatePricingSummary();
-
-		function makePageImage(img, name, pageID) {
-			// let clone = $('.edit-window').first().clone();
-			// clone.append($(page))
-			// clone.css('position', 'absolute');
-			// clone.css('top', $('body').height());
-			// $('body').append(clone);
-			html2canvas($(pageID)[0], {
-				onrendered: (canvas) => {
-					// clone.css('display', 'initial');
-					img.css('background-image', 'url(' + canvas.toDataURL('image/png') + ')');
-					// clone.css('display', 'none');
-				}
-			});
-		}
-
+		this.pricingSummaryBtn.addClass('disabled');
 	}
 
 	/* Enables Final Preview */
@@ -220,6 +204,13 @@ class PreviewWindow {
 		$('#top-step-preview').addClass('tooltip');
 		$('#top-step-preview').addClass('disabled');
 		$('#top-step-preview').siblings('.tooltiptext').removeClass('hidden');
+	}
+
+	/* Resets the status of the previews of the full PMA pages */
+	resetPages() {
+		mlsAreas[currentArea]['final-preview']['Outside Page']['time-confirmed'] = '';
+		mlsAreas[currentArea]['final-preview']['Inside Page']['time-confirmed'] = '';
+		this.update();
 	}
 
 }
