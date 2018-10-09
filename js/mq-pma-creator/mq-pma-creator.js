@@ -61,6 +61,7 @@ class MQPmaCreator {
 		updateCurrentVersionText();
 		this.mainWindow.update();
 		this._setWindow(currentStep);
+		this.mainWindow.takeSnapshot(10);
 	}
 
 	/* Switch Window

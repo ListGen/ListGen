@@ -45,6 +45,7 @@ class PreviewWindow {
 		// confirm a section
 		this.confirmButtons.click((e) => {
 			const button = $(e.target);
+			if (button.parent().parent().hasClass('confirmed')) return;
 			button.parent().parent().addClass('confirmed');
 			button.html('Confirmed!');
 			const date = getDateAndTime();

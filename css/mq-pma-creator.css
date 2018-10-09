@@ -264,12 +264,12 @@ canvas {
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer; }
+      cursor: pointer;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
       #top-bar #top-areas .top-dropdown:hover {
-        color: #4B9FCB;
-        -webkit-transition: 0.3s ;
-        -moz-transition: 0.3s ;
-        transition: 0.3s ; }
+        color: #4B9FCB; }
       #top-bar #top-areas .top-dropdown:hover i {
         color: #4B9FCB; }
     #top-bar #top-areas .top-dropdown-content {
@@ -436,6 +436,15 @@ canvas {
     -webkit-transition: 0.1s ;
     -moz-transition: 0.1s ;
     transition: 0.1s ; }
+    #edit-window .edit-spread .section-tools.highlight-list {
+      font-size: 1.2rem;
+      background: white; }
+      #edit-window .edit-spread .section-tools.highlight-list ul {
+        margin: 0; }
+        #edit-window .edit-spread .section-tools.highlight-list ul li {
+          display: none; }
+          #edit-window .edit-spread .section-tools.highlight-list ul li.active {
+            display: block; }
     #edit-window .edit-spread .section-tools.active {
       z-index: 3;
       outline-color: #b20010;
@@ -444,7 +453,8 @@ canvas {
       outline-color: #b20010;
       outline-width: 8px; }
     #edit-window .edit-spread .section-tools.complete {
-      outline: 4px solid #33C451; }
+      outline-color: #33C451;
+      outline-width: 4px; }
       #edit-window .edit-spread .section-tools.complete.active {
         outline-color: #289c40;
         outline-width: 8px; }
@@ -452,51 +462,111 @@ canvas {
         outline-color: #289c40;
         outline-width: 8px; }
     #edit-window .edit-spread .section-tools .complete-btn {
-      height: 35px;
-      width: 300px;
       display: none;
       position: absolute;
       font-family: 'Ubuntu';
-      font-size: 1.5rem;
-      border: none;
+      font-size: 1.7rem;
       background: #33C451;
+      border: 2px solid #289c40;
+      outline: 2px solid #195f27;
       cursor: pointer;
-      -webkit-box-shadow: 0 0 6px 0 #2D2D2D;
-      -moz-box-shadow: 0 0 6px 0 #2D2D2D;
-      box-shadow: 0 0 6px 0 #2D2D2D;
+      white-space: normal;
       -webkit-transition: 0.3s ;
       -moz-transition: 0.3s ;
       transition: 0.3s ; }
       #edit-window .edit-spread .section-tools .complete-btn:hover {
-        background: #57d371; }
+        background: #6bd882; }
       #edit-window .edit-spread .section-tools .complete-btn:focus {
         outline: 0; }
     #edit-window .edit-spread .section-tools .edit-tools {
-      height: 600px;
-      width: 300px;
       position: absolute;
-      top: 0;
-      left: 100%;
       padding: 10px;
       display: none;
       overflow-y: hidden;
+      cursor: default;
       color: white;
-      background: #2D2D2D;
+      background: #202020;
       text-align: center;
-      -webkit-box-shadow: 0 0 6px 0 #2D2D2D;
-      -moz-box-shadow: 0 0 6px 0 #2D2D2D;
-      box-shadow: 0 0 6px 0 #2D2D2D; }
+      -webkit-box-shadow: 0 0 36px 0 black;
+      -moz-box-shadow: 0 0 36px 0 black;
+      box-shadow: 0 0 36px 0 black; }
       #edit-window .edit-spread .section-tools .edit-tools h2 {
-        height: 7.5%;
-        margin: 0; }
+        margin: 0 0 10px 0;
+        font-size: 2rem; }
       #edit-window .edit-spread .section-tools .edit-tools .edit-content {
         height: 92.5%;
+        padding: 10px;
+        background: #2D2D2D;
         overflow-x: hidden;
-        overflow-y: auto; }
-        #edit-window .edit-spread .section-tools .edit-tools .edit-content img {
-          height: 200px;
-          width: 300px;
+        overflow-y: auto;
+        -webkit-box-shadow: inset 0 0 12px 0 black;
+        -moz-box-shadow: inset 0 0 12px 0 black;
+        box-shadow: inset 0 0 12px 0 black; }
+        #edit-window .edit-spread .section-tools .edit-tools .edit-content * {
           cursor: pointer; }
+        #edit-window .edit-spread .section-tools .edit-tools .edit-content button {
+          height: 100px;
+          width: 75%;
+          display: block;
+          margin: 0 auto 20px auto;
+          font-family: 'Ubuntu';
+          font-size: 2rem;
+          color: #2D2D2D;
+          background: #C47F15;
+          border: 4px solid #966110;
+          outline: 4px solid #513409;
+          -webkit-transition: 0.3s ;
+          -moz-transition: 0.3s ;
+          transition: 0.3s ; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content button:hover {
+            background: #eaa53b; }
+        #edit-window .edit-spread .section-tools .edit-tools .edit-content img {
+          width: 100%;
+          margin-bottom: 20px;
+          -webkit-transition: 0.1s ;
+          -moz-transition: 0.1s ;
+          transition: 0.1s ; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content img:hover {
+            outline: 3px solid #4B9FCB; }
+        #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice {
+          display: flex;
+          align-items: center;
+          height: 50px;
+          width: 100%;
+          padding: 20px 5px;
+          text-align: left;
+          border-bottom: 1px solid #4B9FCB;
+          -webkit-transition: 0.1s ;
+          -moz-transition: 0.1s ;
+          transition: 0.1s ; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice input {
+            position: absolute;
+            opacity: 0; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice input:checked ~ .checkmark {
+              background: #4B9FCB; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .checkmark {
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            cursor: pointer;
+            background: white;
+            border: 1px solid #CCCCCC;
+            -webkit-transition: 0.3s ;
+            -moz-transition: 0.3s ;
+            transition: 0.3s ; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .checkmark i {
+              font-size: 2rem;
+              position: absolute;
+              top: 10%;
+              left: 5%;
+              color: white; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence {
+            margin-left: 8%;
+            font-size: 1.3rem; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover {
+            background: #73b4d6; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover input:not(:checked) ~ .checkmark {
+            background: #F9F9F9; }
 
 #mailing-window #mailing-list {
   height: 100%;
@@ -879,8 +949,10 @@ canvas {
         -moz-box-shadow: 0 0 36px 2px #2D2D2D;
         box-shadow: 0 0 36px 2px #2D2D2D; }
       #preview-window #complete-final-preview .preview-spread div h1 {
-        margin: 20px 0; }
+        margin: 20px 0;
+        font-size: 2rem; }
       #preview-window #complete-final-preview .preview-spread div button {
+        height: auto;
         font-family: 'Ubuntu';
         font-size: 2rem;
         border: 2px solid #289c40;
@@ -890,13 +962,16 @@ canvas {
         -moz-transition: 0.3s ;
         transition: 0.3s ; }
         #preview-window #complete-final-preview .preview-spread div button.confirm {
+          margin: 0 10px;
           padding: 50px 60px;
+          text-align: center;
+          white-space: normal;
           color: #122D46;
           background: #33C451; }
           #preview-window #complete-final-preview .preview-spread div button.confirm:hover, #preview-window #complete-final-preview .preview-spread div button.confirm :focus {
             background: #57d371; }
         #preview-window #complete-final-preview .preview-spread div button.back-to-edit {
-          margin-top: 10px;
+          margin: 10px;
           padding: 20px;
           color: #122D46;
           background: #C47F15;
@@ -1053,19 +1128,47 @@ canvas {
 @media screen and (max-width: 1900px) {
   .edit-spread {
     height: 900px !important;
-    width: 1390px !important; } }
+    width: 1390px !important; }
+  .complete-btn {
+    font-size: 1.5rem !important; } }
 
 @media screen and (max-width: 1450px) {
   .edit-spread {
     height: 700px !important;
-    width: 1081px !important; } }
+    width: 1081px !important; }
+  .complete-btn {
+    font-size: 1.2rem !important; }
+  .edit-tools h2, .upload {
+    font-size: 1.6rem !important; }
+  .preview-spread div h1, .preview-spread div button {
+    font-size: 1.5rem !important; }
+  .preview-spread div span {
+    font-size: 1rem !important; } }
 
 @media screen and (max-width: 1200px) {
   #top-bar {
     font-size: 1.3rem; }
   .edit-spread {
     height: 500px !important;
-    width: 773px !important; } }
+    width: 773px !important; }
+  .complete-btn {
+    font-size: .8rem !important; }
+  .section-tools {
+    outline-width: 3px !important; }
+    .section-tools.active {
+      outline-width: 5px !important; }
+    .section-tools:hover {
+      outline-width: 5px !important; }
+    .section-tools.complete {
+      outline-width: 3px !important; }
+      .section-tools.complete.active {
+        outline-width: 5px !important; }
+      .section-tools.complete:hover {
+        outline-width: 5px !important; }
+  .preview-spread div h1, .preview-spread div button {
+    font-size: 1.2rem !important; }
+  .preview-spread div span {
+    font-size: .8rem !important; } }
 
 @media screen and (max-width: 1020px) {
   #top-bar {
@@ -1076,7 +1179,29 @@ canvas {
     font-size: .9rem; }
   .edit-spread {
     height: 400px !important;
-    width: 618px !important; } }
+    width: 618px !important; }
+  .complete-btn {
+    font-size: .6rem !important;
+    border-width: 1px !important;
+    outline-width: 1px !important; }
+  .section-tools {
+    outline-width: 2px !important; }
+    .section-tools.active {
+      outline-width: 4px !important; }
+    .section-tools:hover {
+      outline-width: 4px !important; }
+    .section-tools.complete {
+      outline-width: 2px !important; }
+      .section-tools.complete.active {
+        outline-width: 4px !important; }
+      .section-tools.complete:hover {
+        outline-width: 4px !important; }
+  .edit-tools h2, .upload {
+    font-size: 1.2rem !important; }
+  .preview-spread div h1, .preview-spread div button {
+    font-size: 1rem !important; }
+  .preview-spread div span {
+    font-size: .8rem !important; } }
 
 @media screen and (max-width: 700px) {
   #top-bar {
@@ -1091,12 +1216,36 @@ canvas {
         border-bottom: 1px solid #4B9FCB; }
   .edit-spread {
     height: 300px !important;
-    width: 464px !important; } }
+    width: 464px !important; }
+  .complete-btn {
+    font-size: .4rem !important; }
+  .edit-tools h2, .upload {
+    font-size: .8rem !important; }
+  .complete-banner {
+    font-size: 1rem !important; } }
 
 @media screen and (max-width: 550px) {
   .edit-spread {
     height: 200px !important;
-    width: 309px !important; } }
+    width: 309px !important; }
+  .complete-btn {
+    font-size: .25rem !important; }
+  .section-tools {
+    outline-width: 1px !important; }
+    .section-tools.active {
+      outline-width: 2px !important; }
+    .section-tools:hover {
+      outline-width: 2px !important; }
+    .section-tools.complete {
+      outline-width: 1px !important; }
+      .section-tools.complete.active {
+        outline-width: 2px !important; }
+      .section-tools.complete:hover {
+        outline-width: 2px !important; }
+  .edit-tools h2, .upload {
+    font-size: .6rem !important; }
+  .upload {
+    width: 100% !important; } }
 
 @media screen and (max-width: 450px) {
   #top-bar {

@@ -169,4 +169,8 @@ class MainWindow {
 		this.previewWindow.resetPages();
 	}
 
+	takeSnapshot() {
+		this.editWindow.takeSnapshot();
+	}
+
 }

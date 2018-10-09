@@ -2,6 +2,8 @@
 * Author: bhuelga
 */
 
+var first = true;
+
 class EditWindow {
 
 	/* Edit Window */
@@ -10,7 +12,7 @@ class EditWindow {
 		this.completeAreaCallback = completeAreaCallback;
 		this.breakpoints = {'current' : 2500, 'previous' : 2500};
 		this._querySelectors();
-		this._updateBreakpoints();
+		this._updateBreakpoints(true);
 		this.update();
 	}
 
@@ -86,20 +88,38 @@ class EditWindow {
 
 			// update everything if section is now complete
 			if (this.sectionsComplete === numSections) {
-				setTimeout(() => {
-					html2canvas($('#outside-page')[0]).then(canvas => {
-						spreadCopies[0] = canvas.toDataURL('image/png');
-					});
-					html2canvas($('#inside-page')[0]).then(canvas => {
-						spreadCopies[1] = canvas.toDataURL('image/png');
-					});
-				}, 350);
+				this.takeSnapshot(350);
 				this.updateCallback('Editor', true);
 			}
 		});
 
+		$('.highlight-choice').click((e) => {
+			if (!first) {
+				first = true;	// fix... super hacky (prevents event firing twice on one click)
+				return;
+			}
+			const choice = $(e.currentTarget);
+			console.log(choice);
+			const checked = !choice.children('input').is(':checked');
+			const sentence = choice.children('.highlight-sentence').html();
+			const tools = choice.parent().parent().parent();
+			for (let selection of tools.children('ul').children()) {
+				if ($(selection).html() === sentence) {
+					if (checked)
+						$(selection).addClass('active');
+					else
+						$(selection).removeClass('active');
+				}
+			}
+			first = false;
+		});
+
+		$('.upload').click((e) => {
+			console.log('Upload image');
+		});
+
 		$(window).resize(() => {
-			this._updateBreakpoints();
+			this._updateBreakpoints(false);
 		});
 	}
 
@@ -153,12 +173,24 @@ class EditWindow {
 			div.css('left', section['left'] * scale);
 
 			const completeButton = this._makeCompleteButton(section, scale);
-			const editToolsImg = this._makeEditTools(section, spread, scale);
+			const editReturn = this._makeEditTools(section, spread, scale);
 			div.append(completeButton);
-			div.append(editToolsImg['editTools']);
+			div.append(editReturn['editTools']);
+			if (editReturn['highlight-list']) {
+				div.addClass('highlight-list');
+				div.append($('<ul></ul>'));
+				for (const sentence of section['system-choices']) {
+					let choice = $('<li>' + sentence + '</li>');
+					if (section['default-choice'].includes(sentence))
+						choice.addClass('active');
+					div.children('ul').append(choice);
+				}
+			}
 
-			div.css('background-image', 'url(' + editToolsImg['selection'] + ')');
-			editSections[section['name']]['selection'] = editToolsImg['selection'];
+			if (editReturn['las-list']) div.addClass('las-list');
+
+			div.css('background-image', 'url(' + editReturn['selection'] + ')');
+			editSections[section['name']]['selection'] = editReturn['selection'];
 
 			const status = editSections[section['name']]['status'];
 			if (status === 'Complete') { 
@@ -179,8 +211,10 @@ class EditWindow {
 	 */
 	_makeCompleteButton(section, scale) {
 		let button = $('<button class="complete-btn">Mark As Complete</button>');
-		button.css('top', -40);
-		button.css('left', 0);
+		button.height(section['tools-data']['complete-btn-height']);
+		button.width(section['tools-data']['complete-btn-width']);
+		button.css('bottom', section['tools-data']['complete-btn-bottom']);
+		button.css('left', section['tools-data']['complete-btn-left']);
 		return button;
 	}
 
@@ -194,20 +228,33 @@ class EditWindow {
 	 */
 	_makeEditTools(section, spread, scale) {
 		let editTools = $('<div class="edit-tools"></div>');
-		editTools.css('top', section['edit-top'] * scale);
-		editTools.css('left', section['edit-left'] * scale);
+		editTools.height(section['tools-data']['edit-height']);
+		editTools.width(section['tools-data']['edit-width']);
+		editTools.css('top', section['tools-data']['edit-top']);
+		editTools.css('left', section['tools-data']['edit-left']);
+		const hList = section['type'] === 'highlight-list',
+			  lasList = section['type'] === 'las-list';
 
 		// populate selections content
 		editTools.append($('<h2>' + section['name'] + '</h2>'));
 		let editToolsContent = $('<div class="edit-content"></div>');
+		if (section['uploadable']) editToolsContent.append($('<button class="upload">Upload Your Own Image</button>'));
 		for (let choice of section['system-choices']) {
-			let newImage = $('<img src="' + choice + '">');
-			newImage.data('top', section['top']);
-			newImage.data('left', section['left']);
-			newImage.data('height', section['height']);
-			newImage.data('width', section['width']);
-			newImage.data('spread', spread);
-			editToolsContent.append(newImage);
+			if (section['type'] === 'image') {
+				let newImage = $('<img src="' + choice + '">');
+				newImage.data('top', section['top']);
+				newImage.data('left', section['left']);
+				newImage.data('height', section['height']);
+				newImage.data('width', section['width']);
+				newImage.data('spread', spread);
+				editToolsContent.append(newImage);
+			} else if (hList || lasList) {
+				let newSentence = $('<label class="highlight-choice"><input class="list-check" type="checkbox"/><span class="checkmark"><i class="material-icons">check</i></span><span class="highlight-sentence">' + choice + '</span></label>');
+				if (section['default-choice'].includes(choice))
+					newSentence.children('input').prop('checked', true);
+				editToolsContent.append(newSentence);
+			}
+			
 		}
 		editTools.append(editToolsContent);
 
@@ -215,11 +262,11 @@ class EditWindow {
 		if (editSections[section['name']]['selection'] === '')
 			editSections[section['name']]['selection'] = src;
 		
-		return {'editTools' : editTools, 'selection' : src};
+		return {'editTools' : editTools, 'selection' : src, 'highlight-list' : hList, 'las-list' : lasList};
 	}
 
 	/* Sets the correct scaling */
-	_updateBreakpoints() {
+	_updateBreakpoints(start) {
 		const width = $(window).width();
 		this.breakpoints['previous'] = this.breakpoints['current'];
 		for (const bp of EDIT_BREAKPOINTS) {
@@ -228,8 +275,7 @@ class EditWindow {
 			}
 		}
 		if (this.breakpoints['previous'] != this.breakpoints['current']) {
-			console.log(this.breakpoints['current']);
-			this.update();
+			if (!start) this.update();
 		}
 	}
 	
@@ -275,5 +321,20 @@ class EditWindow {
 	 */
 	clickTools(step) {
 		$('#' + NAME_TO_ID[step]).trigger('click');
+	}
+
+	/* Take Snapshot - public
+	 * ---------------
+	 * Takes a snapshot of the PMA (to be used in the final preview)
+	 */
+	takeSnapshot(delay) {
+		setTimeout(() => {
+			html2canvas($('#outside-page')[0]).then(canvas => {
+				spreadCopies[0] = canvas.toDataURL('image/png');
+			});
+			html2canvas($('#inside-page')[0]).then(canvas => {
+				spreadCopies[1] = canvas.toDataURL('image/png');
+			});
+		}, delay);
 	}
 }
