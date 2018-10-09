@@ -788,11 +788,11 @@ canvas {
               #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark:after {
                 display: block; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container .checkmark {
-            height: 30px;
-            width: 30px;
+            height: 20px;
+            width: 20px;
             position: absolute;
-            top: 15px;
-            left: 5px;
+            top: 20px;
+            left: 10px;
             cursor: pointer;
             background: white;
             border: 1px solid #CCCCCC;
@@ -800,12 +800,13 @@ canvas {
             -moz-transition: 0.3s ;
             transition: 0.3s ; }
             #mailing-window #mailing-list #homeowners table tbody tr td .check-container .checkmark i {
+              font-size: 1rem;
               position: absolute;
-              top: 10%;
+              top: 5%;
               left: 5%;
               color: white; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container .blocked {
-            margin-left: 40px; }
+            margin-left: 30px; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container:hover input:not(:checked) ~ .checkmark {
             background: #F9F9F9; }
   #mailing-window #mailing-list #price-bar {
@@ -942,13 +943,14 @@ canvas {
       #preview-window #complete-final-preview .preview-spread div.preview-image {
         width: 70%;
         text-align: left;
-        cursor: pointer;
         color: #2D2D2D;
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: center; }
+        background-position: center;
+        cursor: pointer; }
         #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list {
-          font-size: 1.2rem; }
+          font-size: 1.2rem;
+          cursor: default; }
           #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul {
             margin: 0;
             pointer-events: none; }
@@ -1037,36 +1039,19 @@ canvas {
 
 #preview-image {
   height: 80%;
-  width: 70%;
+  width: 80%;
   display: none;
   position: fixed;
   top: 10%;
   left: 50%;
   z-index: 3;
-  margin-left: -35%; }
-  #preview-image .pi {
-    position: absolute;
-    top: 0;
-    right: 0;
-    -webkit-box-shadow: 0 0 100px 0 black;
-    -moz-box-shadow: 0 0 100px 0 black;
-    box-shadow: 0 0 100px 0 black; }
-  #preview-image .close-modal-btn {
-    height: 48px;
-    width: 48px;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    cursor: pointer;
-    -webkit-transition: 0.3s ;
-    -moz-transition: 0.3s ;
-    transition: 0.3s ; }
-    #preview-image .close-modal-btn:hover {
-      -webkit-transform: scale(1.1);
-      -moz-transform: scale(1.1);
-      transform: scale(1.1); }
+  transform: translateX(-40%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  cursor: pointer; }
 
-#final-preview-modal .modal-body #pricing-summary {
+#pricing-summary-modal .modal-body #pricing-summary {
   height: 70%;
   width: 100%;
   display: flex;
@@ -1078,24 +1063,24 @@ canvas {
   -webkit-box-shadow: inset 0 0 12px 0 #2D2D2D;
   -moz-box-shadow: inset 0 0 12px 0 #2D2D2D;
   box-shadow: inset 0 0 12px 0 #2D2D2D; }
-  #final-preview-modal .modal-body #pricing-summary .pricing-box {
+  #pricing-summary-modal .modal-body #pricing-summary .pricing-box {
     width: 25%;
     height: 50%;
     justify-content: space-around;
     margin: 5px 10px; }
-    #final-preview-modal .modal-body #pricing-summary .pricing-box:not(.complete) {
+    #pricing-summary-modal .modal-body #pricing-summary .pricing-box:not(.complete) {
       cursor: pointer; }
-    #final-preview-modal .modal-body #pricing-summary .pricing-box:hover:not(.complete) {
+    #pricing-summary-modal .modal-body #pricing-summary .pricing-box:hover:not(.complete) {
       -webkit-transform: scale(1.05);
       -moz-transform: scale(1.05);
       transform: scale(1.05); }
-    #final-preview-modal .modal-body #pricing-summary .pricing-box * {
+    #pricing-summary-modal .modal-body #pricing-summary .pricing-box * {
       padding: 0;
       margin: 0; }
-    #final-preview-modal .modal-body #pricing-summary .pricing-box .total {
+    #pricing-summary-modal .modal-body #pricing-summary .pricing-box .total {
       padding-top: 5px; }
 
-#final-preview-modal .modal-body #pricing-summary-total {
+#pricing-summary-modal .modal-body .pricing-summary-total {
   height: 30%;
   width: 100%;
   display: flex;
@@ -1104,12 +1089,25 @@ canvas {
   padding: 10px;
   background: #c2deed;
   border-top: 2px solid #163856; }
-  #final-preview-modal .modal-body #pricing-summary-total .pricing-box {
+  #pricing-summary-modal .modal-body .pricing-summary-total .pricing-box {
     width: 25%;
     height: 100%; }
 
-#final-preview-modal .modal-footer #next-area-btn {
+#pricing-summary-modal .modal-footer #next-area-btn {
   display: none; }
+
+#final-confirmation-modal .modal-body .pricing-summary-total {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #c2deed;
+  border-top: 2px solid #163856; }
+  #final-confirmation-modal .modal-body .pricing-summary-total .pricing-box {
+    width: 25%;
+    height: 100%; }
 
 .pricing-box {
   width: 100%;
@@ -1155,7 +1153,7 @@ canvas {
   max-width: 40%;
   display: none;
   position: fixed;
-  top: 1.25%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;

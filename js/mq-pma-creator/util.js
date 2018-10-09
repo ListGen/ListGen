@@ -12,47 +12,47 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'City Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Area Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 				'Listings And Sales' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete'
 				},
 			},
 			'homeowners' : [
@@ -62,7 +62,7 @@ var agentData = {
 					'mail-address-line-1' : '522 Hannon Ave',
 					'mail-address-line-2' : 'Monterey, CA 93940',
 					'site-address' : '522 Hannon Ave',
-					'last-sale-price' : 1.8,
+					'last-sale-price' : '$1,800,000',
 					'last-sale-date' : '10/10/2018',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : 'Agent-Blocked',
@@ -342,6 +342,7 @@ var agentData = {
 		'Front Website' : 'kylemorrisonhomes.com',
 		'Phone Number' : '831-555-5555',
 		'Email Address' : 'kyle@kylemorrison.com',
+		'CC Digits' : 'XXXX'
 	},
 	'total-mailings' : 0,
 	'total-price' : 0,
@@ -483,7 +484,7 @@ function getDateAndTime() {
 }
 
 // Title of the total pricing box
-const TOTAL_TITLE = 'All Approved Mailings';
+const TOTAL_TITLE = 'Total All Approved Mailings';
 
 /* Creates a box holding all pricing information of the current area */
 function createPricingBox(area, numMailings, price, complete, current) {
@@ -525,7 +526,7 @@ const SPLASH = {
 }
 
 // displays a helpful splash message for 2 seconds on the top of the screen.
-function makeSplashMessage(message, delay=2500) {
+function makeSplashMessage(message, delay=4500) {
 	$('#splash-message').html(message);
 	$('#splash-message').fadeIn(500);
 	$('#splash-message').delay(delay).fadeOut(500);

@@ -33,12 +33,10 @@ class PreviewWindow {
 	_addEventListeners() {
 		// clicking image brings up larger preview
 		this.sectionImages.click(function() {
-			if ($(this).hasClass('highlight-class')) return;
+			if ($(this).hasClass('highlight-list')) return;
 			let src = $(this).css('background-image')
 			src = src.replace(/.*\s?url\([\'\"]?/, '').replace(/[\'\"]?\).*/, '')
-			$('#preview-image .pi').attr('src', src);
-			$('#preview-image .pi').height(this.height);
-			$('#preview-image .pi').width(this.width);
+			$('#preview-image').css('background-image', 'url(' + src + ')');
 			$('#preview-image').fadeIn(500);
 			$('#modal-overlay').fadeIn(500);
 		});
@@ -84,7 +82,7 @@ class PreviewWindow {
 		// opens pricing summary modal
 		this.pricingSummaryBtn.click(() => {
 			$('#modal-overlay').fadeIn(500);
-			$('#final-preview-modal').fadeIn(500);
+			$('#pricing-summary-modal').fadeIn(500);
 		});
 
 		// marks the current area as complete and 
@@ -96,7 +94,8 @@ class PreviewWindow {
 		});
 
 		this.toFinalAcceptBtn.click(() => {
-			console.log('All areas complete - go to final accept.');
+			$('#pricing-summary-modal').fadeOut(500);
+			$('#final-confirmation-modal').delay(500).fadeIn(500);
 		});
 
 		// clicking any close buttons on modals / preview images closes target and overlay
@@ -112,7 +111,7 @@ class PreviewWindow {
 	 */
 	_updatePricingSummary() {
 		$('#pricing-summary').empty();
-		$('#pricing-summary-total').empty();
+		$('.pricing-summary-total').empty();
 
 		for (const area in mlsAreas) {
 			const numMailings = mlsAreas[area]['unblocked-mailings'];
@@ -122,7 +121,7 @@ class PreviewWindow {
 			$('#pricing-summary').append(createPricingBox(area, numMailings, price, complete, current));
 		}
 
-		$('#pricing-summary-total').append(createPricingBox(TOTAL_TITLE, agentData['total-mailings'], agentData['total-price'], true, false));
+		$('.pricing-summary-total').append(createPricingBox(TOTAL_TITLE, agentData['total-mailings'], agentData['total-price'], true, false));
 
 		const nextArea = $('#pricing-summary .pricing-box').not('.complete').first().children('.title').html();
 		if (typeof nextArea === 'undefined') {
@@ -193,7 +192,8 @@ class PreviewWindow {
 			this.disable();
 
 		this._updatePricingSummary();
-		this.pricingSummaryBtn.addClass('disabled');
+		if (this.numConfirmed !== NUM_SECTIONS[creatorType] + 2)
+			this.pricingSummaryBtn.addClass('disabled');
 	}
 
 	/* Enables Final Preview */
