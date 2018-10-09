@@ -33,6 +33,7 @@ class PreviewWindow {
 	_addEventListeners() {
 		// clicking image brings up larger preview
 		this.sectionImages.click(function() {
+			if ($(this).hasClass('highlight-class')) return;
 			let src = $(this).css('background-image')
 			src = src.replace(/.*\s?url\([\'\"]?/, '').replace(/[\'\"]?\).*/, '')
 			$('#preview-image .pi').attr('src', src);

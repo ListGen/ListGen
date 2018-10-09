@@ -224,7 +224,7 @@ class EditWindow {
 				div.addClass('highlight-list');
 				div.append($('<ul></ul>'));
 				div.children('ul').css('margin-top', 5 * scale + 'px');
-				div.children('ul').css('padding-left', 5 * scale + 'px');
+				div.children('ul').css('padding-left', 20 * scale + 'px');
 				for (const sentence of section['system-choices']) {
 					let choice = $('<li>' + sentence + '</li>');
 					choice.css('font-size', 1.1 * scale + 'rem');

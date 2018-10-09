@@ -432,15 +432,17 @@ canvas {
       background: white; }
       #edit-window .edit-spread .section-tools.highlight-list ul {
         pointer-events: none;
-        list-style: square inside; }
+        list-style: disc; }
         #edit-window .edit-spread .section-tools.highlight-list ul li {
           display: none; }
           #edit-window .edit-spread .section-tools.highlight-list ul li.active {
             display: list-item; }
           #edit-window .edit-spread .section-tools.highlight-list ul li span.green {
-            color: #33C451; }
+            color: #33C451;
+            font-weight: bold; }
           #edit-window .edit-spread .section-tools.highlight-list ul li span.red {
-            color: #FF3A38; }
+            color: #FF3A38;
+            font-weight: bold; }
           #edit-window .edit-spread .section-tools.highlight-list ul li span.bold {
             font-weight: bold; }
           #edit-window .edit-spread .section-tools.highlight-list ul li span.caps {
@@ -568,7 +570,7 @@ canvas {
             #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence span.bold {
               font-weight: bold; }
             #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence span.caps {
-              text-transform: capitalize; }
+              text-transform: uppercase; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover {
             background: #73b4d6; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover input:not(:checked) ~ .checkmark {
@@ -951,11 +953,15 @@ canvas {
             margin: 0;
             pointer-events: none; }
             #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.green {
-              color: #33C451; }
+              color: #33C451;
+              font-weight: bold; }
             #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.red {
-              color: #FF3A38; }
+              color: #FF3A38;
+              font-weight: bold; }
             #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.bold {
               font-weight: bold; }
+            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.caps {
+              text-transform: uppercase; }
       #preview-window #complete-final-preview .preview-spread div.preview-section-options {
         width: 30%;
         display: inline-flex;
