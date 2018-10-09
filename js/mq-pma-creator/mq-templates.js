@@ -189,10 +189,17 @@ var TEMPLATES =
 					},
 					'uploadable' : false,
 					'type' : 'highlight-list',
-					'default-choice' : ['Sentence 1', 'Sentence 2'],
-					'system-choices' : ['Sentence 1',
-										'Sentence 2',
-										'Sentence 3',
+					'default-choice' : ['As of October 1st, <span class="bold">Carmel\'s market continues to strengthen.</span>. The average sale price has risen yet again to an <span class="bold">all-time high of $1.847M</span> - up a whopping <span class="green">11%</span> over 2017 (compared to a 5% increase Y-O-Y from 2017-2018.', 
+										'Carmel\'s inventory has risen to 148 "active listings" from a very low level of 103 homes in August. This brings the inventory up closer to a "balanced market", but the supply is <span class="bold">still below 6 months</span> (<6 months is considered <span class="red caps bold">low</span> inventory.', 
+										'For the first 10 months of 2018, <span class="bold">days on market</span> has dropped slightly to <span class="red bold">73 days</span>, down from an average of 88 days in January 2018.'],
+					'system-choices' : ['As of October 1st, <span class="bold">Carmel\'s market continues to strengthen.</span>. The average sale price has risen yet again to an <span class="bold">all-time high of $1.847M</span> - up a whopping <span class="green">11%</span> over 2017 (compared to a 5% increase Y-O-Y from 2017-2018.',
+										'Carmel\'s inventory has risen to 148 "active listings" from a very low level of 103 homes in August. This brings the inventory up closer to a "balanced market", but the supply is <span class="bold">still below 6 months</span> (<6 months is considered <span class="red caps bold">low</span> inventory.',
+										'For the first 10 months of 2018, <span class="bold">days on market</span> has dropped slightly to <span class="red bold">73 days</span>, down from an average of 88 days in January 2018.',
+										'Sentence 4',
+										'Sentence 5',
+										'Sentence 6',
+										'Sentence 7',
+										'Sentence 8',
 										]
 				},
 				{
@@ -217,6 +224,7 @@ var TEMPLATES =
 					'system-choices' : ['Sentence 1',
 										'Sentence 2',
 										'Sentence 3',
+										'Sentence 4'
 										]
 				},
 				{

@@ -156,6 +156,12 @@ class PreviewWindow {
 				img.css('background-image', 'url(' + spreadCopies[0] + ')');
 			} else if (name === 'Inside Page') {
 				img.css('background-image', 'url(' + spreadCopies[1] + ')');
+			} else if (name === 'City Highlights' || name === 'Area Highlights') {
+				img.empty();
+				img.append($('<ul></ul>'));
+				for (const sentence of editSections[name]['confirmed-selection']) {
+					img.children('ul').append($('<li>' + sentence + '</li>'));
+				}
 			} else {
 				img.css('background-image', 'url(' + editSections[name]['confirmed-selection'] + ')');
 			}

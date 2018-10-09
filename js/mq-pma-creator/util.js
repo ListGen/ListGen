@@ -30,13 +30,13 @@ var agentData = {
 					'status' : 'Incomplete'
 				},
 				'City Highlights' : {
-					'selection' : '',
-					'confirmed-selection' : '',
+					'selection' : [],
+					'confirmed-selection' : [],
 					'status' : 'Incomplete'
 				},
 				'Area Highlights' : {
-					'selection' : '',
-					'confirmed-selection' : '',
+					'selection' : [],
+					'confirmed-selection' : [],
 					'status' : 'Incomplete'
 				},
 				'Call To Action' : {
@@ -50,8 +50,8 @@ var agentData = {
 					'status' : 'Incomplete'
 				},
 				'Listings And Sales' : {
-					'selection' : '',
-					'confirmed-selection' : '',
+					'selection' : [],
+					'confirmed-selection' : [],
 					'status' : 'Incomplete'
 				},
 			},
@@ -199,13 +199,13 @@ var agentData = {
 					'status' : 'Complete'
 				},
 				'City Highlights' : {
-					'selection' : '',
-					'confirmed-selection' : '',
+					'selection' : [],
+					'confirmed-selection' : [],
 					'status' : 'Complete'
 				},
 				'Area Highlights' : {
-					'selection' : '',
-					'confirmed-selection' : '',
+					'selection' : [],
+					'confirmed-selection' : [],
 					'status' : 'Complete'
 				},
 				'Call To Action' : {
@@ -219,8 +219,8 @@ var agentData = {
 					'status' : 'Complete'
 				},
 				'Listings And Sales' : {
-					'selection' : '',
-					'confirmed-selection' : '',
+					'selection' : [],
+					'confirmed-selection' : [],
 					'status' : 'Complete'
 				},
 			},
@@ -412,10 +412,17 @@ const NUM_SECTIONS = {
 	'mq-4' : 9
 }
 
+// price per mailing for each of the page versions
 const PRICE_PER_MAILING = {
-	'4' : 1.6,
-	'5' : 2,
-	'6' : 2.5
+	'4' : 1.7,
+	'5' : 1.9,
+	'6' : 2.2
+}
+
+const SELECTION_LIMITS = {
+	'city-highlights' : 3,
+	'area-highlights' : 3,
+	'listings-and-sales' : 8
 }
 
 // month number to abbreviation
@@ -508,6 +515,20 @@ function updatePricingBox(box, numMailings, price, complete) {
 	box.children('.num-mailings').html('<strong>' + numMailings + '</strong> mailings');
 	box.children('.total').html('Total: <strong>$' + totalPrice.toFixed(2) + '</strong>');
 	if (!total) box.children('.approved').html('<strong>' + approved + '</strong>');
+}
+
+const SPLASH = {
+	'start' : 'Welcome to the Precision Market Analysis Creator! To start, click on the sections below to customize this mailing.',
+	'highlights-confirm' : 'You must choose exactly <strong>3</strong> highlights to use in this section.',
+	'listings-and-sales-confirm' : 'You must choose between <strong>4</strong> and <strong>8</strong> choices in this section.',
+	'area-complete' : 'You have completed this area! Click <strong>Continue</strong> below.'
+}
+
+// displays a helpful splash message for 2 seconds on the top of the screen.
+function makeSplashMessage(message, delay=2500) {
+	$('#splash-message').html(message);
+	$('#splash-message').fadeIn(500);
+	$('#splash-message').delay(delay).fadeOut(500);
 }
 
 function addTooltip(container, message) {

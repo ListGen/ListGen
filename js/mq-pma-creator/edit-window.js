@@ -61,6 +61,7 @@ class EditWindow {
 				this.sectionsComplete--;
 			editSections[name]['status'] = 'Incomplete';
 			editSections[name]['selection'] = img.attr('src');
+			mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
 			tools.css('background-image', 'url(' + img.attr('src') + ')');
 			tools.removeClass('complete');
 			button.show();
@@ -75,7 +76,14 @@ class EditWindow {
 			const button = $(e.currentTarget);
 			const tools = button.parent();
 			const editTools = tools.children('.edit-tools');
-			const name = ID_TO_NAME[tools.attr('id')];
+			const id = tools.attr('id');
+			const name = ID_TO_NAME[id];
+			if (name === 'City Highlights' || name === 'Area Highlights') {
+				if (this.numSelected[id] != SELECTION_LIMITS[id]) {
+					makeSplashMessage(SPLASH['highlights-confirm']);
+					return;
+				}
+			}
 
 			this.sectionsComplete++;
 			editSections[name]['status'] = 'Complete';
@@ -91,27 +99,62 @@ class EditWindow {
 				this.takeSnapshot(350);
 				this.updateCallback('Editor', true);
 			}
+
 		});
 
 		$('.highlight-choice').click((e) => {
-			if (!first) {
-				first = true;	// fix... super hacky (prevents event firing twice on one click)
-				return;
-			}
+			if (!first) { first = true;	return; } // fix... super hacky (prevents event firing twice on one click)
 			const choice = $(e.currentTarget);
-			console.log(choice);
 			const checked = !choice.children('input').is(':checked');
 			const sentence = choice.children('.highlight-sentence').html();
 			const tools = choice.parent().parent().parent();
-			for (let selection of tools.children('ul').children()) {
+			const button = tools.children('.complete-btn');
+			const id = tools.attr('id');
+			const name = ID_TO_NAME[id];
+			let selections = tools.children('ul').children();
+			mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
+
+			for (let selection of selections) {
 				if ($(selection).html() === sentence) {
-					if (checked)
+					if (checked) {
 						$(selection).addClass('active');
-					else
+						this.numSelected[id]++;
+						editSections[name]['selection'].push(sentence);
+					} else {
 						$(selection).removeClass('active');
+						this.numSelected[id]--;
+						const index = editSections[name]['selection'].indexOf(sentence);
+						if (index !== -1) editSections[name]['selection'].splice(index, 1);
+					}
+					break;
 				}
 			}
+
+			console.log(editSections[name]['selection']);
+
+			for (let selection of choice.siblings())
+				$(selection).removeClass('disabled');
+
+			if (this.numSelected[id] >= SELECTION_LIMITS[id]) {
+				for (let selection of choice.siblings()) {
+					if (!$(selection).children('input').is(':checked')) {
+						$(selection).addClass('disabled');
+					}
+				}
+			}
+			
 			first = false;
+
+			if (editSections[name]['status'] === 'Complete')
+				this.sectionsComplete--;
+			editSections[name]['status'] = 'Incomplete';
+			// editSections[name]['selection'] = img.attr('src');
+			tools.removeClass('complete');
+			button.show();
+
+			// update everything if section was complete
+			if (this.sectionsComplete + 1 === numSections) this.updateCallback('Editor', false);
+			this.completeAreaCallback(false);
 		});
 
 		$('.upload').click((e) => {
@@ -176,13 +219,21 @@ class EditWindow {
 			const editReturn = this._makeEditTools(section, spread, scale);
 			div.append(completeButton);
 			div.append(editReturn['editTools']);
+
 			if (editReturn['highlight-list']) {
 				div.addClass('highlight-list');
 				div.append($('<ul></ul>'));
+				div.children('ul').css('margin-top', 5 * scale + 'px');
+				div.children('ul').css('padding-left', 5 * scale + 'px');
 				for (const sentence of section['system-choices']) {
 					let choice = $('<li>' + sentence + '</li>');
-					if (section['default-choice'].includes(sentence))
+					choice.css('font-size', 1.1 * scale + 'rem');
+					choice.css('line-height', 1.5 * scale + 'rem');
+					choice.css('margin-bottom', 5 * scale + 'px');
+					if (editSections[section['name']]['selection'].includes(sentence)) {
 						choice.addClass('active');
+						this.numSelected[div.attr('id')]++;
+					}
 					div.children('ul').append(choice);
 				}
 			}
@@ -199,8 +250,6 @@ class EditWindow {
 			}
 			spread.append(div);
 		}
-
-		spread.append($('<div class="page-divider"></div>'));
 	}
 
 	/* Make Complete Button
@@ -238,7 +287,11 @@ class EditWindow {
 		// populate selections content
 		editTools.append($('<h2>' + section['name'] + '</h2>'));
 		let editToolsContent = $('<div class="edit-content"></div>');
-		if (section['uploadable']) editToolsContent.append($('<button class="upload">Upload Your Own Image</button>'));
+		if (section['uploadable']) { 
+			editToolsContent.append($('<button class="upload">Upload</button>'));
+			editToolsContent.children('.upload').css('font-size', 2 * scale + 'rem');
+		}
+		let tempSelections = [];
 		for (let choice of section['system-choices']) {
 			if (section['type'] === 'image') {
 				let newImage = $('<img src="' + choice + '">');
@@ -250,12 +303,33 @@ class EditWindow {
 				editToolsContent.append(newImage);
 			} else if (hList || lasList) {
 				let newSentence = $('<label class="highlight-choice"><input class="list-check" type="checkbox"/><span class="checkmark"><i class="material-icons">check</i></span><span class="highlight-sentence">' + choice + '</span></label>');
-				if (section['default-choice'].includes(choice))
-					newSentence.children('input').prop('checked', true);
+				newSentence.css('font-size', 1.3 * scale + 'rem');
+				newSentence.css('padding', 20 * scale + 'px ' + 5 * scale + 'px');
+				newSentence.children('.checkmark').height(40 * scale);
+				newSentence.children('.checkmark').width(40 * scale);
+				newSentence.children('.checkmark').children('i').css('font-size', 2 * scale + 'rem');
+				if (editSections[section['name']]['selection'].length === 0) {
+					if (section['default-choice'].includes(choice)) {
+						tempSelections.push(choice);
+						newSentence.children('input').prop('checked', true);
+					} else {
+						newSentence.addClass('disabled');
+					}
+				} else {
+					if (editSections[section['name']]['selection'].includes(choice)) {
+						tempSelections.push(choice);
+						newSentence.children('input').prop('checked', true);
+					} else {
+						newSentence.addClass('disabled');
+					}
+				}
 				editToolsContent.append(newSentence);
 			}
-			
 		}
+
+		if (hList || lasList)
+			editSections[section['name']]['selection'] = tempSelections;
+
 		editTools.append(editToolsContent);
 
 		const src = (editSections[section['name']]['selection'] === '') ? section['default-choice'] : editSections[section['name']]['selection'];
@@ -288,6 +362,7 @@ class EditWindow {
 	 */
 	update() {
 		this.sectionsComplete = 0;
+		this.numSelected = {'city-highlights' : 0, 'area-highlights' : 0, 'listings-and-sales' : 0};
 
 		// Separates template sections
 		const outsideStaticSections = template['Outside']['static-sections'];

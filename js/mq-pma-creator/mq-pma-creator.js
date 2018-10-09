@@ -24,6 +24,7 @@ class MQPmaCreator {
 	constructor() {
 		this._bindToCallbacks();
 		this._initializeApp();
+		makeSplashMessage(SPLASH['start'], 5000);
 	}
 
 	/* Bind To Callbacks - private */
@@ -94,6 +95,7 @@ class MQPmaCreator {
 	 */
 	_completeArea(complete) {
 		if (!complete) this.mainWindow.resetFinalPreview();
+		if (complete) makeSplashMessage(SPLASH['area-complete']);
 		mlsAreas[currentArea]['total-complete'] = complete;
 		this.topBar.completeArea(complete);
 	}

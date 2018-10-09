@@ -183,7 +183,7 @@ canvas {
   margin-left: -35%;
   background: #163856;
   border: 6px solid #122D46;
-  outline: 2px solid #163856;
+  outline: 2px solid #0d2032;
   -webkit-box-shadow: 0 0 100px 0 black;
   -moz-box-shadow: 0 0 100px 0 black;
   box-shadow: 0 0 100px 0 black; }
@@ -393,14 +393,6 @@ canvas {
       -webkit-box-shadow: 0 0 15px 0 #2D2D2D;
       -moz-box-shadow: 0 0 15px 0 #2D2D2D;
       box-shadow: 0 0 15px 0 #2D2D2D; }
-      #main-window .sub-window .spread .divider {
-        height: 100%;
-        width: 50%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: .4;
-        border-right: 2px dashed gray; }
 
 #edit-window .edit-spread {
   height: 1100px;
@@ -437,14 +429,22 @@ canvas {
     -moz-transition: 0.1s ;
     transition: 0.1s ; }
     #edit-window .edit-spread .section-tools.highlight-list {
-      font-size: 1.2rem;
       background: white; }
       #edit-window .edit-spread .section-tools.highlight-list ul {
-        margin: 0; }
+        pointer-events: none;
+        list-style: square inside; }
         #edit-window .edit-spread .section-tools.highlight-list ul li {
           display: none; }
           #edit-window .edit-spread .section-tools.highlight-list ul li.active {
-            display: block; }
+            display: list-item; }
+          #edit-window .edit-spread .section-tools.highlight-list ul li span.green {
+            color: #33C451; }
+          #edit-window .edit-spread .section-tools.highlight-list ul li span.red {
+            color: #FF3A38; }
+          #edit-window .edit-spread .section-tools.highlight-list ul li span.bold {
+            font-weight: bold; }
+          #edit-window .edit-spread .section-tools.highlight-list ul li span.caps {
+            text-transform: uppercase; }
     #edit-window .edit-spread .section-tools.active {
       z-index: 3;
       outline-color: #b20010;
@@ -505,12 +505,11 @@ canvas {
         #edit-window .edit-spread .section-tools .edit-tools .edit-content * {
           cursor: pointer; }
         #edit-window .edit-spread .section-tools .edit-tools .edit-content button {
-          height: 100px;
+          height: 20%;
           width: 75%;
           display: block;
           margin: 0 auto 20px auto;
           font-family: 'Ubuntu';
-          font-size: 2rem;
           color: #2D2D2D;
           background: #C47F15;
           border: 4px solid #966110;
@@ -529,24 +528,25 @@ canvas {
           #edit-window .edit-spread .section-tools .edit-tools .edit-content img:hover {
             outline: 3px solid #4B9FCB; }
         #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice {
+          width: 100%;
+          position: relative;
           display: flex;
           align-items: center;
-          height: 50px;
-          width: 100%;
-          padding: 20px 5px;
           text-align: left;
           border-bottom: 1px solid #4B9FCB;
           -webkit-transition: 0.1s ;
           -moz-transition: 0.1s ;
           transition: 0.1s ; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice.disabled {
+            color: #2D2D2D;
+            background: #666666;
+            pointer-events: none; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice input {
             position: absolute;
             opacity: 0; }
             #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice input:checked ~ .checkmark {
               background: #4B9FCB; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .checkmark {
-            height: 40px;
-            width: 40px;
             position: absolute;
             cursor: pointer;
             background: white;
@@ -555,14 +555,20 @@ canvas {
             -moz-transition: 0.3s ;
             transition: 0.3s ; }
             #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .checkmark i {
-              font-size: 2rem;
               position: absolute;
               top: 10%;
               left: 5%;
               color: white; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence {
-            margin-left: 8%;
-            font-size: 1.3rem; }
+            margin-left: 8%; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence span.green {
+              color: #33C451; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence span.red {
+              color: #FF3A38; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence span.bold {
+              font-weight: bold; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice .highlight-sentence span.caps {
+              text-transform: capitalize; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover {
             background: #73b4d6; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover input:not(:checked) ~ .checkmark {
@@ -708,6 +714,7 @@ canvas {
           color: #F9F9F9;
           background: inherit;
           border: none;
+          border-right: 1px solid #163856;
           font-family: 'Ubuntu';
           font-size: 1rem;
           overflow: hidden;
@@ -925,25 +932,38 @@ canvas {
     box-shadow: 0 0 8px 1px #2D2D2D; }
     #preview-window #complete-final-preview .preview-spread div {
       height: 100%;
-      width: 70%;
-      display: inline-flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: center;
       padding: 20px;
-      text-align: center;
-      color: white;
       overflow: hidden;
       -webkit-transition: 0.3s ;
       -moz-transition: 0.3s ;
       transition: 0.3s ; }
       #preview-window #complete-final-preview .preview-spread div.preview-image {
+        width: 70%;
+        text-align: left;
         cursor: pointer;
+        color: #2D2D2D;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center; }
+        #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list {
+          font-size: 1.2rem; }
+          #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul {
+            margin: 0;
+            pointer-events: none; }
+            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.green {
+              color: #33C451; }
+            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.red {
+              color: #FF3A38; }
+            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.bold {
+              font-weight: bold; }
       #preview-window #complete-final-preview .preview-spread div.preview-section-options {
         width: 30%;
+        display: inline-flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
         background: #2D2D2D;
         -webkit-box-shadow: 0 0 36px 2px #2D2D2D;
         -moz-box-shadow: 0 0 36px 2px #2D2D2D;
@@ -1125,12 +1145,34 @@ canvas {
     padding: 10px 0;
     border-top: 2px solid #E50015; }
 
+#splash-message {
+  max-width: 40%;
+  display: none;
+  position: fixed;
+  top: 1.25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #DAE55B;
+  background: rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 16px 3px #2D2D2D;
+  -moz-box-shadow: 0 0 16px 3px #2D2D2D;
+  box-shadow: 0 0 16px 3px #2D2D2D; }
+
 @media screen and (max-width: 1900px) {
   .edit-spread {
     height: 900px !important;
     width: 1390px !important; }
   .complete-btn {
-    font-size: 1.5rem !important; } }
+    font-size: 1.5rem !important; }
+  table {
+    font-size: 1rem !important; } }
 
 @media screen and (max-width: 1450px) {
   .edit-spread {
@@ -1140,6 +1182,8 @@ canvas {
     font-size: 1.2rem !important; }
   .edit-tools h2, .upload {
     font-size: 1.6rem !important; }
+  table {
+    font-size: .8rem !important; }
   .preview-spread div h1, .preview-spread div button {
     font-size: 1.5rem !important; }
   .preview-spread div span {
@@ -1165,6 +1209,11 @@ canvas {
         outline-width: 5px !important; }
       .section-tools.complete:hover {
         outline-width: 5px !important; }
+  .upload {
+    border-width: 1px !important;
+    outline-width: 1px !important; }
+  table {
+    font-size: .7rem !important; }
   .preview-spread div h1, .preview-spread div button {
     font-size: 1.2rem !important; }
   .preview-spread div span {
