@@ -17,7 +17,7 @@
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Ubuntu';
+  font-family: 'Lato', 'Ubuntu';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -207,9 +207,9 @@ canvas {
     align-items: center;
     background: #163856; }
     .modal .modal-footer button {
-      margin-bottom: 20px;
+      margin: 20px 0;
       padding: 20px 60px;
-      font-family: 'Ubuntu';
+      font-family: 'Lato', 'Ubuntu';
       font-size: 1.5rem;
       background: #33C451;
       border: 2px solid #289c40;
@@ -220,6 +220,9 @@ canvas {
       transition: 0.3s ; }
       .modal .modal-footer button:hover {
         background: #57d371; }
+      .modal .modal-footer button a {
+        color: #2D2D2D;
+        text-decoration: none; }
     .modal .modal-footer .button-message {
       padding: 5px 0;
       color: white; }

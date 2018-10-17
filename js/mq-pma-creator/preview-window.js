@@ -27,6 +27,7 @@ class PreviewWindow {
 		this.pricingSummaryBtn = $('#pricing-summary-btn');
 		this.nextAreaBtn = $('#next-area-btn');
 		this.toFinalAcceptBtn = $('#to-final-accept-btn');
+		this.finalConfirmBtn = $('#final-confirm-btn');
 	}
 
 	/* Add Event Listeners */
@@ -96,6 +97,11 @@ class PreviewWindow {
 		this.toFinalAcceptBtn.click(() => {
 			$('#pricing-summary-modal').fadeOut(500);
 			$('#final-confirmation-modal').delay(500).fadeIn(500);
+		});
+
+		this.finalConfirmBtn.click(() => {
+			$('#final-confirmation-modal').fadeOut(500);
+			$('#thank-you-modal').delay(500).fadeIn(500);
 		});
 
 		// clicking any close buttons on modals / preview images closes target and overlay
@@ -192,7 +198,8 @@ class PreviewWindow {
 			this.disable();
 
 		this._updatePricingSummary();
-		if (this.numConfirmed !== NUM_SECTIONS[creatorType] + 2)
+
+		if (this.numConfirmed !== NUM_SECTIONS[creatorType] + NUM_SPREADS[creatorType])
 			this.pricingSummaryBtn.addClass('disabled');
 	}
 

@@ -139,10 +139,43 @@ class MailingWindow {
 			}
 		});
 
-		$('.edit-btn').click(() => {
+		$('.edit-btn').click((e) => {
+			let item = this.mailingList.get('address-id', $(e.currentTarget).parent()
+											  					  .siblings('.address-id-container')
+											  					  .children('.address-id')
+											  					  .html())[0];
+			this._populateEditModal(item.values());
 			$('#edit-modal').fadeIn(300);
 			$('#modal-overlay').fadeIn(300);
 		});
+
+		$('#edit-box input').change(function() {
+			$(this).siblings('div').html($(this).val());
+		});
+
+		$('.confirm-edit-btn').click(() => {
+			console.log("Confirm edit.");
+		});
+	}
+
+	/* Populates the sections of the edit modal with the current record's data */
+	_populateEditModal(values) {
+		let dataAreas = $('.edit-insert');
+		$('#address-id-edit-insert').html(values['address-id']);
+		$('#parcel-number-edit-insert').html(values['parcel-number']);
+		const blocked = (values['blocked'] === '') ? 'Not Blocked' : values['blocked'];
+		$('#blocked-edit-insert').html(blocked);
+		$('#name-edit-insert').html(values['name']);
+		$('#name-edit-insert').siblings('input').val(values['name']);
+		const mailingAddress = values['mail-address-line-1'] + '<br>' + values['mail-address-line-2'];
+		const mailingAddressPlaceholder = values['mail-address-line-1'] + ' ' + values['mail-address-line-2']
+		$('#mailing-address-edit-insert').html(mailingAddress);
+		$('#mailing-address-edit-insert').siblings('input').val(mailingAddressPlaceholder);
+		$('#site-address-edit-insert').html(values['site-address']);
+		$('#last-sale-edit-insert').html(values['last-sale-price']);
+		$('#last-sale-date-edit-insert').html(values['last-sale-date']);
+		$('#listing-agent-edit-insert').html(values['selling-agent']);
+
 	}
 
 	/* Count Blocked Addresses - private

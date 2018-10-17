@@ -15,6 +15,7 @@
 	  <link rel="stylesheet" type="text/css" href="css/mq-pma-creator.css">
 	  <!-- endbuild -->
 	  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+	  <link rel='stylesheet' type="text/css" href="http://fonts.googleapis.com/css?family=Lato:400,700">
 	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 
@@ -172,7 +173,7 @@
 							<div id="edit-bar">
 
 								<h2></h2>
-								<h3>Blocked Mailings</h3>
+								<h3>Blocked<br>Mailings</h3>
 								<ul>
 									<li class="block-link">
 										(&nbsp;<strong></strong>&nbsp;) 
@@ -256,7 +257,7 @@
 							</div>
 							<div id="price-bar">
 								<h2></h2>
-								<h3>Pricing & Approval</h3>
+								<h3>Pricing &<br>Approval</h3>
 								<button id="approve-list">
 									<strong>Approve<br><span class="insert-current-area"></span><br>Mailing List</strong>
 								</button>
@@ -440,7 +441,50 @@
 				<h1>Edit Address</h1>
 			</div>
 			<div class="modal-body">
-				
+				<div class="edit-modal-row">
+					<div class="edit-box">
+						<strong>Address ID</strong>
+						<div id="address-id-edit-insert"></div>
+					</div>
+					<div class="edit-box">
+						<strong>Parcel Number</strong>
+						<div id="parcel-number-edit-insert"></div>
+					</div>
+					<div class="edit-box editable">
+						<strong>Blocked</strong>
+						<div id="blocked-edit-insert"></div>
+					</div>
+				</div>
+				<div class="edit-modal-row">
+					<div class="edit-box editable">
+						<strong>Name</strong>
+						<div id="name-edit-insert"></div>
+						<input type="text">
+					</div>
+					<div class="edit-box editable">
+						<strong>Mailing Address</strong>
+						<div id="mailing-address-edit-insert"></div>
+						<input type="text">
+					</div>
+					<div class="edit-box">
+						<strong>Site Address</strong>
+						<div id="site-address-edit-insert"></div>
+					</div>
+				</div>
+				<div class="edit-modal-row">
+					<div class="edit-box">
+						<strong>Last Sale</strong>
+						<div id="last-sale-edit-insert"></div>
+					</div>
+					<div class="edit-box">
+						<strong>Last Sale Date</strong>
+						<div id="last-sale-date-edit-insert"></div>
+					</div>
+					<div class="edit-box">
+						<strong>Listing Agent</strong>
+						<div id="listing-agent-edit-insert"></div>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button class="close-btn">Cancel</button>
@@ -471,18 +515,26 @@
 				<h1>Final Confirmation For This Mailing</h1>
 			</div>
 			<div class="modal-body">
-				<div>NO CHANGES TO YOUR MAILING CAN BE MADE PAST THIS POINT.</div>
-				<div>
-					By clicking <strong>Confirm</strong> below, you are authorizing ListGen to charge your credit/debit card ending
-					in <span class="insert-cc"></span> the amount below.
+				<div id="charge-info-container">
+					<div id="charge-info">
+						<ul> 
+							<li>NO CHANGES TO YOUR MAILING CAN BE MADE PAST THIS POINT.</li>
+							<li>
+								By clicking <strong>Confirm</strong> below, you are authorizing ListGen to charge your credit/debit card ending in <span class="insert-cc"></span> the amount below.
+							</li>
+							<li>A copy of the completed PMA for each of your owned MLS Areas will be mailed to you.</li>
+							<li>
+								Please review out <a href="/terms-of-service.html" target="_blank">Terms of Service</a> and <a href="/privacy-policy.html" target="_blank">Privacy Policy</a> for further details.
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div>A copy of the completed PMA for each of your owned MLS Areas will be mailed to you.</div>
 				<div class="pricing-summary-total">
 					
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button id="final-confirm-btn">Confirm</button>
+				<button id="final-confirm-btn">Accept & Confirm</button>
 			</div>
 		</div>
 
@@ -492,14 +544,11 @@
 			</div>
 			<div class="modal-body">
 				<p>
-					Thank you for completing your Precision Market Analysis for 
-					<span class="insert-current-area"></span>. We at ListGen appreciate your loyalty
-					and business.
+					Thank you for completing your PMA for this mailing period! <br> We at ListGen appreciate your business and loyalty. <br> Check your email for a confirmation on your submission.
 				</p>
-				
 			</div>
 			<div class="modal-footer">
-				<button class="close-modal-btn">Close</button>
+				<button class="back-to-home"><a href="#">Back to My Office</a></button>
 			</div>
 		</div>
 

@@ -17,7 +17,7 @@
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Ubuntu';
+  font-family: 'Lato', 'Ubuntu';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -207,9 +207,9 @@ canvas {
     align-items: center;
     background: #163856; }
     .modal .modal-footer button {
-      margin-bottom: 20px;
+      margin: 20px 0;
       padding: 20px 60px;
-      font-family: 'Ubuntu';
+      font-family: 'Lato', 'Ubuntu';
       font-size: 1.5rem;
       background: #33C451;
       border: 2px solid #289c40;
@@ -220,6 +220,9 @@ canvas {
       transition: 0.3s ; }
       .modal .modal-footer button:hover {
         background: #57d371; }
+      .modal .modal-footer button a {
+        color: #2D2D2D;
+        text-decoration: none; }
     .modal .modal-footer .button-message {
       padding: 5px 0;
       color: white; }
@@ -447,6 +450,42 @@ canvas {
             font-weight: bold; }
           #edit-window .edit-spread .section-tools.highlight-list ul li span.caps {
             text-transform: uppercase; }
+    #edit-window .edit-spread .section-tools.las-list {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      white-space: nowrap;
+      padding: 0;
+      background: white; }
+      #edit-window .edit-spread .section-tools.las-list .las-container {
+        height: 100px;
+        display: none;
+        align-items: center;
+        list-style: none;
+        margin-bottom: 5px;
+        pointer-events: none; }
+        #edit-window .edit-spread .section-tools.las-list .las-container.active {
+          display: flex; }
+        #edit-window .edit-spread .section-tools.las-list .las-container img {
+          width: 20%;
+          display: inline-block;
+          margin: 0; }
+        #edit-window .edit-spread .section-tools.las-list .las-container .house-info {
+          height: 100%;
+          width: 80%;
+          margin-left: 5px;
+          display: inline-flex;
+          flex-flow: column nowrap;
+          justify-content: center; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-status {
+            font-size: 1.2rem;
+            font-weight: bold; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-address {
+            font-size: 1.1rem;
+            font-weight: bolder; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info table tbody tr td {
+            font-size: .7rem;
+            font-weight: bold; }
     #edit-window .edit-spread .section-tools.active {
       z-index: 3;
       outline-color: #b20010;
@@ -466,7 +505,7 @@ canvas {
     #edit-window .edit-spread .section-tools .complete-btn {
       display: none;
       position: absolute;
-      font-family: 'Ubuntu';
+      font-family: 'Lato', 'Ubuntu';
       font-size: 1.7rem;
       background: #33C451;
       border: 2px solid #289c40;
@@ -511,7 +550,7 @@ canvas {
           width: 75%;
           display: block;
           margin: 0 auto 20px auto;
-          font-family: 'Ubuntu';
+          font-family: 'Lato', 'Ubuntu';
           color: #2D2D2D;
           background: #C47F15;
           border: 4px solid #966110;
@@ -575,6 +614,68 @@ canvas {
             background: #73b4d6; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover input:not(:checked) ~ .checkmark {
             background: #F9F9F9; }
+        #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice {
+          height: 100px;
+          width: 100%;
+          position: relative;
+          display: flex;
+          align-items: center;
+          text-align: left;
+          border-bottom: 1px solid #4B9FCB;
+          overflow: hidden;
+          -webkit-transition: 0.1s ;
+          -moz-transition: 0.1s ;
+          transition: 0.1s ; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice.disabled {
+            color: #2D2D2D;
+            background: #666666;
+            pointer-events: none; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice.disabled .house-info table tbody tr td {
+              border-color: #2D2D2D !important; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice input {
+            position: absolute;
+            opacity: 0; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice input:checked ~ .checkmark {
+              background: #4B9FCB; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .checkmark {
+            position: absolute;
+            cursor: pointer;
+            background: white;
+            border: 1px solid #CCCCCC;
+            -webkit-transition: 0.3s ;
+            -moz-transition: 0.3s ;
+            transition: 0.3s ; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .checkmark i {
+              position: absolute;
+              top: 10%;
+              left: 5%;
+              color: white; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice img {
+            height: 90px;
+            width: 90px;
+            margin-left: 8%;
+            margin-bottom: 0;
+            outline: none !important; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info {
+            margin-left: 2%;
+            width: 100%; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info .las-status {
+              font-weight: bold; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info .las-address {
+              font-weight: bolder; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info table tbody tr td {
+              padding-right: 5px;
+              border-right: 1px solid white;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover {
+            background: #73b4d6;
+            color: #2D2D2D; }
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover .house-info table tbody tr td {
+              border-color: #2D2D2D; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover input:not(:checked) ~ .checkmark {
+            background: #F9F9F9; }
 
 #mailing-window #mailing-list {
   height: 100%;
@@ -600,6 +701,7 @@ canvas {
       min-height: 50px;
       margin: 0;
       padding: 12px;
+      text-align: center;
       font-size: 1.5rem;
       color: white;
       background: #122D46; }
@@ -664,7 +766,7 @@ canvas {
         margin-left: 10px;
         padding: 5px;
         border: 1px solid #4B9FCB;
-        font-family: 'Ubuntu';
+        font-family: 'Lato', 'Ubuntu';
         font-size: 1.1rem;
         text-align: center;
         -webkit-border-radius: 10px;
@@ -688,7 +790,7 @@ canvas {
         color: #F9F9F9;
         background: inherit;
         border: none;
-        font-family: 'Ubuntu';
+        font-family: 'Lato', 'Ubuntu';
         font-size: 1.2rem;
         overflow: hidden;
         cursor: pointer;
@@ -717,7 +819,7 @@ canvas {
           background: inherit;
           border: none;
           border-right: 1px solid #163856;
-          font-family: 'Ubuntu';
+          font-family: 'Lato', 'Ubuntu';
           font-size: 1rem;
           overflow: hidden;
           cursor: pointer;
@@ -769,7 +871,7 @@ canvas {
           #mailing-window #mailing-list #homeowners table tbody tr td button {
             height: 50px;
             width: 100%;
-            font-family: 'Ubuntu';
+            font-family: 'Lato', 'Ubuntu';
             font-size: 1.2rem;
             color: #2D2D2D;
             background: white;
@@ -836,7 +938,7 @@ canvas {
       color: #163856;
       background: #33C451;
       border: none;
-      font-family: 'Ubuntu';
+      font-family: 'Lato', 'Ubuntu';
       font-size: 1.05rem;
       text-align: center;
       overflow: hidden;
@@ -981,7 +1083,7 @@ canvas {
         font-size: 2rem; }
       #preview-window #complete-final-preview .preview-spread div button {
         height: auto;
-        font-family: 'Ubuntu';
+        font-family: 'Lato', 'Ubuntu';
         font-size: 2rem;
         border: 2px solid #289c40;
         outline: 3px solid #1e7330;
@@ -1018,7 +1120,7 @@ canvas {
   #preview-window #complete-final-preview #pricing-summary-btn {
     height: 2.5%;
     width: 50%;
-    font-family: 'Ubuntu';
+    font-family: 'Lato', 'Ubuntu';
     font-size: 2rem;
     color: #2D2D2D;
     background: #33C451;
@@ -1050,6 +1152,63 @@ canvas {
   background-repeat: no-repeat;
   background-position: left;
   cursor: pointer; }
+
+#edit-modal .modal-body {
+  padding: 20px; }
+  #edit-modal .modal-body .edit-modal-row {
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; }
+    #edit-modal .modal-body .edit-modal-row .edit-box {
+      height: 100%;
+      width: 30%;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      background: #CCCCCC;
+      border: 2px solid #163856;
+      pointer-events: none; }
+      #edit-modal .modal-body .edit-modal-row .edit-box.editable {
+        background: none;
+        pointer-events: initial; }
+      #edit-modal .modal-body .edit-modal-row .edit-box strong {
+        margin-bottom: 10px; }
+      #edit-modal .modal-body .edit-modal-row .edit-box div {
+        text-align: center; }
+      #edit-modal .modal-body .edit-modal-row .edit-box input {
+        width: 100%;
+        margin-top: 10px;
+        padding: 5px;
+        font-family: 'Lato', 'Ubuntu';
+        text-align: center;
+        border: 1px solid #122D46;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ;
+        -moz-transition: 0.3s ;
+        transition: 0.3s ;
+        -webkit-box-shadow: inset 0 0 3px 0 #4B9FCB;
+        -moz-box-shadow: inset 0 0 3px 0 #4B9FCB;
+        box-shadow: inset 0 0 3px 0 #4B9FCB; }
+        #edit-modal .modal-body .edit-modal-row .edit-box input:hover {
+          background: #d5e9f3; }
+        #edit-modal .modal-body .edit-modal-row .edit-box input:focus {
+          outline: none;
+          background: #d5e9f3; }
+
+#edit-modal .modal-footer {
+  justify-content: space-around; }
+  #edit-modal .modal-footer .close-btn {
+    background: #FF3A38;
+    border: 2px solid #ff0805;
+    outline: 2px solid #eb0200; }
+    #edit-modal .modal-footer .close-btn:hover {
+      background: #ff5352; }
 
 #pricing-summary-modal .modal-body #pricing-summary {
   height: 70%;
@@ -1096,6 +1255,34 @@ canvas {
 #pricing-summary-modal .modal-footer #next-area-btn {
   display: none; }
 
+#final-confirmation-modal .modal-body #charge-info-container {
+  height: 70%;
+  width: 100%;
+  padding: 5% 0; }
+  #final-confirmation-modal .modal-body #charge-info-container #charge-info {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 16px 3px #2D2D2D;
+    -moz-box-shadow: 0 0 16px 3px #2D2D2D;
+    box-shadow: 0 0 16px 3px #2D2D2D; }
+    #final-confirmation-modal .modal-body #charge-info-container #charge-info ul li {
+      list-style: disc outside;
+      margin-bottom: 10px; }
+      #final-confirmation-modal .modal-body #charge-info-container #charge-info ul li a {
+        padding-bottom: 2px;
+        color: #4B9FCB;
+        text-decoration: none; }
+        #final-confirmation-modal .modal-body #charge-info-container #charge-info ul li a:hover {
+          border-bottom: 1px solid #4B9FCB; }
+
 #final-confirmation-modal .modal-body .pricing-summary-total {
   height: 30%;
   width: 100%;
@@ -1108,6 +1295,27 @@ canvas {
   #final-confirmation-modal .modal-body .pricing-summary-total .pricing-box {
     width: 25%;
     height: 100%; }
+
+#thank-you-modal .modal-body {
+  padding: 20px; }
+  #thank-you-modal .modal-body p {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 16px 3px #2D2D2D;
+    -moz-box-shadow: 0 0 16px 3px #2D2D2D;
+    box-shadow: 0 0 16px 3px #2D2D2D; }
 
 .pricing-box {
   width: 100%;

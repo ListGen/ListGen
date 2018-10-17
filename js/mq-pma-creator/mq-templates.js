@@ -178,7 +178,7 @@ var TEMPLATES =
 					"height" : 2.25 * inch,
 					"width" : 6.5 * inch,
 					"tools-data" : {
-						"edit-height" : '200%',
+						"edit-height" : '300%',
 						"edit-width" : '150%',
 						"edit-top" : '-30%',
 						"edit-left" : '-152.5%',
@@ -207,7 +207,7 @@ var TEMPLATES =
 					"height" : 2.25 * inch,
 					"width" : 6.5 * inch,
 					"tools-data" : {
-						"edit-height" : '200%',
+						"edit-height" : '300%',
 						"edit-width" : '150%',
 						"edit-top" : '-30%',
 						"edit-left" : '-152.5%',
@@ -308,12 +308,7 @@ var TEMPLATES =
 						"complete-btn-bottom" : '102%'
 					},
 					'uploadable' : false,
-					'type' : 'las-list',
-					'default-choice' : ['Sentence 1', 'Sentence 2', 'Sentence 3'],
-					'system-choices' : ['Sentence 1',
-										'Sentence 2',
-										'Sentence 3',
-										]
+					'type' : 'las-list'
 				}
 			]
 		}

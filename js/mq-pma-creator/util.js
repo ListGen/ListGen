@@ -75,7 +75,7 @@ var agentData = {
 					'mail-address-line-1' : '12 Pine Lane',
 					'mail-address-line-2' : 'Carmel Valley, CA 92924',
 					'site-address' : '18B E Carmel Valley Rd',
-					'last-sale-price' : 2.2,
+					'last-sale-price' : '$2,200,000',
 					'last-sale-date' : '2/07/2017',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : '',
@@ -88,7 +88,7 @@ var agentData = {
 					'mail-address-line-1' : '1215 Santa Barbara Lane',
 					'mail-address-line-2' : 'Santa Barbara, CA 13441',
 					'site-address' : '1215 Santa Barbara Lane',
-					'last-sale-price' : 6.2,
+					'last-sale-price' : '$6,200,000',
 					'last-sale-date' : '5/21/2012',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : 'Active Listing',
@@ -101,7 +101,7 @@ var agentData = {
 					'mail-address-line-1' : '322 Hardy Rd',
 					'mail-address-line-2' : 'Houston, TX 10220',
 					'site-address' : '1992 Wilson Place',
-					'last-sale-price' : 10.875,
+					'last-sale-price' : '$10,875,000',
 					'last-sale-date' : '6/23/1991',
 					'selling-agent' : 'Meryl Streep',
 					'blocked' : 'Returned Mail',
@@ -114,7 +114,7 @@ var agentData = {
 					'mail-address-line-1' : '12 1st Street',
 					'mail-address-line-2' : 'New York, NY 33044',
 					'site-address' : '1984 Rainbow Rd',
-					'last-sale-price' : .35,
+					'last-sale-price' : '$350,000',
 					'last-sale-date' : '5/21/2013',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : '',
@@ -126,8 +126,8 @@ var agentData = {
 					'name' : 'Ellen Ripley',
 					'mail-address-line-1' : '38 Cedar Ave',
 					'mail-address-line-2' : 'Augusta, ME 33020',
-					'site-address' : '7 Nostrodamus',
-					'last-sale-price' : 22000,
+					'site-address' : '72100 Newark Way',
+					'last-sale-price' : '$200,050,000',
 					'last-sale-date' : '5/25/1979',
 					'selling-agent' : 'Ridley Scott',
 					'blocked' : 'Homeowner-Blocked',
@@ -170,6 +170,128 @@ var agentData = {
 					'time-confirmed' : ''
 				}
 			},
+			'listings-and-sales' : [
+				{
+					'address' : '1223 Main St',
+					'price' : 2000000,
+					'sqft' : 3500,
+					'beds' : 5,
+					'baths' : 5,
+					'lot-size' : 5000,
+					'dom' : 62,
+					'garage-space' : 2,
+					'mls-number' : 155401,
+					'date' : '2/23/17',
+					'src' : '../../images/home-screen/house1.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '2373 Main St',
+					'price' : 4500000,
+					'sqft' : 6000,
+					'beds' : 8,
+					'baths' : 2,
+					'lot-size' : 10000,
+					'dom' : 20,
+					'garage-space' : 6,
+					'mls-number' : 471193,
+					'date' : '9/4/18',
+					'src' : '../../images/home-screen/house2.jpg',
+					'self' : false,
+					'type' : 'sold'
+				},
+				{
+					'address' : '8740 Second St',
+					'price' : 800000,
+					'sqft' : 2000,
+					'beds' : 4,
+					'baths' : 3,
+					'lot-size' : 4000,
+					'dom' : 45,
+					'garage-space' : 2,
+					'mls-number' : 118339,
+					'date' : '2/4/18',
+					'src' : '../../images/home-screen/house3.jpg',
+					'self' : false,
+					'type' : 'pending'
+				},
+				{
+					'address' : '9001 Main St',
+					'price' : 9000000,
+					'sqft' : 8000,
+					'beds' : 12,
+					'baths' : 12,
+					'lot-size' : 9000,
+					'dom' : 74,
+					'garage-space' : 8,
+					'mls-number' : 446322,
+					'date' : '6/6/17',
+					'src' : '../../images/home-screen/house4.jpg',
+					'self' : false,
+					'type' : 'sold'
+				},
+				{
+					'address' : '3044 Third St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house5.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '3044 Fourth St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house6.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '3044 Fifth St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house3.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '3044 Sixth St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house2.jpg',
+					'self' : false,
+					'type' : 'listing'
+				}
+			],
 			'editor-complete' : false,
 			'mailing-complete' : false,
 			'total-complete' : false,
@@ -231,7 +353,7 @@ var agentData = {
 					'mail-address-line-1' : '422 Oxford Way',
 					'mail-address-line-2' : 'England, UK 23033',
 					'site-address' : '422 Oxford Way',
-					'last-sale-price' : 7.0,
+					'last-sale-price' : '$7,000,000',
 					'last-sale-date' : '12/10/2013',
 					'selling-agent' : 'Michael Jones',
 					'blocked' : '',
@@ -244,7 +366,7 @@ var agentData = {
 					'mail-address-line-1' : '12 Pine Lane',
 					'mail-address-line-2' : 'Carmel Valley, CA 92924',
 					'site-address' : '18B E Carmel Valley Rd',
-					'last-sale-price' : 2.2,
+					'last-sale-price' : '$2,200,000',
 					'last-sale-date' : '2/07/2017',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : '',
@@ -257,7 +379,7 @@ var agentData = {
 					'mail-address-line-1' : '1215 Santa Barbara Lane',
 					'mail-address-line-2' : 'Santa Barbara, CA 13441',
 					'site-address' : '1215 Santa Barbara Lane',
-					'last-sale-price' : 6.2,
+					'last-sale-price' : '$6,200,000',
 					'last-sale-date' : '5/21/2012',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : '',
@@ -270,7 +392,7 @@ var agentData = {
 					'mail-address-line-1' : '38 Cedar Ave',
 					'mail-address-line-2' : 'Augusta, ME 33020',
 					'site-address' : '1992 Wilson Place',
-					'last-sale-price' : 10.875,
+					'last-sale-price' : '$10,000,000',
 					'last-sale-date' : '6/23/1991',
 					'selling-agent' : 'Meryl Streep',
 					'blocked' : '',
@@ -283,7 +405,7 @@ var agentData = {
 					'mail-address-line-1' : '12 Marvel Dr',
 					'mail-address-line-2' : 'Los Angeles, CA 90212',
 					'site-address' : '12 Marvel Dr',
-					'last-sale-price' : 300,
+					'last-sale-price' : '$300,000,000',
 					'last-sale-date' : '5/28/2015',
 					'selling-agent' : 'Tony Stark',
 					'blocked' : 'Homeowner-Blocked',
@@ -326,6 +448,68 @@ var agentData = {
 					'time-confirmed' : ''
 				}
 			},
+			'listings-and-sales' : [
+				{
+					'address' : '1223 Main St',
+					'price' : 2000000,
+					'sqft' : 3500,
+					'beds' : 5,
+					'baths' : 5,
+					'lot-size' : 5000,
+					'dom' : 62,
+					'garage-space' : 2,
+					'mls-number' : 155401,
+					'date' : '2/23/17',
+					'src' : '../../images/home-screen/house1.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '2373 Main St',
+					'price' : 4500000,
+					'sqft' : 6000,
+					'beds' : 8,
+					'baths' : 2,
+					'lot-size' : 10000,
+					'dom' : 20,
+					'garage-space' : 6,
+					'mls-number' : 471193,
+					'date' : '9/4/18',
+					'src' : '../../images/home-screen/house2.jpg',
+					'self' : false,
+					'type' : 'sold'
+				},
+				{
+					'address' : '8740 Second St',
+					'price' : 800000,
+					'sqft' : 2000,
+					'beds' : 4,
+					'baths' : 3,
+					'lot-size' : 4000,
+					'dom' : 45,
+					'garage-space' : 2,
+					'mls-number' : 118339,
+					'date' : '2/4/18',
+					'src' : '../../images/home-screen/house3.jpg',
+					'self' : false,
+					'type' : 'pending'
+				},
+				{
+					'address' : '9001 Main St',
+					'price' : 9000000,
+					'sqft' : 8000,
+					'beds' : 12,
+					'baths' : 12,
+					'lot-size' : 9000,
+					'dom' : 74,
+					'garage-space' : 8,
+					'mls-number' : 446322,
+					'date' : '6/6/17',
+					'src' : '../../images/home-screen/house4.jpg',
+					'self' : false,
+					'type' : 'sold'
+				}
+			],
 			'editor-complete' : false,
 			'mailing-complete' : false,
 			'total-complete' : false,
@@ -413,6 +597,10 @@ const NUM_SECTIONS = {
 	'mq-4' : 9
 }
 
+const NUM_SPREADS = {
+	'mq-4' : 2
+}
+
 // price per mailing for each of the page versions
 const PRICE_PER_MAILING = {
 	'4' : 1.7,
@@ -424,6 +612,18 @@ const SELECTION_LIMITS = {
 	'city-highlights' : 3,
 	'area-highlights' : 3,
 	'listings-and-sales' : 8
+}
+
+const LAS_MESSAGES = {
+	'listing' : 'JUST LISTED! @ ',
+	'pending' : 'SALE PENDING... @ ',
+	'sold' : 'JUST SOLD! @ '
+}
+
+const LAS_COLORS = {
+	'listing' : '#33C451',
+	'pending' : 'black',
+	'sold' : '#FF3A38'
 }
 
 // month number to abbreviation
@@ -521,7 +721,7 @@ function updatePricingBox(box, numMailings, price, complete) {
 const SPLASH = {
 	'start' : 'Welcome to the Precision Market Analysis Creator! To start, click on the sections below to customize this mailing.',
 	'highlights-confirm' : 'You must choose exactly <strong>3</strong> highlights to use in this section.',
-	'listings-and-sales-confirm' : 'You must choose between <strong>4</strong> and <strong>8</strong> choices in this section.',
+	'las-confirm' : 'You must choose exactly <strong>5</strong> choices in this section.',
 	'area-complete' : 'You have completed this area! Click <strong>Continue</strong> below.'
 }
 
