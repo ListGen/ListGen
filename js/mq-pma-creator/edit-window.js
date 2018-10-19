@@ -101,116 +101,16 @@ class EditWindow {
 			if (this.sectionsComplete === numSections) {
 				this.takeSnapshot(350);
 				this.updateCallback('Editor', true);
+				$('html, body').animate({ scrollTop: 0 }, 500);			
 			}
-
 		});
 
 		$('.highlight-choice').click((e) => {
-			if (!first) { first = true;	return; } // fix... super hacky (prevents event firing twice on one click)
-			const choice = $(e.currentTarget);
-			const checked = !choice.children('input').is(':checked');
-			const sentence = choice.children('.highlight-sentence').html();
-			const tools = choice.parent().parent().parent();
-			const button = tools.children('.complete-btn');
-			const id = tools.attr('id');
-			const name = ID_TO_NAME[id];
-			let selections = tools.children('ul').children();
-			mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
-
-			for (let selection of selections) {
-				if ($(selection).html() === sentence) {
-					if (checked) {
-						$(selection).addClass('active');
-						this.numSelected[id]++;
-						editSections[name]['selection'].push(sentence);
-					} else {
-						$(selection).removeClass('active');
-						this.numSelected[id]--;
-						const index = editSections[name]['selection'].indexOf(sentence);
-						if (index !== -1) editSections[name]['selection'].splice(index, 1);
-					}
-					break;
-				}
-			}
-
-			for (let selection of choice.siblings())
-				$(selection).removeClass('disabled');
-
-			if (this.numSelected[id] >= SELECTION_LIMITS[id]) {
-				for (let selection of choice.siblings()) {
-					if (!$(selection).children('input').is(':checked')) {
-						$(selection).addClass('disabled');
-					}
-				}
-			}
-			
-			first = false;
-
-			if (editSections[name]['status'] === 'Complete')
-				this.sectionsComplete--;
-			editSections[name]['status'] = 'Incomplete';
-			// editSections[name]['selection'] = img.attr('src');
-			tools.removeClass('complete');
-			button.show();
-
-			// update everything if section was complete
-			if (this.sectionsComplete + 1 === numSections) this.updateCallback('Editor', false);
-			this.completeAreaCallback(false);
+			this._updateSelectionSection(e, true);
 		});
 
 		$('.las-choice').click((e) => {
-			if (!first) { first = true;	return; } // fix... super hacky (prevents event firing twice on one click)
-			const choice = $(e.currentTarget);
-			const checked = !choice.children('input').is(':checked');
-			const address = choice.children('.house-info').children('.las-address').html();
-			const tools = choice.parent().parent().parent();
-			const button = tools.children('.complete-btn');
-			const id = tools.attr('id');
-			const name = ID_TO_NAME[id];
-			let selections = tools.children();
-			mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
-
-			for (let selection of selections) {
-				if ($(selection).children('.house-info').children('.las-address').html() === address) {
-					if (checked) {
-						$(selection).addClass('active');
-						this.numSelected[id]++;
-						editSections[name]['selection'].push(address);
-					} else {
-						$(selection).removeClass('active');
-						this.numSelected[id]--;
-						const index = editSections[name]['selection'].indexOf(address);
-						if (index !== -1) editSections[name]['selection'].splice(index, 1);
-					}
-					break;
-				}
-			}
-
-			// enable all selections
-			for (let selection of choice.siblings())
-				$(selection).removeClass('disabled');
-
-			// disable selections if limit reached
-			if (this.numSelected[id] >= SELECTION_LIMITS[id]) {
-				for (let selection of choice.siblings()) {
-					if (!$(selection).children('input').is(':checked')) {
-						$(selection).addClass('disabled');
-					}
-				}
-			}
-			
-			first = false;	// hacky - see above
-
-			// make incomplete
-			if (editSections[name]['status'] === 'Complete')
-				this.sectionsComplete--;
-			editSections[name]['status'] = 'Incomplete';
-			tools.removeClass('complete');
-			button.show();
-
-			// update everything if section was previously complete
-			if (this.sectionsComplete + 1 === numSections) this.updateCallback('Editor', false);
-			this.completeAreaCallback(false);
+			this._updateSelectionSection(e, false);
 		});
 
 		// upload image
@@ -222,6 +122,62 @@ class EditWindow {
 		$(window).resize(() => {
 			this._updateBreakpoints(false);
 		});
+	}
+
+	// Updates highlight/L&S section with new selections
+	_updateSelectionSection(e, highlight) {
+		if (!first) { first = true;	return; } // fix... super hacky (prevents event firing twice on one click)
+		const sectionType = (highlight) ? '.highlight-sentence' : '.las-address';
+		const choice = $(e.currentTarget);
+		const checked = !choice.children('input').is(':checked');
+		const target = choice.find(sectionType).html();
+		const tools = choice.parents('.section-tools');
+		const button = tools.children('.complete-btn');
+		const id = tools.attr('id');
+		const name = ID_TO_NAME[id];
+		let selections = (highlight) ? tools.find('li') : tools.children('.las-container');
+		mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
+
+		for (let selection of selections) {
+			const attempt = (highlight) ? $(selection) : $(selection).find('.las-address');
+			if (attempt.html() === target) {
+				if (checked) {
+					$(selection).addClass('active');
+					this.numSelected[id]++;
+					editSections[name]['selection'].push(target);
+				} else {
+					$(selection).removeClass('active');
+					this.numSelected[id]--;
+					const index = editSections[name]['selection'].indexOf(target);
+					if (index !== -1) editSections[name]['selection'].splice(index, 1);
+				}
+				break;
+			}
+		}
+
+		for (let selection of choice.siblings())
+			$(selection).removeClass('disabled');
+
+		if (this.numSelected[id] >= SELECTION_LIMITS[id]) {
+			for (let selection of choice.siblings()) {
+				if (!$(selection).children('input').is(':checked')) {
+					$(selection).addClass('disabled');
+				}
+			}
+		}
+		
+		if (!highlight) $('.las-container').height(LAS_SIZES[this.numSelected[id]]);
+		first = false;
+
+		if (editSections[name]['status'] === 'Complete')
+			this.sectionsComplete--;
+		editSections[name]['status'] = 'Incomplete';
+		tools.removeClass('complete');
+		button.show();
+
+		// update everything if section was complete
+		if (this.sectionsComplete + 1 === numSections) this.updateCallback('Editor', false);
+		this.completeAreaCallback(false);
 	}
 
 	/* Populate Canvas
@@ -241,112 +197,101 @@ class EditWindow {
 			const type = section['type'];
 			let src = (section['agent-specific']) ? personalInfo[section['name']] : section['src'];			
 			for (const coordinate of section['coordinates']) {
+				let newSection = null;
 				if (type === 'image') {
-					let img = $(new Image());
-					img.attr('src', src);
-					img.css('position', 'absolute');
-					img.css('top', coordinate[0] * scale);
-					img.css('left', coordinate[1] * scale);
-					img.css('height', section['size'][0] * scale);
-					img.css('width', section['size'][1] * scale);
-					spread.append(img);
+					newSection = $(new Image());
+					newSection.attr('src', src);
+					newSection.css('height', section['size'][0] * scale);
+					newSection.css('width', section['size'][1] * scale);
 				} else  if (type === 'text') {
-					let div = $('<div>' + src + '</div>');
-					div.css('position', 'absolute');
-					div.css('top', coordinate[0] * scale);
-					div.css('left', coordinate[1] * scale);
-					div.css('font-family', section['font-family']);
-					div.css('font-size', section['font-size'] * scale);
-					div.css('font-weight', 'bold');
-					div.css('color', section['font-color']);
-					if (section['capitalize']) div.css('text-transform', 'uppercase');
-					spread.append(div);
+					newSection = $('<div>' + src + '</div>');
+					newSection.css('font-family', section['font-family']);
+					newSection.css('font-size', section['font-size'] * scale);
+					newSection.css('font-weight', 'bold');
+					newSection.css('color', section['font-color']);
+					if (section['capitalize']) newSection.css('text-transform', 'uppercase');
 				}
+				newSection.css('position', 'absolute');
+				newSection.css('top', coordinate[0] * scale);
+				newSection.css('left', coordinate[1] * scale);
+				spread.append(newSection);
 			}
 		}
 
 		// Fill all editable sections
 		for (let section of edits) {
-			let div = $('<div id="' + NAME_TO_ID[section['name']] + '" class="section-tools"></div>');
+			const sectionID = NAME_TO_ID[section['name']]
+			let div = $('<div id="' + sectionID + '" class="section-tools"></div>');
 			div.height(section['height'] * scale);
 			div.width(section['width'] * scale);
 			div.css('top', section['top'] * scale);
 			div.css('left', section['left'] * scale);
 
+			// add complete button and edit tools
 			const completeButton = this._makeCompleteButton(section, scale);
 			const editReturn = this._makeEditTools(section, spread, scale);
 			div.append(completeButton);
 			div.append(editReturn['editTools']);
 
+			// populate edit section
 			if (editReturn['highlight-list']) {
-				div.addClass('highlight-list');
-				div.append($('<ul></ul>'));
-				div.children('ul').css('margin-top', 5 * scale + 'px');
-				div.children('ul').css('padding-left', 20 * scale + 'px');
-				for (const sentence of section['system-choices']) {
-					let choice = $('<li>' + sentence + '</li>');
-					choice.css('font-size', 1.1 * scale + 'rem');
-					choice.css('line-height', 1.5 * scale + 'rem');
-					choice.css('margin-bottom', 5 * scale + 'px');
-					if (editSections[section['name']]['selection'].includes(sentence)) {
-						choice.addClass('active');
-						this.numSelected[div.attr('id')]++;
-					}
-					div.children('ul').append(choice);
-				}
+				this._populateHighlightList(div, section, editReturn, scale);
 			} else if (editReturn['las-list']) {
-				div.addClass('las-list');
-				for (const ls of mlsAreas[currentArea]['listings-and-sales']) {
-					const status = LAS_MESSAGES[ls['type']];
-					const pricePerSqft = (ls['price'] / ls['sqft']).toFixed(2).toLocaleString();
-					const dateType = (ls['type'] === 'sold' || ls['type'] === 'pending') ? 'Sale Date' : 'List Date';
-					let choice = $('<div class="las-container">\
-										<img src="' + ls['src'] + '">\
-										<div class="house-info">\
-											<div class="las-status">' + status + '<span class="las-price">$' + ls['price'].toLocaleString() + '</span></div>\
-											<div class="las-address">' + ls['address'] + '</div>\
-											<table>\
-												<tbody>\
-													<tr class="house-numbers line-1">\
-														<td>MLS#: ' + ls['mls-number'] + '</td>\
-														<td>DoM: ' + ls['dom'] + '</td>\
-														<td>Price/sq ft: $' + pricePerSqft + '</td>\
-														<td>' + dateType + ': ' + ls['date'] + '</td>\
-													</tr>\
-													<tr class="house-numbers line-2">\
-														<td>' + ls['beds'] + ' Beds/' + ls['baths'] + ' Baths</td>\
-														<td>' + ls['sqft'] + 'sq ft</td>\
-														<td>Lot Size: ' + ls['lot-size'] + '</td>\
-														<td>' + ls['garage-space'] + ' garage space(s)</td>\
-													</tr>\
-												</tbody>\
-											</table>\
-										</div>\
-									</div>');
-					choice.children('.house-info').children('.las-status').css('color', LAS_COLORS[ls['type']]);
-					if (editSections[section['name']]['selection'].includes(ls)) {
-						choice.addClass('active');
-						this.numSelected[div.attr('id')]++;
-					}
-					div.append(choice);
-				}
+				this._populateLASList(div, section, editReturn, scale);
 			} else {
-				div.css('background-image', 'url(' + editReturn['selection'] + ')');
+				div.css('background-image', 'url(' + editSections[section['name']]['selection'] + ')');
 			}
 
-			editSections[section['name']]['selection'] = editReturn['selection'];
+			if ((editReturn['highlight-list'] || editReturn['las-list'])
+				&& this.numSelected[sectionID] < SELECTION_LIMITS[sectionID]) {
+				div.find('label').removeClass('disabled');
+			}
 
 			const status = editSections[section['name']]['status'];
 			if (status === 'Complete') { 
 				this.sectionsComplete++;
 				div.addClass('complete');
 			}
+
 			spread.append(div);
 		}
 	}
 
+	// populates the list of selection options for highlight list sections
+	_populateHighlightList(div, section, scale) {
+		div.addClass('highlight-list');
+		div.append($('<ul></ul>'));
+		div.children('ul').css('margin-top', 5 * scale + 'px');						// scaling
+		div.children('ul').css('padding-left', 20 * scale + 'px');					// scaling
+		for (const sentence of section['system-choices']) {
+			let choice = $('<li>' + sentence + '</li>');
+			choice.css('font-size', 1.1 * scale + 'rem');							// scaling
+			choice.css('line-height', 1.5 * scale + 'rem');							// scaling
+			choice.css('margin-bottom', 5 * scale + 'px');							// scaling
+			if (editSections[section['name']]['selection'].includes(sentence)) {
+				choice.addClass('active');
+				this.numSelected[div.attr('id')]++;
+			}
+			div.children('ul').append(choice);
+		}
+	}
+
+	// populates the list of selection options for L&S section
+	_populateLASList(div, section, scale) {
+		div.addClass('las-list');
+		for (const ls of mlsAreas[currentArea]['listings-and-sales']) {
+			let choice = makeLASContainer(ls);
+			choice.find('.las-status').css('color', LAS_COLORS[ls['type']]);
+			if (editSections[section['name']]['selection'].includes(ls['address'])) {
+				choice.addClass('active');
+				this.numSelected[div.attr('id')]++;
+			}
+			div.append(choice);
+		}
+	}
+
 	/* Make Complete Button
-	 * --------------------------------
+	 * --------------------
 	 * Adds the "Complete" button to the section tools with the according top and left coordinates.
 	 *
 	 * @param section object : section object from template
@@ -363,8 +308,7 @@ class EditWindow {
 
 	/* Make Edit Tools
 	 * --------------------------------
-	 * Makes the tools consisting of choosing the content for the section
-	 * and the complete button for each section.
+	 * Makes the tools for choosing the content for the section
 	 *
 	 * @param section object : section object from template
 	 * @param spread object : which spread the current section is on
@@ -376,120 +320,73 @@ class EditWindow {
 		editTools.width(section['tools-data']['edit-width']);
 		editTools.css('top', section['tools-data']['edit-top']);
 		editTools.css('left', section['tools-data']['edit-left']);
-		const hList = section['type'] === 'highlight-list',
+		const iList = section['type'] === 'image',
+			  hList = section['type'] === 'highlight-list',
 			  lasList = section['type'] === 'las-list';
 
 		// populate selections content
 		editTools.append($('<h2>' + section['name'] + '</h2>'));
 		let editToolsContent = $('<div class="edit-content"></div>');
-		if (section['uploadable']) { 
-			editToolsContent.append($('<button class="upload">Upload</button>'));
-			editToolsContent.children('.upload').css('font-size', 2 * scale + 'rem');
-		}
+		// if (section['uploadable']) { 
+		// 	editToolsContent.append($('<button class="upload">Upload</button>'));
+		// 	editToolsContent.children('.upload').css('font-size', 2 * scale + 'rem');	// scaling
+		// }
 
-		let tempSelections = [];
+		let tempSelections = [];	// for list sections
 		const choices = (lasList) ? mlsAreas[currentArea]['listings-and-sales'] : section['system-choices'];
 		for (let choice of choices) {
-			if (section['type'] === 'image') {
-				let newImage = $('<img src="' + choice + '">');
-				newImage.data('top', section['top']);
-				newImage.data('left', section['left']);
-				newImage.data('height', section['height']);
-				newImage.data('width', section['width']);
-				newImage.data('spread', spread);
-				editToolsContent.append(newImage);
+			let newChoice = null;
+			if (iList) {
+				newChoice = $('<img src="' + choice + '">');
+				newChoice.data('top', section['top']);
+				newChoice.data('left', section['left']);
+				newChoice.data('height', section['height']);
+				newChoice.data('width', section['width']);
+				newChoice.data('spread', spread);
 			} else if (hList) {
-				let newSentence = $('<label class="highlight-choice">\
-										<input class="list-check" type="checkbox"/>\
-										<span class="checkmark"><i class="material-icons">check</i></span>\
-										<span class="highlight-sentence">' + choice + '</span>\
-									</label>');
-				newSentence.css('font-size', 1.3 * scale + 'rem');
-				newSentence.css('padding', 20 * scale + 'px ' + 5 * scale + 'px');
-				newSentence.children('.checkmark').height(40 * scale);
-				newSentence.children('.checkmark').width(40 * scale);
-				newSentence.children('.checkmark').children('i').css('font-size', 2 * scale + 'rem');
-				if (editSections[section['name']]['selection'].length === 0) {
-					if (section['default-choice'].includes(choice)) {
-						tempSelections.push(choice);
-						newSentence.children('input').prop('checked', true);
-					} else {
-						newSentence.addClass('disabled');
-					}
-				} else {
-					if (editSections[section['name']]['selection'].includes(choice)) {
-						tempSelections.push(choice);
-						newSentence.children('input').prop('checked', true);
-					} else {
-						newSentence.addClass('disabled');
-					}
-				}
-				editToolsContent.append(newSentence);
+				newChoice = $('<label class="highlight-choice">\
+									<input class="list-check" type="checkbox"/>\
+									<span class="checkmark"><i class="material-icons">check</i></span>\
+									<span class="highlight-sentence">' + choice + '</span>\
+								</label>');
+				decideSelections(choice, newChoice, section, editSections, tempSelections, scale, true);
 			} else if (lasList) {
-				const status = LAS_MESSAGES[choice['type']];
-				const pricePerSqft = (choice['price'] / choice['sqft']).toFixed(2).toLocaleString();
-				const dateType = (choice['type'] === 'sold' || choice['type'] === 'pending') ? 'Sale Date' : 'List Date';
-				let newChoice = $('<label class="las-choice">\
-										<input class="list-check" type="checkbox"/>\
-										<span class="checkmark"><i class="material-icons">check</i></span>\
-										<img src="' + choice['src'] + '">\
-										<div class="house-info">\
-											<div class="las-status">' + status + '<span class="las-price">$' + choice['price'].toLocaleString() + '</span></div>\
-											<div class="las-address">' + choice['address'] + '</div>\
-											<table>\
-												<tbody>\
-													<tr class="house-numbers line-1">\
-														<td>MLS#: ' + choice['mls-number'] + '</td>\
-														<td>DoM: ' + choice['dom'] + '</td>\
-														<td>Price/sq ft: $' + pricePerSqft + '</td>\
-														<td>' + dateType + ': ' + choice['date'] + '</td>\
-													</tr>\
-													<tr class="house-numbers line-2">\
-														<td>' + choice['beds'] + ' Beds/' + choice['baths'] + ' Baths</td>\
-														<td>' + choice['sqft'] + 'sq ft</td>\
-														<td>Lot Size: ' + choice['lot-size'] + '</td>\
-														<td>' + choice['garage-space'] + ' garage space(s)</td>\
-													</tr>\
-												</tbody>\
-											</table>\
-										</div>\
-									</label>');
-
-				newChoice.children('.checkmark').height(40 * scale);
-				newChoice.children('.checkmark').width(40 * scale);
-				newChoice.children('.checkmark').children('i').css('font-size', 2 * scale + 'rem');
-				newChoice.children('.house-info').children('.las-status').css('color', LAS_COLORS[choice['type']]);
-				newChoice.children('.house-info').children('table').css('font-size', .5 * scale + 'rem');
-
-				if (editSections[section['name']]['selection'].length === 0) {
-					if (tempSelections.length < SELECTION_LIMITS['listings-and-sales']) {
-						tempSelections.push(choice);
-						newChoice.children('input').prop('checked', true);
-					} else {
-						newChoice.addClass('disabled');
-					}
-				} else {
-					if (editSections[section['name']]['selection'].includes(choice)) {
-						tempSelections.push(choice);
-						newChoice.children('input').prop('checked', true);
-					} else {
-						newChoice.addClass('disabled');
-					}
-				}
-				editToolsContent.append(newChoice);
+				newChoice = $('<label class="las-choice">\
+									<input class="list-check" type="checkbox"/>\
+									<span class="checkmark"><i class="material-icons">check</i></span>\
+								</label>');
+				newChoice.append(makeLASContainer(choice));
+				newChoice.find('.las-status').css('color', LAS_COLORS[choice['type']]);
+				decideSelections(choice['address'], newChoice, section, editSections, tempSelections, scale, false);
 			}
+			editToolsContent.append(newChoice);
 		}
-		
-		if (hList || lasList)
-			editSections[section['name']]['selection'] = tempSelections;
 
 		editTools.append(editToolsContent);
 
-		const src = (editSections[section['name']]['selection'] === '') ? section['default-choice'] : editSections[section['name']]['selection'];
-		if (editSections[section['name']]['selection'] === '')
-			editSections[section['name']]['selection'] = src;
+		// update selection if blank
+		if ((hList || lasList) && editSections[section['name']]['selection'].length === 0)
+			editSections[section['name']]['selection'] = tempSelections;
+		else if (editSections[section['name']]['selection'] === '')
+			editSections[section['name']]['selection'] = section['default-choice'];
 		
-		return {'editTools' : editTools, 'selection' : src, 'highlight-list' : hList, 'las-list' : lasList};
+		return {'editTools' : editTools, 'highlight-list' : hList, 'las-list' : lasList};
+
+		// helper function for list sections
+		function decideSelections(choice, newChoice, section, editSections, tempSelections, scale, highlight) {
+			newChoice.children('.checkmark').height(40 * scale);									// scaling
+			newChoice.children('.checkmark').width(40 * scale);										// scaling
+			newChoice.find('i').css('font-size', 2 * scale + 'rem');								// scaling
+			const sectionsEmpty = editSections[section['name']]['selection'].length === 0;
+			const listToCheck = (sectionsEmpty) ? section['default-choice'] : editSections[section['name']]['selection'];
+			const condition = (sectionsEmpty && !highlight) ? tempSelections.length < SELECTION_LIMITS['listings-and-sales'] : listToCheck.includes(choice);
+			if (condition) {
+				tempSelections.push(choice);
+				newChoice.children('input').prop('checked', true);
+			} else {
+				newChoice.addClass('disabled');
+			}
+		}
 	}
 
 	/* Sets the correct scaling */

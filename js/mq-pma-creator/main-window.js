@@ -41,6 +41,11 @@ class MainWindow {
 			const step = $(e.currentTarget).children(message).children('.step-link').html();
 			this.setWindowCallback(step);
 		});
+
+		// flashing
+		setInterval(function() {
+			$('.complete-banner').toggleClass('change');
+		}, 1000);
 	}
 
 	/* Intialize Sections */

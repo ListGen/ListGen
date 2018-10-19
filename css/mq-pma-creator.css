@@ -350,13 +350,15 @@ canvas {
   cursor: pointer;
   font-size: 1.5rem;
   background: #33C451;
-  border-bottom: 1px solid #289c40; }
+  border-bottom: 1px solid #289c40;
+  transition: background 1s; }
   .complete-banner:hover {
     height: 70px;
-    background: #57d371;
     -webkit-transition: 0.3s ;
     -moz-transition: 0.3s ;
     transition: 0.3s ; }
+  .complete-banner.change {
+    background: #2eb049; }
   .complete-banner span, .complete-banner strong {
     margin: 40px; }
   .complete-banner .complete-message {
@@ -434,8 +436,10 @@ canvas {
     #edit-window .edit-spread .section-tools.highlight-list {
       background: white; }
       #edit-window .edit-spread .section-tools.highlight-list ul {
+        margin: 0 0 0 5%;
+        padding: 0;
         pointer-events: none;
-        list-style: disc; }
+        list-style: disc outside; }
         #edit-window .edit-spread .section-tools.highlight-list ul li {
           display: none; }
           #edit-window .edit-spread .section-tools.highlight-list ul li.active {
@@ -480,7 +484,14 @@ canvas {
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-status {
             font-size: 1.2rem;
             font-weight: bold; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .address-container {
+            display: flex;
+            justify-content: space-between; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-address {
+            font-size: 1.1rem;
+            font-weight: bolder; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-cross-street {
+            margin-right: 1%;
             font-size: 1.1rem;
             font-weight: bolder; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info table tbody tr td {
@@ -508,6 +519,7 @@ canvas {
       font-family: 'Lato', 'Ubuntu';
       font-size: 1.7rem;
       background: #33C451;
+      color: white;
       border: 2px solid #289c40;
       outline: 2px solid #195f27;
       cursor: pointer;
@@ -574,6 +586,7 @@ canvas {
           display: flex;
           align-items: center;
           text-align: left;
+          padding: 5% 1%;
           border-bottom: 1px solid #4B9FCB;
           -webkit-transition: 0.1s ;
           -moz-transition: 0.1s ;
@@ -630,7 +643,7 @@ canvas {
             color: #2D2D2D;
             background: #666666;
             pointer-events: none; }
-            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice.disabled .house-info table tbody tr td {
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice.disabled td {
               border-color: #2D2D2D !important; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice input {
             position: absolute;
@@ -663,7 +676,7 @@ canvas {
               font-weight: bold; }
             #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info .las-address {
               font-weight: bolder; }
-            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info table tbody tr td {
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info td {
               padding-right: 5px;
               border-right: 1px solid white;
               white-space: nowrap;

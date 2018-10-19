@@ -173,7 +173,7 @@ var agentData = {
 			'listings-and-sales' : [
 				{
 					'address' : '1223 Main St',
-					'price' : 2000000,
+					'price' : 4500000,
 					'sqft' : 3500,
 					'beds' : 5,
 					'baths' : 5,
@@ -181,14 +181,15 @@ var agentData = {
 					'dom' : 62,
 					'garage-space' : 2,
 					'mls-number' : 155401,
+					'cross-street' : 'Cedar',
 					'date' : '2/23/17',
 					'src' : '../../images/home-screen/house1.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'sold'
 				},
 				{
 					'address' : '2373 Main St',
-					'price' : 4500000,
+					'price' : 2000000,
 					'sqft' : 6000,
 					'beds' : 8,
 					'baths' : 2,
@@ -196,6 +197,7 @@ var agentData = {
 					'dom' : 20,
 					'garage-space' : 6,
 					'mls-number' : 471193,
+					'cross-street' : 'Cedar',
 					'date' : '9/4/18',
 					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
@@ -203,7 +205,7 @@ var agentData = {
 				},
 				{
 					'address' : '8740 Second St',
-					'price' : 800000,
+					'price' : 1400000,
 					'sqft' : 2000,
 					'beds' : 4,
 					'baths' : 3,
@@ -211,10 +213,11 @@ var agentData = {
 					'dom' : 45,
 					'garage-space' : 2,
 					'mls-number' : 118339,
+					'cross-street' : 'Olive',
 					'date' : '2/4/18',
 					'src' : '../../images/home-screen/house3.jpg',
 					'self' : false,
-					'type' : 'pending'
+					'type' : 'sold'
 				},
 				{
 					'address' : '9001 Main St',
@@ -226,10 +229,11 @@ var agentData = {
 					'dom' : 74,
 					'garage-space' : 8,
 					'mls-number' : 446322,
+					'cross-street' : 'Cedar',
 					'date' : '6/6/17',
 					'src' : '../../images/home-screen/house4.jpg',
 					'self' : false,
-					'type' : 'sold'
+					'type' : 'pending'
 				},
 				{
 					'address' : '3044 Third St',
@@ -241,6 +245,7 @@ var agentData = {
 					'dom' : 192,
 					'garage-space' : 1,
 					'mls-number' : 766577,
+					'cross-street' : 'Pine',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
 					'self' : false,
@@ -248,7 +253,7 @@ var agentData = {
 				},
 				{
 					'address' : '3044 Fourth St',
-					'price' : 350000,
+					'price' : 220000,
 					'sqft' : 1000,
 					'beds' : 2,
 					'baths' : 3,
@@ -256,6 +261,7 @@ var agentData = {
 					'dom' : 192,
 					'garage-space' : 1,
 					'mls-number' : 766577,
+					'cross-street' : 'Oak',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house6.jpg',
 					'self' : false,
@@ -263,7 +269,7 @@ var agentData = {
 				},
 				{
 					'address' : '3044 Fifth St',
-					'price' : 350000,
+					'price' : 210000,
 					'sqft' : 1000,
 					'beds' : 2,
 					'baths' : 3,
@@ -271,14 +277,15 @@ var agentData = {
 					'dom' : 192,
 					'garage-space' : 1,
 					'mls-number' : 766577,
+					'cross-street' : 'Juniper',
 					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house3.jpg',
+					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
 					'type' : 'listing'
 				},
 				{
 					'address' : '3044 Sixth St',
-					'price' : 350000,
+					'price' : 930000,
 					'sqft' : 1000,
 					'beds' : 2,
 					'baths' : 3,
@@ -286,8 +293,9 @@ var agentData = {
 					'dom' : 192,
 					'garage-space' : 1,
 					'mls-number' : 766577,
+					'cross-street' : 'Freedom',
 					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house2.jpg',
+					'src' : '../../images/home-screen/house5.jpg',
 					'self' : false,
 					'type' : 'listing'
 				}
@@ -459,6 +467,7 @@ var agentData = {
 					'dom' : 62,
 					'garage-space' : 2,
 					'mls-number' : 155401,
+					'cross-street' : 'Cedar',
 					'date' : '2/23/17',
 					'src' : '../../images/home-screen/house1.jpg',
 					'self' : false,
@@ -474,6 +483,7 @@ var agentData = {
 					'dom' : 20,
 					'garage-space' : 6,
 					'mls-number' : 471193,
+					'cross-street' : 'Cedar',
 					'date' : '9/4/18',
 					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
@@ -489,6 +499,7 @@ var agentData = {
 					'dom' : 45,
 					'garage-space' : 2,
 					'mls-number' : 118339,
+					'cross-street' : 'Olive',
 					'date' : '2/4/18',
 					'src' : '../../images/home-screen/house3.jpg',
 					'self' : false,
@@ -504,10 +515,75 @@ var agentData = {
 					'dom' : 74,
 					'garage-space' : 8,
 					'mls-number' : 446322,
+					'cross-street' : 'Cedar',
 					'date' : '6/6/17',
 					'src' : '../../images/home-screen/house4.jpg',
 					'self' : false,
 					'type' : 'sold'
+				},
+				{
+					'address' : '3044 Fifth St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'cross-street' : 'Oak',
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house3.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '3044 Sixth St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'cross-street' : 'Pine',
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house1.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '3044 Seventh St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'cross-street' : 'Juniper',
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house2.jpg',
+					'self' : false,
+					'type' : 'listing'
+				},
+				{
+					'address' : '3044 Eighth St',
+					'price' : 350000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'cross-street' : 'Sycamore',
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house5.jpg',
+					'self' : false,
+					'type' : 'listing'
 				}
 			],
 			'editor-complete' : false,
@@ -611,7 +687,7 @@ const PRICE_PER_MAILING = {
 const SELECTION_LIMITS = {
 	'city-highlights' : 3,
 	'area-highlights' : 3,
-	'listings-and-sales' : 8
+	'listings-and-sales' : 5
 }
 
 const LAS_MESSAGES = {
@@ -620,10 +696,54 @@ const LAS_MESSAGES = {
 	'sold' : 'JUST SOLD! @ '
 }
 
+const LAS_DATES = {
+	'listing' : 'List Date',
+	'pending' : 'Status Date',
+	'sold' : 'Sale Date'
+}
+
 const LAS_COLORS = {
 	'listing' : '#33C451',
 	'pending' : 'black',
 	'sold' : '#FF3A38'
+}
+
+const LAS_SIZES = {
+	4 : '25%',
+	5 : '20%',
+	6 : '16.67%',
+	7 : '14.28%',
+	8 : '12.5%'
+}
+
+function makeLASContainer(ls) {
+	const status = LAS_MESSAGES[ls['type']];
+	const pricePerSqft = (ls['price'] / ls['sqft']).toFixed(0).toLocaleString();
+	const dateType = LAS_DATES[ls['type']];
+	let choice = $('<div class="las-container">\
+						<img src="' + ls['src'] + '">\
+						<div class="house-info">\
+							<div class="las-status">' + status + '<span class="las-price">$' + ls['price'].toLocaleString() + '</span></div>\
+							<div class="address-container"><span class="las-address">' + ls['address'] + '</span><span class="las-cross-street">X-street: ' + ls['cross-street'] + '</span></div>\
+							<table>\
+								<tbody>\
+									<tr class="house-numbers line-1">\
+										<td>MLS#: ' + ls['mls-number'] + '</td>\
+										<td>DOM: ' + ls['dom'] + '</td>\
+										<td>Price/sq ft: $' + pricePerSqft + '</td>\
+										<td>' + dateType + ': ' + ls['date'] + '</td>\
+									</tr>\
+									<tr class="house-numbers line-2">\
+										<td>' + ls['beds'] + ' Beds/' + ls['baths'] + ' Baths</td>\
+										<td>' + ls['sqft'] + ' sq ft</td>\
+										<td>Lot Size: ' + ls['lot-size'] + '</td>\
+										<td>' + ls['garage-space'] + ' garage space(s)</td>\
+									</tr>\
+								</tbody>\
+							</table>\
+						</div>\
+					</div>');
+	return choice;
 }
 
 // month number to abbreviation
@@ -721,7 +841,7 @@ function updatePricingBox(box, numMailings, price, complete) {
 const SPLASH = {
 	'start' : 'Welcome to the Precision Market Analysis Creator! To start, click on the sections below to customize this mailing.',
 	'highlights-confirm' : 'You must choose exactly <strong>3</strong> highlights to use in this section.',
-	'las-confirm' : 'You must choose exactly <strong>5</strong> choices in this section.',
+	'las-confirm' : 'You must choose exactly <strong>8</strong> listings or sales in this section.',
 	'area-complete' : 'You have completed this area! Click <strong>Continue</strong> below.'
 }
 
