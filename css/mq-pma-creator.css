@@ -351,14 +351,12 @@ canvas {
   font-size: 1.5rem;
   background: #33C451;
   border-bottom: 1px solid #289c40;
-  transition: background 1s; }
+  transition: color 1s; }
   .complete-banner:hover {
     height: 70px;
     -webkit-transition: 0.3s ;
     -moz-transition: 0.3s ;
     transition: 0.3s ; }
-  .complete-banner.change {
-    background: #2eb049; }
   .complete-banner span, .complete-banner strong {
     margin: 40px; }
   .complete-banner .complete-message {
@@ -462,7 +460,7 @@ canvas {
       padding: 0;
       background: white; }
       #edit-window .edit-spread .section-tools.las-list .las-container {
-        height: 100px;
+        height: 100%;
         display: none;
         align-items: center;
         list-style: none;
@@ -470,10 +468,13 @@ canvas {
         pointer-events: none; }
         #edit-window .edit-spread .section-tools.las-list .las-container.active {
           display: flex; }
-        #edit-window .edit-spread .section-tools.las-list .las-container img {
-          width: 20%;
+        #edit-window .edit-spread .section-tools.las-list .las-container .las-image {
+          height: 100px;
+          width: 100px;
           display: inline-block;
-          margin: 0; }
+          margin: 0;
+          background-position: no-repeat;
+          background-size: cover; }
         #edit-window .edit-spread .section-tools.las-list .las-container .house-info {
           height: 100%;
           width: 80%;
@@ -492,10 +493,14 @@ canvas {
             font-weight: bolder; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-cross-street {
             margin-right: 1%;
-            font-size: 1.1rem;
-            font-weight: bolder; }
+            font-size: 1.1rem; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info table tbody tr td {
             font-size: .7rem;
+            font-weight: bold; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-description {
+            width: 100%;
+            white-space: normal;
+            font-size: .75rem;
             font-weight: bold; }
     #edit-window .edit-spread .section-tools.active {
       z-index: 3;
@@ -545,7 +550,8 @@ canvas {
       box-shadow: 0 0 36px 0 black; }
       #edit-window .edit-spread .section-tools .edit-tools h2 {
         margin: 0 0 10px 0;
-        font-size: 2rem; }
+        font-size: 2rem;
+        font-weight: normal; }
       #edit-window .edit-spread .section-tools .edit-tools .edit-content {
         height: 92.5%;
         padding: 10px;
@@ -628,7 +634,7 @@ canvas {
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .highlight-choice:hover input:not(:checked) ~ .checkmark {
             background: #F9F9F9; }
         #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice {
-          height: 100px;
+          height: 150px;
           width: 100%;
           position: relative;
           display: flex;
@@ -663,29 +669,27 @@ canvas {
               top: 10%;
               left: 5%;
               color: white; }
-          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice img {
-            height: 90px;
-            width: 90px;
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .las-image {
+            height: 100px;
+            width: 100px;
             margin-left: 8%;
-            margin-bottom: 0;
-            outline: none !important; }
-          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info {
+            background-position: no-repeat;
+            background-size: cover; }
+          #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .house-info {
             margin-left: 2%;
             width: 100%; }
-            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info .las-status {
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .house-info .las-status {
               font-weight: bold; }
-            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info .las-address {
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .house-info .las-address {
               font-weight: bolder; }
-            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .house-info td {
-              padding-right: 5px;
-              border-right: 1px solid white;
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .house-info td {
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover {
             background: #73b4d6;
             color: #2D2D2D; }
-            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover .house-info table tbody tr td {
+            #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover .las-container .house-info table tbody tr td {
               border-color: #2D2D2D; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice:hover input:not(:checked) ~ .checkmark {
             background: #F9F9F9; }

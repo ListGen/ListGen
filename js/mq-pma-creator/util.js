@@ -185,7 +185,8 @@ var agentData = {
 					'date' : '2/23/17',
 					'src' : '../../images/home-screen/house1.jpg',
 					'self' : false,
-					'type' : 'sold'
+					'type' : 'sold',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '2373 Main St',
@@ -201,7 +202,8 @@ var agentData = {
 					'date' : '9/4/18',
 					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
-					'type' : 'sold'
+					'type' : 'sold',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '8740 Second St',
@@ -217,7 +219,8 @@ var agentData = {
 					'date' : '2/4/18',
 					'src' : '../../images/home-screen/house3.jpg',
 					'self' : false,
-					'type' : 'sold'
+					'type' : 'sold',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '9001 Main St',
@@ -233,7 +236,8 @@ var agentData = {
 					'date' : '6/6/17',
 					'src' : '../../images/home-screen/house4.jpg',
 					'self' : false,
-					'type' : 'pending'
+					'type' : 'pending',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '3044 Third St',
@@ -249,7 +253,8 @@ var agentData = {
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '3044 Fourth St',
@@ -265,7 +270,8 @@ var agentData = {
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house6.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '3044 Fifth St',
@@ -281,7 +287,8 @@ var agentData = {
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '3044 Sixth St',
@@ -297,7 +304,8 @@ var agentData = {
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				}
 			],
 			'editor-complete' : false,
@@ -459,7 +467,7 @@ var agentData = {
 			'listings-and-sales' : [
 				{
 					'address' : '1223 Main St',
-					'price' : 2000000,
+					'price' : 4500000,
 					'sqft' : 3500,
 					'beds' : 5,
 					'baths' : 5,
@@ -471,11 +479,12 @@ var agentData = {
 					'date' : '2/23/17',
 					'src' : '../../images/home-screen/house1.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'sold',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '2373 Main St',
-					'price' : 4500000,
+					'price' : 2000000,
 					'sqft' : 6000,
 					'beds' : 8,
 					'baths' : 2,
@@ -487,11 +496,12 @@ var agentData = {
 					'date' : '9/4/18',
 					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
-					'type' : 'sold'
+					'type' : 'sold',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '8740 Second St',
-					'price' : 800000,
+					'price' : 1400000,
 					'sqft' : 2000,
 					'beds' : 4,
 					'baths' : 3,
@@ -503,7 +513,8 @@ var agentData = {
 					'date' : '2/4/18',
 					'src' : '../../images/home-screen/house3.jpg',
 					'self' : false,
-					'type' : 'pending'
+					'type' : 'sold',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
 					'address' : '9001 Main St',
@@ -519,26 +530,11 @@ var agentData = {
 					'date' : '6/6/17',
 					'src' : '../../images/home-screen/house4.jpg',
 					'self' : false,
-					'type' : 'sold'
+					'type' : 'pending',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
-					'address' : '3044 Fifth St',
-					'price' : 350000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Oak',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house3.jpg',
-					'self' : false,
-					'type' : 'listing'
-				},
-				{
-					'address' : '3044 Sixth St',
+					'address' : '3044 Third St',
 					'price' : 350000,
 					'sqft' : 1000,
 					'beds' : 2,
@@ -549,13 +545,31 @@ var agentData = {
 					'mls-number' : 766577,
 					'cross-street' : 'Pine',
 					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house1.jpg',
+					'src' : '../../images/home-screen/house5.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
-					'address' : '3044 Seventh St',
-					'price' : 350000,
+					'address' : '3044 Fourth St',
+					'price' : 220000,
+					'sqft' : 1000,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 3000,
+					'dom' : 192,
+					'garage-space' : 1,
+					'mls-number' : 766577,
+					'cross-street' : 'Oak',
+					'date' : '6/8/18',
+					'src' : '../../images/home-screen/house6.jpg',
+					'self' : false,
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+				},
+				{
+					'address' : '3044 Fifth St',
+					'price' : 210000,
 					'sqft' : 1000,
 					'beds' : 2,
 					'baths' : 3,
@@ -567,11 +581,12 @@ var agentData = {
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house2.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
-					'address' : '3044 Eighth St',
-					'price' : 350000,
+					'address' : '3044 Sixth St',
+					'price' : 930000,
 					'sqft' : 1000,
 					'beds' : 2,
 					'baths' : 3,
@@ -579,11 +594,12 @@ var agentData = {
 					'dom' : 192,
 					'garage-space' : 1,
 					'mls-number' : 766577,
-					'cross-street' : 'Sycamore',
+					'cross-street' : 'Freedom',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
 					'self' : false,
-					'type' : 'listing'
+					'type' : 'listing',
+					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				}
 			],
 			'editor-complete' : false,
@@ -687,13 +703,13 @@ const PRICE_PER_MAILING = {
 const SELECTION_LIMITS = {
 	'city-highlights' : 3,
 	'area-highlights' : 3,
-	'listings-and-sales' : 5
+	'listings-and-sales' : 6
 }
 
 const LAS_MESSAGES = {
-	'listing' : 'JUST LISTED! @ ',
+	'listing' : 'JUST LISTED @ ',
 	'pending' : 'SALE PENDING... @ ',
-	'sold' : 'JUST SOLD! @ '
+	'sold' : 'JUST SOLD @ '
 }
 
 const LAS_DATES = {
@@ -704,7 +720,7 @@ const LAS_DATES = {
 
 const LAS_COLORS = {
 	'listing' : '#33C451',
-	'pending' : 'black',
+	'pending' : '#D9A200',
 	'sold' : '#FF3A38'
 }
 
@@ -721,10 +737,10 @@ function makeLASContainer(ls) {
 	const pricePerSqft = (ls['price'] / ls['sqft']).toFixed(0).toLocaleString();
 	const dateType = LAS_DATES[ls['type']];
 	let choice = $('<div class="las-container">\
-						<img src="' + ls['src'] + '">\
+						<div class="las-image" style="background-image: url(' + ls['src'] + ')"></div>\
 						<div class="house-info">\
 							<div class="las-status">' + status + '<span class="las-price">$' + ls['price'].toLocaleString() + '</span></div>\
-							<div class="address-container"><span class="las-address">' + ls['address'] + '</span><span class="las-cross-street">X-street: ' + ls['cross-street'] + '</span></div>\
+							<div class="address-container"><span class="las-address">' + ls['address'] + '</span><span class="las-cross-street">Cross-street: ' + ls['cross-street'] + '</span></div>\
 							<table>\
 								<tbody>\
 									<tr class="house-numbers line-1">\
@@ -741,6 +757,7 @@ function makeLASContainer(ls) {
 									</tr>\
 								</tbody>\
 							</table>\
+							<div class="las-description">' + ls['description'] + '</div>\
 						</div>\
 					</div>');
 	return choice;
@@ -838,18 +855,24 @@ function updatePricingBox(box, numMailings, price, complete) {
 	if (!total) box.children('.approved').html('<strong>' + approved + '</strong>');
 }
 
+var splashMessagePresent = false;
+
 const SPLASH = {
 	'start' : 'Welcome to the Precision Market Analysis Creator! To start, click on the sections below to customize this mailing.',
 	'highlights-confirm' : 'You must choose exactly <strong>3</strong> highlights to use in this section.',
-	'las-confirm' : 'You must choose exactly <strong>8</strong> listings or sales in this section.',
+	'las-confirm' : 'You must choose exactly <strong>6</strong> listings or sales in this section.',
 	'area-complete' : 'You have completed this area! Click <strong>Continue</strong> below.'
 }
 
 // displays a helpful splash message for 2 seconds on the top of the screen.
 function makeSplashMessage(message, delay=4500) {
+	if (splashMessagePresent) return;
+	splashMessagePresent = true;
 	$('#splash-message').html(message);
 	$('#splash-message').fadeIn(500);
 	$('#splash-message').delay(delay).fadeOut(500);
+	setTimeout(() => splashMessagePresent = false, delay);
+
 }
 
 function addTooltip(container, message) {

@@ -81,9 +81,9 @@ class EditWindow {
 			if (name === 'City Highlights' || name === 'Area Highlights' || name === 'Listings And Sales') {
 				if (this.numSelected[id] != SELECTION_LIMITS[id]) {
 					if (name === 'Listings And Sales')
-						makeSplashMessage(SPLASH['las-confirm']);
+						makeSplashMessage(SPLASH['las-confirm'], 2000);
 					else 
-						makeSplashMessage(SPLASH['highlights-confirm']);
+						makeSplashMessage(SPLASH['highlights-confirm'], 2000);
 					return;
 				}
 			} 
@@ -136,8 +136,18 @@ class EditWindow {
 		const id = tools.attr('id');
 		const name = ID_TO_NAME[id];
 		let selections = (highlight) ? tools.find('li') : tools.children('.las-container');
-		mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
 
+		if (this.numSelected[id] <= 1 && !checked)  {
+			choice.children('input').prop('checked', checked);
+			if (highlight)
+				makeSplashMessage(SPLASH['highlights-confirm'], 1000);
+			else
+				makeSplashMessage(SPLASH['las-confirm'], 1000);
+			first = false;
+			return;
+		}
+
+		mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
 		for (let selection of selections) {
 			const attempt = (highlight) ? $(selection) : $(selection).find('.las-address');
 			if (attempt.html() === target) {
@@ -155,6 +165,7 @@ class EditWindow {
 			}
 		}
 
+
 		for (let selection of choice.siblings())
 			$(selection).removeClass('disabled');
 
@@ -166,7 +177,15 @@ class EditWindow {
 			}
 		}
 		
-		if (!highlight) $('.las-container').height(LAS_SIZES[this.numSelected[id]]);
+		if (!highlight) {
+			$('.las-list > .las-container').height(LAS_SIZES[this.numSelected[id]]);
+			if (this.numSelected[id] <= 6) {
+				$('.las-list > .las-container .las-description').css('display', 'initial');
+			} else  {
+				$('.las-list > .las-container .las-description').css('display', 'none');
+			}
+		}
+
 		first = false;
 
 		if (editSections[name]['status'] === 'Complete')
@@ -288,6 +307,7 @@ class EditWindow {
 			}
 			div.append(choice);
 		}
+		$('.las-list > .las-container').height(LAS_SIZES[this.numSelected[div.attr('id')]]);
 	}
 
 	/* Make Complete Button
@@ -386,6 +406,7 @@ class EditWindow {
 			} else {
 				newChoice.addClass('disabled');
 			}
+			newChoice.children('.las-container').addClass('active');
 		}
 	}
 
