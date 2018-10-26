@@ -50,7 +50,7 @@ class PreviewWindow {
 			button.html('Confirmed!');
 			const date = getDateAndTime();
 			$(e.currentTarget).siblings('.time-confirmed').html('Last confirmed on ' + date);
-			mlsAreas[currentArea]['final-preview'][button.siblings('h1').html()]['time-confirmed'] = date;
+			mlsAreas[currentArea]['edit-sections'][button.siblings('h1').html()]['time-confirmed'] = date;
 
 			this.numConfirmed++;
 			// enables confirm modal button
@@ -73,7 +73,7 @@ class PreviewWindow {
 			button.parent().parent().removeClass('confirmed');
 			button.siblings('.confirm').html('Confirm');
 			$(e.currentTarget).siblings('.time-confirmed').html('');
-			mlsAreas[currentArea]['final-preview'][button.siblings('h1').html()]['time-confirmed'] = '';
+			mlsAreas[currentArea]['edit-sections'][button.siblings('h1').html()]['time-confirmed'] = '';
 			this.pricingSummaryBtn.addClass('disabled');
 
 			this.completeAreaCallback(false);
@@ -159,15 +159,25 @@ class PreviewWindow {
 			let nameID = $(img).parent().attr('id');
 			const name = ID_TO_NAME[nameID.substr(0, nameID.length - 8)];
 			if (name === 'Outside Page') {
-				img.css('background-image', 'url(' + spreadCopies[0] + ')');
+				img.css('background-image', 'url(' + spreadSnapshots[0] + ')');
 			} else if (name === 'Inside Page') {
-				img.css('background-image', 'url(' + spreadCopies[1] + ')');
+				img.css('background-image', 'url(' + spreadSnapshots[1] + ')');
 			} else if (name === 'City Highlights' || name === 'Area Highlights') {
 				img.empty();
 				img.append($('<ul></ul>'));
 				for (const sentence of editSections[name]['confirmed-selection']) {
 					img.children('ul').append($('<li>' + sentence + '</li>'));
 				}
+			} else if (name === 'Listings And Sales') {
+				img.empty();
+				img.append($('<div class="las-list"</div>'));
+				for (const address of editSections[name]['confirmed-selection']) {
+					const ls = mlsAreas[currentArea]['listings-and-sales'].filter(choice => {
+						return choice['address'] === address;
+					})[0];
+					img.children('.las-list').append(makeLASContainer(ls));
+				}
+				img.children('.las-list').width('100%');		
 			} else {
 				img.css('background-image', 'url(' + editSections[name]['confirmed-selection'] + ')');
 			}
@@ -178,7 +188,12 @@ class PreviewWindow {
 			let spread = $(this.previewSpreads[e]);
 			const id = spread.attr('id');
 			const name = ID_TO_NAME[id.substr(0, id.length - 8)];
-			const timeConfirmed = mlsAreas[currentArea]['final-preview'][name]['time-confirmed'];
+			let timeConfirmed = '';
+			if (name === 'Outside Page' || name === 'Inside Page')
+				timeConfirmed = mlsAreas[currentArea][name];
+			else
+				timeConfirmed = mlsAreas[currentArea]['edit-sections'][name]['time-confirmed'];
+
 			if (timeConfirmed === '') {
 				spread.removeClass('confirmed');
 				spread.children('.preview-section-options').children('.time-confirmed').html('');
@@ -223,8 +238,8 @@ class PreviewWindow {
 
 	/* Resets the status of the previews of the full PMA pages */
 	resetPages() {
-		mlsAreas[currentArea]['final-preview']['Outside Page']['time-confirmed'] = '';
-		mlsAreas[currentArea]['final-preview']['Inside Page']['time-confirmed'] = '';
+		mlsAreas[currentArea]['Outside Page']['time-confirmed'] = '';
+		mlsAreas[currentArea]['Inside Page']['time-confirmed'] = '';
 		this.update();
 	}
 

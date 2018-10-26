@@ -61,7 +61,7 @@ class EditWindow {
 				this.sectionsComplete--;
 			editSections[name]['status'] = 'Incomplete';
 			editSections[name]['selection'] = img.attr('src');
-			mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
+			mlsAreas[currentArea]['edit-sections'][name]['time-confirmed'] = '';
 			tools.css('background-image', 'url(' + img.attr('src') + ')');
 			tools.removeClass('complete');
 			button.show();
@@ -147,7 +147,7 @@ class EditWindow {
 			return;
 		}
 
-		mlsAreas[currentArea]['final-preview'][name]['time-confirmed'] = '';
+		mlsAreas[currentArea]['edit-sections'][name]['time-confirmed'] = '';
 		for (let selection of selections) {
 			const attempt = (highlight) ? $(selection) : $(selection).find('.las-address');
 			if (attempt.html() === target) {
@@ -213,28 +213,7 @@ class EditWindow {
 
 		// Fill all static sections
 		for (let section of statics) {
-			const type = section['type'];
-			let src = (section['agent-specific']) ? personalInfo[section['name']] : section['src'];			
-			for (const coordinate of section['coordinates']) {
-				let newSection = null;
-				if (type === 'image') {
-					newSection = $(new Image());
-					newSection.attr('src', src);
-					newSection.css('height', section['size'][0] * scale);
-					newSection.css('width', section['size'][1] * scale);
-				} else  if (type === 'text') {
-					newSection = $('<div>' + src + '</div>');
-					newSection.css('font-family', section['font-family']);
-					newSection.css('font-size', section['font-size'] * scale);
-					newSection.css('font-weight', 'bold');
-					newSection.css('color', section['font-color']);
-					if (section['capitalize']) newSection.css('text-transform', 'uppercase');
-				}
-				newSection.css('position', 'absolute');
-				newSection.css('top', coordinate[0] * scale);
-				newSection.css('left', coordinate[1] * scale);
-				spread.append(newSection);
-			}
+			this._addStaticSection(section, spread, scale);
 		}
 
 		// Fill all editable sections
@@ -276,6 +255,36 @@ class EditWindow {
 		}
 	}
 
+	_addStaticSection(section, spread, scale) {
+		const type = section['type'];
+		let src = (section['agent-specific']) ? personalInfo[section['name']] : section['src'];			
+		for (const coordinate of section['coordinates']) {
+			let newSection = null;
+			if (type === 'image') {
+				newSection = $(new Image());
+				newSection.attr('src', src);
+				newSection.css('height', section['size'][0] * scale);
+				newSection.css('width', section['size'][1] * scale);
+			} else  if (type === 'text') {
+				newSection = $('<div>' + src + '</div>');
+				newSection.css('font-family', section['font-family']);
+				newSection.css('font-size', section['font-size'] * scale);
+				newSection.css('font-weight', 'bold');
+				newSection.css('color', section['font-color']);
+				if (section['capitalize']) newSection.css('text-transform', 'uppercase');
+			} else if (type === 'div') {
+				newSection = $('<div id="' + section['name'] + '"></div>');
+				newSection.css('height', section['size'][0] * scale);
+				newSection.css('width', section['size'][1] * scale);
+				newSection.append($(src));
+			}
+			newSection.css('position', 'absolute');
+			newSection.css('top', coordinate[0] * scale);
+			newSection.css('left', coordinate[1] * scale);
+			spread.append(newSection);
+		}
+	}
+
 	// populates the list of selection options for highlight list sections
 	_populateHighlightList(div, section, scale) {
 		div.addClass('highlight-list');
@@ -300,7 +309,6 @@ class EditWindow {
 		div.addClass('las-list');
 		for (const ls of mlsAreas[currentArea]['listings-and-sales']) {
 			let choice = makeLASContainer(ls);
-			choice.find('.las-status').css('color', LAS_COLORS[ls['type']]);
 			if (editSections[section['name']]['selection'].includes(ls['address'])) {
 				choice.addClass('active');
 				this.numSelected[div.attr('id')]++;
@@ -345,7 +353,11 @@ class EditWindow {
 			  lasList = section['type'] === 'las-list';
 
 		// populate selections content
-		editTools.append($('<h2>' + section['name'] + '</h2>'));
+		let header = $('<h2></h2>');
+		if (hList || lasList) header.append($('<span class="insert-current-area"></span>&nbsp-&nbsp'));
+		header.append(section['name']);
+		editTools.append(header);
+		if (hList || lasList) header.append($('<h4>Select ' + SELECTION_LIMITS[NAME_TO_ID[section['name']]] + ' choices</h4>'))
 		let editToolsContent = $('<div class="edit-content"></div>');
 		// if (section['uploadable']) { 
 		// 	editToolsContent.append($('<button class="upload">Upload</button>'));
@@ -376,7 +388,6 @@ class EditWindow {
 									<span class="checkmark"><i class="material-icons">check</i></span>\
 								</label>');
 				newChoice.append(makeLASContainer(choice));
-				newChoice.find('.las-status').css('color', LAS_COLORS[choice['type']]);
 				decideSelections(choice['address'], newChoice, section, editSections, tempSelections, scale, false);
 			}
 			editToolsContent.append(newChoice);
@@ -424,6 +435,29 @@ class EditWindow {
 		}
 	}
 	
+	_populateInsideTable() {
+		let num = 0;
+		for (const ls of mlsAreas[currentArea]['listings-and-sales']) {
+			if (num >= 10) break;
+			let row = $('<tr></tr>');
+			row.css('color', LAS_COLORS[ls['type']]);
+			if (ls['type'] === 'sold') $('.sale').show();
+			if (ls['type'] === 'pending') $('.pending').show();
+			if (ls['type'] === 'listing') $('.listing').show();
+			row.append($('<td class="it-status">' + ls['type'] + '</td>'));
+			row.append($('<td>' + ls['address'] + '</td>'));
+			row.append($('<td>' + ls['cross-street'] + '</td>'));
+			row.append($('<td>$' + ls['price'].toLocaleString() + '</td>'));
+			row.append($('<td>' + ls['dom'] + '</td>'));
+			row.append($('<td>' + ls['beds'] + ' / ' + ls['baths'] + '</td>'));
+			row.append($('<td>' + ls['sqft'].toLocaleString() + '</td>'));
+			row.append($('<td>$' + (ls['price'] / ls['sqft']).toFixed(0) + '</td>'));
+			row.append($('<td>' + ls['lot-size'].toLocaleString() + '</td>'));
+			row.append($('<td class="view">' + ls['view'] + '</td>'));
+			$('#InsideTable tbody').append(row);
+			num++;
+		}
+	}
 
 	/*   PUBLIC   */
 
@@ -443,6 +477,7 @@ class EditWindow {
 		const scale = POS_RATIOS[this.breakpoints['current']];
 		this._populateSpread(outsideStaticSections, outsideEditSections, this.outsidePage, scale);
 		this._populateSpread(insideStaticSections, insideEditSections, this.insidePage, scale);
+		this._populateInsideTable();
 		this._addEventListeners();
 
 		// check for complete
@@ -455,6 +490,7 @@ class EditWindow {
 
 		// start with no active sections
 		$('.section-tools').removeClass('active');
+		updateTextAreas();
 	}
 
 	/* Click Tools - public
@@ -475,10 +511,10 @@ class EditWindow {
 	takeSnapshot(delay) {
 		setTimeout(() => {
 			html2canvas($('#outside-page')[0]).then(canvas => {
-				spreadCopies[0] = canvas.toDataURL('image/png');
+				spreadSnapshots[0] = canvas.toDataURL('image/png');
 			});
 			html2canvas($('#inside-page')[0]).then(canvas => {
-				spreadCopies[1] = canvas.toDataURL('image/png');
+				spreadSnapshots[1] = canvas.toDataURL('image/png');
 			});
 		}, delay);
 	}

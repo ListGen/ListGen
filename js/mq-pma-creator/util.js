@@ -8,51 +8,63 @@ var agentData = {
 	'mls-areas' : {
 		'CARMEL HIGHLANDS' : {
 			'page-version' : '4',
+			'city' : 'CARMEL-BY-THE-SEA',
+			'city-market' : 'SELLER\'S',
+			'area-market' : 'BALANCED',
 			'edit-sections' : {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'City Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Area Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Listings And Sales' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 			},
 			'homeowners' : [
@@ -135,143 +147,120 @@ var agentData = {
 					'parcel-number' : '333-333-554'
 				}
 			],
-			'final-preview' : {
-				'Attention Grabber' : {
-					'time-confirmed' : ''
-				},
-				'Front Graph' : {
-					'time-confirmed' : ''
-				},
-				'Front Bar' : {
-					'time-confirmed' : ''
-				},
-				'Top Image' : {
-					'time-confirmed' : ''
-				},
-				'City Highlights' : {
-					'time-confirmed' : ''
-				},
-				'Area Highlights' : {
-					'time-confirmed' : ''
-				},
-				'Call To Action' : {
-					'time-confirmed' : ''
-				},
-				'Inside Bar' : {
-					'time-confirmed' : ''
-				},
-				'Listings And Sales' : {
-					'time-confirmed' : ''
-				},
-				'Outside Page' : {
-					'time-confirmed' : ''
-				},
-				'Inside Page' : {
-					'time-confirmed' : ''
-				}
+			'Outside Page' : {
+				'time-confirmed' : ''
+			},
+			'Inside Page' : {
+				'time-confirmed' : ''
 			},
 			'listings-and-sales' : [
 				{
-					'address' : '1223 Main St',
-					'price' : 4500000,
-					'sqft' : 3500,
+					'address' : '2715 Ribera Rd',
+					'price' : 5800000,
+					'sqft' : 4206,
 					'beds' : 5,
-					'baths' : 5,
+					'baths' : 3.5,
 					'lot-size' : 5000,
-					'dom' : 62,
-					'garage-space' : 2,
-					'mls-number' : 155401,
-					'cross-street' : 'Cedar',
+					'dom' : 157,
+					'garage-space' : 3,
+					'mls-number' : 81705106,
+					'cross-street' : 'HWY 1',
 					'date' : '2/23/17',
-					'src' : '../../images/home-screen/house1.jpg',
-					'self' : false,
+					'src' : '../../images/pma-creator/las/2715RiberaRd.jpg',
+					'agents' : false,
 					'type' : 'sold',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'view' : 'Ocean',
+					'description' : 'With sweeping views of Carmel Bay, Point Lobos and Carmel River Beach, we invite you to come and experience this ever-changing seascape.'
 				},
 				{
-					'address' : '2373 Main St',
-					'price' : 2000000,
-					'sqft' : 6000,
-					'beds' : 8,
-					'baths' : 2,
-					'lot-size' : 10000,
-					'dom' : 20,
-					'garage-space' : 6,
-					'mls-number' : 471193,
-					'cross-street' : 'Cedar',
+					'address' : '2943 Cuesta Way',
+					'price' : 2225000,
+					'sqft' : 2971,
+					'beds' : 3,
+					'baths' : 4,
+					'lot-size' : 16552,
+					'dom' : 23,
+					'garage-space' : 3,
+					'mls-number' : 81725908,
+					'cross-street' : 'Ribera',
 					'date' : '9/4/18',
-					'src' : '../../images/home-screen/house2.jpg',
-					'self' : false,
+					'src' : '../../images/pma-creator/las/2943CuestaWay.jpg',
+					'agents' : true,
 					'type' : 'sold',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'view' : 'Ocean',
+					'description' : 'A short stroll to Carmel\'s Special Hidden Beach that inspired artists, painters, and locals offers a place to escape.'
 				},
 				{
-					'address' : '8740 Second St',
-					'price' : 1400000,
-					'sqft' : 2000,
+					'address' : '27030 Meadow Way',
+					'price' : 2395000,
+					'sqft' : 2606,
+					'beds' : 3,
+					'baths' : 3,
+					'lot-size' : 9901,
+					'dom' : 76,
+					'garage-space' : 2,
+					'mls-number' : 81703226,
+					'cross-street' : 'Ribera',
+					'date' : '2/4/18',
+					'src' : '../../images/pma-creator/las/27030MeadowWay.jpg',
+					'agents' : false,
+					'type' : 'sold',
+					'view' : '-',
+					'description' : 'Newly renovated in 2018; this single level 3 bedroom, 2 1/2 bath home is just a short walk to one of Carmel\'s most pristine beaches and fantastic walking trails.'
+				},
+				{
+					'address' : '2975 Ribera Rd',
+					'price' : 1595000,
+					'sqft' : 2871,
 					'beds' : 4,
 					'baths' : 3,
-					'lot-size' : 4000,
-					'dom' : 45,
+					'lot-size' : 8398,
+					'dom' : 14,
 					'garage-space' : 2,
-					'mls-number' : 118339,
-					'cross-street' : 'Olive',
-					'date' : '2/4/18',
-					'src' : '../../images/home-screen/house3.jpg',
-					'self' : false,
-					'type' : 'sold',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '9001 Main St',
-					'price' : 9000000,
-					'sqft' : 8000,
-					'beds' : 12,
-					'baths' : 12,
-					'lot-size' : 9000,
-					'dom' : 74,
-					'garage-space' : 8,
-					'mls-number' : 446322,
-					'cross-street' : 'Cedar',
+					'mls-number' : 81727291,
+					'cross-street' : 'HWY 1',
 					'date' : '6/6/17',
-					'src' : '../../images/home-screen/house4.jpg',
-					'self' : false,
-					'type' : 'pending',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'src' : '../../images/pma-creator/las/2975RiberaRd.jpg',
+					'agents' : false,
+					'type' : 'sold',
+					'view' : '-',
+					'description' : 'Enter this bright, airy Carmel Meadows home to soaring vaulted ceilings and a wall of windows showcasing dramatic views of Carmel mountains and the ever-changing sky.'
 				},
 				{
-					'address' : '3044 Third St',
-					'price' : 350000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Pine',
+					'address' : '2507 16th Ave',
+					'price' : 6995000,
+					'sqft' : 4223,
+					'beds' : 4,
+					'baths' : 4,
+					'lot-size' : 9596,
+					'dom' : 48,
+					'garage-space' : 2,
+					'mls-number' : 81722429,
+					'cross-street' : 'Rio',
 					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house5.jpg',
-					'self' : false,
-					'type' : 'listing',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'src' : '../../images/pma-creator/las/250716thAve.jpg',
+					'agents' : true,
+					'type' : 'sold',
+					'view' : '-',
+					'description' : 'The Best of Carmel Point- a gracious 4 bed 3.5 bath home located on a quiet street, large private lot that offers amazing indoor-outdoor space.'
 				},
 				{
-					'address' : '3044 Fourth St',
-					'price' : 220000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Oak',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house6.jpg',
-					'self' : false,
-					'type' : 'listing',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'address' : '26325 Isabella Ave',
+					'price' : 8500000,
+					'sqft' : 5268,
+					'beds' : 4,
+					'baths' : 4,
+					'lot-size' : 13068,
+					'dom' : 78,
+					'garage-space' : 2,
+					'mls-number' : 81718087,
+					'cross-street' : 'Stewart',
+					'date' : '7/10/18',
+					'src' : '../../images/pma-creator/las/26325IsabellaAve.jpg',
+					'agents' : false,
+					'type' : 'sold',
+					'view' : '-',
+					'description' : 'Tucked into the heart of Carmel Point is this warm 5,300 sq.ft. home, perfect for entertaining and sharing memories with family.'
 				},
 				{
 					'address' : '3044 Fifth St',
@@ -286,8 +275,9 @@ var agentData = {
 					'cross-street' : 'Juniper',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house2.jpg',
-					'self' : false,
-					'type' : 'listing',
+					'agents' : true,
+					'type' : 'pending',
+					'view' : '-',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -303,8 +293,9 @@ var agentData = {
 					'cross-street' : 'Freedom',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'listing',
+					'view' : 'Bay',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				}
 			],
@@ -313,53 +304,65 @@ var agentData = {
 			'total-complete' : false,
 			'unblocked-mailings' : 0
 		},
-		'PEBBLE BEACH' : {
+		'Spanish Bay' : {
 			'page-version' : '4',
+			'city' : 'PEBBLE BEACH',
+			'city-market' : 'BUYERS\'S',
+			'area-market' : 'SELLER\'S',
 			'edit-sections' : {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'City Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Area Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 				'Listings And Sales' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Incomplete'
+					'status' : 'Complete',
+					'time-confirmed' : ''
 				},
 			},
 			'homeowners' : [
@@ -429,40 +432,11 @@ var agentData = {
 					'parcel-number' : '566-665-452'
 				}
 			],
-			'final-preview' : {
-				'Attention Grabber' : {
-					'time-confirmed' : ''
-				},
-				'Front Graph' : {
-					'time-confirmed' : ''
-				},
-				'Front Bar' : {
-					'time-confirmed' : ''
-				},
-				'Top Image' : {
-					'time-confirmed' : ''
-				},
-				'City Highlights' : {
-					'time-confirmed' : ''
-				},
-				'Area Highlights' : {
-					'time-confirmed' : ''
-				},
-				'Call To Action' : {
-					'time-confirmed' : ''
-				},
-				'Inside Bar' : {
-					'time-confirmed' : ''
-				},
-				'Listings And Sales' : {
-					'time-confirmed' : ''
-				},
-				'Outside Page' : {
-					'time-confirmed' : ''
-				},
-				'Inside Page' : {
-					'time-confirmed' : ''
-				}
+			'Outside Page' : {
+				'time-confirmed' : ''
+			},
+			'Inside Page' : {
+				'time-confirmed' : ''
 			},
 			'listings-and-sales' : [
 				{
@@ -478,8 +452,9 @@ var agentData = {
 					'cross-street' : 'Cedar',
 					'date' : '2/23/17',
 					'src' : '../../images/home-screen/house1.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'sold',
+					'view' : 'Ocean',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -495,8 +470,9 @@ var agentData = {
 					'cross-street' : 'Cedar',
 					'date' : '9/4/18',
 					'src' : '../../images/home-screen/house2.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'sold',
+					'view' : 'Bay',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -512,8 +488,9 @@ var agentData = {
 					'cross-street' : 'Olive',
 					'date' : '2/4/18',
 					'src' : '../../images/home-screen/house3.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'sold',
+					'view' : 'River',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -529,8 +506,9 @@ var agentData = {
 					'cross-street' : 'Cedar',
 					'date' : '6/6/17',
 					'src' : '../../images/home-screen/house4.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'pending',
+					'view' : 'Ocean',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -546,8 +524,9 @@ var agentData = {
 					'cross-street' : 'Pine',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'listing',
+					'view' : '-',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -563,8 +542,9 @@ var agentData = {
 					'cross-street' : 'Oak',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house6.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'listing',
+					'view' : '-',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -580,8 +560,9 @@ var agentData = {
 					'cross-street' : 'Juniper',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house2.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'listing',
+					'view' : '-',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				},
 				{
@@ -597,8 +578,9 @@ var agentData = {
 					'cross-street' : 'Freedom',
 					'date' : '6/8/18',
 					'src' : '../../images/home-screen/house5.jpg',
-					'self' : false,
+					'agents' : false,
 					'type' : 'listing',
+					'view' : '-',
 					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
 				}
 			],
@@ -609,16 +591,19 @@ var agentData = {
 		}
 	},
 	'personal-info' : {
+		'First Name' : 'Kyle',
+		'Last Name' : 'Morrison',
 		'Agent Logo' : '../../images/templates/logo.PNG',
 		'Brokerage Logo' : '../../images/templates/sothebys.png',
 		'Return Address 1' : '16B E Carmel Valley Rd',
 		'Return Address 2' : 'Carmel Valley, CA 93924',
-		'Mailing Address 1' : '',
-		'Mailing Address 2' : '',
-		'Front Website' : 'kylemorrisonhomes.com',
+		'Mailing Address 1' : '16B E Carmel Valley Rd',
+		'Mailing Address 2' : 'Carmel Valley, CA 93924',
+		'Website' : 'kylemorrisonhomes.com',
 		'Phone Number' : '831-555-5555',
 		'Email Address' : 'kyle@kylemorrison.com',
-		'CC Digits' : 'XXXX'
+		'CC Digits' : 'XXXX',
+		'DRE Number' : '04385564'
 	},
 	'total-mailings' : 0,
 	'total-price' : 0,
@@ -660,8 +645,8 @@ const PMA_SIZE = [17, 11];
 
 // colors 
 const STATUS_COLORS = {
-	'Incomplete' : '#FF3A38',
-	'Complete' : '#33C451',
+	'Incomplete' : 'rgb(204, 0, 0)',
+	'Complete' : 'rgb(28, 232, 0)',
 };
 
 // heights for the main window depending on the step
@@ -712,6 +697,12 @@ const LAS_MESSAGES = {
 	'sold' : 'JUST SOLD @ '
 }
 
+const LAS_NAMES = {
+	'listing' : 'LISTING',
+	'pending' : 'PENDING SALE',
+	'sold' : 'SALE'
+}
+
 const LAS_DATES = {
 	'listing' : 'List Date',
 	'pending' : 'Status Date',
@@ -719,9 +710,9 @@ const LAS_DATES = {
 }
 
 const LAS_COLORS = {
-	'listing' : '#33C451',
-	'pending' : '#D9A200',
-	'sold' : '#FF3A38'
+	'listing' : 'rgb(21, 175, 0)',
+	'pending' : 'rgb(217, 162, 0)',
+	'sold' : 'rgb(204, 0, 0)'
 }
 
 const LAS_SIZES = {
@@ -739,8 +730,8 @@ function makeLASContainer(ls) {
 	let choice = $('<div class="las-container">\
 						<div class="las-image" style="background-image: url(' + ls['src'] + ')"></div>\
 						<div class="house-info">\
-							<div class="las-status">' + status + '<span class="las-price">$' + ls['price'].toLocaleString() + '</span></div>\
-							<div class="address-container"><span class="las-address">' + ls['address'] + '</span><span class="las-cross-street">Cross-street: ' + ls['cross-street'] + '</span></div>\
+							<div class="status-container"><span class="las-status">' + status + '<span class="las-price">$' + ls['price'].toLocaleString() + '</span></span></div>\
+							<div class="address-container"><span class="las-address">' + ls['address'] + '</span><span class="las-cross-street"><strong>x</strong> street: ' + ls['cross-street'] + '</span></div>\
 							<table>\
 								<tbody>\
 									<tr class="house-numbers line-1">\
@@ -752,7 +743,7 @@ function makeLASContainer(ls) {
 									<tr class="house-numbers line-2">\
 										<td>' + ls['beds'] + ' Beds/' + ls['baths'] + ' Baths</td>\
 										<td>' + ls['sqft'] + ' sq ft</td>\
-										<td>Lot Size: ' + ls['lot-size'] + '</td>\
+										<td>Lot Size: ' + ls['lot-size'].toLocaleString() + '</td>\
 										<td>' + ls['garage-space'] + ' garage space(s)</td>\
 									</tr>\
 								</tbody>\
@@ -760,6 +751,9 @@ function makeLASContainer(ls) {
 							<div class="las-description">' + ls['description'] + '</div>\
 						</div>\
 					</div>');
+	if (ls['agents']) choice.find('.status-container').append($('<span class="las-name">' + personalInfo['First Name'] + '\'s ' + LAS_NAMES[ls['type']] + '</span>'));
+	choice.find('.las-status').css('color', LAS_COLORS[ls['type']]);
+	choice.find('.las-name').css('background', LAS_COLORS[ls['type']]);
 	return choice;
 }
 
@@ -881,7 +875,15 @@ function addTooltip(container, message) {
 }
 
 
-// Updates all text on the creator with the current information
-function updateCurrentAreaText() { $('.insert-current-area').html(currentArea); }
-function updateCurrentStepText() { $('.insert-current-step').html(currentStep); }
-function updateCurrentVersionText() { $('.insert-current-version').html(version); }
+function updateTextAreas() {
+	$('.insert-current-area').html(currentArea);
+	$('.insert-current-city').html(currentCity);
+	$('.insert-current-step').html(currentStep); 
+	$('.insert-current-version').html(currentVersion);
+	$('.insert-current-period').html(currentPeriod);
+	$('.insert-current-city-market').html(cityMarket);
+	$('.insert-current-area-market').html(areaMarket);
+	$('.insert-email').html(personalInfo['Email Address']);
+	$('.insert-website').html(personalInfo['Website']);
+	$('.insert-phone-number').html(personalInfo['Phone Number']);
+}

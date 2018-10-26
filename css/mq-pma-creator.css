@@ -8,6 +8,11 @@
  * Wrapper functions and global Sass variables for all pages
  */
 /*   Constants   */
+/*   Fonts   */
+@font-face {
+  font-family: "Myriad-Pro";
+  src: url(http://www.anaveer.in/honda/font/MYRIADPRO-REGULAR.OTF) format("truetype"); }
+
 /*   Utility Mixins   */
 /*   Colors   */
 /*   General   */
@@ -417,8 +422,6 @@ canvas {
     #edit-window .edit-spread .page-title#inside-right-title {
       left: 95%; }
   #edit-window .edit-spread .section-tools {
-    height: 100%;
-    width: 100%;
     position: absolute;
     z-index: 1;
     outline-color: #E50015;
@@ -455,7 +458,7 @@ canvas {
     #edit-window .edit-spread .section-tools.las-list {
       display: flex;
       flex-flow: column nowrap;
-      justify-content: center;
+      justify-content: space-around;
       white-space: nowrap;
       padding: 0;
       background: white; }
@@ -482,18 +485,30 @@ canvas {
           display: inline-flex;
           flex-flow: column nowrap;
           justify-content: center; }
-          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-status {
-            font-size: 1.2rem;
-            font-weight: bold; }
+          #edit-window .edit-spread .section-tools.las-list .las-container .house-info .status-container {
+            display: flex;
+            justify-content: space-between; }
+            #edit-window .edit-spread .section-tools.las-list .las-container .house-info .status-container .las-status {
+              font-size: 1rem;
+              font-weight: bold; }
+            #edit-window .edit-spread .section-tools.las-list .las-container .house-info .status-container .las-name {
+              width: 50%;
+              font-size: 1rem;
+              text-align: center;
+              color: white;
+              text-transform: uppercase;
+              -webkit-border-radius: 2px;
+              -moz-border-radius: 2px;
+              border-radius: 2px; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .address-container {
             display: flex;
             justify-content: space-between; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-address {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bolder; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-cross-street {
             margin-right: 1%;
-            font-size: 1.1rem; }
+            font-size: 1rem; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info table tbody tr td {
             font-size: .7rem;
             font-weight: bold; }
@@ -551,6 +566,10 @@ canvas {
       #edit-window .edit-spread .section-tools .edit-tools h2 {
         margin: 0 0 10px 0;
         font-size: 2rem;
+        font-weight: normal; }
+      #edit-window .edit-spread .section-tools .edit-tools h4 {
+        margin: 0 0 10px 0;
+        font-size: 1rem;
         font-weight: normal; }
       #edit-window .edit-spread .section-tools .edit-tools .edit-content {
         height: 92.5%;
@@ -723,23 +742,23 @@ canvas {
       color: white;
       background: #122D46; }
     #mailing-window #mailing-list #edit-bar ul {
-      margin: 0 5px;
+      margin: 15px 5px 0 5px;
       padding: 0 5px;
       list-style: none; }
       #mailing-window #mailing-list #edit-bar ul li {
         margin: 0 -10px;
-        padding: 15px 10px;
-        font-size: 1.2rem;
+        padding: 5px 10px;
+        font-size: 1.1rem;
         cursor: pointer;
         -webkit-transition: 0.3s ;
         -moz-transition: 0.3s ;
         transition: 0.3s ; }
+        #mailing-window #mailing-list #edit-bar ul li:last-child {
+          margin-top: 15px; }
         #mailing-window #mailing-list #edit-bar ul li.active {
-          background: #4B9FCB; }
-        #mailing-window #mailing-list #edit-bar ul li:not(:last-child) {
-          border-bottom: 2px solid #4B9FCB; }
+          background: #b4d4ea; }
         #mailing-window #mailing-list #edit-bar ul li:hover {
-          background: #4B9FCB; }
+          background: #b4d4ea; }
     #mailing-window #mailing-list #edit-bar #past-clients {
       width: 90%;
       margin: 10px 0;
@@ -890,7 +909,7 @@ canvas {
             width: 100%;
             font-family: 'Lato', 'Ubuntu';
             font-size: 1.2rem;
-            color: #2D2D2D;
+            color: #4165a3;
             background: white;
             border: none;
             cursor: pointer;
@@ -898,7 +917,7 @@ canvas {
             -moz-transition: 0.3s ;
             transition: 0.3s ; }
             #mailing-window #mailing-list #homeowners table tbody tr td button:hover {
-              background: #4B9FCB; }
+              background: #b4d4ea; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container input {
             position: absolute;
             opacity: 0; }
@@ -1052,38 +1071,80 @@ canvas {
     -webkit-box-shadow: 0 0 8px 1px #2D2D2D;
     -moz-box-shadow: 0 0 8px 1px #2D2D2D;
     box-shadow: 0 0 8px 1px #2D2D2D; }
-    #preview-window #complete-final-preview .preview-spread div {
+    #preview-window #complete-final-preview .preview-spread > div {
       height: 100%;
       padding: 20px;
       overflow: hidden;
       -webkit-transition: 0.3s ;
       -moz-transition: 0.3s ;
       transition: 0.3s ; }
-      #preview-window #complete-final-preview .preview-spread div.preview-image {
+      #preview-window #complete-final-preview .preview-spread > div.preview-image {
         width: 70%;
         text-align: left;
         color: #2D2D2D;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        cursor: pointer; }
-        #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list {
+        cursor: pointer;
+        overflow-y: scroll; }
+        #preview-window #complete-final-preview .preview-spread > div.preview-image.highlight-list {
           font-size: 1.2rem;
           cursor: default; }
-          #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul {
+          #preview-window #complete-final-preview .preview-spread > div.preview-image.highlight-list ul {
             margin: 0;
             pointer-events: none; }
-            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.green {
+            #preview-window #complete-final-preview .preview-spread > div.preview-image.highlight-list ul li span.green {
               color: #33C451;
               font-weight: bold; }
-            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.red {
+            #preview-window #complete-final-preview .preview-spread > div.preview-image.highlight-list ul li span.red {
               color: #FF3A38;
               font-weight: bold; }
-            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.bold {
+            #preview-window #complete-final-preview .preview-spread > div.preview-image.highlight-list ul li span.bold {
               font-weight: bold; }
-            #preview-window #complete-final-preview .preview-spread div.preview-image.highlight-list ul li span.caps {
+            #preview-window #complete-final-preview .preview-spread > div.preview-image.highlight-list ul li span.caps {
               text-transform: uppercase; }
-      #preview-window #complete-final-preview .preview-spread div.preview-section-options {
+        #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          list-style: none;
+          margin-bottom: 5px;
+          pointer-events: none; }
+          #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .las-image {
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            margin: 0;
+            background-position: no-repeat;
+            background-size: cover; }
+          #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info {
+            height: 100%;
+            width: 80%;
+            margin-left: 5px;
+            display: inline-flex;
+            flex-flow: column nowrap;
+            justify-content: center; }
+            #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info .las-status {
+              font-size: 1.2rem;
+              font-weight: bold; }
+            #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info .address-container {
+              display: flex;
+              justify-content: space-between; }
+            #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info .las-address {
+              font-size: 1.1rem;
+              font-weight: bolder; }
+            #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info .las-cross-street {
+              margin-right: 1%;
+              font-size: 1.1rem; }
+            #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info table tbody tr td {
+              font-size: .7rem;
+              font-weight: bold; }
+            #preview-window #complete-final-preview .preview-spread > div.preview-image .las-container .house-info .las-description {
+              width: 100%;
+              white-space: normal;
+              font-size: .75rem;
+              font-weight: bold; }
+      #preview-window #complete-final-preview .preview-spread > div.preview-section-options {
         width: 30%;
         display: inline-flex;
         flex-flow: column nowrap;
@@ -1095,38 +1156,39 @@ canvas {
         -webkit-box-shadow: 0 0 36px 2px #2D2D2D;
         -moz-box-shadow: 0 0 36px 2px #2D2D2D;
         box-shadow: 0 0 36px 2px #2D2D2D; }
-      #preview-window #complete-final-preview .preview-spread div h1 {
+      #preview-window #complete-final-preview .preview-spread > div h1 {
         margin: 20px 0;
         font-size: 2rem; }
-      #preview-window #complete-final-preview .preview-spread div button {
+      #preview-window #complete-final-preview .preview-spread > div button {
         height: auto;
         font-family: 'Lato', 'Ubuntu';
-        font-size: 2rem;
+        margin-top: 20px;
         border: 2px solid #289c40;
         outline: 3px solid #1e7330;
         cursor: pointer;
         -webkit-transition: 0.3s ;
         -moz-transition: 0.3s ;
         transition: 0.3s ; }
-        #preview-window #complete-final-preview .preview-spread div button.confirm {
-          margin: 0 10px;
-          padding: 50px 60px;
+        #preview-window #complete-final-preview .preview-spread > div button.confirm {
+          padding: 25px 40px;
+          font-size: 1.8rem;
           text-align: center;
           white-space: normal;
           color: #122D46;
           background: #33C451; }
-          #preview-window #complete-final-preview .preview-spread div button.confirm:hover, #preview-window #complete-final-preview .preview-spread div button.confirm :focus {
+          #preview-window #complete-final-preview .preview-spread > div button.confirm:hover, #preview-window #complete-final-preview .preview-spread > div button.confirm :focus {
             background: #57d371; }
-        #preview-window #complete-final-preview .preview-spread div button.back-to-edit {
-          margin: 10px;
-          padding: 20px;
+        #preview-window #complete-final-preview .preview-spread > div button.back-to-edit {
+          margin: 30px;
+          padding: 10px;
+          font-size: 1.5rem;
           color: #122D46;
-          background: #C47F15;
-          border-color: #966110;
-          outline-color: #68430b; }
-          #preview-window #complete-final-preview .preview-spread div button.back-to-edit:hover, #preview-window #complete-final-preview .preview-spread div button.back-to-edit :focus {
-            background: #e89b24; }
-      #preview-window #complete-final-preview .preview-spread div .click-to-enlarge {
+          background: #4B9FCB;
+          border-color: #3385b0;
+          outline-color: #276789; }
+          #preview-window #complete-final-preview .preview-spread > div button.back-to-edit:hover, #preview-window #complete-final-preview .preview-spread > div button.back-to-edit :focus {
+            background: #73b4d6; }
+      #preview-window #complete-final-preview .preview-spread > div .click-to-enlarge {
         margin-top: auto;
         margin-bottom: 5px;
         font-size: 1.2rem; }
@@ -1393,6 +1455,124 @@ canvas {
   -webkit-box-shadow: 0 0 16px 3px #2D2D2D;
   -moz-box-shadow: 0 0 16px 3px #2D2D2D;
   box-shadow: 0 0 16px 3px #2D2D2D; }
+
+/*   PMA STATIC SECTIONS    */
+#CityHighlightsHeader *, #AreaHighlightsHeader * {
+  margin: 0; }
+
+#CityHighlightsHeader h1, #AreaHighlightsHeader h1 {
+  color: #002566;
+  font-size: 20px;
+  font-weight: bolder; }
+
+#CityHighlightsHeader h2, #AreaHighlightsHeader h2 {
+  color: #4165a3;
+  font-size: 15px;
+  letter-spacing: .3px;
+  font-weight: bolder; }
+
+#ContactInformation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 12px;
+  color: #CCCCCC;
+  border-top: 1px solid #CCCCCC; }
+  #ContactInformation .insert-website {
+    text-transform: uppercase; }
+  #ContactInformation .insert-phone-number {
+    font-weight: bolder; }
+
+#AsOf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #002566; }
+
+#InsideHeader {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  background-color: #dcebf5; }
+  #InsideHeader .inside-header-col {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    align-items: center; }
+    #InsideHeader .inside-header-col.two {
+      justify-content: center; }
+      #InsideHeader .inside-header-col.two h2 {
+        margin-bottom: 5px; }
+  #InsideHeader h2 {
+    color: #4165a3;
+    font-size: 15px;
+    margin: 5px 0 0 0;
+    font-weight: bolder; }
+  #InsideHeader h1 {
+    color: #002566;
+    font-size: 20px;
+    margin: -5px 0 0 0; }
+  #InsideHeader h3 {
+    width: 400px;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    font-size: 12px; }
+    #InsideHeader h3 span {
+      margin: 0 20px; }
+
+#InsideTable {
+  border-bottom: 3px solid #4165a3; }
+  #InsideTable table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 10px 0; }
+  #InsideTable td {
+    font-size: 12px;
+    text-align: center; }
+  #InsideTable thead td {
+    padding: 3px;
+    font-weight: bolder; }
+  #InsideTable tbody td {
+    padding: 3px;
+    border-bottom: 1px solid #CCCCCC;
+    font-weight: bold; }
+    #InsideTable tbody td.it-status {
+      font-weight: bolder;
+      text-transform: capitalize; }
+    #InsideTable tbody td.view {
+      color: #4165a3; }
+  #InsideTable div {
+    padding-top: 5px;
+    font-size: 10px;
+    font-weight: bolder; }
+    #InsideTable div span {
+      color: #cc0000; }
+
+#InsideDivider {
+  border-left: 1px solid #dcebf5;
+  border-right: 1px solid #dcebf5; }
+
+#LASDisclaimer {
+  font-size: .5rem; }
+
+.neighborhood {
+  font-size: 13px; }
+
+.listing {
+  display: none;
+  color: #15af00; }
+
+.pending {
+  display: none;
+  color: #d9a200; }
+
+.sale {
+  display: none;
+  color: #cc0000; }
 
 @media screen and (max-width: 1900px) {
   .edit-spread {

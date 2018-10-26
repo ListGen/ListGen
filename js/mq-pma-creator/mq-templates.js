@@ -64,7 +64,7 @@ var TEMPLATES =
 					"size" : [inch, inch],
 				},
 				{
-					"name" : "Front Website",
+					"name" : "Website",
 					"type" : "text",
 					"agent-specific" : true,
 					"font-size" : 12,
@@ -72,7 +72,66 @@ var TEMPLATES =
 					"font-family" : "Ubuntu",
 					"capitalize" : true,
 					"coordinates" : [[4 * inch, .5 * inch]]
-				}
+				},
+				{
+					"name" : "Mailing Address 1",
+					"type" : "text",
+					"agent-specific" : true,
+					"font-size" : 12,
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : false,
+					"coordinates" : [[.875 * inch, page + 3.25 * inch]]
+				},
+				{
+					"name" : "Mailing Address 2",
+					"type" : "text",
+					"agent-specific" : true,
+					"font-size" : 12,
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : false,
+					"coordinates" : [[1.0625 * inch, page + 3.25 * inch]]
+				},
+				{
+					"name" : "Phone Number",
+					"type" : "text",
+					"agent-specific" : true,
+					"font-size" : 15,
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : false,
+					"coordinates" : [[1.25 * inch, page + 3.25 * inch]]
+				},
+				{
+					"name" : "CityHighlightsHeader",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<h2>2018 Market Highlights - It's a <span class="insert-current-city-market"></span> market</h2>
+							 <h1 class="insert-current-city">Carmel-BY-THE_SEA</h1>`,
+					"coordinates" : [[2.25 * inch, page + 1.25 * inch]],
+					"size" : [.75 * inch, 6.5 * inch],
+				},
+				{
+					"name" : "AreaHighlightsHeader",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<h2>2018 Market Highlights - It's a <span class="insert-current-area-market"></span> market</h2>
+							 <h1><span class="insert-current-area"></span> <span class="neighborhood">(Your neighborhood)</span></h1>`,
+					"coordinates" : [[5.55 * inch, page + 1.25 * inch]],
+					"size" : [.75 * inch, 6.5 * inch],
+				},
+				{
+					"name" : "ContactInformation",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<span class="insert-email"></span>
+							 <span class="insert-website"></span>
+							 <span class="insert-phone-number"></span>
+							`,
+					"coordinates" : [[10.625 * inch, page + .5 * inch]],
+					"size" : [.25 * inch, 7.5 * inch]
+				},
 			],
 			"edit-sections" : [
 				{
@@ -93,10 +152,10 @@ var TEMPLATES =
 					},
 					'uploadable' : true,
 					'type' : 'image',
-					'default-choice' : '../images/temp/attention-grabber-1.png',
-					'system-choices' : ['../images/temp/attention-grabber-1.png',
-										'../images/home-screen/house2.jpg',
-										'../images/home-screen/house3.jpg',
+					'default-choice' : '../images/pma-creator/attention-grabber-1.png',
+					'system-choices' : ['../images/pma-creator/attention-grabber-1.png',
+										'../images/pma-creator/attention-grabber-2.png',
+										'../images/pma-creator/attention-grabber-3.png',
 										]
 				},
 				{
@@ -141,10 +200,10 @@ var TEMPLATES =
 					},
 					'uploadable' : false,
 					'type' : 'image',
-					'default-choice' : '../images/temp/front-bar-1.png',
-					'system-choices' : ['../images/temp/front-bar-1.png',
-										'../images/home-screen/house5.jpg',
-										'../images/home-screen/house6.jpg',
+					'default-choice' : '../images/pma-creator/front-bar-1.png',
+					'system-choices' : ['../images/pma-creator/front-bar-1.png',
+										'../images/pma-creator/front-bar-2.png',
+										'../images/pma-creator/front-bar-3.png',
 										]
 				},
 				{
@@ -165,17 +224,17 @@ var TEMPLATES =
 					},
 					'uploadable' : true,
 					'type' : 'image',
-					'default-choice' : '../images/home-screen/house6.jpg',
-					'system-choices' : ['../images/home-screen/house6.jpg',
-										'../images/home-screen/house5.jpg',
-										'../images/home-screen/house4.jpg',
+					'default-choice' : '../images/pma-creator/top-image-1.png',
+					'system-choices' : ['../images/pma-creator/top-image-1.png',
+										'../images/pma-creator/top-image-2.png',
+										'../images/pma-creator/top-image-3.jpg',
 										]
 				},
 				{
 					"name" : "City Highlights",
-					"top" : 3 * inch, 
+					"top" : 2.825 * inch, 
 					"left" : page + 1.25 * inch,
-					"height" : 2.25 * inch,
+					"height" : 2.5 * inch,
 					"width" : 6.5 * inch,
 					"tools-data" : {
 						"edit-height" : '300%',
@@ -201,9 +260,9 @@ var TEMPLATES =
 				},
 				{
 					"name" : "Area Highlights",
-					"top" : 6.5 * inch, 
+					"top" : 6.125 * inch, 
 					"left" : page + 1.25 * inch,
-					"height" : 2.25 * inch,
+					"height" : 2.5 * inch,
 					"width" : 6.5 * inch,
 					"tools-data" : {
 						"edit-height" : '300%',
@@ -230,7 +289,7 @@ var TEMPLATES =
 				{
 					"name" : "Call To Action",
 					"top" : 8.875 * inch, 
-					"left" : page + .25 * inch,
+					"left" : page + .25* inch,
 					"height" : 1.625 * inch,
 					"width" : 8 * inch,
 					"tools-data" : {
@@ -245,10 +304,10 @@ var TEMPLATES =
 					},
 					'uploadable' : false,
 					'type' : 'image',
-					'default-choice' : '../images/temp/call-to-action-1.png',
-					'system-choices' : ['../images/temp/call-to-action-1.png',
-										'../images/home-screen/house6.jpg',
-										'../images/home-screen/house1.jpg',
+					'default-choice' : '../images/pma-creator/call-to-action-1.png',
+					'system-choices' : ['../images/pma-creator/call-to-action-1.png',
+										'../images/pma-creator/call-to-action-2.png',
+										'../images/pma-creator/call-to-action-3.png',
 										]
 				}
 			]
@@ -261,7 +320,87 @@ var TEMPLATES =
 					"src" : "../../images/inside_border.PNG",
 					"coordinates" : [[0, 0]],
 					"size" : [11 * inch, 2 * page],
-
+				},
+				{
+					"name" : "AsOf",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<span>AS OF</span>
+							 <span>-</span>
+							 <span class="insert-current-period"></span>
+							`,
+					"coordinates" : [[1.125 * inch, 7.75 * inch]],
+					"size" : [.5 * inch, 2 * inch],
+				},
+				{
+					"name" : "InsideHeader",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<div class="inside-header-col one">
+								<h2>Market Activity</h2>
+								<h1><span class="insert-current-area"></span> <span class="neighborhood">(your neighborhood)</span></h1>
+								<h3><span class="sale">RECENT SALES</span><span class="pending">PENDING SALES</span><span class="listing">ACTIVE LISTINGS</span></h3>
+							 </div>
+							 <div class="inside-header-col two">
+							 	<h2><span class="insert-current-area"></span></h2>
+							 	<h1>Recent Listings and Sales</h1>
+							 </div>`,
+					"coordinates" : [[1.5 * inch, .5 * inch]],
+					"size" : [1 * inch, 16 * inch],
+				},
+				{
+					"name" : "InsideTable",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<table>
+								<thead>
+									<tr>
+										<td>Status</td>
+										<td>Address</td>
+										<td>Cross Street</td>
+										<td>Price</td>
+										<td>Days on<br>Market</td>
+										<td>Beds/Baths</td>
+										<td>Sq Ft</td>
+										<td>Price per<br>Sq Ft</td>
+										<td>Lot Size<br>Sq Ft</td>
+										<td>View</td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							<div>* <span>SOLDS</span> are from January 1st, 2018 through October 1st, 2018.</div>`,
+					"coordinates" : [[2.75 * inch, .75 * inch]],
+					"size" : [4.25 * inch, 7.25 * inch],
+				},
+				{
+					"name" : "InsideGraph",
+					"type" : "image",
+					"agent-specific" : false,
+					"src" : '../../images/pma-creator/inside-graph.PNG',
+					"coordinates" : [[7 * inch, .75 * inch]],
+					"size" : [2.5 * inch, 7.25 * inch],
+				},
+				{
+					"name" : "InsideDivider",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : '',
+					"coordinates" : [[2 * inch, 8.25 * inch]],
+					"size" : [9 * inch, .25 * inch],
+				},
+				{
+					"name" : "LASDisclaimer",
+					"type" : "text",
+					"agent-specific" : false,
+					"font-size" : 12,
+					"font-color" : "black",
+					"font-family" : "Ubuntu",
+					"capitalize" : false,
+					"src" : '* Unless otherwise indicated, listings and sales shown above are other agents\' than Kyle Morrison',
+					"coordinates" : [[10.825 * inch, page + .5 * inch]],
+					"size" : [.25 * inch, 10 * inch],
 				}
 			],
 			"edit-sections" : [
@@ -270,8 +409,8 @@ var TEMPLATES =
 					"type" : "text",
 					"top" : 9.5 * inch, 
 					"left" : .5 * inch,
-					"height" : 1.375 * inch,
-					"width" : 7.875 * inch,
+					"height" : 1.5 * inch,
+					"width" : 7.75 * inch,
 					"tools-data" : {
 						"edit-height" : '400%',
 						"edit-width" : '100%',
@@ -284,19 +423,19 @@ var TEMPLATES =
 					},
 					'uploadable' : false,
 					'type' : 'image',
-					'default-choice' : '../images/temp/inside-bar-1.png',
-					'system-choices' : ['../images/temp/inside-bar-1.png',
-										'../images/home-screen/house6.jpg',
-										'../images/home-screen/house1.jpg',
+					'default-choice' : '../images/pma-creator/inside-bar-1.png',
+					'system-choices' : ['../images/pma-creator/inside-bar-1.png',
+										'../images/pma-creator/inside-bar-2.png',
+										'../images/pma-creator/inside-bar-3.png',
 										]
 				},
 				{
 					"name" : "Listings And Sales",
 					"type" : "listings",
-					"top" : 1.75 * inch, 
-					"left" : page + .5 * inch,
-					"height" : 9.125 * inch,
-					"width" : 7.125 * inch,
+					"top" : 2.75 * inch, 
+					"left" : page + .25 * inch,
+					"height" : 8 * inch,
+					"width" : 7.25 * inch,
 					"tools-data" : {
 						"edit-height" : '109.5%',
 						"edit-width" : '125%',

@@ -110,7 +110,7 @@ class MailingWindow {
 
 		this.unblockedMailings = homeowners.length - this.numBlocked['Total Blocked'];
 		mlsAreas[currentArea]['unblocked-mailings'] = this.unblockedMailings;
-		this.pricePerMailing = PRICE_PER_MAILING[version];
+		this.pricePerMailing = PRICE_PER_MAILING[currentVersion];
 
 		// updates the pricing list
 		this._initializePricingBar();

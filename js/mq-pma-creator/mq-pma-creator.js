@@ -4,15 +4,18 @@
 
 var mlsAreas = agentData['mls-areas'];
 var currentArea = agentData['default-mls-area'];
+var currentCity = mlsAreas[currentArea]['city'];
 var editSections = mlsAreas[currentArea]['edit-sections'];
 var homeowners = mlsAreas[currentArea]['homeowners'];
+var currentVersion = mlsAreas[currentArea]['page-version'];
+var cityMarket = mlsAreas[currentArea]['city-market'];
+var areaMarket = mlsAreas[currentArea]['area-market'];
 var currentStep = 'Editor';
-var version = mlsAreas[currentArea]['page-version'];
-var spreadCopies = ['',''];
+var spreadSnapshots = ['',''];
 
-const creatorType = 'mq-' + version;
+const creatorType = 'mq-' + currentVersion;
 const numSections = NUM_SECTIONS[creatorType];
-
+const currentPeriod = 'October 1st, 2018';
 const personalInfo = agentData['personal-info'];
 const template = TEMPLATES[creatorType];
 
@@ -39,9 +42,8 @@ class MQPmaCreator {
 		this.topBar = new TopBar(this._switchArea, this._setWindow);
 		this.mainWindow = new MainWindow(this._switchArea, this._setWindow, this._completeArea);
 
-		updateCurrentAreaText();
-		updateCurrentVersionText();
 		this._setWindow(currentStep);
+		updateTextAreas();
 	}
 
 	/*   CALLBACK FUNCTIONS   */
@@ -55,11 +57,14 @@ class MQPmaCreator {
 	_switchArea(newArea) {
 		currentArea = newArea;
 		currentStep = 'Editor';
+		currentCity = mlsAreas[currentArea]['city'];
+		currentVersion = mlsAreas[currentArea]['page-version'];
+		cityMarket = mlsAreas[currentArea]['city-market'];
+		areaMarket = mlsAreas[currentArea]['area-market'];
 		editSections = mlsAreas[currentArea]['edit-sections'];
 		homeowners = mlsAreas[currentArea]['homeowners'];
 
-		updateCurrentAreaText();
-		updateCurrentVersionText();
+		updateTextAreas();
 		this.mainWindow.update();
 		this._setWindow(currentStep);
 		this.mainWindow.takeSnapshot(10);
@@ -76,7 +81,7 @@ class MQPmaCreator {
 		currentStep = step;
 
 		// updates top bar visuals
-		updateCurrentStepText();
+		updateTextAreas();
 		$('.top-step').removeClass('selected');
 		$('.top-step').each((e) => {
 			if ($($('.top-step')[e]).html() === step) 
