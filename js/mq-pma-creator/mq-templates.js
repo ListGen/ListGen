@@ -64,14 +64,12 @@ var TEMPLATES =
 					"size" : [inch, inch],
 				},
 				{
-					"name" : "Website",
-					"type" : "text",
-					"agent-specific" : true,
-					"font-size" : 12,
-					"font-color" : "black",
-					"font-family" : "Ubuntu",
-					"capitalize" : true,
-					"coordinates" : [[4 * inch, .5 * inch]]
+					"name" : "PS Box",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : '<div class="PSBox"></div>',
+					"coordinates" : [[3.75 * inch, .75 * inch]],
+					"size" : [.625 * inch, 6 * inch],
 				},
 				{
 					"name" : "Mailing Address 1",
@@ -160,7 +158,7 @@ var TEMPLATES =
 				},
 				{
 					"name" : "Front Graph",
-					"top" : 4.25 * inch, 
+					"top" : 4.5 * inch, 
 					"left" : 0,
 					"height" : 4.25 * inch,
 					"width" : page,
@@ -252,7 +250,8 @@ var TEMPLATES =
 										'Carmel\'s inventory has risen to 148 \"active listings\" from a very low level of 103 homes in August. This brings the inventory up closer to a \"balanced market\", but the supply is <span class="bold">still below 6 months</span> (less than 6 months is considered <span class="red caps">low</span> inventory.',										
 										'For the first 10 months of 2018, <span class="bold">days on market</span> has dropped slightly to <span class="red">73 days</span>, down from an average of 88 days in January 2018.'],
 					'system-choices' : ['As of October 1st, <span class="bold">Carmel\'s market continues to strengthen.</span>. The average sale price has risen yet again to an <span class="bold">all-time high of $1.847M</span> - up a whopping <span class="green">11%</span> over 2017 (compared to a 5% increase Y-O-Y from 2017-2018.',
-										'Carmel\'s inventory has risen to 148 \"active listings\" from a very low level of 103 homes in August. This brings the inventory up closer to a \"balanced market\", but the supply is <span class="bold">still below 6 months</span> (less than 6 months is considered <span class="red caps">low</span> inventory.',										'For the first 10 months of 2018, <span class="bold">days on market</span> has dropped slightly to <span class="red">73 days</span>, down from an average of 88 days in January 2018.',
+										'Carmel\'s inventory has risen to 148 \"active listings\" from a very low level of 103 homes in August. This brings the inventory up closer to a \"balanced market\", but the supply is <span class="bold">still below 6 months</span> (less than 6 months is considered <span class="red caps">low</span> inventory.',										
+										'For the first 10 months of 2018, <span class="bold">days on market</span> has dropped slightly to <span class="red">73 days</span>, down from an average of 88 days in January 2018.',
 										'Year-to-date the average sale price in Carmel dropped by <span class="red">7%</span> to a new average of <span class="green">$1.261M</span>. Nevertheless, the average remains higher <span>than every previous year except 2017</span>.',
 										'Carmel\'s available homes for sale (11) remains at a <span class="red">very low</span> level: Only a <span class="red">3.4 month\'s supply</span>. Most areas in Carmel are still experiencing tight inventory, which is, of course, to the <span class="green caps">seller\'s advantage!</span>.',
 										'Days of market (DOM) has gone down from an average of 80 days last year to an average of <span class="green">67 days Y-T-D</span> (a 16% decrease) - another positive sign the market in Carmel continues to strengthen.',
@@ -315,9 +314,21 @@ var TEMPLATES =
 		"Inside" : {
 			"static-sections" : [
 				{
-					"name" : "Border",
-					"type" : "image",
-					"src" : "../../images/inside_border.PNG",
+					"name" : "InsideBorder",
+					"type" : "div",
+					"agent-specific" : false,
+					"src" : `<div class="border-header">
+								<div class="horizontal"></div><div class="horizontal"></div><div class="horizontal"></div><div class="horizontal"></div>
+								<div class="vertical-container"><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div></div>
+								<div class="border-site-address-container"><div class="border-site-address"></div></div>
+							</div>
+							<div class="border-divider"></div>
+							<div class="border-main">
+								<div class="left">
+									<span class="border-info">All data deemed reliable but not guaranteed. Duplication prohibited without written permission from <span class="insert-name"></span>. Cal DRE#<span class="insert-dre"></span> <span class="insert-brokerage"></span></span>
+								</div>
+								<div class="right"></div>
+							</div>`,
 					"coordinates" : [[0, 0]],
 					"size" : [11 * inch, 2 * page],
 				},
@@ -359,11 +370,11 @@ var TEMPLATES =
 										<td>Address</td>
 										<td>Cross Street</td>
 										<td>Price</td>
-										<td>Days on<br>Market</td>
-										<td>Beds/Baths</td>
+										<td>Days&nbsp;on Market</td>
+										<td>Beds /<br>Baths</td>
 										<td>Sq Ft</td>
-										<td>Price per<br>Sq Ft</td>
-										<td>Lot Size<br>Sq Ft</td>
+										<td>Price /<br>Sq Ft</td>
+										<td>Lot&nbsp;Size<br>Sq Ft</td>
 										<td>View</td>
 									</tr>
 								</thead>
@@ -435,7 +446,7 @@ var TEMPLATES =
 					"top" : 2.75 * inch, 
 					"left" : page + .25 * inch,
 					"height" : 8 * inch,
-					"width" : 7.25 * inch,
+					"width" : 7.5 * inch,
 					"tools-data" : {
 						"edit-height" : '109.5%',
 						"edit-width" : '125%',

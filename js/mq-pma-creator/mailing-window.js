@@ -77,10 +77,59 @@ class MailingWindow {
 			this._changeMailingList($(e.target), true);
 		});
 
+		$('.ho-tag-choice').click((e) => {
+			const tag = $(e.target).html();
+			let item = this.mailingList.get('address-id', this.currentCheckbox.parents('tr').find('.address-id').html())[0];
+			item.values({'homeowner-tag' : tag});
+			this.currentCheckbox.prop('checked', true);
+			let record = homeowners.findIndex((elem) => elem['address-id'] === item.values()['address-id']);
+			homeowners[record]['homeowner-tag'] = tag;
+
+			$('#choose-tag').slideUp(200);
+			$('#mailing-overlay').fadeOut(200);
+			this.approveList.show();
+			this.completedCallback("Mailing List", false);
+			this.completeAreaCallback(false);
+		});
+
+		$('#editConfirmBtn').click(() => {
+			let item = this.mailingList.get('address-id', $('#edit-modal').data('id'))[0];
+			const name = toTitleCase($('#editNameInput').val().trim());
+			const mailAddressLine2 = toTitleCase($('#editCityInput').val()) + ', ' + $('#editStateInput').val().toUpperCase() + ' ' + $('#editZipcodeInput').val();
+			item.values({
+				'name' : name,
+				'mail-address-line-1' : $('#editAddressInput').val(),
+				'mail-address-line-2' : mailAddressLine2,
+			});
+			$('#edit-modal').fadeOut(300);
+			$('#modal-overlay').fadeOut(300);
+		});
+
+		$('#ps-input').change(() => {
+			const newPS = $('#ps-input').val();
+			$('#psPS').html(newPS);
+		});
+
+		$('#ps-save-btn').click(() => {
+			let item = this.mailingList.get('address-id', $('#ps-modal').data('id'))[0];
+			item.values({ps : $('#ps').val()});
+			let record = homeowners.findIndex((elem) => elem['address-id'] === item.values()['address-id']);
+			homeowners[record]['ps'] = $('#ps').val();
+			this._updateItemClasses(item);
+			$('#ps-modal').fadeOut(200);
+			$('#modal-overlay').fadeOut(200);
+		});
+
+		$('.close-btn').click(() => { 
+			$('#ps-modal').fadeOut(200);
+			$('#modal-overlay').fadeOut(200);
+		})
+
 		// close and uncheck the checkbox
 		$('#mailing-overlay').click(() => {
 			this.currentCheckbox.prop('checked', false);
 			$('#choose-reason').slideUp(200);
+			$('#choose-tag').slideUp(200);
 			$('#mailing-overlay').fadeOut(200);
 		});
 	}
@@ -101,6 +150,8 @@ class MailingWindow {
 			'Total Blocked' : 0
 		};
 
+		for (let item of this.mailingList.get())
+			this._updateItemClasses(item);
 		// counts all blocked addresses 
 		this._countBlockedAddresses();
 		// updates the counts on the left side bar
@@ -116,6 +167,18 @@ class MailingWindow {
 		this._initializePricingBar();
 
 		if (!mlsAreas[currentArea]['mailing-complete']) this.approveList.show();
+	}
+
+
+	_updateItemClasses(item) {
+		if (item.values()['ps'] !== '')
+			$(item.elm).addClass('ps');
+		if (item.values()['blocked'] === 'Active Listing' || item.values()['blocked'] === 'Pending Listing')
+			$(item.elm).addClass('disabled');
+		if (item.values()['homeowner-tag'] !== '')
+			$(item.elm).find('.tag-check').attr('checked', true);
+		if (item.values()['past-client'] !== '')
+			$(item.elm).find('.past-client').addClass(item.values()['past-client']);
 	}
 
 	/* Set On Change - private
@@ -139,43 +202,67 @@ class MailingWindow {
 			}
 		});
 
+		this.tagChecks = $('.tag-check');
+		this.tagChecks.change((e) => {
+			const checkbox = $(e.target);
+			this.currentCheckbox = checkbox;
+			if (checkbox.is(':checked')) {
+				const position = checkbox.offset();
+				$('#choose-tag').css('top', position.top - 50);
+				$('#choose-tag').css('left', position.left + 40);
+				$('#choose-tag').slideDown(200);
+				$('#mailing-overlay').fadeIn(200);
+			} else {
+				let item = this.mailingList.get('address-id', this.currentCheckbox.parents('tr').find('.address-id').html())[0];
+				item.values({'homeowner-tag' : ''});
+				this.currentCheckbox.prop('checked', false);
+				let record = homeowners.findIndex((elem) => elem['address-id'] === item.values()['address-id']);
+				homeowners[record]['homeowner-tag'] = '';
+				this.approveList.show();
+				this.completedCallback("Mailing List", false);
+				this.completeAreaCallback(false);
+			}
+		});
+
 		$('.edit-btn').click((e) => {
-			let item = this.mailingList.get('address-id', $(e.currentTarget).parent()
-											  					  .siblings('.address-id-container')
-											  					  .children('.address-id')
-											  					  .html())[0];
-			this._populateEditModal(item.values());
+			let item = this.mailingList.get('address-id', $(e.currentTarget).parents('tr').find('.address-id').html())[0];
+			this._populateEditModal(item);
 			$('#edit-modal').fadeIn(300);
 			$('#modal-overlay').fadeIn(300);
 		});
 
-		$('#edit-box input').change(function() {
-			$(this).siblings('div').html($(this).val());
-		});
-
-		$('.confirm-edit-btn').click(() => {
-			console.log("Confirm edit.");
+		$('.ps-btn').click((e) => {
+			let item = this.mailingList.get('address-id', $(e.currentTarget).parents('tr').find('.address-id').html())[0];
+			this._populatePSModal(item);
+			$('#ps-modal').fadeIn(300);
+			$('#modal-overlay').fadeIn(300);
 		});
 	}
 
 	/* Populates the sections of the edit modal with the current record's data */
-	_populateEditModal(values) {
-		let dataAreas = $('.edit-insert');
-		$('#address-id-edit-insert').html(values['address-id']);
-		$('#parcel-number-edit-insert').html(values['parcel-number']);
-		const blocked = (values['blocked'] === '') ? 'Not Blocked' : values['blocked'];
-		$('#blocked-edit-insert').html(blocked);
-		$('#name-edit-insert').html(values['name']);
-		$('#name-edit-insert').siblings('input').val(values['name']);
-		const mailingAddress = values['mail-address-line-1'] + '<br>' + values['mail-address-line-2'];
-		const mailingAddressPlaceholder = values['mail-address-line-1'] + ' ' + values['mail-address-line-2']
-		$('#mailing-address-edit-insert').html(mailingAddress);
-		$('#mailing-address-edit-insert').siblings('input').val(mailingAddressPlaceholder);
-		$('#site-address-edit-insert').html(values['site-address']);
-		$('#last-sale-edit-insert').html(values['last-sale-price']);
-		$('#last-sale-date-edit-insert').html(values['last-sale-date']);
-		$('#listing-agent-edit-insert').html(values['selling-agent']);
+	_populateEditModal(item) {
+		let address = item.values()['mail-address-line-2'];
+		const city = address.substring(0, address.indexOf(','));
+		const state = address.substring(address.indexOf(', '), address.lastIndexOf(' ')).substring(2);
+		const zipcode = address.substring(address.lastIndexOf(' ')).substring(1);
+		$('#editName').html(item.values()['name']);
+		$('#editNameInput').val(item.values()['name']);
+		$('#editAddress').html(item.values()['mail-address-line-1']);
+		$('#editAddressInput').val(item.values()['mail-address-line-1']);
+		$('#editCity').html(city);
+		$('#editCityInput').val(city);
+		$('#editState').html(state);
+		$('#editStateInput').val(state);
+		$('#editZipcode').html(zipcode);
+		$('#editZipcodeInput').val(zipcode);
+		$('#edit-modal').data('id', item.values()['address-id']);
+	}
 
+	/* Populates the sections of the edit modal with the current record's data */
+	_populatePSModal(item) {
+		$('#ps').val(item.values()['ps']);
+		$('.psName').html(item.values()['name'].split(' ')[0]);
+		$('#ps-modal').data('id', item.values()['address-id']);
 	}
 
 	/* Count Blocked Addresses - private
@@ -189,11 +276,6 @@ class MailingWindow {
 				currentCheckbox.prev().prev().prop('checked', true);
 				this.numBlocked[currentCheckbox.html()]++;
 				this.numBlocked['Total Blocked']++;
-			}
-
-			if (currentCheckbox.html() === 'Active Listing' || currentCheckbox.html() === 'Pending Listing') {
-				const row = currentCheckbox.parent().parent().parent();
-				row.addClass('disabled');
 			}
 		});
 	}
@@ -239,11 +321,7 @@ class MailingWindow {
 		this.numBlocked[checkbox.html()] += change;
 		this.numBlocked['Total Blocked'] += change;
 		this._updateBlockedCounts();
-		let item = this.mailingList.get('address-id', this.currentCheckbox.parent()
-											  					  .parent()
-											  					  .siblings('.address-id-container')
-											  					  .children('.address-id')
-											  					  .html())[0];
+		let item = this.mailingList.get('address-id', this.currentCheckbox.siblings('.address-id').html())[0];
 		
 		item.values({blocked : reason});
 		this.currentCheckbox.prop('checked', block);

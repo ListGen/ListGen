@@ -45,12 +45,17 @@ class PreviewWindow {
 		// confirm a section
 		this.confirmButtons.click((e) => {
 			const button = $(e.target);
+			const name = button.siblings('h1').html();
+			const full = name === 'Outside Page' || name === 'Inside Page';
 			if (button.parent().parent().hasClass('confirmed')) return;
 			button.parent().parent().addClass('confirmed');
 			button.html('Confirmed!');
 			const date = getDateAndTime();
 			$(e.currentTarget).siblings('.time-confirmed').html('Last confirmed on ' + date);
-			mlsAreas[currentArea]['edit-sections'][button.siblings('h1').html()]['time-confirmed'] = date;
+			if (full)
+				mlsAreas[currentArea][button.siblings('h1').html()]['time-confirmed'] = date;
+			else
+				mlsAreas[currentArea]['edit-sections'][button.siblings('h1').html()]['time-confirmed'] = date;
 
 			this.numConfirmed++;
 			// enables confirm modal button
@@ -68,16 +73,20 @@ class PreviewWindow {
 		this.backToEditButtons.click((e) => { 
 			const step = $(e.target).siblings('h1').html();
 			const button = $(e.target);
+			const full = step === 'Outside Page' || step === 'Inside Page';
 			if (button.parent().parent().hasClass('confirmed'))
 				this.numConfirmed--;
 			button.parent().parent().removeClass('confirmed');
 			button.siblings('.confirm').html('Confirm');
 			$(e.currentTarget).siblings('.time-confirmed').html('');
-			mlsAreas[currentArea]['edit-sections'][button.siblings('h1').html()]['time-confirmed'] = '';
+			if (full)
+				mlsAreas[currentArea][button.siblings('h1').html()]['time-confirmed'] = '';
+			else
+				mlsAreas[currentArea]['edit-sections'][button.siblings('h1').html()]['time-confirmed'] = '';
 			this.pricingSummaryBtn.addClass('disabled');
 
 			this.completeAreaCallback(false);
-			this.backToEditCallback(step, step === 'Outside Page' || step === 'Inside Page');
+			this.backToEditCallback(step, full);
 		});
 
 		// opens pricing summary modal
@@ -190,7 +199,7 @@ class PreviewWindow {
 			const name = ID_TO_NAME[id.substr(0, id.length - 8)];
 			let timeConfirmed = '';
 			if (name === 'Outside Page' || name === 'Inside Page')
-				timeConfirmed = mlsAreas[currentArea][name];
+				timeConfirmed = mlsAreas[currentArea][name]['time-confirmed'];
 			else
 				timeConfirmed = mlsAreas[currentArea]['edit-sections'][name]['time-confirmed'];
 

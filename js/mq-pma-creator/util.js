@@ -15,55 +15,55 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'City Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Area Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Listings And Sales' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 			},
@@ -78,8 +78,10 @@ var agentData = {
 					'last-sale-date' : '10/10/2018',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : 'Agent-Blocked',
-					'past-client' : true,
-					'parcel-number' : '111-332-494'
+					'past-client' : '',
+					'parcel-number' : '111-332-494',
+					'ps' : 'Happy Halloween!',
+					'homeowner-tag' : 'Friend'
 				},
 				{	
 					'address-id' : '0001',
@@ -91,8 +93,10 @@ var agentData = {
 					'last-sale-date' : '2/07/2017',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : '',
-					'past-client' : true,
-					'parcel-number' : '434-461-888'
+					'past-client' : 'My Sold',
+					'parcel-number' : '434-461-888',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0002',
@@ -104,8 +108,10 @@ var agentData = {
 					'last-sale-date' : '5/21/2012',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : 'Active Listing',
-					'past-client' : false,
-					'parcel-number' : '756-122-1252'
+					'past-client' : 'Listing',
+					'parcel-number' : '756-122-1252',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0003',
@@ -117,8 +123,10 @@ var agentData = {
 					'last-sale-date' : '6/23/1991',
 					'selling-agent' : 'Meryl Streep',
 					'blocked' : 'Returned Mail',
-					'past-client' : false,
-					'parcel-number' : '827-357-111'
+					'past-client' : 'Sold',
+					'parcel-number' : '827-357-111',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0004',
@@ -130,8 +138,10 @@ var agentData = {
 					'last-sale-date' : '5/21/2013',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : '',
-					'past-client' : false,
-					'parcel-number' : '788-968-944'
+					'past-client' : '',
+					'parcel-number' : '788-968-944',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0005',
@@ -143,8 +153,10 @@ var agentData = {
 					'last-sale-date' : '5/25/1979',
 					'selling-agent' : 'Ridley Scott',
 					'blocked' : 'Homeowner-Blocked',
-					'past-client' : false,
-					'parcel-number' : '333-333-554'
+					'past-client' : '',
+					'parcel-number' : '333-333-554',
+					'ps' : '',
+					'homeowner-tag' : ''
 				}
 			],
 			'Outside Page' : {
@@ -165,7 +177,7 @@ var agentData = {
 					'garage-space' : 3,
 					'mls-number' : 81705106,
 					'cross-street' : 'HWY 1',
-					'date' : '2/23/17',
+					'date' : '10/23/18',
 					'src' : '../../images/pma-creator/las/2715RiberaRd.jpg',
 					'agents' : false,
 					'type' : 'sold',
@@ -205,7 +217,7 @@ var agentData = {
 					'src' : '../../images/pma-creator/las/27030MeadowWay.jpg',
 					'agents' : false,
 					'type' : 'sold',
-					'view' : '-',
+					'view' : 'Mountain',
 					'description' : 'Newly renovated in 2018; this single level 3 bedroom, 2 1/2 bath home is just a short walk to one of Carmel\'s most pristine beaches and fantastic walking trails.'
 				},
 				{
@@ -219,7 +231,7 @@ var agentData = {
 					'garage-space' : 2,
 					'mls-number' : 81727291,
 					'cross-street' : 'HWY 1',
-					'date' : '6/6/17',
+					'date' : '6/6/18',
 					'src' : '../../images/pma-creator/las/2975RiberaRd.jpg',
 					'agents' : false,
 					'type' : 'sold',
@@ -263,40 +275,148 @@ var agentData = {
 					'description' : 'Tucked into the heart of Carmel Point is this warm 5,300 sq.ft. home, perfect for entertaining and sharing memories with family.'
 				},
 				{
-					'address' : '3044 Fifth St',
-					'price' : 210000,
-					'sqft' : 1000,
-					'beds' : 2,
+					'address' : '26077 Scenic Rd',
+					'price' : 10950000,
+					'sqft' : 3389,
+					'beds' : 4,
 					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
+					'lot-size' : 6098,
+					'dom' : 269,
 					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Juniper',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house2.jpg',
+					'mls-number' : 81690484,
+					'cross-street' : 'Santa Lucia',
+					'date' : '10/6/18',
+					'src' : '../../images/pma-creator/las/26077ScenicRd.jpg',
 					'agents' : true,
 					'type' : 'pending',
-					'view' : '-',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'view' : 'Ocean',
+					'description' : 'Offering an incredible combination of style, quality, and views, this Eric Miller designed residence was built in 2000 and is approximately 3,389 square feet on an oversized 6,000 sq. ft. lot on Carmel Point.'
 				},
 				{
-					'address' : '3044 Sixth St',
-					'price' : 930000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Freedom',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house5.jpg',
+					'address' : '26314 Ocean View Ave',
+					'price' : 7500000,
+					'sqft' : 3370,
+					'beds' : 4,
+					'baths' : 3.5,
+					'lot-size' : 5898,
+					'dom' : 136,
+					'garage-space' : 2,
+					'mls-number' : 81709593,
+					'cross-street' : 'Stewart',
+					'date' : '7/22/18',
+					'src' : '../../images/pma-creator/las/26314OceanViewAve.jpg',
 					'agents' : false,
 					'type' : 'listing',
 					'view' : 'Bay',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'description' : 'Crafted in 2010, Maison de Lumiere, is truly a world-class residence. The exterior is defined by the multiple zinc barrel roofs of the spacious 4000+SF structure.'
+				},
+				{
+					'address' : '26147 Carmelo St',
+					'price' : 2988888,
+					'sqft' : 3331,
+					'beds' : 4,
+					'baths' : 3,
+					'lot-size' : 5998,
+					'dom' : 323,
+					'garage-space' : 2,
+					'mls-number' : 81711716,
+					'cross-street' : '16th Ave',
+					'date' : '12/22/17',
+					'src' : '../../images/pma-creator/las/26147CarmeloSt.jpg',
+					'agents' : false,
+					'type' : 'pending',
+					'view' : '-',
+					'description' : 'Privately set behind a gated entrance, on an over-sized lot, the home has excellent proximity to both Carmel beaches and an easy walk to downtown Carmel.'
+				},
+				{
+					'address' : '2713 15th Ave',
+					'price' : 2099000,
+					'sqft' : 2215,
+					'beds' : 3,
+					'baths' : 3,
+					'lot-size' : 5998,
+					'dom' : 104,
+					'garage-space' : 2,
+					'mls-number' : 81714497,
+					'cross-street' : 'Monte Verde',
+					'date' : '5/29/18',
+					'src' : '../../images/pma-creator/las/271315thAve.jpg',
+					'agents' : true,
+					'type' : 'listing',
+					'view' : '-',
+					'description' : 'This Carmel Point home, located just a few blocks away from Carmel River Beach, has been redesigned and remodeled with a modern-day touch.'
+				},
+				{
+					'address' : '26185 Dolores St',
+					'price' : 3595000,
+					'sqft' : 2421,
+					'beds' : 3,
+					'baths' : 4,
+					'lot-size' : 5860,
+					'dom' : 128,
+					'garage-space' : 1,
+					'mls-number' : 81710967,
+					'cross-street' : 'Franciscan',
+					'date' : '6/11/18',
+					'src' : '../../images/pma-creator/las/26185DoloresSt.jpg',
+					'agents' : false,
+					'type' : 'listing',
+					'view' : 'Bay',
+					'description' : 'This Mid-Century Modern home enjoys beautiful views of Point Lobos, Carmel River State Beach and the ocean beyond.'
+				},
+				{
+					'address' : '26040 Ridewood Rd',
+					'price' : 3525000,
+					'sqft' : 1825,
+					'beds' : 3,
+					'baths' : 2.5,
+					'lot-size' : 7530,
+					'dom' : 238,
+					'garage-space' : 1,
+					'mls-number' : 81720150,
+					'cross-street' : 'Mission',
+					'date' : '7/1/18',
+					'src' : '../../images/pma-creator/las/26040RidgewoodRd.jpg',
+					'agents' : false,
+					'type' : 'sold',
+					'view' : '-',
+					'description' : 'Perfectly appointed in one of Carmels most coveted neighborhoods, this quintessential 3 bedroom 2.5 bath cottage offers a rare combination of elegance, style and privacy.'
+				},
+				{
+					'address' : '26182 Mission Fields Rd',
+					'price' : 1199000,
+					'sqft' : 1844,
+					'beds' : 2,
+					'baths' : 3,
+					'lot-size' : 13068,
+					'dom' : 59,
+					'garage-space' : 1,
+					'mls-number' : 81728821,
+					'cross-street' : 'Oliver',
+					'date' : '9/1/18',
+					'src' : '../../images/pma-creator/las/26512MissionFieldsRd.jpg',
+					'agents' : false,
+					'type' : 'listing',
+					'view' : 'Mountain',
+					'description' : 'A lovely garden will lead you to this beautiful Carmel home, perched atop a hill at the mouth of the Valley is your own escape haven where you can relax and enjoy peace and tranquility.'
+				},
+				{
+					'address' : '3508 Lazarro Dr',
+					'price' : 1690000,
+					'sqft' : 2581,
+					'beds' : 3,
+					'baths' : 4,
+					'lot-size' : 5860,
+					'dom' : 128,
+					'garage-space' : 1,
+					'mls-number' : 81710967,
+					'cross-street' : 'Mesa',
+					'date' : '6/11/18',
+					'src' : '../../images/pma-creator/las/3508LazarroDr.jpg',
+					'agents' : false,
+					'type' : 'listing',
+					'view' : 'Bay',
+					'description' : 'This Mid-Century Modern home enjoys beautiful views of Point Lobos, Carmel River State Beach and the ocean beyond.'
 				}
 			],
 			'editor-complete' : false,
@@ -304,7 +424,7 @@ var agentData = {
 			'total-complete' : false,
 			'unblocked-mailings' : 0
 		},
-		'Spanish Bay' : {
+		'NW PEBBLE BEACH' : {
 			'page-version' : '4',
 			'city' : 'PEBBLE BEACH',
 			'city-market' : 'BUYERS\'S',
@@ -313,55 +433,55 @@ var agentData = {
 				'Attention Grabber' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Front Graph' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Front Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Top Image' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'City Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Area Highlights' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Call To Action' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Inside Bar' : {
 					'selection' : '',
 					'confirmed-selection' : '',
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 				'Listings And Sales' : {
 					'selection' : [],
 					'confirmed-selection' : [],
-					'status' : 'Complete',
+					'status' : 'Incomplete',
 					'time-confirmed' : ''
 				},
 			},
@@ -376,8 +496,10 @@ var agentData = {
 					'last-sale-date' : '12/10/2013',
 					'selling-agent' : 'Michael Jones',
 					'blocked' : '',
-					'past-client' : false,
-					'parcel-number' : '732-334-412'
+					'past-client' : 'Pending',
+					'parcel-number' : '732-334-412',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0001',
@@ -389,8 +511,10 @@ var agentData = {
 					'last-sale-date' : '2/07/2017',
 					'selling-agent' : 'Kyle Morrison',
 					'blocked' : '',
-					'past-client' : true,
-					'parcel-number' : '304-009-800'
+					'past-client' : '',
+					'parcel-number' : '304-009-800',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0002',
@@ -402,8 +526,10 @@ var agentData = {
 					'last-sale-date' : '5/21/2012',
 					'selling-agent' : 'Seamus Riley',
 					'blocked' : '',
-					'past-client' : false,
-					'parcel-number' : '198-039-444'
+					'past-client' : 'Listing',
+					'parcel-number' : '198-039-444',
+					'ps' : '',
+					'homeowner-tag' : ''
 				},
 				{	
 					'address-id' : '0003',
@@ -415,8 +541,10 @@ var agentData = {
 					'last-sale-date' : '6/23/1991',
 					'selling-agent' : 'Meryl Streep',
 					'blocked' : '',
-					'past-client' : false,
-					'parcel-number' : '123-124-142'
+					'past-client' : 'Sold',
+					'parcel-number' : '123-124-142',
+					'ps' : '',
+					'homeowner-tag' : 'Friend'
 				},
 				{	
 					'address-id' : '0004',
@@ -428,8 +556,10 @@ var agentData = {
 					'last-sale-date' : '5/28/2015',
 					'selling-agent' : 'Tony Stark',
 					'blocked' : 'Homeowner-Blocked',
-					'past-client' : false,
-					'parcel-number' : '566-665-452'
+					'past-client' : '',
+					'parcel-number' : '566-665-452',
+					'ps' : '',
+					'homeowner-tag' : 'Friend'
 				}
 			],
 			'Outside Page' : {
@@ -440,149 +570,24 @@ var agentData = {
 			},
 			'listings-and-sales' : [
 				{
-					'address' : '1223 Main St',
-					'price' : 4500000,
-					'sqft' : 3500,
-					'beds' : 5,
-					'baths' : 5,
-					'lot-size' : 5000,
-					'dom' : 62,
-					'garage-space' : 2,
-					'mls-number' : 155401,
-					'cross-street' : 'Cedar',
-					'date' : '2/23/17',
-					'src' : '../../images/home-screen/house1.jpg',
-					'agents' : false,
-					'type' : 'sold',
-					'view' : 'Ocean',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '2373 Main St',
-					'price' : 2000000,
-					'sqft' : 6000,
-					'beds' : 8,
-					'baths' : 2,
-					'lot-size' : 10000,
-					'dom' : 20,
-					'garage-space' : 6,
-					'mls-number' : 471193,
-					'cross-street' : 'Cedar',
-					'date' : '9/4/18',
-					'src' : '../../images/home-screen/house2.jpg',
-					'agents' : false,
-					'type' : 'sold',
-					'view' : 'Bay',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '8740 Second St',
-					'price' : 1400000,
-					'sqft' : 2000,
+					'address' : '68 Spanish Bay Cir',
+					'price' : 4450000,
+					'sqft' : 4164,
 					'beds' : 4,
-					'baths' : 3,
-					'lot-size' : 4000,
-					'dom' : 45,
-					'garage-space' : 2,
-					'mls-number' : 118339,
-					'cross-street' : 'Olive',
-					'date' : '2/4/18',
-					'src' : '../../images/home-screen/house3.jpg',
+					'baths' : 5,
+					'lot-size' : 1916,
+					'dom' : 63,
+					'garage-space' : 1,
+					'mls-number' : 81720428,
+					'cross-street' : '--',
+					'date' : '8/21/18',
+					'src' : '../../images/pma-creator/las/68SpanishBayCir.jpg',
 					'agents' : false,
 					'type' : 'sold',
-					'view' : 'River',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '9001 Main St',
-					'price' : 9000000,
-					'sqft' : 8000,
-					'beds' : 12,
-					'baths' : 12,
-					'lot-size' : 9000,
-					'dom' : 74,
-					'garage-space' : 8,
-					'mls-number' : 446322,
-					'cross-street' : 'Cedar',
-					'date' : '6/6/17',
-					'src' : '../../images/home-screen/house4.jpg',
-					'agents' : false,
-					'type' : 'pending',
 					'view' : 'Ocean',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
+					'description' : 'This largest model of the Residences at Spanish Bay has been remodeled and enhanced on the inside and marvelously landscaped on both exterior courtyards on the outside.'
 				},
-				{
-					'address' : '3044 Third St',
-					'price' : 350000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Pine',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house5.jpg',
-					'agents' : false,
-					'type' : 'listing',
-					'view' : '-',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '3044 Fourth St',
-					'price' : 220000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Oak',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house6.jpg',
-					'agents' : false,
-					'type' : 'listing',
-					'view' : '-',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '3044 Fifth St',
-					'price' : 210000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Juniper',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house2.jpg',
-					'agents' : false,
-					'type' : 'listing',
-					'view' : '-',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				},
-				{
-					'address' : '3044 Sixth St',
-					'price' : 930000,
-					'sqft' : 1000,
-					'beds' : 2,
-					'baths' : 3,
-					'lot-size' : 3000,
-					'dom' : 192,
-					'garage-space' : 1,
-					'mls-number' : 766577,
-					'cross-street' : 'Freedom',
-					'date' : '6/8/18',
-					'src' : '../../images/home-screen/house5.jpg',
-					'agents' : false,
-					'type' : 'listing',
-					'view' : '-',
-					'description' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ex lectus, eu scelerisque justo scelerisque non. Duis vestibulum risus ut pulvinar commodo. '
-				}
+				
 			],
 			'editor-complete' : false,
 			'mailing-complete' : false,
@@ -603,7 +608,8 @@ var agentData = {
 		'Phone Number' : '831-555-5555',
 		'Email Address' : 'kyle@kylemorrison.com',
 		'CC Digits' : 'XXXX',
-		'DRE Number' : '04385564'
+		'DRE Number' : '04385564',
+		'Brokerage' : 'Sotheby\'s International Realty'
 	},
 	'total-mailings' : 0,
 	'total-price' : 0,
@@ -723,6 +729,18 @@ const LAS_SIZES = {
 	8 : '12.5%'
 }
 
+const HO_PRIMARY_TAGS = [
+	'SOLD',
+	'LISTING',
+	'PENDING'
+];
+
+const HO_SECONDARY_TAGS = [
+	'FRIEND',
+	'PROSPECT',
+	'RELATIVE'
+]
+
 function makeLASContainer(ls) {
 	const status = LAS_MESSAGES[ls['type']];
 	const pricePerSqft = (ls['price'] / ls['sqft']).toFixed(0).toLocaleString();
@@ -775,26 +793,36 @@ const MONTHS = {
 
 // mailing list options
 const mailingListOptions = {
-	valueNames : ['address-id', 'parcel-number', 'blocked', 'name', 'mail-address-line-1', 'mail-address-line-2', 'site-address', 'last-sale-price', 'last-sale-date', 'selling-agent'],
+	valueNames : ['address-id', 'parcel-number', 'blocked', 'name', 'mail-address-line-1', 'mail-address-line-2', 'site-address', 'last-sale-price', 'last-sale-date', 'selling-agent', 'ps', 'homeowner-tag', 'past-client'],
 	item: `<tr>
-				<td><button class="edit-btn">EDIT</button</td>
-			    <td class="address-id-container">
-			        <div class="address-id"></div>
-			        <strong class="parcel-number"></strong>
+				<td><div class="btn-container"><button class="edit-btn"><i class="material-icons">edit</i></button><button class="ps-btn">P.S.</button><div></td>
+			    <td class="check-td">
+			    	<label class="check-container">
+			            <input class="tag-check" type="checkbox"/>
+			            <span class="checkmark positive"><i class="material-icons">check</i></span>
+			            <div class="past-client"></div>
+			            <div class="homeowner-tag"></div>
+		            </label>
 			    </td>
-			    <td class="blocked-container">
+			    <td class="check-td">
 			        <label class="check-container">
 			            <input class="block-check" type="checkbox"/>
-			            <span class="checkmark"><i class="material-icons">close</i></span>
-			            <span class="blocked"></span>
+			            <span class="checkmark negative"><i class="material-icons">close</i></span>
+			            <div class="blocked hoValue"></div>
+			            <div class="address-id"></div>
 		            </label>
 	            </td>
-	            <td class="name"></td>
-	            <td class="mailing-address-container">
+	            <td>
+	            	<span class="name hoValue"></span>
+	            </td>
+	            <td class="address-container">
 	            	<div class="mail-address-line-1"></div>
 	            	<div class="mail-address-line-2"></div>
 	            </td>
-	            <td class="site-address"></td>
+	            <td class="address-container">
+	            	<div class="site-address hoValue"></div>
+	            	<strong class="parcel-number"></strong>
+            	</td>
 	            <td class="last-sale-price"></td>
 	            <td class="last-sale-date"></td>
 	            <td class="selling-agent"></td>
@@ -858,7 +886,7 @@ const SPLASH = {
 	'area-complete' : 'You have completed this area! Click <strong>Continue</strong> below.'
 }
 
-// displays a helpful splash message for 2 seconds on the top of the screen.
+// displays a helpful splash message for 'delay' seconds on the top of the screen.
 function makeSplashMessage(message, delay=4500) {
 	if (splashMessagePresent) return;
 	splashMessagePresent = true;
@@ -866,12 +894,41 @@ function makeSplashMessage(message, delay=4500) {
 	$('#splash-message').fadeIn(500);
 	$('#splash-message').delay(delay).fadeOut(500);
 	setTimeout(() => splashMessagePresent = false, delay);
-
 }
+
+
+// displays a helpful splash alert that must be manually dismissed
+function makeSplashAlert(message) {
+	if (splashMessagePresent) return;
+	splashMessagePresent = true;
+	$('#splash-alert div').html(message);
+	$('#splash-alert').fadeIn(500);
+	$('#splash-overlay').fadeIn(500);
+}
+
+$('#splash-overlay').click(() => {
+	splashMessagePresent = false;
+	$('#splash-alert').fadeOut(500);
+	$('#splash-overlay').fadeOut(500);
+});
+
+$('#splash-alert button').click(() => {
+	splashMessagePresent = false;
+	$('#splash-alert').fadeOut(500);
+	$('#splash-overlay').fadeOut(500);
+});
 
 function addTooltip(container, message) {
 	container.addClass('tooltip');
 	container.append($('<div class="tooltiptext">' + message + '</div>'));
+}
+
+function toTitleCase(str) {
+	let splitStr = str.toLowerCase().split(' ');
+   	for (let i = 0; i < splitStr.length; i++) {
+       	splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+   	}
+   	return splitStr.join(' '); 
 }
 
 
@@ -883,7 +940,10 @@ function updateTextAreas() {
 	$('.insert-current-period').html(currentPeriod);
 	$('.insert-current-city-market').html(cityMarket);
 	$('.insert-current-area-market').html(areaMarket);
+	$('.insert-name').html(personalInfo['Name']);
 	$('.insert-email').html(personalInfo['Email Address']);
+	$('.insert-dre').html(personalInfo['DRE Number']);
 	$('.insert-website').html(personalInfo['Website']);
+	$('.insert-brokerage').html(personalInfo['Brokerage']);
 	$('.insert-phone-number').html(personalInfo['Phone Number']);
 }

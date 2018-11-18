@@ -208,7 +208,7 @@
 							</div>
 							<div id="homeowners">
 								<div id="search-bar">
-									<input class="search" placeholder="Search"/>
+									<input class="textInput search" placeholder="Search"/>
 									<button id="clear-search">
 										<i class="material-icons">format_align_center</i> 
 										<span>Show All</span>
@@ -217,8 +217,8 @@
 							  	<table>
 							  		<thead>
 		  					  			<th></th>
-							  			<th><button class="sort" data-sort="address-id">
-						  					<span>Address ID</span>
+							  			<th><button class="sort" data-sort="homeowner-tag">
+						  					<span>Homeowner Tag</span>
 					  						<i class="material-icons">arrow_drop_down</i>
 						  				</button></th>
 							  			<th><button class="sort" data-sort="blocked">
@@ -416,7 +416,14 @@
 
 		<!-- EXTRAS -->
 
-		<div id="choose-reason">
+		<div id="choose-tag" class="choose-options">
+			<h4>Choose a Homeowner Tag</h4>
+			<h5 class="ho-tag-choice">Friend</h5>
+			<h5 class="ho-tag-choice">Neighbor</h5>
+			<h5 class="ho-tag-choice">Prospect</h5>
+		</div>
+
+		<div id="choose-reason" class="choose-options">
 			<h4>Choose a Reason</h4>
 			<h5 class="reason">Agent-Blocked</h5>
 			<h5 class="reason">Homeowner-Blocked</h5>
@@ -427,68 +434,70 @@
 			<!-- INSERT SPLASH MESSAGE -->
 		</div>
 
+		<div id="splash-alert">
+			<div> <!-- INSERT SPLASH MESSAGE --> </div>
+			<button>DISMISS</button>
+		</div>
+
 		<div id="nav-overlay" class="overlay"></div>
 		<div id="edit-overlay" class="overlay"></div>
 		<div id="mailing-overlay" class="overlay"></div>
 		<div id="modal-overlay" class="overlay"></div>
-
-		<div id="past-clients-modal" class="modal">
-			
-		</div>
+		<div id="splash-overlay" class="overlay"></div>
 
 		<div id="edit-modal" class="modal">
 			<div class="modal-header">
-				<h1>Edit Address</h1>
+				<h1>Edit Homeowner Name Or Address</h1>
 			</div>
 			<div class="modal-body">
-				<div class="edit-modal-row">
-					<div class="edit-box">
-						<strong>Address ID</strong>
-						<div id="address-id-edit-insert"></div>
+				<div class="modal-body-container">
+					<div id="editOldContainer" class="modalCol modalColLeft">
+						<h1>Current</h1>
+						<h3>Name: </h3>
+						<div id="editName" class="editOld"></div>
+						<h3>Mailing Address: </h3>
+						<div id="editAddress" class="editOld"></div>
+						<h3>Mailing City: </h3>
+						<div id="editCity" class="editOld"></div>
+						<h3>Mailing State: </h3>
+						<div id="editState" class="editOld"></div>
+						<h3>Mailing Zipcode: </h3>
+						<div id="editZipcode" class="editOld"></div>
 					</div>
-					<div class="edit-box">
-						<strong>Parcel Number</strong>
-						<div id="parcel-number-edit-insert"></div>
-					</div>
-					<div class="edit-box editable">
-						<strong>Blocked</strong>
-						<div id="blocked-edit-insert"></div>
-					</div>
-				</div>
-				<div class="edit-modal-row">
-					<div class="edit-box editable">
-						<strong>Name</strong>
-						<div id="name-edit-insert"></div>
-						<input type="text">
-					</div>
-					<div class="edit-box editable">
-						<strong>Mailing Address</strong>
-						<div id="mailing-address-edit-insert"></div>
-						<input type="text">
-					</div>
-					<div class="edit-box">
-						<strong>Site Address</strong>
-						<div id="site-address-edit-insert"></div>
-					</div>
-				</div>
-				<div class="edit-modal-row">
-					<div class="edit-box">
-						<strong>Last Sale</strong>
-						<div id="last-sale-edit-insert"></div>
-					</div>
-					<div class="edit-box">
-						<strong>Last Sale Date</strong>
-						<div id="last-sale-date-edit-insert"></div>
-					</div>
-					<div class="edit-box">
-						<strong>Listing Agent</strong>
-						<div id="listing-agent-edit-insert"></div>
+					<div id="editNewContainer" class="modalCol modalColRight">
+						<h1>New</h1>
+						<h3>Name: </h3>
+						<input id="editNameInput" class="textInput" type="text">
+						<h3>Mailing Address: </h3>
+						<input id="editAddressInput" class="textInput" type="text">
+						<h3>Mailing City: </h3>
+						<input id="editCityInput"class="textInput" type="text">
+						<h3>Mailing State: </h3>
+						<input id="editStateInput" class="textInput" type="text">
+						<h3>Mailing Zipcode: </h3>
+						<input id="editZipcodeInput" class="textInput" type="text">
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
+				<button class="modalCloseBtn">Cancel</button>
+				<button id="editConfirmBtn">Confirm</button>
+			</div>
+		</div>
+
+		<div id="ps-modal" class="modal">
+			<div class="modal-header">
+				<h1>Write a Note to <span class="psName"></span></h1>
+			</div>
+			<div class="modal-body">
+				<div class="modal-body-container">
+					<div>Dear <span class="psName"></span>,</div>
+					<textarea id="ps" placeholder="Your P.S. will be displayed here on the front page of the PMA."></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
 				<button class="close-btn">Cancel</button>
-				<button class="confirm-edit-btn">Confirm</button>
+				<button id="ps-save-btn">Save & Close</button>
 			</div>
 		</div>
 
@@ -505,8 +514,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button id="next-area-btn">Complete and Continue to <span></span></button>
-				<button id="to-final-accept-btn">Complete and Continue to Final Confirmation</button>
+				<button id="next-area-btn">Continue to <span></span></button>
+				<button id="to-final-accept-btn">Continue to Final Confirmation</button>
 			</div>
 		</div>
 

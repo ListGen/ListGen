@@ -176,6 +176,8 @@ canvas {
     z-index: 2; }
   .overlay#modal-overlay {
     z-index: 2; }
+  .overlay#splash-overlay {
+    z-index: 2; }
 
 .modal {
   height: 80%;
@@ -202,13 +204,30 @@ canvas {
       padding: 15px; }
   .modal .modal-body {
     height: 75%;
+    padding: 10px;
     background: white;
     border-left: 25px solid #163856;
     border-right: 25px solid #163856; }
+    .modal .modal-body .modalBodyContainer {
+      height: 100%;
+      width: 100%;
+      border: 1px solid #4165a3; }
+    .modal .modal-body .modalCol {
+      height: 100%;
+      width: 49%;
+      padding: 0 5%; }
+      .modal .modal-body .modalCol h1 {
+        text-align: center; }
+      .modal .modal-body .modalCol h3 {
+        margin-bottom: 3%; }
+      .modal .modal-body .modalCol.modalColLeft {
+        border-right: 1px solid #dcebf5; }
+      .modal .modal-body .modalCol.modalColRight {
+        border-left: 1px solid #dcebf5; }
   .modal .modal-footer {
     height: 15%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background: #163856; }
     .modal .modal-footer button {
@@ -228,11 +247,13 @@ canvas {
       .modal .modal-footer button a {
         color: #2D2D2D;
         text-decoration: none; }
-    .modal .modal-footer .button-message {
-      padding: 5px 0;
-      color: white; }
-      .modal .modal-footer .button-message:not(:last-child) {
-        border-bottom: 1px solid #4B9FCB; }
+    .modal .modal-footer .modalCloseBtn {
+      color: white;
+      background: #FF3A38;
+      border: 2px solid #ff0805;
+      outline: 3px solid #d10200; }
+      .modal .modal-footer .modalCloseBtn:hover, .modal .modal-footer .modalCloseBtn :focus {
+        background: #ff6c6b; }
 
 .tos-pp-header {
   height: 300px;

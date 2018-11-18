@@ -165,6 +165,7 @@ class EditWindow {
 			}
 		}
 
+		tools.find('.insert-current-selected').html(this.numSelected[id]);
 
 		for (let selection of choice.siblings())
 			$(selection).removeClass('disabled');
@@ -218,40 +219,7 @@ class EditWindow {
 
 		// Fill all editable sections
 		for (let section of edits) {
-			const sectionID = NAME_TO_ID[section['name']]
-			let div = $('<div id="' + sectionID + '" class="section-tools"></div>');
-			div.height(section['height'] * scale);
-			div.width(section['width'] * scale);
-			div.css('top', section['top'] * scale);
-			div.css('left', section['left'] * scale);
-
-			// add complete button and edit tools
-			const completeButton = this._makeCompleteButton(section, scale);
-			const editReturn = this._makeEditTools(section, spread, scale);
-			div.append(completeButton);
-			div.append(editReturn['editTools']);
-
-			// populate edit section
-			if (editReturn['highlight-list']) {
-				this._populateHighlightList(div, section, editReturn, scale);
-			} else if (editReturn['las-list']) {
-				this._populateLASList(div, section, editReturn, scale);
-			} else {
-				div.css('background-image', 'url(' + editSections[section['name']]['selection'] + ')');
-			}
-
-			if ((editReturn['highlight-list'] || editReturn['las-list'])
-				&& this.numSelected[sectionID] < SELECTION_LIMITS[sectionID]) {
-				div.find('label').removeClass('disabled');
-			}
-
-			const status = editSections[section['name']]['status'];
-			if (status === 'Complete') { 
-				this.sectionsComplete++;
-				div.addClass('complete');
-			}
-
-			spread.append(div);
+			this._addEditSection(section, spread, scale);
 		}
 	}
 
@@ -285,6 +253,43 @@ class EditWindow {
 		}
 	}
 
+	_addEditSection(section, spread, scale) {
+		const sectionID = NAME_TO_ID[section['name']]
+		let div = $('<div id="' + sectionID + '" class="section-tools"></div>');
+		div.height(section['height'] * scale);
+		div.width(section['width'] * scale);
+		div.css('top', section['top'] * scale);
+		div.css('left', section['left'] * scale);
+
+		// add complete button and edit tools
+		const completeButton = this._makeCompleteButton(section, scale);
+		const editReturn = this._makeEditTools(section, spread, scale);
+		div.append(completeButton);
+		div.append(editReturn['editTools']);
+
+		// populate edit section
+		if (editReturn['highlight-list']) {
+			this._populateHighlightList(div, section, editReturn, scale);
+		} else if (editReturn['las-list']) {
+			this._populateLASList(div, section, editReturn, scale);
+		} else {
+			div.css('background-image', 'url(' + editSections[section['name']]['selection'] + ')');
+		}
+
+		if ((editReturn['highlight-list'] || editReturn['las-list'])
+			&& this.numSelected[sectionID] < SELECTION_LIMITS[sectionID]) {
+			div.find('label').removeClass('disabled');
+		}
+
+		const status = editSections[section['name']]['status'];
+		if (status === 'Complete') { 
+			this.sectionsComplete++;
+			div.addClass('complete');
+		}
+
+		spread.append(div);
+	}
+
 	// populates the list of selection options for highlight list sections
 	_populateHighlightList(div, section, scale) {
 		div.addClass('highlight-list');
@@ -302,6 +307,7 @@ class EditWindow {
 			}
 			div.children('ul').append(choice);
 		}
+		div.find('.insert-current-selected').html(this.numSelected[div.attr('id')]);
 	}
 
 	// populates the list of selection options for L&S section
@@ -315,7 +321,7 @@ class EditWindow {
 			}
 			div.append(choice);
 		}
-		$('.las-list > .las-container').height(LAS_SIZES[this.numSelected[div.attr('id')]]);
+		div.find('.insert-current-selected').html(this.numSelected[div.attr('id')]);
 	}
 
 	/* Make Complete Button
@@ -354,10 +360,10 @@ class EditWindow {
 
 		// populate selections content
 		let header = $('<h2></h2>');
-		if (hList || lasList) header.append($('<span class="insert-current-area"></span>&nbsp-&nbsp'));
+		if (hList || lasList) header.append($('<span><span class="insert-current-area"></span>&nbsp;-&nbsp;</span>'));
 		header.append(section['name']);
 		editTools.append(header);
-		if (hList || lasList) header.append($('<h4>Select ' + SELECTION_LIMITS[NAME_TO_ID[section['name']]] + ' choices</h4>'))
+		if (hList || lasList) header.append($('<h4><span class="insert-current-selected"></span> / ' + SELECTION_LIMITS[NAME_TO_ID[section['name']]] + ' required choices selected</h4>'))
 		let editToolsContent = $('<div class="edit-content"></div>');
 		// if (section['uploadable']) { 
 		// 	editToolsContent.append($('<button class="upload">Upload</button>'));
@@ -438,7 +444,7 @@ class EditWindow {
 	_populateInsideTable() {
 		let num = 0;
 		for (const ls of mlsAreas[currentArea]['listings-and-sales']) {
-			if (num >= 10) break;
+			if (num >= 13) break;
 			let row = $('<tr></tr>');
 			row.css('color', LAS_COLORS[ls['type']]);
 			if (ls['type'] === 'sold') $('.sale').show();

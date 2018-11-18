@@ -27,7 +27,7 @@ class MQPmaCreator {
 	constructor() {
 		this._bindToCallbacks();
 		this._initializeApp();
-		makeSplashMessage(SPLASH['start'], 5000);
+		makeSplashAlert(SPLASH['start'], 5000);
 	}
 
 	/* Bind To Callbacks - private */
@@ -39,11 +39,23 @@ class MQPmaCreator {
 
 	/* Intialize App - private */
 	_initializeApp() {	
+		this._sortListingsAndSales();
 		this.topBar = new TopBar(this._switchArea, this._setWindow);
 		this.mainWindow = new MainWindow(this._switchArea, this._setWindow, this._completeArea);
 
 		this._setWindow(currentStep);
 		updateTextAreas();
+	}
+
+	_sortListingsAndSales() {
+		for (let area in mlsAreas) {
+			mlsAreas[area]['listings-and-sales'].sort(
+				function(a, b) {          
+		    	if (a['type'] === b['type'])
+		        	return b['price'] - a['price'];
+		     	 return a['type'] < b['type'] ? 1 : -1;
+		   });
+		}
 	}
 
 	/*   CALLBACK FUNCTIONS   */
@@ -100,7 +112,7 @@ class MQPmaCreator {
 	 */
 	_completeArea(complete) {
 		if (!complete) this.mainWindow.resetFinalPreview();
-		if (complete) makeSplashMessage(SPLASH['area-complete']);
+		if (complete) makeSplashAlert(SPLASH['area-complete']);
 		mlsAreas[currentArea]['total-complete'] = complete;
 		this.topBar.completeArea(complete);
 	}

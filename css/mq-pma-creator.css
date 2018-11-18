@@ -176,6 +176,8 @@ canvas {
     z-index: 2; }
   .overlay#modal-overlay {
     z-index: 2; }
+  .overlay#splash-overlay {
+    z-index: 2; }
 
 .modal {
   height: 80%;
@@ -202,13 +204,30 @@ canvas {
       padding: 15px; }
   .modal .modal-body {
     height: 75%;
+    padding: 10px;
     background: white;
     border-left: 25px solid #163856;
     border-right: 25px solid #163856; }
+    .modal .modal-body .modalBodyContainer {
+      height: 100%;
+      width: 100%;
+      border: 1px solid #4165a3; }
+    .modal .modal-body .modalCol {
+      height: 100%;
+      width: 49%;
+      padding: 0 5%; }
+      .modal .modal-body .modalCol h1 {
+        text-align: center; }
+      .modal .modal-body .modalCol h3 {
+        margin-bottom: 3%; }
+      .modal .modal-body .modalCol.modalColLeft {
+        border-right: 1px solid #dcebf5; }
+      .modal .modal-body .modalCol.modalColRight {
+        border-left: 1px solid #dcebf5; }
   .modal .modal-footer {
     height: 15%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background: #163856; }
     .modal .modal-footer button {
@@ -228,11 +247,13 @@ canvas {
       .modal .modal-footer button a {
         color: #2D2D2D;
         text-decoration: none; }
-    .modal .modal-footer .button-message {
-      padding: 5px 0;
-      color: white; }
-      .modal .modal-footer .button-message:not(:last-child) {
-        border-bottom: 1px solid #4B9FCB; }
+    .modal .modal-footer .modalCloseBtn {
+      color: white;
+      background: #FF3A38;
+      border: 2px solid #ff0805;
+      outline: 3px solid #d10200; }
+      .modal .modal-footer .modalCloseBtn:hover, .modal .modal-footer .modalCloseBtn :focus {
+        background: #ff6c6b; }
 
 #main-content {
   height: 100%;
@@ -349,26 +370,37 @@ canvas {
   height: 60px;
   width: 100%;
   display: none;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 40px;
   cursor: pointer;
   font-size: 1.5rem;
   background: #33C451;
-  border-bottom: 1px solid #289c40;
-  transition: color 1s; }
+  border-bottom: 1px solid #289c40; }
   .complete-banner:hover {
-    height: 70px;
+    height: 90px;
     -webkit-transition: 0.3s ;
     -moz-transition: 0.3s ;
     transition: 0.3s ; }
-  .complete-banner span, .complete-banner strong {
-    margin: 40px; }
+  .complete-banner.change .complete-message {
+    color: transparent; }
+  .complete-banner.change .incomplete-message {
+    color: transparent; }
+  .complete-banner.change .step-link {
+    color: transparent; }
   .complete-banner .complete-message {
-    display: none; }
+    display: none;
+    -webkit-transition: 0.3s ;
+    -moz-transition: 0.3s ;
+    transition: 0.3s ; }
   .complete-banner .incomplete-message {
-    display: none; }
+    display: none;
+    -webkit-transition: 0.3s ;
+    -moz-transition: 0.3s ;
+    transition: 0.3s ; }
   .complete-banner div {
+    margin-top: 2.5px;
     text-align: center; }
     .complete-banner div .step-link {
       display: inline-block;
@@ -513,8 +545,10 @@ canvas {
             font-size: .7rem;
             font-weight: bold; }
           #edit-window .edit-spread .section-tools.las-list .las-container .house-info .las-description {
-            width: 100%;
+            max-width: 100%;
+            max-height: 30%;
             white-space: normal;
+            overflow: hidden;
             font-size: .75rem;
             font-weight: bold; }
     #edit-window .edit-spread .section-tools.active {
@@ -611,7 +645,7 @@ canvas {
           display: flex;
           align-items: center;
           text-align: left;
-          padding: 5% 1%;
+          padding: 3% 1%;
           border-bottom: 1px solid #4B9FCB;
           -webkit-transition: 0.1s ;
           -moz-transition: 0.1s ;
@@ -689,11 +723,11 @@ canvas {
               left: 5%;
               color: white; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .las-image {
-            height: 100px;
-            width: 100px;
+            height: 80%;
             margin-left: 8%;
-            background-position: no-repeat;
-            background-size: cover; }
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain; }
           #edit-window .edit-spread .section-tools .edit-tools .edit-content .las-choice .las-container .house-info {
             margin-left: 2%;
             width: 100%; }
@@ -759,28 +793,6 @@ canvas {
           background: #b4d4ea; }
         #mailing-window #mailing-list #edit-bar ul li:hover {
           background: #b4d4ea; }
-    #mailing-window #mailing-list #edit-bar #past-clients {
-      width: 90%;
-      margin: 10px 0;
-      text-align: center;
-      cursor: pointer;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0 0 8px 0 #2D2D2D;
-      -moz-box-shadow: 0 0 8px 0 #2D2D2D;
-      box-shadow: 0 0 8px 0 #2D2D2D;
-      -webkit-transition: 0.3s ;
-      -moz-transition: 0.3s ;
-      transition: 0.3s ; }
-      #mailing-window #mailing-list #edit-bar #past-clients h3 {
-        color: #163856;
-        background: #57d371;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px; }
-        #mailing-window #mailing-list #edit-bar #past-clients h3:hover {
-          color: #20527f; }
   #mailing-window #mailing-list #homeowners {
     height: 100%;
     width: 70%;
@@ -800,25 +812,7 @@ canvas {
       #mailing-window #mailing-list #homeowners #search-bar .search {
         width: 30%;
         margin-left: 10px;
-        padding: 5px;
-        border: 1px solid #4B9FCB;
-        font-family: 'Lato', 'Ubuntu';
-        font-size: 1.1rem;
-        text-align: center;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        -webkit-transition: 0.3s ;
-        -moz-transition: 0.3s ;
-        transition: 0.3s ;
-        -webkit-box-shadow: inset 0 0 3px 0 #4B9FCB;
-        -moz-box-shadow: inset 0 0 3px 0 #4B9FCB;
-        box-shadow: inset 0 0 3px 0 #4B9FCB; }
-        #mailing-window #mailing-list #homeowners #search-bar .search:hover {
-          background: #d5e9f3; }
-        #mailing-window #mailing-list #homeowners #search-bar .search:focus {
-          outline: none;
-          background: #d5e9f3; }
+        text-align: center; }
       #mailing-window #mailing-list #homeowners #search-bar #clear-search {
         display: inline-flex;
         align-items: center;
@@ -870,17 +864,15 @@ canvas {
         height: 80%;
         width: 100%;
         overflow: auto; }
-        #mailing-window #mailing-list #homeowners table tbody tr .address-id-container .parcel-number {
-          display: block;
-          margin-top: 5px;
-          font-size: .8rem; }
-        #mailing-window #mailing-list #homeowners table tbody tr .blocked-container {
+        #mailing-window #mailing-list #homeowners table tbody tr .check-td {
           height: 60px;
           width: 60px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis; }
-        #mailing-window #mailing-list #homeowners table tbody tr .mailing-address-container div {
+          white-space: normal; }
+        #mailing-window #mailing-list #homeowners table tbody tr .address-container {
+          line-height: 1.5rem; }
+        #mailing-window #mailing-list #homeowners table tbody tr .address-container .parcel-number {
+          font-size: .8rem; }
+        #mailing-window #mailing-list #homeowners table tbody tr .address-container div {
           display: block;
           white-space: nowrap;
           overflow: hidden;
@@ -896,35 +888,58 @@ canvas {
           background: white; }
         #mailing-window #mailing-list #homeowners table tbody tr.client {
           background: #33C451; }
+        #mailing-window #mailing-list #homeowners table tbody tr.ps .ps-btn {
+          background: #b9ffaf; }
         #mailing-window #mailing-list #homeowners table tbody tr td {
           position: relative;
           padding: 5px;
-          text-align: left;
+          text-align: center;
           border: 1px solid #163856;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis; }
-          #mailing-window #mailing-list #homeowners table tbody tr td button {
-            height: 50px;
-            width: 100%;
-            font-family: 'Lato', 'Ubuntu';
-            font-size: 1.2rem;
-            color: #4165a3;
+          #mailing-window #mailing-list #homeowners table tbody tr td .fullDisplay {
+            width: auto;
+            height: 100%;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            padding: 5px;
+            white-space: nowrap;
+            font-size: 1.1rem;
             background: white;
-            border: none;
-            cursor: pointer;
-            -webkit-transition: 0.3s ;
-            -moz-transition: 0.3s ;
-            transition: 0.3s ; }
-            #mailing-window #mailing-list #homeowners table tbody tr td button:hover {
-              background: #b4d4ea; }
+            -webkit-box-shadow: 0 0 6px 1px #2D2D2D;
+            -moz-box-shadow: 0 0 6px 1px #2D2D2D;
+            box-shadow: 0 0 6px 1px #2D2D2D; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .btn-container {
+            height: 100%;
+            width: 100%;
+            display: flex; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .btn-container button {
+              height: 50px;
+              width: 50%;
+              font-family: 'Lato', 'Ubuntu';
+              font-size: 1.2rem;
+              color: #4165a3;
+              background: white;
+              border: 1px solid #dcebf5;
+              cursor: pointer;
+              -webkit-transition: 0.3s ;
+              -moz-transition: 0.3s ;
+              transition: 0.3s ; }
+              #mailing-window #mailing-list #homeowners table tbody tr td .btn-container button:hover {
+                background: #b4d4ea; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container input {
             position: absolute;
             opacity: 0; }
-            #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark {
-              background: #FF3A38; }
-              #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark:after {
-                display: block; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark.positive {
+              background: #15af00; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark.negative {
+              background: #cc0000; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container input:checked ~ .checkmark:after {
+              display: block; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container .checkmark {
             height: 20px;
             width: 20px;
@@ -944,7 +959,27 @@ canvas {
               left: 5%;
               color: white; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container .blocked {
-            margin-left: 30px; }
+            margin-left: 30%;
+            text-align: left; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container .past-client {
+            margin-left: 25%;
+            padding: 2px 5px;
+            text-align: left;
+            color: white;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container .past-client.Sold {
+              background: #cc0000; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container .past-client.Pending {
+              background: #d9a200; }
+            #mailing-window #mailing-list #homeowners table tbody tr td .check-container .past-client.Listing {
+              background: #15af00; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container .homeowner-tag {
+            margin-left: 25%;
+            text-align: left; }
+          #mailing-window #mailing-list #homeowners table tbody tr td .check-container .address-id {
+            display: none; }
           #mailing-window #mailing-list #homeowners table tbody tr td .check-container:hover input:not(:checked) ~ .checkmark {
             background: #F9F9F9; }
   #mailing-window #mailing-list #price-bar {
@@ -998,7 +1033,7 @@ canvas {
         transform: scale(1.05);
         color: #20527f; }
 
-#choose-reason {
+.choose-options {
   display: none;
   position: absolute;
   top: 0;
@@ -1009,23 +1044,23 @@ canvas {
   -webkit-box-shadow: 0 0 40px 0 black;
   -moz-box-shadow: 0 0 40px 0 black;
   box-shadow: 0 0 40px 0 black; }
-  #choose-reason h4, #choose-reason h5 {
+  .choose-options h4, .choose-options h5 {
     margin: 0;
     padding: 10px; }
-    #choose-reason h4:not(:last-child), #choose-reason h5:not(:last-child) {
+    .choose-options h4:not(:last-child), .choose-options h5:not(:last-child) {
       border-bottom: 1px solid #4B9FCB; }
-  #choose-reason h4 {
+  .choose-options h4 {
     color: #FF3A38;
     font-size: 1.6rem; }
-  #choose-reason h5 {
+  .choose-options h5 {
     font-size: 1.4rem;
     cursor: pointer;
     -webkit-transition: 0.3s ;
     -moz-transition: 0.3s ;
     transition: 0.3s ; }
-    #choose-reason h5:hover {
+    .choose-options h5:hover {
       background: #e0e0e0; }
-  #choose-reason:after {
+  .choose-options:after {
     content: " ";
     position: absolute;
     top: 21%;
@@ -1233,52 +1268,16 @@ canvas {
   cursor: pointer; }
 
 #edit-modal .modal-body {
-  padding: 20px; }
-  #edit-modal .modal-body .edit-modal-row {
-    height: 30%;
+  padding: 10px; }
+  #edit-modal .modal-body .modal-body-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px; }
-    #edit-modal .modal-body .edit-modal-row .edit-box {
-      height: 100%;
-      width: 30%;
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-      background: #CCCCCC;
-      border: 2px solid #163856;
-      pointer-events: none; }
-      #edit-modal .modal-body .edit-modal-row .edit-box.editable {
-        background: none;
-        pointer-events: initial; }
-      #edit-modal .modal-body .edit-modal-row .edit-box strong {
-        margin-bottom: 10px; }
-      #edit-modal .modal-body .edit-modal-row .edit-box div {
-        text-align: center; }
-      #edit-modal .modal-body .edit-modal-row .edit-box input {
-        width: 100%;
-        margin-top: 10px;
-        padding: 5px;
-        font-family: 'Lato', 'Ubuntu';
-        text-align: center;
-        border: 1px solid #122D46;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        -webkit-transition: 0.3s ;
-        -moz-transition: 0.3s ;
-        transition: 0.3s ;
-        -webkit-box-shadow: inset 0 0 3px 0 #4B9FCB;
-        -moz-box-shadow: inset 0 0 3px 0 #4B9FCB;
-        box-shadow: inset 0 0 3px 0 #4B9FCB; }
-        #edit-modal .modal-body .edit-modal-row .edit-box input:hover {
-          background: #d5e9f3; }
-        #edit-modal .modal-body .edit-modal-row .edit-box input:focus {
-          outline: none;
-          background: #d5e9f3; }
+    justify-content: space-between; }
+  #edit-modal .modal-body input {
+    height: 5%;
+    width: 100%; }
+  #edit-modal .modal-body .editOld {
+    font-size: 1.1rem;
+    height: 5%; }
 
 #edit-modal .modal-footer {
   justify-content: space-around; }
@@ -1288,6 +1287,37 @@ canvas {
     outline: 2px solid #eb0200; }
     #edit-modal .modal-footer .close-btn:hover {
       background: #ff5352; }
+
+#ps-modal .modal-body {
+  padding: 0;
+  background-color: #F9F9F9; }
+
+#ps-modal .modal-body-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  background-image: url("../images/pma-creator/ps-background.PNG");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right; }
+  #ps-modal .modal-body-container div {
+    position: absolute;
+    top: 79%;
+    left: 13%;
+    font-family: 'Lato';
+    font-size: .9rem; }
+  #ps-modal .modal-body-container textarea {
+    height: 8%;
+    width: 50%;
+    position: absolute;
+    top: 83%;
+    left: 13%;
+    border: 2px solid #cc0000;
+    outline: 2px solid #15af00;
+    font-family: 'Lato', 'Ubuntu';
+    font-size: .9rem; }
 
 #pricing-summary-modal .modal-body #pricing-summary {
   height: 70%;
@@ -1396,6 +1426,26 @@ canvas {
     -moz-box-shadow: 0 0 16px 3px #2D2D2D;
     box-shadow: 0 0 16px 3px #2D2D2D; }
 
+.textInput {
+  padding: 5px;
+  border: 1px solid #4B9FCB;
+  font-family: 'Lato', 'Ubuntu';
+  font-size: 1.1rem;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  transition: 0.3s ;
+  -webkit-box-shadow: inset 0 0 3px 0 #4B9FCB;
+  -moz-box-shadow: inset 0 0 3px 0 #4B9FCB;
+  box-shadow: inset 0 0 3px 0 #4B9FCB; }
+  .textInput:hover {
+    background: #b4d4ea; }
+  .textInput:focus {
+    outline: none;
+    background: #b4d4ea; }
+
 .pricing-box {
   width: 100%;
   display: flex !important;
@@ -1456,6 +1506,40 @@ canvas {
   -moz-box-shadow: 0 0 16px 3px #2D2D2D;
   box-shadow: 0 0 16px 3px #2D2D2D; }
 
+#splash-alert {
+  max-width: 60%;
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.6rem;
+  color: white;
+  background: #002566;
+  -webkit-box-shadow: 0 0 16px 3px black;
+  -moz-box-shadow: 0 0 16px 3px black;
+  box-shadow: 0 0 16px 3px black; }
+  #splash-alert div {
+    padding: 50px;
+    background: #2D2D2D;
+    -webkit-box-shadow: inset 0 0 4px 1px black;
+    -moz-box-shadow: inset 0 0 4px 1px black;
+    box-shadow: inset 0 0 4px 1px black; }
+  #splash-alert button {
+    margin-top: 10px;
+    font-size: 1.4rem;
+    font-family: 'Lato', 'Ubuntu';
+    outline: none;
+    border: none;
+    color: white;
+    background: #002566;
+    cursor: pointer; }
+    #splash-alert button:hover, #splash-alert button :focus {
+      color: #4165a3; }
+
 /*   PMA STATIC SECTIONS    */
 #CityHighlightsHeader *, #AreaHighlightsHeader * {
   margin: 0; }
@@ -1483,6 +1567,88 @@ canvas {
   #ContactInformation .insert-phone-number {
     font-weight: bolder; }
 
+#InsideBorder .border-header {
+  height: 10.5%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  background: #002566; }
+  #InsideBorder .border-header .border-logo {
+    height: 80%;
+    width: 25%;
+    position: absolute;
+    top: 10%;
+    left: 20%; }
+  #InsideBorder .border-header .vert-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex; }
+    #InsideBorder .border-header .vert-container .vertical {
+      height: 100%;
+      width: 1%;
+      border-right: 1px solid #4165a3; }
+  #InsideBorder .border-header .horizontal {
+    height: 20%;
+    border-bottom: 1px solid #4165a3; }
+  #InsideBorder .border-header .border-site-address-container {
+    width: 25%;
+    height: 33%;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    border: 3px solid white;
+    transform: translateX(-50%);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px; }
+  #InsideBorder .border-header .border-site-address {
+    height: 100%;
+    width: 100%;
+    background: white;
+    border: 2px solid #002566;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px; }
+
+#InsideBorder .border-divider {
+  height: .5%;
+  width: 100%;
+  background: #dcebf5; }
+
+#InsideBorder .border-main {
+  height: 89%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+  #InsideBorder .border-main div {
+    height: 100%;
+    width: 2.9%;
+    background: #4165a3; }
+  #InsideBorder .border-main .left {
+    position: relative;
+    border-right: 4px solid #dcebf5; }
+    #InsideBorder .border-main .left .border-info {
+      height: 100%;
+      position: absolute;
+      bottom: -15%;
+      left: 425%;
+      white-space: nowrap;
+      color: white;
+      font-size: .5rem;
+      font-weight: bold;
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg); }
+  #InsideBorder .border-main .right {
+    border-left: 4px solid #dcebf5; }
+
 #AsOf {
   display: flex;
   justify-content: space-between;
@@ -1508,12 +1674,13 @@ canvas {
         margin-bottom: 5px; }
   #InsideHeader h2 {
     color: #4165a3;
-    font-size: 15px;
+    font-size: 18px;
     margin: 5px 0 0 0;
     font-weight: bolder; }
   #InsideHeader h1 {
     color: #002566;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bolder;
     margin: -5px 0 0 0; }
   #InsideHeader h3 {
     width: 400px;
@@ -1539,7 +1706,8 @@ canvas {
   #InsideTable tbody td {
     padding: 3px;
     border-bottom: 1px solid #CCCCCC;
-    font-weight: bold; }
+    font-weight: bold;
+    white-space: nowrap; }
     #InsideTable tbody td.it-status {
       font-weight: bolder;
       text-transform: capitalize; }

@@ -45,7 +45,7 @@ class MainWindow {
 		// flashing
 		setInterval(function() {
 			$('.complete-banner').toggleClass('change');
-		}, 1000);
+		}, 750);
 	}
 
 	/* Intialize Sections */
@@ -62,6 +62,7 @@ class MainWindow {
 	 * ---------------
 	 * Updates all other steps with current status of the step.
 	 *
+	 * @param step string : name of the updated step
 	 * @param complete bool : true if complete, false if not
 	 */
 	_updateStep(step, complete) {
@@ -79,7 +80,7 @@ class MainWindow {
 			if (complete) {
 				banner.slideDown({
 				    start: function () {
-				        $(this).css({ display: "flex" });
+				        $(this).css({ display: 'flex' });
 				    }
 			    });
 			} else {
@@ -105,9 +106,12 @@ class MainWindow {
 	 * @param full bool : true if a specific step should be opened
 	 */
 	_backToEdit(step, full) {
+		console.log(full);
 		this.setWindowCallback('Editor');
 		if (!full) this.editWindow.clickTools(step);
 	}
+
+
 
 	/*   PUBLIC   */
 
@@ -170,10 +174,18 @@ class MainWindow {
 		this.previewWindow.update();
 	}
 
+	/* Reset Final Preview
+	 * ---------------
+	 * Unconfirms the PMA pages in final preview and updates the confirmations of all sections. 
+	 */
 	resetFinalPreview() {
 		this.previewWindow.resetPages();
 	}
 
+	/* Take Snapshot
+	 * ---------------
+	 * Takes snapshot of current PMA for Final Preview
+	 */
 	takeSnapshot() {
 		this.editWindow.takeSnapshot();
 	}
