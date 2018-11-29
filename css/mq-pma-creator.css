@@ -793,7 +793,8 @@ canvas {
     height: 100%;
     width: 70%;
     overflow: hidden;
-    outline: 1px solid #163856; }
+    outline: 1px solid #163856;
+    overflow-y: scroll; }
     #mailing-window #mailing-list #homeowners #search-bar {
       height: 50px;
       display: flex;
@@ -873,13 +874,10 @@ canvas {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis; }
-        #mailing-window #mailing-list #homeowners table tbody tr.disabled {
-          background: #CCCCCC;
-          filter: brightness(0.7); }
-          #mailing-window #mailing-list #homeowners table tbody tr.disabled:active {
+        #mailing-window #mailing-list #homeowners table tbody tr.disabled:active {
+          pointer-events: none; }
+          #mailing-window #mailing-list #homeowners table tbody tr.disabled:active .checkmark {
             pointer-events: none; }
-            #mailing-window #mailing-list #homeowners table tbody tr.disabled:active .checkmark {
-              pointer-events: none; }
         #mailing-window #mailing-list #homeowners table tbody tr.blocked {
           background: white; }
         #mailing-window #mailing-list #homeowners table tbody tr.client {
@@ -1577,20 +1575,29 @@ canvas {
     position: absolute;
     top: 10%;
     left: 20%; }
-  #InsideBorder .border-header .vert-container {
+  #InsideBorder .border-header .vertical-container {
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     display: flex; }
-    #InsideBorder .border-header .vert-container .vertical {
+    #InsideBorder .border-header .vertical-container .vertical {
       height: 100%;
-      width: 1%;
+      width: 1.5%;
       border-right: 1px solid #4165a3; }
   #InsideBorder .border-header .horizontal {
     height: 20%;
     border-bottom: 1px solid #4165a3; }
+  #InsideBorder .border-header .border-title {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    transform: translateX(-50%);
+    color: white;
+    font-family: serif; }
   #InsideBorder .border-header .border-site-address-container {
     width: 25%;
     height: 33%;

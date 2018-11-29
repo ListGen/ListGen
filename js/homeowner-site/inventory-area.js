@@ -6,7 +6,18 @@ class InventoryArea {
 	}
 
 	_setEventListeners() {
-		
+		$('.tab-link').click(function() {
+			$('.tab-link').removeClass('active');
+			$(this).addClass('active');
+			if ($(this).html() === 'Search Results') {
+				$('.inventory-selection').hide();
+				$('#no-results').show();
+			} else {
+				$('.inventory-selection').show();
+				$('#no-results').hide();
+			}
+		});
+
 		// favorites and unfavorites a property
 		$('.favorite-star').click(function() {
 			const curr = $(this).html();

@@ -139,7 +139,8 @@ class MailingWindow {
 		this.mailingList.clear();
 		this.mailingList.add(homeowners);
 		this.areaPrices.empty();
-
+		this.mailingList.sort('blocked');
+		
 		this.numBlocked = {
 			'Agent-Blocked' : 0,
 			'Homeowner-Blocked' : 0,

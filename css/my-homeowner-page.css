@@ -313,6 +313,8 @@ h1, h2, h3, h4, h5, h6 {
       transition: 0.1s ;
       color: white; }
       #main-container #navigation-menu ul .nav-channel#smart-marketing {
+        pointer-events: none;
+        color: gray;
         font-weight: 500;
         margin-top: 200px; }
       #main-container #navigation-menu ul .nav-channel i {
@@ -503,9 +505,48 @@ h1, h2, h3, h4, h5, h6 {
                 #main-container #tv-container #tv.favorite-search #favorite-search-content #favorite-search-input #fs-list .fs-selection button i {
                   font-size: 1rem; }
       #main-container #tv-container #tv.property-updates #property-updates-content {
-        display: initial; }
-      #main-container #tv-container #tv.smart-marketing #smart-marketing-content {
-        display: initial; }
+        display: initial;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #F9F9F9;
+        background: url("../../images/pma-creator/las/250716thAve.jpg") 50% 50% no-repeat;
+        background-size: cover; }
+        #main-container #tv-container #tv.property-updates #property-updates-content #pu-input {
+          width: 80%;
+          height: 70%;
+          background: rgba(220, 235, 245, 0.7);
+          border: 1px solid #2D2D2D;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px; }
+          #main-container #tv-container #tv.property-updates #property-updates-content #pu-input #pu-title {
+            font-size: 1.3rem;
+            padding: 20px 10px;
+            background: rgba(200, 224, 239, 0.7);
+            -webkit-border-radius: 10px 10px 0 0;
+            -moz-border-radius: 10px 10px 0 0;
+            border-radius: 10px 10px 0 0; }
+          #main-container #tv-container #tv.property-updates #property-updates-content #pu-input #pu-message {
+            padding: 85px;
+            font-size: 1.2rem; }
+          #main-container #tv-container #tv.property-updates #property-updates-content #pu-input button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-family: 'Lato';
+            color: white;
+            background: #4165a3;
+            border: 1px solid #002566;
+            outline: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            -webkit-transition: 0.3s ;
+            -moz-transition: 0.3s ;
+            transition: 0.3s ; }
+            #main-container #tv-container #tv.property-updates #property-updates-content #pu-input button:hover, #main-container #tv-container #tv.property-updates #property-updates-content #pu-input button :focus {
+              background: #002566; }
       #main-container #tv-container #tv #tv-options {
         height: 50px;
         width: 100%;
@@ -574,6 +615,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #002566; }
 
 #inventory {
+  width: 100%;
   padding: 5px 20px;
   background: white;
   -webkit-box-shadow: inset 0 0 12px 2px #666666;
@@ -584,11 +626,31 @@ h1, h2, h3, h4, h5, h6 {
     #inventory #inventory-tabs .tab-link {
       padding: 10px 30px;
       color: white;
-      background: #202020;
+      background: #2D2D2D;
+      font-family: 'Lato';
+      font-size: 1.3rem;
       border: none;
+      outline: none;
+      cursor: pointer;
       -webkit-border-radius: 20px 20px 0 0;
       -moz-border-radius: 20px 20px 0 0;
-      border-radius: 20px 20px 0 0; }
+      border-radius: 20px 20px 0 0;
+      -webkit-transition: 0.3s ;
+      -moz-transition: 0.3s ;
+      transition: 0.3s ; }
+      #inventory #inventory-tabs .tab-link.active {
+        color: #4165a3;
+        background: #202020; }
+      #inventory #inventory-tabs .tab-link:hover, #inventory #inventory-tabs .tab-link :focus {
+        color: #4165a3; }
+  #inventory #no-results {
+    display: none;
+    width: 100%;
+    padding: 250px;
+    text-align: center;
+    color: white;
+    background: #202020;
+    font-size: 3rem; }
   #inventory .inventory-selection {
     width: 100%;
     height: 400px;

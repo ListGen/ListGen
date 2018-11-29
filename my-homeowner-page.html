@@ -45,7 +45,7 @@
 							<li class="nav-channel">Property Search</li>
 							<li class="nav-channel">My Favorite Searches</li>
 							<li class="nav-channel">Create Property Updates</li>
-							<li id="smart-marketing" class="nav-channel">View Smart Marketing</li>
+							<li id="smart-marketing" class="nav-channel">View Smart Marketing<br>(Coming Soon!)</li>
 						</ul>
 					</div>
 
@@ -134,11 +134,16 @@
 							</div>
 
 							<div id="property-updates-content" class="tv-content">
-								UPDATES
-							</div>
-
-							<div id="smart-marketing-content" class="tv-content">
-								MARKETING
+								<div id="pu-input">
+									<div id="pu-title">
+										Create Your Personal Property Updates
+									</div>
+									<div id="pu-message">
+										You are currently not receiving any property updates.<br>
+										Click below to get started!
+									</div>
+									<button>Start</button>
+								</div>
 							</div>
 
 						</div>
@@ -165,8 +170,12 @@
 				<div id="inventory">
 
 					<div id="inventory-tabs">
-						<button class="tab-link">Kyle's Inventory</button>
+						<button class="tab-link active">Kyle's Inventory</button>
 						<button class="tab-link">Search Results</button>
+					</div>
+
+					<div id="no-results">
+						No Search Results...
 					</div>
 
 					<div class="inventory-selection">
@@ -179,7 +188,7 @@
 								<span class="inv-address">2715 Ribera Rd, Carmel 93924</span>
 							</div>
 							<div class="inv-location">
-								<span><strong>X St:</strong> Linder Lane</span>
+								<span><strong>X St:</strong> Linder</span>
 								<span><strong>Listing Area:</strong> Carmel Woods</span>
 							</div>
 							<div class="inv-line-2">
@@ -224,7 +233,7 @@
 								<span class="inv-address">2970 Cuesta Way, Carmel 93924</span>
 							</div>
 							<div class="inv-location">
-								<span><strong>X St:</strong> Cedar Lane</span>
+								<span><strong>X St:</strong> Cedar</span>
 								<span><strong>Listing Area:</strong> Carmel Woods</span>
 							</div>
 							<div class="inv-line-2">
@@ -255,6 +264,148 @@
 								<i class="material-icons rating-star">star</i>
 								<i class="material-icons rating-star">star</i>
 								<i class="material-icons rating-star">star</i>
+							</div>
+							<div class="agent-comments"></div>
+							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below!</strong></div>
+							<textarea class="ho-comment"></textarea>
+							<button>Send</button>
+						</div>
+					</div>
+					<div class="inventory-selection">
+						<div class="inventory-photo" style="background-image: url('../../images/pma-creator/las/27030MeadowWay.jpg')">
+							<div class="status sale"><strong>RECENTLY SOLD</strong></div>
+							<i class="material-icons favorite-star">star_border</i>
+						</div>
+						<div class="inventory-info">
+							<div class="inv-line-1">
+								<span class="inv-address">27030 Meadow Way, Carmel 93924</span>
+							</div>
+							<div class="inv-location">
+								<span><strong>X St:</strong> Ribera </span>
+								<span><strong>Listing Area:</strong> Carmel Woods</span>
+							</div>
+							<div class="inv-line-2">
+								<span class="inv-listing-price"><strong>List Price:</strong> $2,395,000</span>
+								<span class="inv-dom"><strong>Days On Market:</strong> 70</span>
+							</div>
+							<div class="inv-line-3">
+								<span class="inv-orig-price"><strong>Original Price:</strong> $2,100,000</span>
+								<span class="inv-sale-date"><strong>Sale Data:</strong> 10/10/18</span>
+							</div>
+							<div class="inv-beds"><strong>Beds:</strong> 3</div>
+							<div>
+								<span class="inv-full-baths"><strong>Full Baths:</strong> 3</span>
+								<span class="inv-half-baths">&nbsp;&nbsp;&nbsp; <strong>Half Baths:</strong> 2</span>
+							</div>
+							<div class="inv-sqft">3102 Sq Ft</div>
+							<div class="inv-lot-size"><strong>Lot Size:</strong> 7000 Sq Ft &nbsp;/&nbsp; .70 Acres</div>
+							<div class="inv-garage"><strong>Garage Spaces:</strong> 2</div>
+							<div class="inv-stories"><strong>Stories:</strong> 2</div>
+							<div class="inv-views"><strong>View:</strong> -</div>
+							<div class="inv-built"><strong>Year Built:</strong> 1920</div>
+						</div>
+						<div class="inventory-comment">
+							<div class="agent-rating">
+								<div>Kyle's Rating and Comments</div>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons agent-rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+							</div>
+							<div class="agent-comments"></div>
+							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below!</strong></div>
+							<textarea class="ho-comment"></textarea>
+							<button>Send</button>
+						</div>
+					</div>
+					<div class="inventory-selection">
+						<div class="inventory-photo" style="background-image: url('../../images/pma-creator/las/2975RiberaRd.jpg')">
+							<div class="status listing"><strong>ACTIVE LISTING</strong></div>
+							<i class="material-icons favorite-star">star_border</i>
+						</div>
+						<div class="inventory-info">
+							<div class="inv-line-1">
+								<span class="inv-address">2975 Ribera Rd, Carmel 93924</span>
+							</div>
+							<div class="inv-location">
+								<span><strong>X St:</strong> HWY 1 </span>
+								<span><strong>Listing Area:</strong> Carmel Woods</span>
+							</div>
+							<div class="inv-line-2">
+								<span class="inv-listing-price"><strong>List Price:</strong> $1,595,000</span>
+								<span class="inv-dom"><strong>Days On Market:</strong> 70</span>
+							</div>
+							<div class="inv-line-3">
+								<span class="inv-orig-price"><strong>Original Price:</strong> $1,700,000</span>
+							</div>
+							<div class="inv-beds"><strong>Beds:</strong> 4</div>
+							<div>
+								<span class="inv-full-baths"><strong>Full Baths:</strong> 2</span>
+								<span class="inv-half-baths">&nbsp;&nbsp;&nbsp; <strong>Half Baths:</strong> 1</span>
+							</div>
+							<div class="inv-sqft">2020 Sq Ft</div>
+							<div class="inv-lot-size"><strong>Lot Size:</strong> 4030 Sq Ft &nbsp;/&nbsp; .43 Acres</div>
+							<div class="inv-garage"><strong>Garage Spaces:</strong> 1</div>
+							<div class="inv-stories"><strong>Stories:</strong> 1</div>
+							<div class="inv-views"><strong>View:</strong> Ocean</div>
+							<div class="inv-built"><strong>Year Built:</strong> 1919</div>
+						</div>
+						<div class="inventory-comment">
+							<div class="agent-rating">
+								<div>Kyle's Rating and Comments</div>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons agent-rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star_border</i>
+							</div>
+							<div class="agent-comments"></div>
+							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below!</strong></div>
+							<textarea class="ho-comment"></textarea>
+							<button>Send</button>
+						</div>
+					</div>
+					<div class="inventory-selection">
+						<div class="inventory-photo" style="background-image: url('../../images/pma-creator/las/250716thAve.jpg')">
+							<div class="status listing"><strong>ACTIVE LISTING</strong></div>
+							<i class="material-icons favorite-star">star_border</i>
+						</div>
+						<div class="inventory-info">
+							<div class="inv-line-1">
+								<span class="inv-address">2507 16th Ave, Carmel 93924</span>
+							</div>
+							<div class="inv-location">
+								<span><strong>X St:</strong> Rio </span>
+								<span><strong>Listing Area:</strong> Carmel Highlands</span>
+							</div>
+							<div class="inv-line-2">
+								<span class="inv-listing-price"><strong>List Price:</strong> $6,995,000</span>
+								<span class="inv-dom"><strong>Days On Market:</strong> 70</span>
+							</div>
+							<div class="inv-line-3">
+								<span class="inv-orig-price"><strong>Original Price:</strong> $6,800,000</span>
+							</div>
+							<div class="inv-beds"><strong>Beds:</strong> 5</div>
+							<div>
+								<span class="inv-full-baths"><strong>Full Baths:</strong> 4</span>
+								<span class="inv-half-baths">&nbsp;&nbsp;&nbsp; <strong>Half Baths:</strong> 2</span>
+							</div>
+							<div class="inv-sqft">4500 Sq Ft</div>
+							<div class="inv-lot-size"><strong>Lot Size:</strong> 7200 Sq Ft &nbsp;/&nbsp; .72 Acres</div>
+							<div class="inv-garage"><strong>Garage Spaces:</strong> 3</div>
+							<div class="inv-stories"><strong>Stories:</strong> 3</div>
+							<div class="inv-views"><strong>View:</strong> Ocean</div>
+							<div class="inv-built"><strong>Year Built:</strong> 1987</div>
+						</div>
+						<div class="inventory-comment">
+							<div class="agent-rating">
+								<div>Kyle's Rating and Comments</div>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons agent-rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star_border</i>
 							</div>
 							<div class="agent-comments"></div>
 							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below!</strong></div>

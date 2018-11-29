@@ -256,32 +256,16 @@ canvas {
   height: 800px;
   width: 100%;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  background-color: #4B9FCB; }
+  background-color: #002566; }
   #header-content a {
-    color: #163856;
-    text-decoration: none; }
+    color: #4165a3;
+    text-decoration: none;
+    -webkit-transition: 0.3s ;
+    -moz-transition: 0.3s ;
+    transition: 0.3s ; }
     #header-content a:hover {
-      color: #122D46; }
-
-#product-content {
-  height: 600px;
-  width: 100%;
-  background-color: #163856; }
-
-#pma-info-content {
-  height: 600px;
-  width: 100%;
-  background-color: #122D46; }
-
-#homeowner-info-content {
-  height: 600px;
-  width: 100%;
-  background-color: #C47F15; }
-
-#backoffice-info-content {
-  height: 600px;
-  width: 100%;
-  background-color: #33C451; }
+      color: #dcebf5; }

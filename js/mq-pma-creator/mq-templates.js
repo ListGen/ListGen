@@ -174,10 +174,10 @@ var TEMPLATES =
 					},
 					'uploadable' : false,
 					'type' : 'image',
-					'default-choice' : '../images/temp/front-graph-1.png',
-					'system-choices' : ['../images/temp/front-graph-1.png',
-										'../images/home-screen/house3.jpg',
-										'../images/home-screen/house4.jpg',
+					'default-choice' : '../images/pma-creator/front-graph-1.png',
+					'system-choices' : ['../images/pma-creator/front-graph-1.png',
+										'../images/pma-creator/front-graph-2.png',
+										'../images/pma-creator/front-graph-3.png',
 										]
 				},
 				{
@@ -222,8 +222,8 @@ var TEMPLATES =
 					},
 					'uploadable' : true,
 					'type' : 'image',
-					'default-choice' : '../images/pma-creator/top-image-1.png',
-					'system-choices' : ['../images/pma-creator/top-image-1.png',
+					'default-choice' : '../images/kyle_morrison.jpg',
+					'system-choices' : ['../images/kyle_morrison.jpg',
 										'../images/pma-creator/top-image-2.png',
 										'../images/pma-creator/top-image-3.jpg',
 										]
@@ -319,8 +319,11 @@ var TEMPLATES =
 					"agent-specific" : false,
 					"src" : `<div class="border-header">
 								<div class="horizontal"></div><div class="horizontal"></div><div class="horizontal"></div><div class="horizontal"></div>
-								<div class="vertical-container"><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div></div>
+								<div class="vertical-container">
+									<div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div><div class="vertical"></div>
+								</div>
 								<div class="border-site-address-container"><div class="border-site-address"></div></div>
+								<div class="border-title">A Precision Market Analysis</div>
 							</div>
 							<div class="border-divider"></div>
 							<div class="border-main">
