@@ -314,8 +314,6 @@ h1, h2, h3, h4, h5, h6 {
       color: white; }
       #main-container #navigation-menu ul .nav-channel#smart-marketing {
         pointer-events: none;
-        color: gray;
-        font-weight: 500;
         margin-top: 200px; }
       #main-container #navigation-menu ul .nav-channel i {
         margin: 0 5px;
@@ -579,7 +577,7 @@ h1, h2, h3, h4, h5, h6 {
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
-      padding: 50px 25px; }
+      padding: 25px; }
     #main-container #agent-info #agent-photo {
       width: 150px;
       height: 200px;
@@ -591,6 +589,37 @@ h1, h2, h3, h4, h5, h6 {
       font-size: .9rem;
       text-align: center;
       margin: 25px -20px 0 -30px; }
+    #main-container #agent-info #social-media {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 20px; }
+      #main-container #agent-info #social-media img {
+        height: 25px;
+        margin: 0 5px;
+        cursor: pointer; }
+
+#meet-button {
+  width: 40%;
+  height: 30px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: 'Lato';
+  color: white;
+  background: #4165a3;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 2px 12px 2px #2D2D2D;
+  -moz-box-shadow: 0 2px 12px 2px #2D2D2D;
+  box-shadow: 0 2px 12px 2px #2D2D2D;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  transition: 0.3s ; }
+  #meet-button:hover, #meet-button :focus {
+    background: #002566; }
 
 #contact-button {
   width: 60%;
@@ -668,12 +697,12 @@ h1, h2, h3, h4, h5, h6 {
         top: 0;
         left: 0;
         font-size: 1.5rem;
-        background: rgba(102, 102, 102, 0.4);
+        background: rgba(0, 0, 0, 0.4);
         -webkit-box-shadow: 0 0 12px 1px #666666;
         -moz-box-shadow: 0 0 12px 1px #666666;
         box-shadow: 0 0 12px 1px #666666; }
         #inventory .inventory-selection .inventory-photo .status.listing {
-          color: #0f7c00; }
+          color: #15af00; }
         #inventory .inventory-selection .inventory-photo .status.sale {
           color: #cc0000; }
         #inventory .inventory-selection .inventory-photo .status.pending {
@@ -690,7 +719,8 @@ h1, h2, h3, h4, h5, h6 {
       margin: 20px;
       color: #CCCCCC;
       background: #2D2D2D;
-      font-size: 1.2rem; }
+      font-size: 1.2rem;
+      position: relative; }
       #inventory .inventory-selection .inventory-info > * {
         padding: 0 10px; }
       #inventory .inventory-selection .inventory-info .inv-line-1 {
@@ -731,6 +761,29 @@ h1, h2, h3, h4, h5, h6 {
         margin-top: 10px; }
       #inventory .inventory-selection .inventory-info .inv-garage {
         margin-top: 10px; }
+      #inventory .inventory-selection .inventory-info .inv-button-container {
+        width: 200px;
+        position: absolute;
+        bottom: 30px;
+        right: 10px;
+        text-align: center; }
+        #inventory .inventory-selection .inventory-info .inv-button-container button {
+          width: 100%;
+          padding: 5px;
+          display: block;
+          margin-top: 20px;
+          cursor: pointer;
+          outline: none;
+          color: white;
+          font-family: 'Lato';
+          font-size: 1.1rem;
+          border: 1px solid #002566;
+          background: #4165a3;
+          -webkit-transition: 0.3s ;
+          -moz-transition: 0.3s ;
+          transition: 0.3s ; }
+          #inventory .inventory-selection .inventory-info .inv-button-container button:hover, #inventory .inventory-selection .inventory-info .inv-button-container button :focus {
+            background: #002566; }
     #inventory .inventory-selection .inventory-comment {
       width: 25%;
       display: flex;
