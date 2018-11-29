@@ -15,101 +15,254 @@
 	  <link rel="stylesheet" type="text/css" href="css/my-homeowner-page.css">
 	  <!-- endbuild -->
 	  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-	  <link rel='stylesheet' type="text/css" href="http://fonts.googleapis.com/css?family=Lato:400,700">
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
 	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 
 	<body>
 
-		<aside id="nav-menu-container">
-			<aside id="nav-menu-header">
-				<i class="material-icons">home</i>
-			</aside>
-
-			<aside id="nav-menu-hamburger" class="hamburger hamburger--elastic" type="button">
-			  <span class="hamburger-box">
-			    <span class="hamburger-inner"></span>
-			  </span>
-			</aside>
-
-			<aside id="nav-menu">
-				<div class="nav-menu-links signed-in">
-
-					<div class="nav-menu-section">Account</div>
-					<div class="nav-link-container">
-						<i class="material-icons">account_box</i>
-						<a class="my-account" href="./my-account.html">My Account</a>
-					</div>
-					<div class="nav-link-container">
-						<i class="material-icons">folder</i>
-						<a class="my-office" href="./my-office.html">My Office</a>
-					</div>
-					<div class="nav-link-container">
-						<i class="material-icons">panorama_wide_angle</i>
-						<a class="my-pmas" href="./my-pmas.html">My PMAs</a>
-					</div>
-					<div class="nav-link-container">
-						<i class="material-icons">phone_in_talk</i>
-						<a class="my-homeowner-page" href="./my-homeowner-page.html">My Homeowner Page</a>
-					</div>
-
-					<div class="nav-menu-section">Help</div>
-					<div class="nav-link-container">
-						<i class="material-icons">help</i>
-						<a class="help-center" href="./help-center.html">Help Center</a>
-					</div>
-					<div class="nav-link-container">
-						<i class="material-icons">email</i>
-						<a class="contact-us" href="./contact-us">Contact Us</a>
-					</div>
-
-				</div>
-
-				<div class="nav-menu-links signed-out hidden">
-					<div class="nav-link-container">
-						<i class="material-icons">account_circle</i>
-						<a class="sign-in" href="./sign-in.html">Sign In</a>
-					</div>
-
-					<div class="nav-menu-section">Help</div>
-					<div class="nav-link-container">
-						<i class="material-icons">sentimental_very_satisfied</i>
-						<a class="about-us" href="./about-us.html">About Us</a>
-					</div>
-					<div class="nav-link-container">
-						<i class="material-icons">email</i>
-						<a class="contact-us" href="./contact-us.html">Contact Us</a>
-					</div>
-				</div>
-
-			</aside> 
-		</aside>
-
 		<main>
 
-			<nav id="top-nav-bar">
-				<div class="nav-column">
-					<div class="nav-logo">
-						<i class="material-icons">home</i>
-						<span>List<strong>Gen</strong></span>
+			<div id="main-content">
+				<div id="top-bar">
+					<img class="agent-logo" src="../../images/templates/logo.PNG">
+					<div id="welcome">
+						<div>
+							<span>Welcome!</span>
+							<span class="ho-names">Mike & Kristen</span>
+						</div>
+						<div class="hmi">Homeowner's Market Insight ™</div>
+					</div>
+					<img class="brokerage-logo" src="../../images/templates/sothebys.png">
+				</div>
+				<div id="main-container">
+
+					<div id="navigation-menu">
+						<ul>
+							<li class="nav-channel active">Market Activity Map</li>
+							<li class="nav-channel">Precision Market Analysis</li>
+							<li class="nav-channel">View Market Activity</li>
+							<li class="nav-channel">Property Search</li>
+							<li class="nav-channel">My Favorite Searches</li>
+							<li class="nav-channel">Create Property Updates</li>
+							<li id="smart-marketing" class="nav-channel">View Smart Marketing</li>
+						</ul>
+					</div>
+
+
+
+					<div id="tv-container">
+						<div id="tv" class="map">
+							<div id="tv-options">
+								<i class="material-icons">fullscreen</i>
+							</div>
+
+							<div id="map-content" class="tv-content">
+								
+							</div>
+
+							<div id="pma-content" class="tv-content">
+
+							</div>
+
+							<div id="property-search-content" class="tv-content">
+								<div class="property-search-input">
+									<div class="ps-row">
+										<div class="ps-col">
+											<div>Location</div>
+											<input type="text" placeholder="Carmel Highlands">
+										</div>
+										<div class="ps-col">
+											<div>Min. Price</div>
+											<input type="text" placeholder="$1,000,000">
+										</div>
+										<div class="ps-col">
+											<div>Max. Price</div>
+											<input type="text" placeholder="$4,000,000">
+										</div>
+									</div>
+									<div class="ps-row">
+										<div class="ps-col">
+											<div>Beds</div>
+											<input type="text" placeholder="Any">
+										</div>
+										<div class="ps-col">
+											<div>Baths</div>
+											<input type="text" placeholder="Any">
+										</div>
+									</div>
+									<div class="ps-row">
+										<div class="ps-col">
+											<button>Search</button>
+										</div>
+									</div>
+									<div id="advanced-message" class="ps-row">
+										<div class="ps-col">
+											Expand for Advanced Search
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="favorite-search-content" class="tv-content">
+								<div id="favorite-search-input">
+									<div id="fs-title">
+										<span>Your Favorite Searches:</span>
+										<button>+</button>
+									</div>
+									<div id="fs-list">
+										<div class="fs-selection">
+											<span>Carmel Woods</span> 
+											<span>|</span> 
+											<span>$1mil-$1.5mil</span>
+											<span>|</span>
+											<span>3 Beds</span>
+											<button><i class="material-icons">search</i></button>
+										</div>
+										<div class="fs-selection">
+											<span>Northwest Pebble Beach</span> 
+											<span>|</span> 
+											<span>$4mil+</span>
+											<span>|</span>
+											<span>4 Beds</span>
+											<span>|</span>
+											<span>3 Baths</span>
+											<button><i class="material-icons">search</i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="property-updates-content" class="tv-content">
+								UPDATES
+							</div>
+
+							<div id="smart-marketing-content" class="tv-content">
+								MARKETING
+							</div>
+
+						</div>
+					</div>
+
+
+
+					<div id="agent-info">
+						<div>
+							<div id="agent-photo"></div>
+							<div id="agent-name">Kyle Morrison</div>
+							<div>Broker Associate</div>
+							<div>DRE#: 12305583</div>
+							<div>(831) 236-8909</div>
+							<div>kylemorrisonhomes@gmail.com</div>
+							<div id="agent-awards">
+								<i>Highest Units Sold by Individual Agent - 2017</i>
+							</div>
+						</div>
+						<button id="contact-button">Contact Kyle</button>
 					</div>
 				</div>
-				<div class="nav-column">
-					<div id="tnl-container">
-						<div id="top-nav-links">	
-							<div class="account-container">
-								<i class="material-icons">account_circle</i>
-								<a class="sign-in" href="./sign-in.html">Username</a>
+
+				<div id="inventory">
+
+					<div id="inventory-tabs">
+						<button class="tab-link">Kyle's Inventory</button>
+						<button class="tab-link">Search Results</button>
+					</div>
+
+					<div class="inventory-selection">
+						<div class="inventory-photo" style="background-image: url('../../images/pma-creator/las/2715RiberaRd.jpg')">
+							<div class="status listing"><strong>ACTIVE LISTING</strong></div>
+							<i class="material-icons favorite-star">star_border</i>
+						</div>
+						<div class="inventory-info">
+							<div class="inv-line-1">
+								<span class="inv-address">2715 Ribera Rd, Carmel 93924</span>
 							</div>
+							<div class="inv-location">
+								<span><strong>X St:</strong> Linder Lane</span>
+								<span><strong>Listing Area:</strong> Carmel Woods</span>
+							</div>
+							<div class="inv-line-2">
+								<span class="inv-listing-price"><strong>List Price:</strong> $5,800,000</span>
+								<span class="inv-dom"><strong>Days On Market:</strong> 72</span>
+							</div>
+							<div class="inv-orig-price">Original Price: $5,800,000</div>
+							<div class="inv-beds"><strong>Beds:</strong> 5</div>
+							<div>
+								<span class="inv-full-baths"><strong>Full Baths:</strong> 3</span>
+								<span class="inv-half-baths"><strong>&nbsp;&nbsp;&nbsp; Half Baths:</strong> 2</span>
+							</div>
+							<div class="inv-sqft">3880 Sq Ft</div>
+							<div class="inv-lot-size"><strong>Lot Size:</strong> 5000 Sq Ft &nbsp;/&nbsp;.54 Acres</div>
+							<div class="inv-garage"><strong>Garage Spaces:</strong> 3</div>
+							<div class="inv-stories"><strong>Stories:</strong> 2</div>
+							<div class="inv-views"><strong>View:</strong> Ocean</div>
+							<div class="inv-built"><strong>Year Built:</strong> 1998</div>
+						</div>
+						<div class="inventory-comment">
+							<div class="agent-rating">
+								<div>Kyle's Rating and Comments</div>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons agent-rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star_half</i>
+							</div>
+							<div class="agent-comments"></div>
+							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below:</strong></div>
+							<textarea class="ho-comment"></textarea>
+							<button>Send</button>
+						</div>
+					</div>
+					<div class="inventory-selection">
+						<div class="inventory-photo" style="background-image: url('../../images/pma-creator/las/2943CuestaWay.jpg')">
+							<div class="status sale"><strong>RECENTLY SOLD</strong></div>
+							<i class="material-icons favorite-star">star_border</i>
+						</div>
+						<div class="inventory-info">
+							<div class="inv-line-1">
+								<span class="inv-address">2970 Cuesta Way, Carmel 93924</span>
+							</div>
+							<div class="inv-location">
+								<span><strong>X St:</strong> Cedar Lane</span>
+								<span><strong>Listing Area:</strong> Carmel Woods</span>
+							</div>
+							<div class="inv-line-2">
+								<span class="inv-listing-price"><strong>List Price:</strong> $2,300,000</span>
+								<span class="inv-dom"><strong>Days On Market:</strong> 19</span>
+							</div>
+							<div class="inv-line-3">
+								<span class="inv-orig-price"><strong>Original Price:</strong> $2,000,000</span>
+								<span class="inv-sale-date"><strong>Sale Data:</strong> 10/18/18</span>
+							</div>
+							<div class="inv-beds"><strong>Beds:</strong> 4</div>
+							<div>
+								<span class="inv-full-baths"><strong>Full Baths:</strong> 2</span>
+								<span class="inv-half-baths">&nbsp;&nbsp;&nbsp; <strong>Half Baths:</strong> 1</span>
+							</div>
+							<div class="inv-sqft">3880 Sq Ft</div>
+							<div class="inv-lot-size"><strong>Lot Size:</strong> 6800 Sq Ft &nbsp;/&nbsp; .62 Acres</div>
+							<div class="inv-garage"><strong>Garage Spaces:</strong> 2</div>
+							<div class="inv-stories"><strong>Stories:</strong> 2</div>
+							<div class="inv-views"><strong>View:</strong> Ocean</div>
+							<div class="inv-built"><strong>Year Built:</strong> 1965</div>
+						</div>
+						<div class="inventory-comment">
+							<div class="agent-rating">
+								<div>Kyle's Rating and Comments</div>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons agent-rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+								<i class="material-icons rating-star">star</i>
+							</div>
+							<div class="agent-comments"></div>
+							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below!</strong></div>
+							<textarea class="ho-comment"></textarea>
+							<button>Send</button>
 						</div>
 					</div>
 				</div>
-			</nav>
-
-
-			<div id="main-content">
-
-				
 
 			</div>
 
@@ -133,20 +286,29 @@
 
 		<!-- EXTRAS -->
 
-		<div id="nav-overlay" class="overlay"></div>
 		<div id="modal-overlay" class="overlay"></div>
 
+		<div id="contact-modal" class="modal">
+			<div class="modal-header">
+				Contact Kyle
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				
+			</div>
+		</div>
 
 
 	<!-- JQuery CDN -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<!-- List.js CDN -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-	<!-- Chart.js CDN -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 	<!-- build:js js/main.min.js -->
-	<script src="js/util.js" defer="defer"></script>
 	<script src="js/nav-controller.js" defer="defer"></script>
+	<script src="js/homeowner-site/util.js" defer="defer"></script>
+	<script src="js/homeowner-site/homeowner-site.js" defer="defer"></script>
+	<script src="js/homeowner-site/homeowner-television.js" defer="defer"></script>
+	<script src="js/homeowner-site/inventory-area.js" defer="defer"></script>
 	<!-- endbuild -->
 	</body>
 </html>

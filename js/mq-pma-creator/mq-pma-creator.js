@@ -112,7 +112,7 @@ class MQPmaCreator {
 	 */
 	_completeArea(complete) {
 		if (!complete) this.mainWindow.resetFinalPreview();
-		if (complete) makeSplashAlert(SPLASH['area-complete']);
+		if (complete) makeSplashMessage(SPLASH['area-complete']);
 		mlsAreas[currentArea]['total-complete'] = complete;
 		this.topBar.completeArea(complete);
 	}
