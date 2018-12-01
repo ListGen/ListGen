@@ -24,34 +24,46 @@
 		<main>
 
 			<div id="main-content">
+
+				<!--    TOP BAR    -->
 				<div id="top-bar">
-					<img class="agent-logo" src="../../images/templates/logo.PNG">
+					<img class="agent-logo" src="../../images/templates/logo.PNG" alt="Agent Logo">
 					<div id="welcome">
 						<div>
 							<span>Welcome!</span>
-							<span class="ho-names">Mike & Kristen</span>
+							<span class="insert-homeowner-names">Mike & Kristen</span>
 						</div>
-						<div class="hmi">Homeowner's Market Insight ™</div>
+						<div class="ho-market-insight">Homeowner's Market Insight ™</div>
 					</div>
-					<img class="brokerage-logo" src="../../images/templates/sothebys.png">
+					<img class="brokerage-logo" src="../../images/templates/sothebys.png" alt="Sothebys">
 				</div>
+
+
+
 				<div id="main-container">
 
-					<div id="navigation-menu">
+					<!--    CHANNEL MENU    -->
+					<div id="channel-menu">
 						<ul>
-							<li class="nav-channel active">Market Activity Map</li>
+							<li class="nav-channel active">View Kyle's Collection</li>
+							<li class="nav-channel">Market Activity Map</li>
 							<li class="nav-channel">Precision Market Analysis</li>
 							<li class="nav-channel">View Market Activity</li>
 							<li class="nav-channel">Property Search</li>
 							<li class="nav-channel">My Favorite Searches</li>
 							<li class="nav-channel">Create Property Emails</li>
-							<li id="smart-marketing" class="nav-channel">View Smart Marketing<br>(Coming Soon!)</li>
+							<li id="smart-marketing" class="nav-channel">
+								<span>View Smart Marketing</span>
+								<span class="insert-homeowner-address"></span>
+								<span>(Coming Soon!)</span>
+							</li>
 						</ul>
 					</div>
 
 
-
+					<!--    MAIN TV    -->
 					<div id="tv-container">
+
 						<div id="tv" class="map">
 							<div id="tv-options">
 								<i class="material-icons">fullscreen</i>
@@ -69,7 +81,7 @@
 								<div class="property-search-input">
 									<div class="ps-row">
 										<div class="ps-col">
-											<div>Location</div>
+											<div>Neighborhood</div>
 											<input type="text" placeholder="Carmel Highlands">
 										</div>
 										<div class="ps-col">
@@ -170,7 +182,7 @@
 								<img src="/images/social/googleplus.svg">
 							</div>
 						</div>
-						<button id="meet-button">Meet Kyle</button>
+						<button id="meet-button">About Kyle</button>
 						<button id="contact-button">Contact Kyle</button>
 					</div>
 				</div>
@@ -178,8 +190,19 @@
 				<div id="inventory">
 
 					<div id="inventory-tabs">
-						<button class="tab-link active">Kyle's Collection</button>
-						<button class="tab-link">Search Results</button>
+						<div>Your Current Search is:&nbsp;&nbsp;&nbsp;&nbsp;Carmel-by-the-Sea</div>
+						<div class="button-container">
+							<button>Status</button>
+							<button>City</button>
+							<button>Neighborhood</button>
+							<button>Price Ascending</button>
+							<button>Price Descending</button>
+							<button>Square Footage</button>
+							<button>Bedrooms</button>
+							<button>Bathrooms</button>
+							<button>Street Address</button>
+							<button>View</button>
+						</div>
 					</div>
 
 					<div id="no-results">
@@ -196,7 +219,7 @@
 								<span class="inv-address">2715 Ribera Rd, Carmel 93924</span>
 							</div>
 							<div class="inv-location">
-								<span><strong>X St:</strong> Linder</span>
+								<span><strong>Cross Street:</strong> Linder</span>
 								<span><strong>Listing Area:</strong> Carmel Woods</span>
 							</div>
 							<div class="inv-line-2">
@@ -215,22 +238,15 @@
 							<div class="inv-stories"><strong>Stories:</strong> 2</div>
 							<div class="inv-views"><strong>View:</strong> Ocean</div>
 							<div class="inv-built"><strong>Year Built:</strong> 1998</div>
-							<div class="inv-button-container">
-								<button id="view-map-button">View On Map</button>
-								<button id="share-button">Share</button>
-								<button id="print-button">Print</button>
-							</div>
 						</div>
 						<div class="inventory-comment">
-							<div class="agent-rating">
-								<div>Kyle's Rating and Comments</div>
-								<i class="material-icons rating-star">star</i>
-								<i class="material-icons agent-rating-star">star</i>
-								<i class="material-icons rating-star">star</i>
-								<i class="material-icons rating-star">star</i>
-								<i class="material-icons rating-star">star_half</i>
+							<div class="inv-button-container">
+								<button id="view-map-button">Map</button>
+								<button id="video-button">Video</button>
+								<button id="print-button">Print</button>
+								<button id="share-button">Share</button>
+								<button id="details-button">Details</button>
 							</div>
-							<div class="agent-comments"></div>
 							<div class="ho-comment-title">Have a question or comment? <strong>Ask Kyle below:</strong></div>
 							<textarea class="ho-comment"></textarea>
 							<button>Send</button>

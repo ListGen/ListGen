@@ -1938,7 +1938,8 @@ const LAS_SIZES = {
 const HO_PRIMARY_TAGS = [
 	'SOLD',
 	'LISTING',
-	'PENDING'
+	'PENDING',
+	'EXPIRING'
 ];
 
 const HO_SECONDARY_TAGS = [
@@ -2001,7 +2002,7 @@ const MONTHS = {
 const mailingListOptions = {
 	valueNames : ['address-id', 'parcel-number', 'blocked', 'name', 'mail-address-line-1', 'mail-address-line-2', 'site-address', 'last-sale-price', 'last-sale-date', 'selling-agent', 'ps', 'homeowner-tag', 'past-client'],
 	item: `<tr>
-				<td><div class="btn-container"><button class="edit-btn"><i class="material-icons">edit</i></button><button class="ps-btn">P.S.</button><div></td>
+				<td><div class="btn-container"><button class="edit-btn"><i class="material-icons">edit</i></button><button class="ps-btn"><div>P.S.</div><div class="ps-date">10/10/18</div></button><div></td>
 			    <td class="check-td">
 			    	<label class="check-container">
 			            <input class="tag-check" type="checkbox"/>

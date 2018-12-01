@@ -174,6 +174,8 @@ class MailingWindow {
 	_updateItemClasses(item) {
 		if (item.values()['ps'] !== '')
 			$(item.elm).addClass('ps');
+		if (item.values()['blocked'] != '')
+			$(item.elm).addClass('blocked');
 		if (item.values()['blocked'] === 'Active Listing' || item.values()['blocked'] === 'Pending Listing')
 			$(item.elm).addClass('disabled');
 		if (item.values()['homeowner-tag'] !== '')

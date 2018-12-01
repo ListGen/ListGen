@@ -279,10 +279,10 @@ canvas {
   #top-bar .top-column .top-title {
     margin-bottom: 3px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 400;
     color: #2d769c; }
   #top-bar #pma-mq #pma {
-    font-weight: lighter; }
+    font-weight: 300; }
   #top-bar #top-areas {
     position: relative; }
     #top-bar #top-areas .top-dropdown {
@@ -879,11 +879,19 @@ canvas {
           #mailing-window #mailing-list #homeowners table tbody tr.disabled:active .checkmark {
             pointer-events: none; }
         #mailing-window #mailing-list #homeowners table tbody tr.blocked {
-          background: white; }
+          color: white;
+          background: #2D2D2D; }
         #mailing-window #mailing-list #homeowners table tbody tr.client {
           background: #33C451; }
+        #mailing-window #mailing-list #homeowners table tbody tr .ps-btn .ps-date {
+          display: none; }
         #mailing-window #mailing-list #homeowners table tbody tr.ps .ps-btn {
-          background: #b9ffaf; }
+          background: #b9ffaf;
+          white-space: normal;
+          text-align: center; }
+          #mailing-window #mailing-list #homeowners table tbody tr.ps .ps-btn .ps-date {
+            display: initial;
+            font-size: .7rem; }
         #mailing-window #mailing-list #homeowners table tbody tr td {
           position: relative;
           padding: 5px;
@@ -1452,8 +1460,6 @@ canvas {
   color: #E50015;
   background: #F9F9F9;
   border: 3px solid #E50015; }
-  .pricing-box.current {
-    background: #d5e9f3; }
   .pricing-box.complete {
     color: #33C451;
     border-color: #33C451; }

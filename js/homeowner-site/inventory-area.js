@@ -1,3 +1,7 @@
+/* Homeowner Inventory
+ * Author: bhuelga
+ */
+
 class InventoryArea {
 	
 	constructor() {
@@ -6,6 +10,7 @@ class InventoryArea {
 	}
 
 	_setEventListeners() {
+		// change between agent collection and search results
 		$('.tab-link').click(function() {
 			$('.tab-link').removeClass('active');
 			$(this).addClass('active');

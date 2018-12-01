@@ -3,9 +3,23 @@ class HomeownerSite {
 		this.homeownerTelevision = new HomeownerTelevision();
 		this.inventoryArea = new InventoryArea();
 		this._addEventListeners();
+		this._initialize();
+	}
+
+	_initialize() {
+		// $('.insert-homeowner-names').
 	}
 
 	_addEventListeners() {
+
+		// expands welcome to splash screen
+		$('#welcome').click(function() {
+			if ($(this).parent().hasClass('expanded'))
+				$('#modal-overlay').toggle();
+			else
+				setTimeout(function() {$('#modal-overlay').fadeToggle(1000); }, 200);
+			$(this).parent().toggleClass('expanded');
+		});
 
 		// changes channel on television
 		$('.nav-channel').click((e) => {
